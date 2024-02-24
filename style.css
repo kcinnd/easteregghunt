@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0eae3;
+    background-color: #F3CEAD; /* Updated background color */
     color: #333;
     margin: 0;
     padding: 0;
@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    cursor: url('https://i.imgur.com/A9Kenad.png'), auto; /* Custom cursor image */
 }
 
 .container {
@@ -22,11 +23,11 @@ h1 {
     color: #5d2e8c;
 }
 
-.intro {
+.intro, .secret {
     margin-bottom: 30px;
 }
 
-#startButton {
+#startButton, .secret {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -37,13 +38,12 @@ h1 {
     font-size: 16px;
 }
 
-#startButton:hover {
+#startButton:hover, .secret:hover {
     background-color: #45a049;
 }
 
 .secret {
     color: transparent;
-    cursor: pointer;
     transition: color 0.5s ease;
 }
 
