@@ -26,10 +26,10 @@ function checkWord() {
     var feedback = document.getElementById('feedback');
 
     if (userInput.toLowerCase() === 'easterbunny') {
-        feedback.textContent = 'Correct! You've unraveled the clue.';
+        feedback.textContent = 'Correct! You unraveled the clue.';
         // Optionally, redirect to the next page or reveal a hidden link
         // window.location.href = 'nextPuzzlePage.html';
     } else {
-        feedback.textContent = 'Hmm, that doesn't seem right. Try pondering a bit more.';
+        feedback.textContent = 'Hmm, that does not seem right. Try pondering a bit more.';
     }
 }
