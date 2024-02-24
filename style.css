@@ -88,7 +88,8 @@ h1 {
 
 .mystery-image {
     display: block;
-    margin: 20px auto; /* Center the image and add some margin around it */
-    max-width: 100%; /* Ensure the image is responsive */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for the lifted effect */
+    margin: 20px auto; /* Center the image horizontally */
+    max-width: 50%; /* Limit the maximum width to 50% of the container width */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for a lifted effect */
 }
