@@ -40,3 +40,13 @@ h1 {
 #startButton:hover {
     background-color: #45a049;
 }
+
+.secret {
+    color: transparent;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.secret:hover {
+    color: black;
+}
