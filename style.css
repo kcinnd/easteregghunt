@@ -94,3 +94,21 @@ h1 {
     height: auto; /* Maintain aspect ratio */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for a lifted effect */
 }
+
+/* Style for the submit button */
+button {
+    background-color: #FFF59A; /* Light yellow background */
+    color: #3a3b3c; /* Dark grey font color */
+    padding: 10px 20px; /* Add some padding for better sizing */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners for a modern look */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    transition: background-color 0.3s; /* Smooth transition for the hover effect */
+}
+
+/* Hover effect for the submit button */
+button:hover {
+    background-color: #3a3b3c; /* Dark grey background on hover */
+    color: #FFF59A; /* Light yellow font color on hover */
+}
+
