@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #E0ECF8; /* Updated background color */
+    background-color: #9FE0D2; /* Updated background color */
     color: #333;
     margin: 0;
     padding: 0;
@@ -36,7 +36,7 @@ h1 {
 
 #startButton, .secret {
     background-color: #FFF59A;
-    color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -67,8 +67,8 @@ h1 {
 .tooltip .tooltiptext {
     visibility: hidden;
     width: auto; /* Adjust width as needed */
-    background-color: #555;
-    color: #fff;
+    background-color: #BBE9F2;
+    color: #A9A9A9;
     text-align: center;
     border-radius: 6px;
     padding: 5px 10px; /* Adjust padding as needed */
