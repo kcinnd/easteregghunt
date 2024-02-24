@@ -33,4 +33,3 @@ function checkWord() {
         feedback.textContent = 'Hmm, that doesn't seem right. Try pondering a bit more.';
     }
 }
-
