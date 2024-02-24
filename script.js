@@ -13,16 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Handling the hover event for the logo on Page 2
-    if (window.location.href.includes('page2.html')) {
-        var logo = document.querySelector('.logo');
-        logo.addEventListener('mouseenter', function() {
-            // Show the clue when the logo is hovered over
-            // Consider replacing the alert with a less intrusive method in a real application
-            alert(this.getAttribute('data-hover'));
-        });
-    }
-
     // Check the scrambled word on Page 3
     var submitButton = document.querySelector('button');
     if (submitButton && window.location.href.includes('mysteryTrail.html')) { // Ensures the code runs only on Page 3
