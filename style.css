@@ -36,7 +36,7 @@ h1 {
 
 #startButton, .secret {
     background-color: #FFF59A;
-    color: black;
+    color: #3a3b3c;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -84,4 +84,11 @@ h1 {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+.mystery-image {
+    display: block;
+    margin: 20px auto; /* Center the image and add some margin around it */
+    max-width: 100%; /* Ensure the image is responsive */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for the lifted effect */
 }
