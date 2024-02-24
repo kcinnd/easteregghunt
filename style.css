@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F3CEAD; /* Updated background color */
+    background-color: #E0ECF8; /* Updated background color */
     color: #333;
     margin: 0;
     padding: 0;
@@ -22,8 +22,8 @@ body {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
-    background-color: rgba(225, 247, 234, 0.9);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: rgba(236, 188, 162, 0.7);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 h1 {
@@ -35,7 +35,7 @@ h1 {
 }
 
 #startButton, .secret {
-    background-color: #4CAF50;
+    background-color: #FFF59A;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -46,7 +46,7 @@ h1 {
 }
 
 #startButton:hover, .secret:hover {
-    background-color: #45a049;
+    background-color: #eed86a;
 }
 
 .secret {
