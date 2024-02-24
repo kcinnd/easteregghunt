@@ -96,6 +96,7 @@ h1 {
 }
 
 /* Style for the submit button */
+/* Style for the submit button */
 button {
     background-color: #FFF59A; /* Light yellow background */
     color: #3a3b3c; /* Dark grey font color */
@@ -108,7 +109,6 @@ button {
 
 /* Hover effect for the submit button */
 button:hover {
-    background-color: #3a3b3c; /* Dark grey background on hover */
-    color: #FFF59A; /* Light yellow font color on hover */
+    background-color: #d4b843; /* Slightly darker yellow background on hover */
+    color: #3a3b3c; /* Keep dark grey font color on hover */
 }
-
