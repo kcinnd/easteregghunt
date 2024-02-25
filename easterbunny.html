@@ -10,9 +10,28 @@
     <img src="https://i.imgur.com/tTiuDt6.png" alt="Logo" class="logo">
     
     <div class="container">
-        <h1>Welcome to Easter Bunny's Secret Page</h1>
-        <p>This page holds the key to the next part of your adventure. Are you ready to uncover more mysteries?</p>
-     
+        <h1>Decode the Trail</h1>
+        <p>Help the Easter Bunny find the missing key to unlock the treasure!</p>
+        <button id="openModal">Read Urgent Message</button>
+        <input type="text" id="userInput" placeholder="Enter your answer...">
+        <button onclick="checkWord()">Submit</button>
+        <p id="feedback"></p>
+    </div>
+
+    <!-- The Modal -->
+    <div id="urgentMessageModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🐰🔑 URGENT MESSAGE FROM THE EASTER BUNNY 🔑🐰</h2>
+            <p>Attention all Easter Egg Hunters,</p>
+            <p>This is an emergency message from the Easter Bunny. The key to a precious treasure Easter egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure!</p>
+            <p>We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key.</p>
+            <p>If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all!</p>
+            <p>Hop to it, my friends! The fate of Easter rests in our hands!</p>
+            <p>With urgency and hope,</p>
+            <p>The Easter Bunny 🐰</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
