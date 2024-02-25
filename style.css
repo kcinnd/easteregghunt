@@ -120,7 +120,7 @@ button:hover {
 
 /* Updated Style for the urgent message modal */
 .modal-content {
-    background-color: #FD8867; /* Urgent message popup color */
+    background-color: rgba(253, 136, 103, 0.6); /* Urgent message popup color */
     color: #4F4F4F; /* Appropriate dark gray font color for readability */
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
