@@ -13,9 +13,9 @@ body {
 
 .logo {
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
-    width: 200px; /* Adjust the size as needed */
+    top: 10px;
+    left: 10px;
+    width: 200px;
 }
 
 .container {
@@ -34,9 +34,9 @@ h1 {
     margin-bottom: 30px;
 }
 
-#startButton, .secret {
-    background-color: #FFF59A;
-    color: #3a3b3c;
+#startButton, .secret, button:not(#openModal) {
+    background-color: #FFF59A; /* Light yellow background */
+    color: #3a3b3c; /* Dark grey font color */
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -45,8 +45,8 @@ h1 {
     font-size: 16px;
 }
 
-#startButton:hover, .secret:hover {
-    background-color: #eed86a;
+#startButton:hover, .secret:hover, button:not(#openModal):hover {
+    background-color: #d4b843; /* Slightly darker yellow background on hover */
 }
 
 .secret {
@@ -66,17 +66,17 @@ h1 {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: auto; /* Adjust width as needed */
+    width: auto;
     background-color: #BBE9F2;
     color: #A9A9A9;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 10px; /* Adjust padding as needed */
+    padding: 5px 10px;
     position: absolute;
     z-index: 1;
-    bottom: -5px; /* Position the tooltip below the logo */
-    right: 0; /* Align the tooltip to the right edge of the logo */
-    transform: translate(100%, 50%); /* Adjust positioning relative to the logo */
+    bottom: -5px;
+    right: 0;
+    transform: translate(100%, 50%);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -88,49 +88,40 @@ h1 {
 
 .mystery-image {
     display: block;
-    margin: 20px auto; /* Center the image horizontally */
-    width: 500px; /* Set the width to 1000px */
-    max-width: 100%; /* Ensure it's responsive and doesn't exceed the container's width */
-    height: auto; /* Maintain aspect ratio */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for a lifted effect */
+    margin: 20px auto;
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the submit button */
-/* Style for the submit button */
-button {
-    background-color: #FFF59A; /* Light yellow background */
-    color: #3a3b3c; /* Dark grey font color */
-    padding: 10px 20px; /* Add some padding for better sizing */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Slightly rounded corners for a modern look */
-    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-    transition: background-color 0.3s; /* Smooth transition for the hover effect */
+/* Specific style for the "Read Urgent Message" button */
+#openModal {
+    background-color: #FF6347; /* Easter-red color */
+    color: white; /* White font color for contrast */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
-/* Hover effect for the submit button */
-button:hover {
-    background-color: #d4b843; /* Slightly darker yellow background on hover */
-    color: #3a3b3c; /* Keep dark grey font color on hover */
-}
-
-/* The Modal (background) */
 #openModal:hover {
     background-color: #CC4F39; /* Darker shade of red on hover */
 }
 
 /* Updated Style for the urgent message modal */
 .modal-content {
-    background-color: rgba(253, 136, 103, 0.6); /* Urgent message popup color */
-    color: #4F4F4F; /* Appropriate dark gray font color for readability */
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: rgba(253, 136, 103, 0.95); /* Increased opacity for the urgent message popup */
+    color: #4F4F4F; /* Dark gray font color for readability */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 5px; /* Optional: rounds the corners of the modal box */
+    border-radius: 5px;
 }
 
-/* The Close Button */
 .close {
     color: #aaa;
     float: right;
