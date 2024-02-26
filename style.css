@@ -40,6 +40,13 @@ body {
     overflow-x: auto; /* Allows horizontal scrolling if images overflow the screen width */
 }
 
+.image-border .grass-img {
+  display: inline-block;
+  margin: 0 5px; /* Adjust as needed */
+  width: 150px; /* Adjust as needed */
+  height: auto;
+}
+
 h1 {
   color: #8968A1;
 }
