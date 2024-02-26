@@ -237,19 +237,19 @@ button:not(#openModal):hover {
 }
 
 .egg-container {
+  display: flex; /* Enables flexbox */
+  justify-content: center; /* Centers the egg horizontally */
+  align-items: center; /* Centers the egg vertically */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  z-index: 99999;
+  background: rgba(0, 0, 100, 0.2); /* Slightly more navy blue background */
   padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow for depth */
 }
-
 #newEgg {
   width: 400px;
   display: none;
