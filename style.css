@@ -182,6 +182,7 @@ h1 {
     display: inline-block; /* Line up images next to each other */
     margin-right: -50px; /* Allows images to overlap */
     z-index: 2; /* Ensures they are above the background */
+    vertical-align: bottom; /* Align images at the bottom */
 }
 
 .bottom-img {
