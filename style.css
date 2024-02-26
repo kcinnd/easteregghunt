@@ -165,3 +165,18 @@ h1 {
 .puzzle-button:hover {
     background-color: #D9809E; /* Slightly darker shade on hover */
 }
+
+.image-border {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #fff; /* Adjust background color as needed */
+}
+
+.image-border img {
+    width: 150px; /* Set image width */
+    vertical-align: middle; /* Align images to the middle of the div */
+    margin: 5px; /* Optional: Add some space between the images */
+}
