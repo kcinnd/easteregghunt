@@ -56,26 +56,18 @@ function showNewEgg() {
   }
 }
 function setupEventListeners() {
-  var revealEggButton = document.getElementById('revealEggBtn');
-  if (revealEggButton) {
-    revealEggButton.addEventListener('click', showNewEgg);
-  }
-
-  var startHuntButton = document.getElementById('startHuntButton');
-  if (startHuntButton) {
-    startHuntButton.addEventListener('click', function() {
-      window.location.href = 'page1.html'; // Adjust the URL as needed
-    });
-  }
+  document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+  document.getElementById('startHuntButton').addEventListener('click', startHunt);
 }
 
 // Main function to set up the page functionalities
 function setupPage() {
   setupModal();
   setupSpecialTrigger();
-  setupAdditionalImages();
   setupEventListeners();
+  setupAdditionalImages();
   revealKeysOnHover();
+  handlePageNavigation();
 }
 
 document.addEventListener('DOMContentLoaded', setupPage);
