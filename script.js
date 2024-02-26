@@ -173,8 +173,8 @@ function setupAdditionalImages() {
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
   ];
-
-  keyImages.forEach(src => {
+  
+  newImages.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
     img.style.width = '150px'; // Setting the width to 150px as requested
@@ -184,16 +184,6 @@ function setupAdditionalImages() {
     placeRandomly(img);
   });
 }
-  
-  newImages.forEach((src, index) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.style.width = '20px'; // Set the new images width
-    img.style.position = 'absolute';
-    img.classList.add('random-img'); // Use this class for additional styling if needed
-    document.body.appendChild(img);
-
-    placeRandomly(img); // Function to place images randomly
 
     // Hover effect to add a key
     img.addEventListener('mouseenter', () => {
