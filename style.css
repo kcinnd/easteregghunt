@@ -253,5 +253,5 @@ h1 {
 
 #newEgg {
     width: 400px; /* Adjust as needed */
-    display: block; /* To remove any bottom margin/whitespace */
+    display: none; /* To remove any bottom margin/whitespace */
 }
