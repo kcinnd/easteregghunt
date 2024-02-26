@@ -28,7 +28,7 @@ function setupEventListeners() {
 function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var btn = document.getElementById('openModal');
-    var span = document.getElementsByClassName('close')[0];
+    var span = document.getElementsByClassName('close')[0]; // Assuming there's only one close button
 
     btn.onclick = function() {
         modal.style.display = 'block';
@@ -38,12 +38,19 @@ function setupModal() {
         modal.style.display = 'none';
     };
 
+    // Close the modal if the user clicks anywhere outside of it
     window.onclick = function(event) {
-        if (event.target === modal) {
+        if (event.target == modal) {
             modal.style.display = 'none';
         }
     };
 }
+
+// Call this function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setupSpecialTrigger();
+    // Include other setup functions here
+});
 
 // Handle navigation for hidden messages and check word functionality
 function handlePageNavigation() {
