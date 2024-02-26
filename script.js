@@ -84,6 +84,7 @@ function setupPage() {
   setupAdditionalImages();
   revealKeysOnHover();
   handlePageNavigation();
+  setupGrassAndImagesHoverEffect();;
 }
 
 document.addEventListener('DOMContentLoaded', setupPage);
@@ -335,3 +336,5 @@ function setupGrassAndImagesHoverEffect() {
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', setupPage);
