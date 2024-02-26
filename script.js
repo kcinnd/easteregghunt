@@ -92,6 +92,11 @@ function setupPage() {
 }
 
 document.addEventListener('DOMContentLoaded', setupPage);
+document.getElementById('submitButtonId').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default form submission if it's a form
+  const userInputValue = document.getElementById('userInput').value;
+  // Handle user input here...
+});
 
 function handlePageNavigation() {
   var hiddenMessage = document.getElementById('hiddenMessage');
