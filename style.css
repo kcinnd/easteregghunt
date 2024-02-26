@@ -35,7 +35,8 @@ body {
     width: 100%;
     text-align: center;
     white-space: nowrap; /* Prevents wrapping, allowing images to overflow as needed */
-    z-index: 4; /* Above the background, below interactive elements */
+    overflow-x: auto; /* Adds horizontal scrolling if images overflow the screen width */
+    z-index: 10; /* Ensures the grass images are above the background but below interactive elements */
 }
 
 h1 {
@@ -179,22 +180,11 @@ h1 {
     background-color: #D9809E; /* Slightly darker shade on hover */
 }
 
-.image-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    white-space: nowrap; /* Prevents wrapping to ensure all images stay in one line */
-    overflow-x: auto; /* Allows horizontal scrolling if images overflow */
-    overflow-y: hidden; /* Hides vertical scrollbar */
-    text-align: center;
-}
-
 .grass-img {
     width: 100px; /* Reduced width to ensure more images fit */
     height: auto; /* Keeps the aspect ratio */
     display: inline-block;
-    margin-right: -25px; /* Negative margin to allow some overlap */
+    margin-right: -30px; /* Negative margin to allow some overlap */
     vertical-align: bottom; /* Aligns images at the bottom */
 }
 
