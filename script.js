@@ -77,13 +77,6 @@ function setupPage() {
 
 document.addEventListener('DOMContentLoaded', setupPage);
 
-// Call this function when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setupSpecialTrigger();
-    // Include other setup functions here
-});
-
-// Handle navigation for hidden messages and check word functionality
 function handlePageNavigation() {
     var hiddenMessage = document.getElementById('hiddenMessage');
     if (hiddenMessage) {
@@ -124,13 +117,6 @@ function revealKeysOnHover() {
         });
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    var revealEggButton = document.getElementById('revealEggBtn');
-    if (revealEggButton) {
-        revealEggButton.addEventListener('click', showNewEgg);
-    }
-});
 
 function setupAdditionalImages() {
     const newImages = [
