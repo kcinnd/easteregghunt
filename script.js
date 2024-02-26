@@ -1,3 +1,18 @@
+const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
+const colorPalette = document.getElementById('colorPalette');
+
+colors.forEach(color => {
+  const colorSwatch = document.createElement('div');
+  colorSwatch.style.backgroundColor = color;
+  colorSwatch.className = 'color-swatch';
+  colorPalette.appendChild(colorSwatch);
+
+  colorSwatch.addEventListener('click', () => {
+    // Assuming you have a function to apply the color to the egg
+    applyColorToEgg(color);
+  });
+});
+
 function startHunt() {
   window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
