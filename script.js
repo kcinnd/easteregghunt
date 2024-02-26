@@ -195,7 +195,7 @@ function setupAdditionalImages() {
 
       placeRandomly(keyImage); // Reuse the function to place keys randomly
     });
-  });
+  };
 }
 
 // Function to place elements randomly without overlapping important elements
