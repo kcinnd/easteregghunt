@@ -173,8 +173,10 @@ function checkOverlap(element) {
 }
 
 function revealEgg() {
-    var eggContainer = document.querySelector('.egg-container');
+    var eggContainer = document.querySelector('.egg-container'); // Select the egg container
     if (eggContainer) {
-        eggContainer.style.display = 'flex'; // This makes the egg and its container visible
+        eggContainer.style.display = 'flex'; // Change the display to 'flex' to make it visible
+        // If you want to directly show the egg image without a container, use the line below instead
+        // document.getElementById('newEgg').style.display = 'block';
     }
 }
