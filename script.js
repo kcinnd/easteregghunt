@@ -94,7 +94,7 @@ function setupSpecialTrigger() {
             // Show popup message after a delay
             setTimeout(function() {
                 document.getElementById('eggRevealModal').style.display = 'block';
-            }, 3000); // Adjust timing as needed
+            }, 2000); // Adjust timing as needed
         });
     }
 }
