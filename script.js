@@ -151,9 +151,9 @@ function checkWord() {
         // Optionally, redirect to the next page or reveal a hidden link
         // window.location.href = 'nextPuzzlePage.html';
     } else {
-        feedback.textContent = 'Hmm, that does not seem right. Try pondering a bit more.';
+            feedback.textContent = 'Hmm, that does not seem right. Try pondering a bit more.';
+        }
     }
-}
 
 // Get the modal
 var modal = document.getElementById("urgentMessageModal");
