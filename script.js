@@ -6,8 +6,6 @@ function startHunt() {
 // Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    
-    
     // Handling the hidden message click event for Page 1
     var hiddenMessage = document.getElementById('hiddenMessage');
     if (hiddenMessage) { // Ensures the code runs only if the element exists
