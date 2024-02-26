@@ -177,6 +177,6 @@ function revealEgg() {
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
     if (newEgg) {
-        newEgg.style.display = 'block'; // This will make the new egg image visible
+        newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
     }
 }
