@@ -105,20 +105,27 @@ function checkWord() {
   }
 }
 
-// Hover over bottom images to reveal keys
 function revealKeysOnHover() {
-  document.querySelectorAll('.bottom-img').forEach((img, index) => {
-    img.addEventListener('mouseenter', () => {
-      const keyImage = document.createElement('img');
-      keyImage.src = `path/to/keyImage${index + 1}.png`; // Ensure the path is correct
-      keyImage.style.position = 'absolute';
-      keyImage.style.width = '150px';
-      document.body.appendChild(keyImage);
-
-      placeKeyRandomly(keyImage);
+  document.querySelectorAll('.interactive').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const keyIndex = Math.floor(Math.random() * keyImages.length);
+      const keyImageSrc = keyImages[keyIndex];
+      const keyImg = document.createElement('img');
+      keyImg.src = keyImageSrc;
+      keyImg.style.width = '150px';
+      document.body.appendChild(keyImg);
+      placeRandomly(keyImg);
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupModal();
+  setupSpecialTrigger();
+  setupEventListeners();
+  setupStickers();
+  revealKeysOnHover();
+});
 
 function setupAdditionalImages() {
   const newImages = [
