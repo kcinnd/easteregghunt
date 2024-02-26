@@ -192,5 +192,3 @@ function checkOverlap(element) {
 
     return false;
 }
-
-document.addEventListener('DOMContentLoaded', setupPage);
