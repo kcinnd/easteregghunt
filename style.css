@@ -16,6 +16,7 @@ body {
     top: 10px;
     left: 10px;
     width: 200px;
+    z-index: 20;
 }
 
 .container {
