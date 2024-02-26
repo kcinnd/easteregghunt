@@ -339,3 +339,8 @@ button:not(#openModal):hover {
   border: 2px solid #fff; /* Adds a white border */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
 }
+
+.puzzle-button {
+  display: block; /* Makes the link take up the full width like a block element */
+  margin: 20px auto; /* Adds vertical margin and centers horizontally */
+}
