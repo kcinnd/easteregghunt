@@ -6,7 +6,7 @@ document.querySelectorAll('.color-swatch').forEach(swatch => {
 });
 
 document.getElementById('openModal').addEventListener('click', function() {
-  document.getElementById('urgentMessageModal').style.display = 'block';
+document.getElementById('urgentMessageModal').style.display = 'block';
 });
 
 const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
