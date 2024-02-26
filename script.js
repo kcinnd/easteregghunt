@@ -29,12 +29,11 @@ function setupSpecialTrigger() {
             // Start confetti effect
             confetti({
                 particleCount: 200,
-                spread: 90,
+                spread: 100,
                 origin: { y: 0.6 }
             });
-
-            // Display the egg reveal modal after a 2-second delay
             setTimeout(function() {
+                
                 document.getElementById('eggRevealModal').style.display = 'block';
             }, 2000);
         });
@@ -73,6 +72,7 @@ function setupPage() {
     setupSpecialTrigger();
     setupAdditionalImages();
     setupEventListeners();
+    revealKeysOnHover();
 }
 
 document.addEventListener('DOMContentLoaded', setupPage);
