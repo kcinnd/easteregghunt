@@ -9,22 +9,19 @@ const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
 const colorPalette = document.getElementById('colorPalette');
 
 colors.forEach(color => {
-  const colorSwatch = document.createElement('div');
+  const colorSwatch = document.createElement('button');
   colorSwatch.style.backgroundColor = color;
-  colorSwatch.className = 'color-swatch';
+  colorSwatch.className = 'color-button'; // Assign a class for styling if needed
   colorPalette.appendChild(colorSwatch);
 
   colorSwatch.addEventListener('click', () => {
-    // Assuming you have a function to apply the color to the egg
     applyColorToEgg(color);
   });
 });
 
 function applyColorToEgg(color) {
-  const egg = document.getElementById('egg'); // Ensure this element exists
-  if (egg) {
-    egg.style.backgroundColor = color;
-  }
+  const egg = document.getElementById('egg');
+  egg.style.backgroundColor = color;
 }
 
 function startHunt() {
@@ -225,3 +222,23 @@ function setupColorPalette() {
 function applyColorToEgg(color) {
   console.log(`Applying color ${color} to the egg`); // Replace with actual implementation
 }
+
+const stickers = [
+  'https://i.imgur.com/9a87llh.png?1',
+  'https://i.imgur.com/Cx5sW4T.png?1',
+  // Add all sticker URLs here...
+];
+
+const stickerContainer = document.getElementById('stickerContainer'); // A div to hold stickers
+
+stickers.forEach(src => {
+  const img = document.createElement('img');
+  img.src = src;
+  img.className = 'sticker'; // Assign a class for styling
+  img.style.width = '50px'; // Smaller size for the sticker palette
+  stickerContainer.appendChild(img);
+
+  img.addEventListener('click', () => {
+    addStickerToEgg(src);
+  });
+});
