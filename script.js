@@ -44,16 +44,19 @@ function setupSpecialTrigger() {
 
 function showNewEgg() {
   var newEgg = document.getElementById('newEgg');
-  if (newEgg) {
-    newEgg.style.display = 'block'; // Makes the New Egg image visible
+  // Assuming there's only one egg-container, we'll get the first one found
+  var eggContainer = document.querySelector('.egg-container'); 
+  
+  if (newEgg && eggContainer) {
+      newEgg.style.display = 'block'; // Makes the New Egg image visible
+      eggContainer.style.display = 'flex'; // Adjust as needed to make the container visible
   }
-
+  
   var eggRevealModal = document.getElementById('eggRevealModal');
   if (eggRevealModal) {
-    eggRevealModal.style.display = 'none';
+      eggRevealModal.style.display = 'none'; // Hides the modal
   }
 }
-
 function setupEventListeners() {
   var revealEggButton = document.getElementById('revealEggBtn');
   if (revealEggButton) {
