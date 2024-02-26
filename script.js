@@ -18,6 +18,39 @@ document.addEventListener('DOMContentLoaded', function() {
     if (submitButton && window.location.href.includes('mysteryTrail.html')) { // Ensures the code runs only on Page 3
         submitButton.addEventListener('click', checkWord);
     }
+
+    // New feature: Hover over bottom images to reveal keys
+    document.querySelectorAll('.bottom-img').forEach((img, index) => {
+        img.addEventListener('mouseenter', () => {
+            const keyImage = document.createElement('img');
+            keyImage.src = `path/to/keyImage${index + 1}.png`; // Adjust the path to your key images
+            keyImage.style.position = 'absolute';
+            keyImage.style.width = '150px'; // Set key image width
+            document.body.appendChild(keyImage);
+
+            placeKeyRandomly(keyImage);
+        });
+    });
+
+    // Function to ensure keys do not overlap with the bottom images or the container
+    function placeKeyRandomly(keyImage) {
+        const containerRect = document.querySelector('.container').getBoundingClientRect();
+        const bottomImagesRect = document.querySelector('.image-border').getBoundingClientRect();
+        let overlap = true;
+        
+        while (overlap) {
+            keyImage.style.top = `${Math.random() * (window.innerHeight - 150)}px`;
+            keyImage.style.left = `${Math.random() * (window.innerWidth - 150)}px`;
+
+            const keyRect = keyImage.getBoundingClientRect();
+            
+            // Check for overlap with the container and the bottom images
+            const overlapWithContainer = !(keyRect.right < containerRect.left || keyRect.left > containerRect.right || keyRect.bottom < containerRect.top || keyRect.top > containerRect.bottom);
+            const overlapWithBottomImages = keyRect.top < bottomImagesRect.bottom;
+
+            overlap = overlapWithContainer || overlapWithBottomImages;
+        }
+    }
 });
 
 // Function to check the user's input against the correct answer on Page 3
