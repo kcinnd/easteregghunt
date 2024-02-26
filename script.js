@@ -7,16 +7,23 @@ function setupPage() {
     setupModal(); // Sets up the modal functionality
     setupSpecialTrigger(); // Sets up the special trigger for confetti and egg reveal
     setupAdditionalImages();
+    setupEventListeners(); // Setup all event listeners
+}
 
+function setupEventListeners() {
 document.getElementById('revealEggBtn').addEventListener('click', function() {
     showNewEgg();
+    
 document.getElementById('eggRevealModal').style.display = 'none'; // Hide modal
     });
-});
 
-document.getElementById('startHuntButton').addEventListener('click', function() {
-    window.location.href = 'page1.html'; // Adjust the URL as needed
-});
+    var startHuntButton = document.getElementById('startHuntButton');
+    if (startHuntButton) {
+        startHuntButton.addEventListener('click', function() {
+            window.location.href = 'page1.html'; // Adjust the URL as needed
+        });
+    }
+}
 
 // Modal functionality setup
 function setupModal() {
@@ -104,7 +111,9 @@ specialTrigger.addEventListener('mouseenter', function() {
 // Function to display the new egg image
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
-    newEgg.style.display = 'block'; // Make the new egg image visible
+    if (newEgg) {
+        newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
+    }
 }
 
 // Additional new feature: Randomly place new images on the Easter Bunny page
@@ -179,11 +188,5 @@ function showNewEgg() {
         newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
     }
 }
-
-document.getElementById('eggRevealModal').style.display = 'none';
-}
-
-// Assuming 'revealEggBtn' triggers showing the new egg
-document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
 
 document.addEventListener('DOMContentLoaded', setupPage);
