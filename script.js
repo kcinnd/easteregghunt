@@ -1,4 +1,4 @@
-function startHunt() {
+\function startHunt() {
     window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
 
@@ -111,7 +111,12 @@ specialTrigger.addEventListener('mouseenter', function() {
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
     if (newEgg) {
-        newEgg.style.display = 'block'; // Makes the new egg image visible
+        newEgg.style.display = 'block'; // Makes the New Egg image visible
+    }
+    
+    var eggRevealModal = document.getElementById('eggRevealModal');
+    if (eggRevealModal) {
+        eggRevealModal.style.display = 'none';
     }
 }
 
