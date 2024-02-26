@@ -179,3 +179,10 @@ function revealEgg() {
         // document.getElementById('newEgg').style.display = 'block';
     }
 }
+
+function showNewEgg() {
+    var newEgg = document.getElementById('newEgg');
+    if (newEgg) {
+        newEgg.style.display = 'block'; // This will make the new egg image visible
+    }
+}
