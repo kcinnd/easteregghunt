@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     revealKeysOnHover(); // Hover over bottom images to reveal keys
     setupSpecialTrigger(); // Special Trigger Image functionality
     setupAdditionalImages(); // Additional new feature: Randomly place new images on the page
+    var revealEggButton = document.getElementById('revealEggBtn');
+    if (revealEggButton) {
+        revealEggButton.addEventListener('click', function() {
+            revealEgg(); // Call the function to reveal the egg
+            // You may also want to close the modal here
+            var modal = document.getElementById('urgentMessageModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
 });
 
 // Modal functionality setup
@@ -159,4 +170,11 @@ function checkOverlap(element) {
     }
 
     return false;
+}
+
+function revealEgg() {
+    var newEgg = document.getElementById('newEgg');
+    if (newEgg) {
+        newEgg.style.display = 'block'; // This makes the egg visible
+    }
 }
