@@ -99,9 +99,18 @@ function setupSpecialTrigger() {
             });
 
             // Show popup message after a delay
-            setTimeout(function() {
-                document.getElementById('eggRevealModal').style.display = 'block';
-            }, 2000); // Adjust timing as needed
+            var newEgg = document.getElementById('newEgg');
+
+                // Display the new Easter egg image
+                newEgg.style.display = 'block'; // Make the egg visible
+
+                // Position the new egg (if not already done via CSS)
+                newEgg.style.position = 'absolute';
+                newEgg.style.top = '50%'; // Center vertically
+                newEgg.style.left = '50%'; // Center horizontally
+                newEgg.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
+
+            }, 2000); // This delay should match the confetti duration
         });
     }
 }
