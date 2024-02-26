@@ -184,17 +184,18 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center; /* Center-align the images if there's extra space */
-    white-space: nowrap; /* Prevents the images from wrapping onto multiple lines */
+    white-space: nowrap; /* Prevents wrapping to ensure all images stay in one line */
+    overflow-x: auto; /* Allows horizontal scrolling if images overflow */
+    overflow-y: hidden; /* Hides vertical scrollbar */
+    text-align: center;
 }
 
 .grass-img {
-    width: 150px; /* Or any size you prefer */
-    height: auto; /* Maintain aspect ratio */
-    display: inline-block; /* Line up images next to each other */
-    margin-right: -50px; /* Allows images to overlap */
-    z-index: 2; /* Ensures they are above the background */
-    vertical-align: bottom; /* Align images at the bottom */
+    width: 100px; /* Reduced width to ensure more images fit */
+    height: auto; /* Keeps the aspect ratio */
+    display: inline-block;
+    margin-right: -25px; /* Negative margin to allow some overlap */
+    vertical-align: bottom; /* Aligns images at the bottom */
 }
 
 .bottom-img {
