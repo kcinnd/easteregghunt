@@ -172,13 +172,15 @@ h1 {
     left: 0;
     width: 100%;
     text-align: center; /* Center-align the images if there's extra space */
+    white-space: nowrap; /* Prevents the images from wrapping onto multiple lines */
 }
 
 .grass-img {
     width: 150px; /* Or any size you prefer */
     height: auto; /* Maintain aspect ratio */
     display: inline-block; /* Line up images next to each other */
-    margin: 0 5px; /* Optional: add some space between the images */
+    margin-right: -50px; /* Allows images to overlap */
+    z-index: 2; /* Ensures they are above the background */
 }
 
 .bottom-img {
