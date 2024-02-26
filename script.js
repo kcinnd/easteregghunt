@@ -24,11 +24,17 @@ function setupEventListeners() {
     }
 }
 
-// Modal functionality setup
+document.addEventListener('DOMContentLoaded', function() {
+    setupModal(); // Sets up the modal functionality
+    setupSpecialTrigger(); // Sets up the special trigger for confetti and egg reveal
+    // Include other setup functions or event listener setups here
+});
+
+// Function to set up modal behavior
 function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var btn = document.getElementById('openModal');
-    var span = document.getElementsByClassName('close')[0]; // Assuming there's only one close button
+    var span = document.getElementsByClassName('close')[0];
 
     btn.onclick = function() {
         modal.style.display = 'block';
@@ -38,7 +44,6 @@ function setupModal() {
         modal.style.display = 'none';
     };
 
-    // Close the modal if the user clicks anywhere outside of it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = 'none';
@@ -46,11 +51,25 @@ function setupModal() {
     };
 }
 
-// Call this function when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setupSpecialTrigger();
-    // Include other setup functions here
-});
+// Function to set up special trigger behavior
+function setupSpecialTrigger() {
+    var specialTrigger = document.getElementById('specialTrigger');
+    if (specialTrigger) {
+        specialTrigger.addEventListener('mouseenter', function() {
+            // Start confetti effect
+            confetti({
+                particleCount: 200,
+                spread: 90,
+                origin: { y: 0.6 }
+            });
+
+            // Display the egg reveal modal after a 2-second delay
+            setTimeout(function() {
+                document.getElementById('eggRevealModal').style.display = 'block';
+            }, 2000);
+        });
+    }
+}
 
 // Handle navigation for hidden messages and check word functionality
 function handlePageNavigation() {
