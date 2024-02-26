@@ -295,6 +295,15 @@ button:not(#openModal):hover {
   background-color: #7CB342;
 }
 
+.easter-bunny-grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    vertical-align: bottom; /* Align images at the bottom */
+}
+
 /* Easter Bunny Page specific styles */
 .easter-bunny-grass .grass-img {
     width: 150px; /* Adjust the width as needed */
