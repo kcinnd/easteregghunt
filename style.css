@@ -30,7 +30,7 @@ body {
   z-index: 5;
 }
 
-.border-image {
+.image-border {
     position: absolute; /* or 'fixed' depending on your layout */
     bottom: 0;
     left: 0;
