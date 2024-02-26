@@ -255,3 +255,43 @@ h1 {
     width: 400px; /* Adjust as needed */
     display: none; /* To remove any bottom margin/whitespace */
 }
+
+.egg-reveal-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFF3E0; /* Light pastel background */
+    border: 4px dashed #FFC107; /* Dashed border for an Easter egg feel */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1050; /* Ensure it's on top */
+    display: none; /* Hidden by default */
+    width: 300px; /* Adjust based on content */
+    text-align: center;
+    border-radius: 10px;
+}
+
+.egg-reveal-modal h2 {
+    color: #FF5722; /* Vibrant heading color */
+    margin-bottom: 15px;
+}
+
+.egg-reveal-modal p {
+    color: #4E342E; /* Rich text color */
+    margin-bottom: 20px;
+}
+
+.egg-reveal-modal button {
+    background-color: #8BC34A; /* Cheerful button color */
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.egg-reveal-modal button:hover {
+    background-color: #7CB342; /* Slightly darker on hover */
+}
