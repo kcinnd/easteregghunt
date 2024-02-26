@@ -245,7 +245,7 @@ button:not(#openModal):hover {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99999;
-  background: rgba(0, 0, 100, 0.2); /* Slightly more navy blue background */
+  background: rgba(159, 224, 210, 0.8);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow for depth */
