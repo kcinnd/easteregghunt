@@ -1,280 +1,285 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #9FE0D2; /* Updated background color */
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    cursor: url('https://i.imgur.com/A9Kenad.png'), auto; /* Custom cursor image */
+  font-family: 'Arial', sans-serif;
+  background-color: #9FE0D2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  cursor: url('https://i.imgur.com/A9Kenad.png'), auto;
 }
 
 .logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 200px;
-    z-index: 20;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  z-index: 20;
 }
 
 .container {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(250, 243, 221, 0.6);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 5;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(250, 243, 221, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
 .image-border {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center images if they take up less than full width */
-    align-items: flex-end; /* Align images to the bottom */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  overflow-x: hidden;
 }
 
 h1 {
-    color: #8968A1;
+  color: #8968A1;
 }
 
-.intro, .secret {
-    margin-bottom: 30px;
+.intro,
+.secret {
+  margin-bottom: 30px;
 }
 
-#startButton, .secret, button:not(#openModal) {
-    background-color: #FFF59A; /* Light yellow background */
-    color: #3a3b3c; /* Dark grey font color */
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-#startButton:hover, .secret:hover, button:not(#openModal):hover {
-    background-color: #d4b843; /* Slightly darker yellow background on hover */
+#startButton,
+.secret,
+button:not(#openModal) {
+  background-color: #FFF59A;
+  color: #3a3b3c;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .secret {
-    color: transparent;
-    transition: color 0.5s ease;
+  color: transparent;
+  transition: color 0.5s ease;
+}
+
+#startButton:hover,
+.secret:hover,
+button:not(#openModal):hover {
+  background-color: #d4b843;
 }
 
 .secret:hover {
-    color: black;
+  color: black;
 }
 
 .tooltip {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: auto;
-    background-color: #BBE9F2;
-    color: #A9A9A9;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 10px;
-    position: absolute;
-    z-index: 100;
-    bottom: -5px;
-    right: 0;
-    transform: translate(100%, 50%);
-    opacity: 0;
-    transition: opacity 0.3s;
+  visibility: hidden;
+  width: auto;
+  background-color: #BBE9F2;
+  color: #A9A9A9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 100;
+  bottom: -5px;
+  right: 0;
+  transform: translate(100%, 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .mystery-image {
-    display: block;
-    margin: 20px auto;
-    width: 500px;
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 20px auto;
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Specific style for the "Read Urgent Message" button */
 #openModal {
-    background-color: #FF6347; /* Easter-red color */
-    color: white; /* White font color for contrast */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #FF6347;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 #openModal:hover {
-    background-color: #CC4F39; /* Darker shade of red on hover */
+  background-color: #CC4F39;
 }
 
 /* Updated Style for the urgent message modal */
 .modal-content {
-    background-color: rgba(253, 136, 103, 0.95); /* Increased opacity for the urgent message popup */
-    color: #4F4F4F; /* Dark gray font color for readability */
-    margin: 15% auto; /* Center in viewport */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Width of the modal content */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    z-index: 1001; /* Ensure content is above the modal background */
+  background-color: rgba(253, 136, 103, 0.95);
+  color: #4F4F4F;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1001;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top of everything else */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .puzzle-button {
-    display: inline-block; /* Allows setting padding and margins */
-    background-color: #E4AFBB; /* A vibrant color for the button */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Size of the button */
-    margin: 20px 0; /* Space around the button */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Removes underline from the link */
-    font-size: 18px; /* Size of the text */
-    font-weight: bold; /* Make the text bold */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  display: inline-block;
+  background-color: #E4AFBB;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .puzzle-button:hover {
-    background-color: #D9809E; /* Slightly darker shade on hover */
+  background-color: #D9809E;
 }
 
 .grass-img {
-    flex: 0 1 auto; /* Allow flexibility in width but don't grow larger than the actual image */
-    margin: 5px; /* Add some space between images */
-    width: 150px; /* Adjust based on your design */
-    height: auto; /* Maintain aspect ratio */
-    vertical-align: bottom; /* Align images at the bottom */
+  flex: 0 1 auto;
+  margin: 5px;
+  width: 150px;
+  height: auto;
+  vertical-align: bottom;
 
 }
 
 .bottom-img {
-    width: auto; /* Maintain original image width */
-    height: 150px; /* Set a consistent height */
-    display: inline-block; /* Display images in a line */
-    vertical-align: bottom; /* Align images at the bottom */
-    margin-right: -50px; /* Negative margin to allow overlap */
+  width: auto;
+  height: 150px;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: -50px;
 }
 
 .random-img {
-    width: 20px; /* As previously discussed */
-    position: absolute; /* Allows for random placement */
-    z-index: 2; /* Above the background but below most content */
+  width: 20px;
+  position: absolute;
+  z-index: 2;
 }
 
 #specialTrigger {
-    width: 25px; /* Size of the special trigger image */
-    position: absolute; /* Allows precise positioning */
-    top: 100px; /* Adjust as needed */
-    left: 100px; /* Adjust as needed */
-    cursor: pointer; /* Indicates an interactive element */
-    z-index: 10; /* Ensures visibility and interactivity */
+  width: 25px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* Confetti canvas */
 #confettiCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allows clicks to pass through */
-    z-index: 15; /* Below modal but above most content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
 }
 
 .egg-container {
-    position: fixed; /* Or absolute, depending on your needs */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999; /* High enough to be on top of other elements */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
-    border-radius: 15px; /* Optional: if you want rounded corners */
-    padding: 20px; /* Adjust as needed */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 20px;
 }
 
 #newEgg {
-    width: 400px; /* Adjust according to your preference */
-    display: none; /* Start hidden, use JavaScript to display it */
+  width: 400px;
+  display: none;
 }
 
 .egg-reveal-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #FFF3E0; /* Light pastel background */
-    border: 4px dashed #FFC107; /* Dashed border for an Easter egg feel */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1050; /* Ensure it's on top */
-    display: none; /* Hidden by default */
-    width: 300px; /* Adjust based on content */
-    text-align: center;
-    border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFF3E0;
+  border: 4px dashed #FFC107;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  display: none;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .egg-reveal-modal h2 {
-    color: #FF5722; /* Vibrant heading color */
-    margin-bottom: 15px;
+  color: #FF5722;
+  margin-bottom: 15px;
 }
 
 .egg-reveal-modal p {
-    color: #4E342E; /* Rich text color */
-    margin-bottom: 20px;
+  color: #4E342E;
+  margin-bottom: 20px;
 }
 
 .egg-reveal-modal button {
-    background-color: #8BC34A; /* Cheerful button color */
-    color: #FFFFFF;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #8BC34A;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .egg-reveal-modal button:hover {
-    background-color: #7CB342; /* Slightly darker on hover */
+  background-color: #7CB342;
 }
