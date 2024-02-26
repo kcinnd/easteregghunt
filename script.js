@@ -21,8 +21,10 @@ colors.forEach(color => {
 });
 
 function applyColorToEgg(color) {
-  const egg = document.getElementById('egg');
-  egg.style.backgroundColor = color;
+  const egg = document.getElementById('egg'); // Ensure this element exists
+  if (egg) {
+    egg.style.backgroundColor = color;
+  }
 }
 
 function startHunt() {
@@ -191,11 +193,13 @@ function setupStickers() {
 }
 
 function addStickerToEgg(stickerSrc) {
-  const egg = document.getElementById('egg');
-  const stickerImg = document.createElement('img');
-  stickerImg.src = stickerSrc;
-  stickerImg.className = 'sticker-img'; // A class for styling your stickers
-  egg.appendChild(stickerImg);
+  const egg = document.getElementById('egg'); // Ensure this element exists
+  if (egg) {
+    const stickerImg = document.createElement('img');
+    stickerImg.src = stickerSrc;
+    stickerImg.className = 'sticker-img'; // Ensure you have CSS for this class
+    egg.appendChild(stickerImg);
+  }
 }
 
 // Call setupStickers in setupPage
