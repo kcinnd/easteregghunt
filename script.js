@@ -9,14 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSpecialTrigger(); // Special Trigger Image functionality
     setupAdditionalImages(); // Additional new feature: Randomly place new images on the page
 
-    var revealEggButton = document.getElementById('revealEggBtn');
-    if (revealEggButton) {
-        revealEggButton.addEventListener('click', showNewEgg);
-        // Optionally, if you want to hide the modal when the "Okay" button is clicked
-        revealEggButton.addEventListener('click', function() {
-            document.getElementById('eggRevealModal').style.display = 'none';
-        });
-    }
+document.getElementById('revealEggBtn').addEventListener('click', function() {
+    showNewEgg();
+document.getElementById('eggRevealModal').style.display = 'none'; // Hide modal
+    });
 });
 
 document.getElementById('startHuntButton').addEventListener('click', function() {
