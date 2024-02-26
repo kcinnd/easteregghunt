@@ -5,10 +5,10 @@ function startHunt() {
 
 // Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', function() {
-
+    
     // Handling the hidden message click event for Page 1
     var hiddenMessage = document.getElementById('hiddenMessage');
-    if (hiddenMessage) { // Ensures the code runs only if the element exists
+    if (hiddenMessage) {
         hiddenMessage.onclick = function() {
             window.location.href = 'mysteryTrail.html'; // Redirects to the mysteryTrail page upon click
         };
@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check the scrambled word on Page 3
     var submitButton = document.querySelector('button');
-    if (submitButton && window.location.href.includes('mysteryTrail.html')) { // Ensures the code runs only on Page 3
+    if (submitButton && window.location.href.includes('mysteryTrail.html')) {
         submitButton.addEventListener('click', checkWord);
     }
 
-    // New feature: Hover over bottom images to reveal keys
+    // Hover over bottom images to reveal keys
     document.querySelectorAll('.bottom-img').forEach((img, index) => {
         img.addEventListener('mouseenter', () => {
             const keyImage = document.createElement('img');
@@ -34,52 +34,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Special Trigger Image functionality
-    var specialTrigger = document.getElementById('specialTrigger');
-    specialTrigger.addEventListener('mouseenter', function() {
-        // Start confetti effect (use your confetti library's API)
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-
-        // Show popup message after a delay
-        setTimeout(function() {
-            alert('Congratulations on finding the Easter Bunny! The Easter Bunny left you with a new Easter egg, but you still need to decorate it.');
-
-            // Display the new Easter egg image
-            var newEgg = document.createElement('img');
-            newEgg.src = 'https://i.imgur.com/KWG3YHp.png';
-            newEgg.style.width = '100px'; // Set the desired width
-            document.body.appendChild(newEgg);
-            // Position the new egg appropriately
-            newEgg.style.position = 'absolute';
-            newEgg.style.top = '100px'; // Adjust as needed
-            newEgg.style.left = '100px'; // Adjust as needed
-        }, 5000); // This delay should match the confetti duration
-    });
-
-    // Function to ensure keys do not overlap with the bottom images or the container
-    function placeKeyRandomly(keyImage) {
-        const containerRect = document.querySelector('.container').getBoundingClientRect();
-        const bottomImagesRect = document.querySelector('.image-border').getBoundingClientRect();
-        let overlap = true;
-        
-        while (overlap) {
-            keyImage.style.top = `${Math.random() * (window.innerHeight - 150)}px`;
-            keyImage.style.left = `${Math.random() * (window.innerWidth - 150)}px`;
-
-            const keyRect = keyImage.getBoundingClientRect();
-            
-            // Check for overlap with the container and the bottom images
-            const overlapWithContainer = !(keyRect.right < containerRect.left || keyRect.left > containerRect.right || keyRect.bottom < containerRect.top || keyRect.top > containerRect.bottom);
-            const overlapWithBottomImages = keyRect.top < bottomImagesRect.bottom;
-
-           overlap = overlapWithContainer || overlapWithBottomImages;
-        }
-    }
+    setupSpecialTrigger();
 
     // Additional new feature: Randomly place new images on the Easter Bunny page
+    setupAdditionalImages();
+
+    // Modal functionality
+    setupModal();
+});
+
+function setupSpecialTrigger() {
+    var specialTrigger = document.getElementById('specialTrigger');
+    if (specialTrigger) {
+        specialTrigger.addEventListener('mouseenter', function() {
+            // Start confetti effect (use your confetti library's API)
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Show popup message after a delay
+            setTimeout(function() {
+                alert('Congratulations on finding the Easter Bunny! The Easter Bunny left you with a new Easter egg, but you still need to decorate it.');
+                // Display the new Easter egg image
+                var newEgg = document.createElement('img');
+                newEgg.src = 'https://i.imgur.com/KWG3YHp.png';
+                newEgg.style.width = '100px'; // Set the desired width
+                document.body.appendChild(newEgg);
+                // Position the new egg appropriately
+                newEgg.style.position = 'absolute';
+                newEgg.style.top = '100px'; // Adjust as needed
+                newEgg.style.left = '100px'; // Adjust as needed
+            }, 5000); // This delay should match the confetti duration
+        });
+    }
+}
+
+function setupAdditionalImages() {
     const newImages = [
         'https://i.imgur.com/jKOtLuY.png',
         'https://i.imgur.com/oxvUvMC.png',
