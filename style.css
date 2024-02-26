@@ -114,12 +114,13 @@ h1 {
 .modal-content {
     background-color: rgba(253, 136, 103, 0.95); /* Increased opacity for the urgent message popup */
     color: #4F4F4F; /* Dark gray font color for readability */
-    margin: 15% auto;
+    margin: 15% auto; /* Center in viewport */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 80%; /* Width of the modal content */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 5px;
+    z-index: 1001; /* Ensure content is above the modal background */
 }
 
 .close {
@@ -139,7 +140,7 @@ h1 {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 1000; /* Sit on top of everything else */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
