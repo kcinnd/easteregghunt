@@ -12,12 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var revealEggButton = document.getElementById('revealEggBtn');
     if (revealEggButton) {
         revealEggButton.addEventListener('click', function() {
-            revealEgg(); // Call the function to reveal the egg
-            // You may also want to close the modal here
-            var modal = document.getElementById('urgentMessageModal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
+            showNewEgg(); // Call the function to show the new egg
         });
     }
 });
