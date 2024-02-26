@@ -151,7 +151,7 @@ h1 {
 
 .puzzle-button {
     display: inline-block; /* Allows setting padding and margins */
-    background-color: #FF6347; /* A vibrant color for the button */
+    background-color: #E4AFBB; /* A vibrant color for the button */
     color: white; /* Text color */
     padding: 10px 20px; /* Size of the button */
     margin: 20px 0; /* Space around the button */
@@ -163,5 +163,5 @@ h1 {
 }
 
 .puzzle-button:hover {
-    background-color: #CC4F39; /* Slightly darker shade on hover */
+    background-color: #D9809E; /* Slightly darker shade on hover */
 }
