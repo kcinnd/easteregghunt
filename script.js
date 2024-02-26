@@ -94,14 +94,13 @@ function setupSpecialTrigger() {
                 // Display the new Easter egg image
                 var newEgg = document.createElement('img');
                 newEgg.src = 'https://i.imgur.com/KWG3YHp.png';
-                newEgg.style.width = '400px'; // Set the desired width
-                document.body.appendChild(newEgg);
-
-                // Position the new egg appropriately
+                newEgg.style.width = '100px'; // Adjust the size as needed
                 newEgg.style.position = 'absolute';
-                newEgg.style.top = '100px'; // Adjust as needed
-                newEgg.style.left = '100px'; // Adjust as needed
-            }, 5000); // This delay should match the confetti duration
+                newEgg.style.top = '50%'; // Center vertically
+                newEgg.style.left = '50%'; // Center horizontally
+                newEgg.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
+                document.body.appendChild(newEgg);
+            }, 5000); // Adjust the delay as needed
         });
     }
 }
