@@ -296,6 +296,7 @@ button:not(#openModal):hover {
     bottom: 0;
     left: 0;
     width: 100%;
+    white-space: nowrap;
     text-align: center;
 }
 
@@ -304,6 +305,7 @@ button:not(#openModal):hover {
     height: auto; /* Maintain aspect ratio */
     display: inline-block; /* Line up images next to each other */
     margin-right: -25px; /* Negative margin to allow overlap */
+    white-space: nowrap;
     vertical-align: bottom; /* Align images at the bottom */
 }
 
