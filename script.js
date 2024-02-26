@@ -1,7 +1,7 @@
-document.querySelectorAll('.color-button').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const color = this.getAttribute('data-color');
-    // Set this color as the current paint color
+document.querySelectorAll('.color-swatch').forEach(swatch => {
+  swatch.addEventListener('click', function() {
+    const color = this.style.backgroundColor;
+    applyColorToEgg(color);
   });
 });
 
