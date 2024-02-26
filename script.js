@@ -11,7 +11,7 @@ const colorPalette = document.getElementById('colorPalette');
 colors.forEach(color => {
   const colorSwatch = document.createElement('button');
   colorSwatch.style.backgroundColor = color;
-  colorSwatch.className = 'color-button'; // Assign a class for styling if needed
+  colorSwatch.className = 'color-button';
   colorPalette.appendChild(colorSwatch);
 
   colorSwatch.addEventListener('click', () => {
