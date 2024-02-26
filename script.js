@@ -1,3 +1,10 @@
+document.querySelectorAll('.color-button').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const color = this.getAttribute('data-color');
+    // Set this color as the current paint color
+  });
+});
+
 const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
 const colorPalette = document.getElementById('colorPalette');
 
