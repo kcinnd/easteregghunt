@@ -148,3 +148,20 @@ h1 {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black with opacity */
 }
+
+.puzzle-button {
+    display: inline-block; /* Allows setting padding and margins */
+    background-color: #FF6347; /* A vibrant color for the button */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Size of the button */
+    margin: 20px 0; /* Space around the button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Removes underline from the link */
+    font-size: 18px; /* Size of the text */
+    font-weight: bold; /* Make the text bold */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.puzzle-button:hover {
+    background-color: #CC4F39; /* Slightly darker shade on hover */
+}
