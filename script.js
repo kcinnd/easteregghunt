@@ -115,7 +115,12 @@ function showNewEgg() {
     }
 }
 
-document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+document.addEventListener('DOMContentLoaded', function() {
+    var revealEggButton = document.getElementById('revealEggBtn');
+    if (revealEggButton) {
+        revealEggButton.addEventListener('click', showNewEgg);
+    }
+});
 
 // Additional new feature: Randomly place new images on the Easter Bunny page
 function setupAdditionalImages() {
