@@ -224,7 +224,20 @@ function applyColorToEgg(color) {
 const stickers = [
   'https://i.imgur.com/9a87llh.png?1',
   'https://i.imgur.com/Cx5sW4T.png?1',
-  // Add all sticker URLs here...
+  'https://i.imgur.com/Sppxziz.png',
+  'https://i.imgur.com/xgWycmI.png',
+  'https://i.imgur.com/xkm6yV7.png',
+  'https://i.imgur.com/tEW10f7.png',
+  'https://i.imgur.com/HcTyCd7.png',
+  'https://i.imgur.com/tURKwGZ.png',
+  'https://i.imgur.com/P6If7vu.png',
+  'https://i.imgur.com/yDVaMFM.png',
+  'https://i.imgur.com/xtNwn5Q.png',
+  'https://i.imgur.com/4OYvyjf.png',
+  'https://i.imgur.com/61J8Ydt.png',
+  'https://i.imgur.com/q6c11A9.png',
+  'https://i.imgur.com/pbUBsZf.png',
+  'https://i.imgur.com/ymXcQbo.png'
 ];
 
 const stickerContainer = document.getElementById('stickerContainer'); // A div to hold stickers
