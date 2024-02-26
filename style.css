@@ -369,3 +369,14 @@ button:not(#openModal):hover {
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
+@media (max-width: 768px) {
+  .container, .modal-content, .egg-decoration-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .stickers {
+    justify-content: space-around;
+  }
+  
