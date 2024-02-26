@@ -35,6 +35,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
+    vertical-align: bottom;
     text-align: center;
     white-space: nowrap; /* Keeps all images in a single line */
     overflow-x: auto; /* Allows horizontal scrolling if images overflow the screen width */
