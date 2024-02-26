@@ -355,8 +355,15 @@ button:not(#openModal):hover {
   transition: transform 0.2s;
 }
 
-.sticker:hover {
-  transform: scale(1.1);
+.sticker-img {
+  position: absolute;
+  width: 50px; /* Example size, adjust as needed */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sticker-img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
 }
 
 .puzzle-button {
@@ -369,6 +376,13 @@ button:not(#openModal):hover {
   margin: 20px auto;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+
+.egg {
+  width: 200px;
+  height: 300px;
+  background-color: #fff;
+  position: relative; /* Allows absolute positioning of stickers inside */
 }
 
 @media (max-width: 768px) {
