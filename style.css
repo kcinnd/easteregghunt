@@ -29,14 +29,11 @@ body {
 }
 
 .image-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap; /* Prevents wrapping, allowing images to overflow as needed */
-    overflow-x: auto; /* Adds horizontal scrolling if images overflow the screen width */
-    z-index: 10; /* Ensures the grass images are above the background but below interactive elements */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center images if they take up less than full width */
+    align-items: flex-end; /* Align images to the bottom */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 h1 {
@@ -181,11 +178,10 @@ h1 {
 }
 
 .grass-img {
-    width: 100px; /* Reduced width to ensure more images fit */
-    height: auto; /* Keeps the aspect ratio */
-    display: inline-block;
-    margin-right: -30px; /* Negative margin to allow some overlap */
-    vertical-align: bottom; /* Aligns images at the bottom */
+    flex: 0 1 auto; /* Allow flexibility in width but don't grow larger than the actual image */
+    margin: 5px; /* Add some space between images */
+    width: 150px; /* Adjust based on your design */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .bottom-img {
@@ -194,13 +190,6 @@ h1 {
     display: inline-block; /* Display images in a line */
     vertical-align: bottom; /* Align images at the bottom */
     margin-right: -50px; /* Negative margin to allow overlap */
-}
-
-.grass-img {
-    width: 150px; /* Or any size you prefer */
-    height: auto; /* Maintain aspect ratio */
-    display: inline-block; /* Line up images next to each other */
-    margin: 0 5px; /* Optional: add some space between the images */
 }
 
 .random-img {
