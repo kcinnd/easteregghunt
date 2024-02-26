@@ -255,6 +255,11 @@ function setupPage() {
   setupStickers(); // Initialize stickers functionality
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  setupColorPalette();
+  // Call other setup functions here
+});
+
 function setupColorPalette() {
   const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
   const colorPalette = document.getElementById('colorPalette');
