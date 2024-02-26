@@ -171,12 +171,14 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    background-color: #9FE0D2; /* Adjust background color as needed */
+    text-align: left; /* Align to the left to keep images in a line */
+    white-space: nowrap; /* Prevent images from wrapping to the next line */
 }
 
-.image-border img {
-    width: 150px; /* Set image width */
-    vertical-align: middle; /* Align images to the middle of the div */
-    margin: 5px; /* Optional: Add some space between the images */
+.bottom-img {
+    width: auto; /* Maintain original image width */
+    height: 150px; /* Set a consistent height */
+    display: inline-block; /* Display images in a line */
+    vertical-align: bottom; /* Align images at the bottom */
+    margin-right: -50px; /* Negative margin to allow overlap */
 }
