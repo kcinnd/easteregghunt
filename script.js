@@ -201,11 +201,4 @@ function checkOverlap(element) {
     return false;
 }
 
-function showNewEgg() {
-    var newEgg = document.getElementById('newEgg');
-    if (newEgg) {
-        newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
-    }
-}
-
 document.addEventListener('DOMContentLoaded', setupPage);
