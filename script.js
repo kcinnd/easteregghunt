@@ -30,34 +30,28 @@ function startHunt() {
 }
 
 function setupModal() {
-  var modal = document.getElementById('urgentMessageModal');
-  var btn = document.getElementById('openModal');
-  var span = document.getElementsByClassName('close')[0];
+  const modal = document.getElementById('urgentMessageModal');
+  const btn = document.getElementById('openModal');
+  const span = document.querySelector('.close');
 
-  btn.onclick = function() {
-    modal.style.display = 'block';
-  };
+  btn.addEventListener('click', () => modal.style.display = 'block');
+  span.addEventListener('click', () => modal.style.display = 'none');
 
-  span.onclick = function() {
-    modal.style.display = 'none';
-  };
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
       modal.style.display = 'none';
     }
-  };
+  });
 }
 
 function setupSpecialTrigger() {
   const specialTrigger = document.getElementById('specialTrigger');
-  specialTrigger?.addEventListener('mouseenter', function() {
+  specialTrigger.addEventListener('mouseenter', () => {
     confetti({
       particleCount: 200,
       spread: 100,
       origin: { y: 0.6 }
     });
-    setTimeout(() => document.getElementById('eggRevealModal').style.display = 'block', 2000);
   });
 }
 
