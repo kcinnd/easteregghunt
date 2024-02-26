@@ -311,6 +311,7 @@ button:not(#openModal):hover {
     display: inline-block; /* Line up images next to each other */
     margin-right: -25px; /* Negative margin to allow overlap */
     vertical-align: bottom; /* Align images at the bottom */
+    white-space: nowrap; /* Keeps all images in a single line */
 }
 
 /* Ensure the .image-border styles do not cause overlap on other pages */
