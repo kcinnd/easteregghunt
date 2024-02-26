@@ -21,8 +21,8 @@ colors.forEach(color => {
 });
 
 function applyColorToEgg(color) {
-  // Implementation to apply the selected color to the egg
-  console.log(`Applying color ${color} to the egg`); // Placeholder implementation
+  const egg = document.getElementById('egg');
+  egg.style.backgroundColor = color;
 }
 
 function startHunt() {
@@ -191,7 +191,11 @@ function setupStickers() {
 }
 
 function addStickerToEgg(stickerSrc) {
-  console.log(`Adding sticker ${stickerSrc} to the egg`); // Placeholder for adding a sticker to the egg
+  const egg = document.getElementById('egg');
+  const stickerImg = document.createElement('img');
+  stickerImg.src = stickerSrc;
+  stickerImg.className = 'sticker-img'; // A class for styling your stickers
+  egg.appendChild(stickerImg);
 }
 
 // Call setupStickers in setupPage
