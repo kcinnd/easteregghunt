@@ -90,22 +90,28 @@ function revealKeysOnHover() {
 // Special Trigger Image functionality
 function setupSpecialTrigger() {
     var specialTrigger = document.getElementById('specialTrigger');
+    if (specialTrigger) {
+        specialTrigger.addEventListener('mouseenter', function() {
+            // Start confetti effect
+            confetti({
+                particleCount: 175,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
 
-    // When the special trigger is hovered over, start the confetti and show the egg reveal modal
-specialTrigger.addEventListener('mouseenter', function() {
-        // Start the confetti effect
-        confetti({
-            particleCount: 150,
-            spread: 80,
-            origin: { y: 0.6 }
+            // Display the egg reveal modal after a 2-second delay
+            setTimeout(function() {
+                document.getElementById('eggRevealModal').style.display = 'block';
+            }, 2000);
         });
-
-        // Display the egg reveal modal after a 2-second delay
-        setTimeout(function() {
-            document.getElementById('eggRevealModal').style.display = 'block';
-        }, 2000);
-    });
+    }
 }
+
+// Call this function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setupSpecialTrigger();
+    // Include other setup functions here
+});
 
 // Function to display the new egg image
 function showNewEgg() {
