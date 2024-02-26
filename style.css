@@ -182,6 +182,8 @@ h1 {
     margin: 5px; /* Add some space between images */
     width: 150px; /* Adjust based on your design */
     height: auto; /* Maintain aspect ratio */
+    vertical-align: bottom; /* Align images at the bottom */
+
 }
 
 .bottom-img {
