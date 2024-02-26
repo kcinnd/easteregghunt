@@ -50,41 +50,28 @@ function setupModal() {
 }
 
 function setupSpecialTrigger() {
-  var specialTrigger = document.getElementById('specialTrigger');
-  if (specialTrigger) {
-    specialTrigger.addEventListener('mouseenter', function() {
-      // Start confetti effect
-      confetti({
-        particleCount: 200,
-        spread: 100,
-        origin: { y: 0.6 }
-      });
-      setTimeout(function() {
-
-        document.getElementById('eggRevealModal').style.display = 'block';
-      }, 2000);
+  const specialTrigger = document.getElementById('specialTrigger');
+  specialTrigger?.addEventListener('mouseenter', function() {
+    confetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.6 }
     });
-  }
+    setTimeout(() => document.getElementById('eggRevealModal').style.display = 'block', 2000);
+  });
 }
 
 function showNewEgg() {
-  var newEgg = document.getElementById('newEgg');
-  var eggContainer = document.querySelector('.egg-container'); 
-  
-  if (newEgg && eggContainer) {
-      newEgg.style.display = 'block'; // Makes the New Egg image visible
-      eggContainer.style.display = 'flex'; // Adjust as needed to make the container visible
-  }
-  
-  var eggRevealModal = document.getElementById('eggRevealModal');
-  if (eggRevealModal) {
-      eggRevealModal.style.display = 'none'; // Hides the modal
-  }
+  const newEgg = document.getElementById('newEgg');
+  newEgg.style.display = 'block';
+  document.querySelector('.egg-container').style.display = 'flex';
+  document.getElementById('eggRevealModal').style.display = 'none';
 }
 
 function setupEventListeners() {
-  document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
-  document.getElementById('startHuntButton').addEventListener('click', startHunt);
+  document.getElementById('revealEggBtn')?.addEventListener('click', showNewEgg);
+  document.getElementById('startHuntButton')?.addEventListener('click', startHunt);
+  document.querySelector('button')?.addEventListener('click', checkWord);
 }
 
 // Main function to set up the page functionalities
@@ -202,12 +189,9 @@ function checkOverlap(element) {
 }
 
 function setupStickers() {
-  // Assuming you have sticker elements with a class 'sticker'
   document.querySelectorAll('.sticker').forEach(sticker => {
     sticker.addEventListener('click', function() {
-      const stickerSrc = this.getAttribute('src');
-      // Function to add the sticker to the egg
-      addStickerToEgg(stickerSrc);
+      addStickerToEgg(this.getAttribute('src'));
     });
   });
 }
@@ -220,4 +204,22 @@ function addStickerToEgg(stickerSrc) {
 function setupPage() {
   // Previous setup functions
   setupStickers(); // Initialize stickers functionality
+}
+
+function setupColorPalette() {
+  const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
+  const colorPalette = document.getElementById('colorPalette');
+
+  colors.forEach(color => {
+    const colorSwatch = document.createElement('div');
+    colorSwatch.style.backgroundColor = color;
+    colorSwatch.className = 'color-swatch';
+    colorPalette.appendChild(colorSwatch);
+
+    colorSwatch.addEventListener('click', () => applyColorToEgg(color));
+  });
+}
+
+function applyColorToEgg(color) {
+  console.log(`Applying color ${color} to the egg`); // Replace with actual implementation
 }
