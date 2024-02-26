@@ -110,20 +110,29 @@ function checkWord() {
   }
 }
 
-function revealKeysOnHover() {
-  document.querySelectorAll('.interactive').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      const keyIndex = Math.floor(Math.random() * keyImages.length);
-      const keyImageSrc = keyImages[keyIndex];
-      const keyImg = document.createElement('img');
-      keyImg.src = keyImageSrc;
-      keyImg.style.width = '150px';
-      document.body.appendChild(keyImg);
-      placeRandomly(keyImg);
-    });
-  });
-}
+function showKeyRandomlyOnPage(keyIndex) {
+  const keyImageSources = [
+    'https://i.imgur.com/9a87llh.png?1',
+    // Include all your key image URLs here...
+    'https://i.imgur.com/ymXcQbo.png'
+  ];
 
+  const keyImg = document.createElement('img');
+  keyImg.src = keyImageSources[keyIndex];
+  keyImg.style.width = '150px';
+  keyImg.style.position = 'absolute';
+  keyImg.style.zIndex = '10';
+
+  // Randomly position the key, ensuring it doesn't overlap with other elements
+  let overlap;
+  do {
+    keyImg.style.left = `${Math.random() * (window.innerWidth - keyImg.offsetWidth)}px`;
+    keyImg.style.top = `${Math.random() * (window.innerHeight - keyImg.offsetHeight)}px`;
+    overlap = checkOverlap(keyImg);
+  } while (overlap);
+
+  document.body.appendChild(keyImg);
+  
 document.addEventListener('DOMContentLoaded', () => {
   setupModal();
   setupSpecialTrigger();
@@ -196,24 +205,29 @@ function placeRandomly(element) {
   } while (overlap);
 }
 
-// Function to check for overlap with container and bottom images
 function checkOverlap(element) {
+  // Get the bounding rectangle of the element to be checked
   const rect = element.getBoundingClientRect();
-  const containerRect = document.querySelector('.container').getBoundingClientRect();
-  const bottomImagesRect = document.querySelector('.image-border').getBoundingClientRect();
 
-  // Check for overlap with the container and bottom images
-  if (!(rect.right < containerRect.left || rect.left > containerRect.right ||
-      rect.bottom < containerRect.top || rect.top > containerRect.bottom) ||
-    rect.bottom > bottomImagesRect.top) {
-    return true;
+  // Select all elements that the key image shouldn't overlap with
+  const elementsToCheck = document.querySelectorAll('.container, .grass-img, .random-img, .key-img'); // Add more selectors as needed
+
+  // Iterate over each element to check for overlap
+  for (const el of elementsToCheck) {
+    const elRect = el.getBoundingClientRect();
+
+    // Check if the rectangles overlap
+    const isOverlapping = !(rect.right < elRect.left || 
+                             rect.left > elRect.right || 
+                             rect.bottom < elRect.top || 
+                             rect.top > elRect.bottom);
+
+    if (isOverlapping) {
+      return true; // Overlap found, return true
+    }
   }
 
-  // Check for proximity to page edges
-  if (rect.left < 10 || rect.top < 10 || window.innerWidth - rect.right < 10 || window.innerHeight - rect.bottom < 10) {
-    return true;
-  }
-
+  // No overlaps found, return false
   return false;
 }
 
@@ -289,3 +303,19 @@ stickers.forEach(src => {
     addStickerToEgg(src);
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  setupGrassAndImagesHoverEffect();
+});
+
+function setupGrassAndImagesHoverEffect() {
+  const grassElements = document.querySelectorAll('.easter-bunny-grass .grass-img');
+  const additionalImages = document.querySelectorAll('.additional-img'); // Ensure these elements have this class
+  const allHoverElements = [...grassElements, ...additionalImages];
+  
+  allHoverElements.forEach((element, index) => {
+    element.addEventListener('mouseenter', () => {
+      showKeyRandomlyOnPage(index % 16); // Loop through 16 keys for each element
+    });
+  });
+}
