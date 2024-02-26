@@ -111,10 +111,11 @@ specialTrigger.addEventListener('mouseenter', function() {
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
     if (newEgg) {
-        newEgg.style.display = 'block';
-        document.getElementById('eggRevealModal').style.display = 'none'; // Hide modal
+        newEgg.style.display = 'block'; // Makes the new egg image visible
     }
 }
+
+document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
 
 // Additional new feature: Randomly place new images on the Easter Bunny page
 function setupAdditionalImages() {
