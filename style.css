@@ -245,7 +245,7 @@ button:not(#openModal):hover {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99999;
-  background: rgba(159, 224, 210, 0.8);
+  background: rgba(65, 131, 190, 0.8);
   padding: 20px;
   border-radius: 15px;
   width: calc(400px + 100px);
