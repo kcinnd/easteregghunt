@@ -34,6 +34,8 @@ body {
   justify-content: center;
   align-items: flex-end;
   overflow-x: hidden;
+  vertical-align: bottom;
+
 }
 
 h1 {
