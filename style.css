@@ -323,3 +323,19 @@ button:not(#openModal):hover {
 .image-border:not(.easter-bunny-grass) .grass-img {
   /* Styles for non-overlapping grass images on other pages */
 }
+
+.color-palette {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px; /* Makes it circular */
+  cursor: pointer;
+  border: 2px solid #fff; /* Adds a white border */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+}
