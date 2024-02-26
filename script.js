@@ -20,6 +20,11 @@ colors.forEach(color => {
   });
 });
 
+function applyColorToEgg(color) {
+  // Implementation to apply the selected color to the egg
+  console.log(`Applying color ${color} to the egg`); // Placeholder implementation
+}
+
 function startHunt() {
   window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
@@ -64,7 +69,6 @@ function setupSpecialTrigger() {
 
 function showNewEgg() {
   var newEgg = document.getElementById('newEgg');
-  // Assuming there's only one egg-container, we'll get the first one found
   var eggContainer = document.querySelector('.egg-container'); 
   
   if (newEgg && eggContainer) {
@@ -77,6 +81,7 @@ function showNewEgg() {
       eggRevealModal.style.display = 'none'; // Hides the modal
   }
 }
+
 function setupEventListeners() {
   document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
   document.getElementById('startHuntButton').addEventListener('click', startHunt);
