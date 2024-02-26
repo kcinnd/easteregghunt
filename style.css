@@ -29,13 +29,14 @@ body {
 }
 
 .image-border {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  overflow-x: hidden;
-  vertical-align: bottom;
-
+    position: absolute; /* or 'fixed' if you want it to stay at the bottom even when scrolling */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap; /* Keeps all images in a single line */
+    overflow-x: auto; /* Allows horizontal scrolling if images overflow the screen width */
+    z-index: 10; /* Ensure it's above most other elements but below modals/pop-ups */
 }
 
 h1 {
