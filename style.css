@@ -237,3 +237,21 @@ h1 {
     pointer-events: none; /* Allows clicks to pass through */
     z-index: 15; /* Below modal but above most content */
 }
+
+.egg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #7AA0A2; /* Example darker, navy shade; adjust as needed */
+    padding: 20px; /* Adjust the padding around the egg as needed */
+    border-radius: 20px; /* Optional, for rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#newEgg {
+    width: 400px; /* Adjust as needed */
+    display: block; /* To remove any bottom margin/whitespace */
+}
