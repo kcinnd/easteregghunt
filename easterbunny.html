@@ -1,69 +1,83 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Easter Bunny's Secret</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="easter-bunny-page">
   <img src="https://i.imgur.com/tTiuDt6.png" alt="Logo" class="logo">
-
   <img src="https://i.imgur.com/ER9W85m.png" alt="Special Trigger" id="specialTrigger" style="width: 25px; position: absolute; top: 150px; left: 150px; z-index: 10;">
 
   <div class="container">
     <button id="openModal">Read Urgent Message!</button>
     <h1>Decode the Trail</h1>
     <p>Help the Easter Bunny find the missing key!</p>
+    
     <a href="https://www.canva.com/design/DAF901on--E/89H95U0yIiWKAt8Q4JOR8w/view?utm_content=DAF901on--E&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="puzzle-button">Puzzle</a>
 
     <input type="text" id="userInput" placeholder="Enter your answer...">
     <button onclick="checkWord()">Submit</button>
     <p id="feedback"></p>
-
   </div>
 
   <div id="urgentMessageModal" class="modal">
+    <div class="modal-content">
+       <span class="close">&times;</span>
+    <h2>🐰🔑 URGENT MESSAGE FROM THE EASTER BUNNY 🔑🐰</h2>
+    <p>Attention all Easter Egg Hunters,</p>
+    <p>This is an emergency message from the Easter Bunny. The key to a precious treasure Easter egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure!</p>
+    <p>We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key.</p>
+    <p>If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all!</p>
+    <p>Hop to it, my friends! The fate of Easter rests in our hands!</p>
+    <p>With urgency and hope,</p>
+    <p>The Easter Bunny 🐰</p>
+  </div>
+</div>
 
   <div id="colorPalette" class="color-palette"></div>
 
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>🐰🔑 URGENT MESSAGE FROM THE EASTER BUNNY 🔑🐰</h2>
-      <p>Attention all Easter Egg Hunters,</p>
-      <p>This is an emergency message from the Easter Bunny. The key to a precious treasure Easter egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure!</p>
-      <p>We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key.</p>
-      <p>If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all!</p>
-      <p>Hop to it, my friends! The fate of Easter rests in our hands!</p>
-      <p>With urgency and hope,</p>
-      <p>The Easter Bunny 🐰</p>
-    </div>
+  <div class="sticker-selection">
+    <img src="https://i.imgur.com/nBwUycJ.png" class="sticker" alt="Sticker 1">
+    <img src="https://i.imgur.com/tcdN7Xz.png" class="sticker" alt="Sticker 2">
+    <!-- Add the rest of the stickers similarly -->
   </div>
+   
+<canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
 
-  <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+<div class="easter-bunny-grass">
+  <img src="https://i.imgur.com/SGrsdhI.png" alt="Grass 1" class="grass-img">
+  <img src="https://i.imgur.com/YsEkPnH.png" alt="Grass 2" class="grass-img">
+  <img src="https://i.imgur.com/Ec8VQrS.png" alt="Grass 3" class="grass-img">
+  <img src="https://i.imgur.com/3NuudR3.png" alt="Grass 4" class="grass-img">
+  <img src="https://i.imgur.com/K0bd7nK.png" alt="Grass 5" class="grass-img">
+  <img src="https://i.imgur.com/kru4203.png" alt="Grass 6" class="grass-img">
+  <img src="https://i.imgur.com/JrlJYKS.png" alt="Grass 7" class="grass-img">
+  <img src="https://i.imgur.com/9UKYi7k.png" alt="Grass 8" class="grass-img">
+  <img src="https://i.imgur.com/P0ZhspR.png" alt="Grass 9" class="grass-img">
+</div>
 
-  <div class="easter-bunny-grass">
-    <img src="https://i.imgur.com/SGrsdhI.png" alt="Grass 1" class="grass-img">
-    <img src="https://i.imgur.com/YsEkPnH.png" alt="Grass 2" class="grass-img">
-    <img src="https://i.imgur.com/Ec8VQrS.png" alt="Grass 3" class="grass-img">
-    <img src="https://i.imgur.com/3NuudR3.png" alt="Grass 4" class="grass-img">
-    <img src="https://i.imgur.com/K0bd7nK.png" alt="Grass 5" class="grass-img">
-    <img src="https://i.imgur.com/kru4203.png" alt="Grass 6" class="grass-img">
-    <img src="https://i.imgur.com/JrlJYKS.png" alt="Grass 7" class="grass-img">
-    <img src="https://i.imgur.com/9UKYi7k.png" alt="Grass 8" class="grass-img">
-    <img src="https://i.imgur.com/P0ZhspR.png" alt="Grass 9" class="grass-img">
-  </div>
-
-  <div class="egg-container">
+<div class="egg-container" style="display: none;">
     <img src="https://i.imgur.com/zImvXKw.png" alt="Easter Egg" id="newEgg" style="display: none;">
-  </div>
+    <div class="color-swatches" style="display: none;">rc="https://i.imgur.com/zImvXKw.png" alt="Easter Egg" id="newEgg" style="display: none;">
+      <!-- Color swatches for egg decoration -->
+    </div>
+    <!-- Sticker images for egg decoration -->
+    <div class="stickers" style="display: none;">
+      <img src="https://i.imgur.com/nBwUycJ.png" alt="Sticker 1" class="sticker">
+      <!-- Add more stickers here -->
+    </div>
+</div>
 
 
-  <div id="eggRevealModal" class="egg-reveal-modal">
-    <h2>🐣 Hooray! 🐣</h2>
-    <p>You've found the Easter Bunny's special egg! Now, let's decorate it to celebrate!</p>
-    <button id="revealEggBtn">Okay!</button>
-  </div>
+<div id="eggRevealModal" class="egg-reveal-modal">
+  <h2>🐣 Hooray! 🐣</h2>
+  <p>You've found the Easter Bunny's special egg! Now, let's decorate it to celebrate!</p>
+  <button id="revealEggBtn">Okay!</button>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
