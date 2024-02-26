@@ -2,30 +2,6 @@ function startHunt() {
     window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
 
-// Main function to set up the page functionalities
-function setupPage() {
-    setupModal();
-    setupSpecialTrigger();
-    setupAdditionalImages();
-    setupEventListeners();
-}
-
-function setupEventListeners() {
-    var revealEggButton = document.getElementById('revealEggBtn');
-    if (revealEggButton) {
-        revealEggButton.addEventListener('click', showNewEgg);
-    }
-
-    var startHuntButton = document.getElementById('startHuntButton');
-    if (startHuntButton) {
-        startHuntButton.addEventListener('click', function() {
-            window.location.href = 'page1.html'; // Adjust the URL as needed
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', setupPage);
-
 function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var btn = document.getElementById('openModal');
@@ -46,7 +22,6 @@ function setupModal() {
     };
 }
 
-
 function setupSpecialTrigger() {
     var specialTrigger = document.getElementById('specialTrigger');
     if (specialTrigger) {
@@ -65,6 +40,42 @@ function setupSpecialTrigger() {
         });
     }
 }
+
+function showNewEgg() {
+    var newEgg = document.getElementById('newEgg');
+    if (newEgg) {
+        newEgg.style.display = 'block'; // Makes the New Egg image visible
+    }
+    
+    var eggRevealModal = document.getElementById('eggRevealModal');
+    if (eggRevealModal) {
+        eggRevealModal.style.display = 'none';
+    }
+}
+
+function setupEventListeners() {
+    var revealEggButton = document.getElementById('revealEggBtn');
+    if (revealEggButton) {
+        revealEggButton.addEventListener('click', showNewEgg);
+    }
+
+    var startHuntButton = document.getElementById('startHuntButton');
+    if (startHuntButton) {
+        startHuntButton.addEventListener('click', function() {
+            window.location.href = 'page1.html'; // Adjust the URL as needed
+        });
+    }
+}
+
+// Main function to set up the page functionalities
+function setupPage() {
+    setupModal();
+    setupSpecialTrigger();
+    setupAdditionalImages();
+    setupEventListeners();
+}
+
+document.addEventListener('DOMContentLoaded', setupPage);
 
 // Call this function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -114,18 +125,6 @@ function revealKeysOnHover() {
     });
 }
 
-function showNewEgg() {
-    var newEgg = document.getElementById('newEgg');
-    if (newEgg) {
-        newEgg.style.display = 'block'; // Makes the New Egg image visible
-    }
-    
-    var eggRevealModal = document.getElementById('eggRevealModal');
-    if (eggRevealModal) {
-        eggRevealModal.style.display = 'none';
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     var revealEggButton = document.getElementById('revealEggBtn');
     if (revealEggButton) {
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Additional new feature: Randomly place new images on the Easter Bunny page
 function setupAdditionalImages() {
     const newImages = [
         'https://i.imgur.com/jKOtLuY.png',
