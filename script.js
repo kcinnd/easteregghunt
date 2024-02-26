@@ -20,8 +20,12 @@ colors.forEach(color => {
 });
 
 function applyColorToEgg(color) {
-  const egg = document.getElementById('egg');
-  egg.style.backgroundColor = color;
+  const egg = document.getElementById('egg'); // Make sure there's an element with id="egg"
+  if (egg) {
+    egg.style.backgroundColor = color;
+  } else {
+    console.error('Egg element not found!');
+  }
 }
 
 function startHunt() {
