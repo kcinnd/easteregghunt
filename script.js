@@ -255,9 +255,14 @@ function setupPage() {
   setupStickers(); // Initialize stickers functionality
 }
 
-function setupcolorPalette() {
+function setupColorPalette() {
   const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
   const colorPalette = document.getElementById('colorPalette');
+
+  if (!colorPalette) {
+    console.error('colorPalette element not found!');
+    return;
+  }
 
   colors.forEach(color => {
     const colorSwatch = document.createElement('div');
