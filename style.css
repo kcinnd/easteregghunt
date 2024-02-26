@@ -167,12 +167,18 @@ h1 {
 }
 
 .image-border {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: left; /* Align to the left to keep images in a line */
-    white-space: nowrap; /* Prevent images from wrapping to the next line */
+    text-align: center; /* Center-align the images if there's extra space */
+}
+
+.grass-img {
+    width: 150px; /* Or any size you prefer */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block; /* Line up images next to each other */
+    margin: 0 5px; /* Optional: add some space between the images */
 }
 
 .bottom-img {
