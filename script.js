@@ -4,18 +4,17 @@ function startHunt() {
 
 // Main function to set up the page functionalities
 function setupPage() {
-    setupModal(); // Sets up the modal functionality
-    setupSpecialTrigger(); // Sets up the special trigger for confetti and egg reveal
+    setupModal();
+    setupSpecialTrigger();
     setupAdditionalImages();
-    setupEventListeners(); // Setup all event listeners
+    setupEventListeners();
 }
 
 function setupEventListeners() {
-document.getElementById('revealEggBtn').addEventListener('click', function() {
-    showNewEgg();
-    
-document.getElementById('eggRevealModal').style.display = 'none'; // Hide modal
-    });
+    var revealEggButton = document.getElementById('revealEggBtn');
+    if (revealEggButton) {
+        revealEggButton.addEventListener('click', showNewEgg);
+    }
 
     var startHuntButton = document.getElementById('startHuntButton');
     if (startHuntButton) {
@@ -112,7 +111,8 @@ specialTrigger.addEventListener('mouseenter', function() {
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
     if (newEgg) {
-        newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
+        newEgg.style.display = 'block';
+        document.getElementById('eggRevealModal').style.display = 'none'; // Hide modal
     }
 }
 
@@ -176,10 +176,6 @@ function checkOverlap(element) {
     }
 
     return false;
-}
-
-function revealEgg() {
-    ]
 }
 
 function showNewEgg() {
