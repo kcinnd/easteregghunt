@@ -200,3 +200,24 @@ function checkOverlap(element) {
 
   return false;
 }
+
+function setupStickers() {
+  // Assuming you have sticker elements with a class 'sticker'
+  document.querySelectorAll('.sticker').forEach(sticker => {
+    sticker.addEventListener('click', function() {
+      const stickerSrc = this.getAttribute('src');
+      // Function to add the sticker to the egg
+      addStickerToEgg(stickerSrc);
+    });
+  });
+}
+
+function addStickerToEgg(stickerSrc) {
+  console.log(`Adding sticker ${stickerSrc} to the egg`); // Placeholder for adding a sticker to the egg
+}
+
+// Call setupStickers in setupPage
+function setupPage() {
+  // Previous setup functions
+  setupStickers(); // Initialize stickers functionality
+}
