@@ -190,6 +190,7 @@ button:not(#openModal):hover {
   margin: 5px;
   width: 150px;
   height: auto;
+  display: inline-block;
   vertical-align: bottom;
 
 }
