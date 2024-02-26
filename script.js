@@ -2,12 +2,11 @@ function startHunt() {
     window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupModal(); // Modal functionality setup
-    handlePageNavigation(); // Handling navigation based on hidden messages and submit button
-    revealKeysOnHover(); // Hover over bottom images to reveal keys
-    setupSpecialTrigger(); // Special Trigger Image functionality
-    setupAdditionalImages(); // Additional new feature: Randomly place new images on the page
+// Main function to set up the page functionalities
+function setupPage() {
+    setupModal(); // Sets up the modal functionality
+    setupSpecialTrigger(); // Sets up the special trigger for confetti and egg reveal
+    setupAdditionalImages();
 
 document.getElementById('revealEggBtn').addEventListener('click', function() {
     showNewEgg();
@@ -85,34 +84,27 @@ function revealKeysOnHover() {
 // Special Trigger Image functionality
 function setupSpecialTrigger() {
     var specialTrigger = document.getElementById('specialTrigger');
-    if (specialTrigger) {
-        specialTrigger.addEventListener('mouseenter', function() {
-            // Start confetti effect (use your confetti library's API)
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
 
-            // Show popup message after a delay
-            var newEgg = document.getElementById('newEgg');
-
-                // Display the new Easter egg image
-                newEgg.style.display = 'block'; // Make the egg visible
-
-                // Position the new egg (if not already done via CSS)
-                newEgg.style.position = 'absolute';
-                newEgg.style.top = '50%'; // Center vertically
-                newEgg.style.left = '50%'; // Center horizontally
-                newEgg.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
-
-            }, 2000); // This delay should match the confetti duration
+    // When the special trigger is hovered over, start the confetti and show the egg reveal modal
+specialTrigger.addEventListener('mouseenter', function() {
+        // Start the confetti effect
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 }
         });
-    }
+
+        // Display the egg reveal modal after a 2-second delay
+        setTimeout(function() {
+            document.getElementById('eggRevealModal').style.display = 'block';
+        }, 2000);
+    });
 }
 
-function hideEggRevealModal() {
-    document.getElementById('eggRevealModal').style.display = 'none';
+// Function to display the new egg image
+function showNewEgg() {
+    var newEgg = document.getElementById('newEgg');
+    newEgg.style.display = 'block'; // Make the new egg image visible
 }
 
 // Additional new feature: Randomly place new images on the Easter Bunny page
@@ -178,12 +170,7 @@ function checkOverlap(element) {
 }
 
 function revealEgg() {
-    var eggContainer = document.querySelector('.egg-container'); // Select the egg container
-    if (eggContainer) {
-        eggContainer.style.display = 'flex'; // Change the display to 'flex' to make it visible
-        // If you want to directly show the egg image without a container, use the line below instead
-        // document.getElementById('newEgg').style.display = 'block';
-    }
+    ]
 }
 
 function showNewEgg() {
@@ -192,3 +179,11 @@ function showNewEgg() {
         newEgg.style.display = 'block'; // or 'flex' if that suits your layout better
     }
 }
+
+document.getElementById('eggRevealModal').style.display = 'none';
+}
+
+// Assuming 'revealEggBtn' triggers showing the new egg
+document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+
+document.addEventListener('DOMContentLoaded', setupPage);
