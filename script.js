@@ -9,11 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     revealKeysOnHover(); // Hover over bottom images to reveal keys
     setupSpecialTrigger(); // Special Trigger Image functionality
     setupAdditionalImages(); // Additional new feature: Randomly place new images on the page
+    document.addEventListener('DOMContentLoaded', function() {
     var revealEggButton = document.getElementById('revealEggBtn');
     if (revealEggButton) {
-        revealEggButton.addEventListener('click', function() {
-            showNewEgg(); // Call the function to show the new egg
-        });
+        revealEggButton.addEventListener('click', showNewEgg);
     }
 });
 
