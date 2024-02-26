@@ -189,14 +189,12 @@ function setupStickers() {
   });
 }
 
-function addStickerToEgg(stickerSrc) {
-  const egg = document.getElementById('egg'); // Ensure this element exists
-  if (egg) {
-    const stickerImg = document.createElement('img');
-    stickerImg.src = stickerSrc;
-    stickerImg.className = 'sticker-img'; // Ensure you have CSS for this class
-    egg.appendChild(stickerImg);
-  }
+function addStickerToEgg(src) {
+  const egg = document.getElementById('egg');
+  const stickerImg = document.createElement('img');
+  stickerImg.src = src;
+  stickerImg.style.width = '150px'; // Full size for the sticker on the egg
+  egg.appendChild(stickerImg);
 }
 
 // Call setupStickers in setupPage
