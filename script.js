@@ -122,11 +122,35 @@ function revealKeysOnHover() {
 
 function setupAdditionalImages() {
   const newImages = [
-    'https://i.imgur.com/jKOtLuY.png',
-    'https://i.imgur.com/oxvUvMC.png',
-    'https://i.imgur.com/KWG3YHp.png'
+    'https://i.imgur.com/9a87llh.png?1',
+    'https://i.imgur.com/Cx5sW4T.png?1',
+    'https://i.imgur.com/Sppxziz.png',
+    'https://i.imgur.com/xgWycmI.png',
+    'https://i.imgur.com/xkm6yV7.png',
+    'https://i.imgur.com/tEW10f7.png',
+    'https://i.imgur.com/HcTyCd7.png',
+    'https://i.imgur.com/tURKwGZ.png',
+    'https://i.imgur.com/P6If7vu.png',
+    'https://i.imgur.com/yDVaMFM.png',
+    'https://i.imgur.com/xtNwn5Q.png',
+    'https://i.imgur.com/4OYvyjf.png',
+    'https://i.imgur.com/61J8Ydt.png',
+    'https://i.imgur.com/q6c11A9.png',
+    'https://i.imgur.com/pbUBsZf.png',
+    'https://i.imgur.com/ymXcQbo.png'
   ];
 
+  keyImages.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.width = '150px'; // Setting the width to 150px as requested
+    img.style.position = 'absolute';
+    document.body.appendChild(img);
+
+    placeRandomly(img);
+  });
+}
+  
   newImages.forEach((src, index) => {
     const img = document.createElement('img');
     img.src = src;
@@ -193,7 +217,7 @@ function addStickerToEgg(src) {
   const egg = document.getElementById('egg');
   const stickerImg = document.createElement('img');
   stickerImg.src = src;
-  stickerImg.style.width = '150px'; // Full size for the sticker on the egg
+  stickerImg.style.height = '20px'; // Full size for the sticker on the egg
   egg.appendChild(stickerImg);
 }
 
