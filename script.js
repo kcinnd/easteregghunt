@@ -173,8 +173,8 @@ function checkOverlap(element) {
 }
 
 function revealEgg() {
-    var newEgg = document.getElementById('newEgg');
-    if (newEgg) {
-        newEgg.style.display = 'block'; // This will make the new egg visible
+    var eggContainer = document.querySelector('.egg-container');
+    if (eggContainer) {
+        eggContainer.style.display = 'flex'; // This makes the egg and its container visible
     }
 }
