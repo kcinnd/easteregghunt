@@ -24,6 +24,17 @@ body {
     border-radius: 10px;
     background-color: rgba(250, 243, 221, 0.6);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.image-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap; /* Prevents wrapping, allowing images to overflow as needed */
+    z-index: 4; /* Above the background, below interactive elements */
 }
 
 h1 {
@@ -209,9 +220,10 @@ h1 {
 #specialTrigger {
     width: 25px; /* Size of the special trigger image */
     position: absolute; /* Allows precise positioning */
-    top: 50px; /* Adjust as needed */
-    left: 50px; /* Adjust as needed */
-    z-index: 20; /* Ensures visibility above other elements */
+    top: 100px; /* Adjust as needed */
+    left: 100px; /* Adjust as needed */
+    cursor: pointer; /* Indicates an interactive element */
+    z-index: 10; /* Ensures visibility and interactivity */
 }
 
 /* Confetti canvas */
