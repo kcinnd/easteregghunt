@@ -89,23 +89,14 @@ function setupSpecialTrigger() {
 
             // Show popup message after a delay
             setTimeout(function() {
-                alert('Congratulations on finding the Easter Bunny! The Easter Bunny left you with a new Easter egg, but you still need to decorate it.');
-
-                // Display the new Easter egg image
-                var newEgg = document.getElementById('newEgg');
-
-                // Display the new Easter egg image
-                newEgg.style.display = 'block'; // Make the egg visible
-
-                // Position the new egg (if not already done via CSS)
-                newEgg.style.position = 'absolute';
-                newEgg.style.top = '50%'; // Center vertically
-                newEgg.style.left = '50%'; // Center horizontally
-                newEgg.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
-
-            }, 4000); // This delay should match the confetti duration
+                document.getElementById('eggRevealModal').style.display = 'block';
+            }, 4000); // Adjust timing as needed
         });
     }
+}
+
+function hideEggRevealModal() {
+    document.getElementById('eggRevealModal').style.display = 'none';
 }
 
 // Additional new feature: Randomly place new images on the Easter Bunny page
