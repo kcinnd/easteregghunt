@@ -23,6 +23,7 @@ body {
 .container {
   text-align: center;
   padding-bottom: 50px;
+  padding: 50px;
   border-radius: 10px;
   margin-bottom: 50px;
   background-color: rgba(250, 243, 221, 0.6);
