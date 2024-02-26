@@ -22,7 +22,6 @@ body {
 
 .container {
   text-align: center;
-  padding-bottom: 50px;
   padding: 50px;
   border-radius: 10px;
   margin: 50px auto;
@@ -291,22 +290,23 @@ button:not(#openModal):hover {
   background-color: #7CB342;
 }
 
-.easter-bunny-grass {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    white-space: nowrap;
-    text-align: center;
+.easter-bunny-page .image-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow-x: auto;
+  z-index: 10;
 }
 
-.easter-bunny-grass .grass-img {
-    width: 150px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    display: inline-block; /* Line up images next to each other */
-    margin-right: -25px; /* Negative margin to allow overlap */
-    white-space: nowrap;
-    vertical-align: bottom; /* Align images at the bottom */
+.easter-bunny-page .grass-img {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+  margin-right: -25px; /* Overlap */
+  vertical-align: bottom;
 }
 
 /* Ensure the .image-border styles do not cause overlap on other pages */
