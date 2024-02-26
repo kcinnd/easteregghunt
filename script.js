@@ -1,4 +1,4 @@
-\function startHunt() {
+function startHunt() {
     window.location.href = 'page1.html'; // Redirects to the first puzzle page
 }
 
@@ -71,6 +71,12 @@ function setupSpecialTrigger() {
     }
 }
 
+// Call this function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setupSpecialTrigger();
+    // Include other setup functions here
+});
+
 // Handle navigation for hidden messages and check word functionality
 function handlePageNavigation() {
     var hiddenMessage = document.getElementById('hiddenMessage');
@@ -112,32 +118,6 @@ function revealKeysOnHover() {
         });
     });
 }
-
-// Special Trigger Image functionality
-function setupSpecialTrigger() {
-    var specialTrigger = document.getElementById('specialTrigger');
-    if (specialTrigger) {
-        specialTrigger.addEventListener('mouseenter', function() {
-            // Start confetti effect
-            confetti({
-                particleCount: 175,
-                spread: 80,
-                origin: { y: 0.6 }
-            });
-
-            // Display the egg reveal modal after a 2-second delay
-            setTimeout(function() {
-                document.getElementById('eggRevealModal').style.display = 'block';
-            }, 2000);
-        });
-    }
-}
-
-// Call this function when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setupSpecialTrigger();
-    // Include other setup functions here
-});
 
 // Function to display the new egg image
 function showNewEgg() {
