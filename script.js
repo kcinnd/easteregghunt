@@ -80,8 +80,10 @@ function setupPage() {
   revealKeysOnHover();
 }
 
-document.addEventListener('DOMContentLoaded', setupPage);
-
+document.addEventListener('DOMContentLoaded', function() {
+  setupPage(); // Call the main setup function that includes all necessary setups
+  // If there's any other function you need to call specifically on DOMContentLoaded, call it here
+});
 function handlePageNavigation() {
   var hiddenMessage = document.getElementById('hiddenMessage');
   if (hiddenMessage) {
