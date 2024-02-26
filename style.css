@@ -305,6 +305,8 @@ button:not(#openModal):hover {
     width: 100%;
     text-align: center;
     vertical-align: bottom; /* Align images at the bottom */
+    white-space: nowrap; /* Keeps all images in a single line */
+
 }
 
 /* Easter Bunny Page specific styles */
