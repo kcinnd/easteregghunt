@@ -283,3 +283,17 @@ button:not(#openModal):hover {
 .egg-reveal-modal button:hover {
   background-color: #7CB342;
 }
+
+.easter-bunny-grass .grass-img {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block; /* Line up images next to each other */
+    margin-right: -25px; /* Negative margin to allow overlap */
+    vertical-align: bottom; /* Align images at the bottom */
+}
+
+/* Ensure the .image-border styles do not cause overlap on other pages */
+.image-border:not(.easter-bunny-grass) .grass-img {
+    /* Styles for non-overlapping grass images on other pages */
+}
+
