@@ -33,6 +33,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Special Trigger Image functionality
+    var specialTrigger = document.getElementById('specialTrigger');
+    specialTrigger.addEventListener('mouseenter', function() {
+        // Start confetti effect (use your confetti library's API)
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+
+        // Show popup message after a delay
+        setTimeout(function() {
+            alert('Congratulations on finding the Easter Bunny! The Easter Bunny left you with a new Easter egg, but you still need to decorate it.');
+
+            // Display the new Easter egg image
+            var newEgg = document.createElement('img');
+            newEgg.src = 'https://i.imgur.com/KWG3YHp.png';
+            newEgg.style.width = '100px'; // Set the desired width
+            document.body.appendChild(newEgg);
+            // Position the new egg appropriately
+            newEgg.style.position = 'absolute';
+            newEgg.style.top = '100px'; // Adjust as needed
+            newEgg.style.left = '100px'; // Adjust as needed
+        }, 5000); // This delay should match the confetti duration
+    });
+
     // Function to ensure keys do not overlap with the bottom images or the container
     function placeKeyRandomly(keyImage) {
         const containerRect = document.querySelector('.container').getBoundingClientRect();
