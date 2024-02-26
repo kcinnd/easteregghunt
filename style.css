@@ -237,20 +237,20 @@ button:not(#openModal):hover {
 }
 
 .egg-container {
-    display: none; /* Initially hidden */
-    justify-content: center; /* Centers the egg horizontally */
-    align-items: center; /* Centers the egg vertically */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 99999;
-    background: rgba(159, 224, 210, 0.8); /* Slightly navy-tinted background */
-    padding: 20px;
-    border-radius: 15px;
-    width: calc(400px + 100px); /* Egg image width (400px) + extra space */
-    height: calc(400px + 100px); /* Egg image height (assumed same as width for simplicity) + extra space */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  display: none; /* Initially hidden */
+  justify-content: center; /* Centers the egg horizontally */
+  align-items: center; /* Centers the egg vertically */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  background: rgba(159, 224, 210, 0.8); /* Slightly navy-tinted background */
+  padding: 20px;
+  border-radius: 15px;
+  width: calc(400px + 100px); /* Egg image width (400px) + extra space */
+  height: calc(400px + 100px); /* Egg image height (assumed same as width for simplicity) + extra space */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
 }
 
 #newEgg {
