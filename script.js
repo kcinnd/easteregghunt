@@ -24,13 +24,8 @@ function setupEventListeners() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupModal(); // Sets up the modal functionality
-    setupSpecialTrigger(); // Sets up the special trigger for confetti and egg reveal
-    // Include other setup functions or event listener setups here
-});
+document.addEventListener('DOMContentLoaded', setupPage);
 
-// Function to set up modal behavior
 function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var btn = document.getElementById('openModal');
@@ -51,7 +46,7 @@ function setupModal() {
     };
 }
 
-// Function to set up special trigger behavior
+
 function setupSpecialTrigger() {
     var specialTrigger = document.getElementById('specialTrigger');
     if (specialTrigger) {
@@ -119,7 +114,6 @@ function revealKeysOnHover() {
     });
 }
 
-// Function to display the new egg image
 function showNewEgg() {
     var newEgg = document.getElementById('newEgg');
     if (newEgg) {
