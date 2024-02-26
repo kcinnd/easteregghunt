@@ -60,7 +60,7 @@ function setupSpecialTrigger() {
                 // Display the new Easter egg image
                 var newEgg = document.createElement('img');
                 newEgg.src = 'https://i.imgur.com/KWG3YHp.png';
-                newEgg.style.width = '100px'; // Set the desired width
+                newEgg.style.width = '400px'; // Set the desired width
                 document.body.appendChild(newEgg);
                 // Position the new egg appropriately
                 newEgg.style.position = 'absolute';
