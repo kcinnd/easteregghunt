@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.getElementById('startHuntButton').addEventListener('click', function() {
+    window.location.href = 'page1.html'; // Adjust the URL as needed
+});
+
 // Modal functionality setup
 function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
