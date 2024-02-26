@@ -30,9 +30,7 @@ function setupSpecialTrigger() {
       confetti({
         particleCount: 200,
         spread: 100,
-        origin: {
-          y: 0.6
-        }
+        origin: { y: 0.6 }
       });
       setTimeout(function() {
 
@@ -80,10 +78,8 @@ function setupPage() {
   revealKeysOnHover();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  setupPage(); // Call the main setup function that includes all necessary setups
-  // If there's any other function you need to call specifically on DOMContentLoaded, call it here
-});
+document.addEventListener('DOMContentLoaded', setupPage);
+
 function handlePageNavigation() {
   var hiddenMessage = document.getElementById('hiddenMessage');
   if (hiddenMessage) {
