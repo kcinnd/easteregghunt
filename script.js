@@ -201,21 +201,27 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-function setupGrassAndImagesHoverEffect() {
-  if (document.body.classList.contains('easter-bunny-page')) {
-    document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
-      grass.addEventListener('mouseenter', function() {
-        const keyImgElement = document.createElement('img');
-        keyImgElement.src = 'path_to_your_key_image'; // Replace with the actual path
-        keyImgElement.className = 'key-image';
-        keyImgElement.style.display = 'none'; // Set initial display to none
-        document.body.appendChild(keyImgElement);
-        placeRandomly(keyImgElement);
-        keyImgElement.style.display = 'block'; // Make it visible on hover
-      });
-    });
-  }
-}
+document.querySelectorAll('.grass-img').forEach(grass => {
+  grass.addEventListener('mouseenter', function() {
+    const keyId = grass.getAttribute('data-key');
+    const keyImg = document.getElementById(keyId);
+    if (keyImg) {
+      keyImg.style.display = 'block'; // Show the key
+      // Position the key near the grass image, adjust as needed
+      keyImg.style.position = 'absolute';
+      keyImg.style.left = grass.offsetLeft + 'px';
+      keyImg.style.top = (grass.offsetTop - keyImg.offsetHeight) + 'px';
+    }
+  });
+
+  grass.addEventListener('mouseleave', function() {
+    const keyId = grass.getAttribute('data-key');
+    const keyImg = document.getElementById(keyId);
+    if (keyImg) {
+      keyImg.style.display = 'none'; // Hide the key
+    }
+  });
+});
 
 // Initialize everything once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', setupPage);
