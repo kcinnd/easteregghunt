@@ -13,8 +13,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-
-document.getElementById('urgentModalCloseBtn').addEventListener('click', function() {
   
 document.getElementById('urgentMessageModal').style.display = 'none';
 });
