@@ -25,6 +25,7 @@ if (secretImage) {
       spread: 100,
       origin: { y: 0.6 }
     });
+ document.getElementById('eggRevealModal').style.display = 'block';
   });
 } else {
   console.log('Secret image element not found');
