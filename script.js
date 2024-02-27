@@ -202,10 +202,12 @@ function setupGrassAndImagesHoverEffect() {
     document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
       grass.addEventListener('mouseenter', function() {
         const keyImgElement = document.createElement('img');
-        // Assuming `keyImg` array contains URLs to your key images
-        keyImgElement.src = keyImg[Math.floor(Math.random() * keyImg.length)];
-        keyImgElement.className = 'key-image'; // Ensure this class is defined in your CSS
-        placeRandomly(keyImgElement, 'no-overlap'); // Adjust the second argument as needed
+        keyImgElement.src = 'path_to_your_key_image'; // Replace with the actual path
+        keyImgElement.className = 'key-image';
+        keyImgElement.style.display = 'none'; // Set initial display to none
+        document.body.appendChild(keyImgElement);
+        placeRandomly(keyImgElement);
+        keyImgElement.style.display = 'block'; // Make it visible on hover
       });
     });
   }
