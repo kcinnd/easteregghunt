@@ -40,10 +40,16 @@ const closeModalBtn = document.querySelector('.egg-reveal-modal .close');
 
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
-    confetti({ particleCount: 500, spread: 150, origin: { y: 0.6 } });
+    // Start confetti effect
+    confetti({
+      particleCount: 500,
+      spread: 200,
+      origin: { y: 0.6 }
+    });
+    // Wait for two seconds, then display the popup
     setTimeout(() => {
       eggRevealModal.style.display = 'block';
-    }, 2000);
+    }, 2000); 
   });
 } else {
   console.log('Secret image element not found');
