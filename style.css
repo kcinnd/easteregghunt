@@ -156,7 +156,7 @@ button:not(#openModal):hover {
   width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  z-index: 1001;
+  z-index: 5000;
 }
 
 .close {
