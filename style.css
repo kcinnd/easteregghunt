@@ -41,6 +41,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#secretImage {
+    position: absolute;
+    top: 150px; /* 150 pixels from the top */
+    left: 150px; /* 150 pixels from the left */
+    width: 20px; /* Set the width as required */
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -109,6 +116,10 @@ body {
 
 .easter-bunny-grass.overlap-allowed .grass-img {
   margin-right: -25px; /* or any value that causes the desired overlap */
+}
+
+.easter-bunny-grass .grass-img:hover {
+    /* Styles or functionality that should happen on hover */
 }
 
 .grass-img {
