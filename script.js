@@ -15,7 +15,7 @@ window.onclick = function(event) {
 };
   
 document.getElementById('urgentMessageModal').style.display = 'none';
-});
+);
 
 const keyImages = [
     'https://i.imgur.com/tURKwGZ.png',
