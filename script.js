@@ -18,22 +18,13 @@ window.onclick = function(event) {
 }
 
 const secretImage = document.getElementById('secretImage');
+
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
-    // Start confetti
-    confetti({
-      particleCount: 300,
-      spread: 100,
-      origin: { y: 0.6 }
-    });
-    
+    // Trigger confetti or any other actions here
     setTimeout(() => {
       document.getElementById('eggRevealModal').style.display = 'block';
-    }, 2000); // 2000 milliseconds = 2 seconds
-  });
-}
-
- document.getElementById('eggRevealModal').style.display = 'block';
+    }, 2000); // Display the modal 2 seconds after the confetti burst
   });
 } else {
   console.log('Secret image element not found');
