@@ -11,13 +11,12 @@
 <body>
 
 <div id="specialTrigger"></div>
-
 <img src="https://i.imgur.com/tTiuDt6.png" alt="Logo" class="logo">
+<img id="secretImage" src="https://i.imgur.com/ER9W85m.png" style="position: absolute; width: 20px; top: 150px; left: 150px;">
 
-<img id="secretImage" src="https://i.imgur.com/ER9W85m.png" style="position: absolute; width: 20px; top: 150px; left: 150px;" />
-    
 <div id="urgentMessageModal" class="modal">
-    <span class="close">&times;</span>
+    <div class="modal-content">
+        <span class="close">&times;</span>
     <h2>🐰🔑 URGENT MESSAGE FROM THE EASTER BUNNY 🔑🐰</h2>
     <p>Attention all Easter Egg Hunters,</p>
     <p>This is an emergency message from the Easter Bunny. The key to a precious treasure Easter egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure!</p>
@@ -26,15 +25,15 @@
     <p>Hop to it, my friends! The fate of Easter rests in our hands!</p>
     <p>With urgency and hope,</p>
     <p>The Easter Bunny 🐰</p>
+    </div>
 </div>
 
-<button id="openModal">Read Urgent Message!</button>
+<button id="openModalBtn">Read Urgent Message!</button>
 
-    <div id="eggRevealModal" class="egg-reveal-modal">
+<div id="eggRevealModal" class="egg-reveal-modal">
       <h2>🐣 Hooray! 🐣</h2>
       <p>You've found the Easter Bunny's special egg! Now, let's decorate it to celebrate!</p>
       <button id="revealEggBtn">Okay!</button>
-    </div>
 </div>
 
 <div class="egg-container" id="eggContainer" style="display: none;">
@@ -74,9 +73,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>
-
-</div>
 
 </body>
 </html>
