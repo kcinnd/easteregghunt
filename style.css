@@ -16,6 +16,8 @@ body {
   left: 10px;
   width: 200px;
   z-index: 20;
+  background: url('https://i.imgur.com/tTiuDt6.png') no-repeat; /* Set logo image */
+  background-size: contain; /* Ensure the logo fits within the div */
 }
 
 .modal {
