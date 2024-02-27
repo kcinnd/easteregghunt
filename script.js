@@ -197,24 +197,18 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-if (document.body.classList.contains('easter-bunny-page')) {
-  document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
-    grass.addEventListener('mouseenter', function() {
-      placeRandomly(document.createElement('img'), 'no-overlap'); // Adjust as needed for key images
+function setupGrassAndImagesHoverEffect() {
+  if (document.body.classList.contains('easter-bunny-page')) {
+    document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
+      grass.addEventListener('mouseenter', function() {
+        const keyImgElement = document.createElement('img');
+        // Assuming `keyImg` array contains URLs to your key images
+        keyImgElement.src = keyImg[Math.floor(Math.random() * keyImg.length)];
+        keyImgElement.className = 'key-image'; // Ensure this class is defined in your CSS
+        placeRandomly(keyImgElement, 'no-overlap'); // Adjust the second argument as needed
+      });
     });
-  });
-}
-
-function showKeyRandomly() {
-    // Logic to show a key image randomly around the grass image
-}
-
-function showKeyRandomly() {
-  // Assuming keyImg is a globally defined array of key image URLs
-  const keyImgElement = document.createElement('img');
-  keyImgElement.src = keyImg[Math.floor(Math.random() * keyImg.length)]; // Random key image source
-  keyImgElement.className = 'key-image'; // Ensure this class exists in your CSS
-  placeRandomly(keyImgElement, 'no-overlap-class'); // Adjust the second argument as needed
+  }
 }
 
 // Initialize everything once the DOM is fully loaded
