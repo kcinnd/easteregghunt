@@ -20,11 +20,19 @@ window.onclick = function(event) {
 const secretImage = document.getElementById('secretImage');
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
+    // Start confetti
     confetti({
-      particleCount: 200,
+      particleCount: 300,
       spread: 100,
       origin: { y: 0.6 }
     });
+    
+    setTimeout(() => {
+      document.getElementById('eggRevealModal').style.display = 'block';
+    }, 2000); // 2000 milliseconds = 2 seconds
+  });
+}
+
  document.getElementById('eggRevealModal').style.display = 'block';
   });
 } else {
