@@ -204,8 +204,6 @@ if (document.body.classList.contains('easter-bunny-page')) {
   });
 }
 
-const secretImage = document.getElementById('secretImageId');
-
 function showKeyRandomly() {
     // Logic to show a key image randomly around the grass image
 }
