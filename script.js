@@ -16,19 +16,16 @@ window.onclick = function(event) {
 
 const secretImage = document.getElementById('secretImage'); // Use 'getElementById' if it's an ID
 
-// Or, if it's a class:
-// const secretImage = document.querySelector('.secretImage'); // Use 'querySelector' for a class
-
 if (secretImage) {
+  
   secretImage.addEventListener('mouseenter', function() {
     confetti({
       particleCount: 200,
       spread: 100,
       origin: { y: 0.6 }
     });
-  });
 } else {
-  console.error('Secret image element not found');
+  console.log('Secret image element not found');
 }
 
 function applyColorToEgg(color) {
