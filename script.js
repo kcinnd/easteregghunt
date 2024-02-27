@@ -75,6 +75,7 @@ const keyImages = [
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
 ];
+
 document.addEventListener('DOMContentLoaded', function() {
     setupModal();
     setupSecretImageAndConfetti();
@@ -187,16 +188,16 @@ function setupGrassAndKeysHoverEffect() {
         grassContainer.appendChild(grassImg);
 
         const keyImg = document.createElement('img');
-        keyImg.src = keyImages[index % keyImages.length];
+        keyImg.src = keyImages[index % keyImages.length]; // Loop through keyImages array
         keyImg.className = 'key-img';
         keyImg.id = `key${index + 1}`;
         keyImg.style.position = 'absolute';
-        keyImg.style.display = 'none';
+        keyImg.style.display = 'none'; // Initially hidden
         document.body.appendChild(keyImg);
 
         grassImg.addEventListener('mouseenter', () => {
-            keyImg.style.display = 'block';
-            placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container');
+            keyImg.style.display = 'block'; // Show the key on hover
+            placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Avoid overlapping
         });
     });
 }
