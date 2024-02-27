@@ -1,30 +1,35 @@
-// Modal display
 var btn = document.getElementById('openModal');
 var modal = document.getElementById('urgentMessageModal');
 var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function() {
   modal.style.display = "block";
-}
-
+};
 span.onclick = function() {
   modal.style.display = "none";
-}
-
+};
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
+// Secret image interaction
 const secretImage = document.getElementById('secretImage');
-
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
-    // Trigger confetti or any other actions here
+    confetti({
+      particleCount: 300,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
     setTimeout(() => {
       document.getElementById('eggRevealModal').style.display = 'block';
-    }, 2000); // Display the modal 2 seconds after the confetti burst
+      // Hide the modal after 2 seconds
+      setTimeout(() => {
+        document.getElementById('eggRevealModal').style.display = 'none';
+      }, 2000);
+    }, 2000);
   });
 } else {
   console.log('Secret image element not found');
@@ -50,9 +55,11 @@ function addStickerToEgg(src) {
 
 // Event listeners setup
 function setupEventListeners() {
-  document.getElementById('revealEggBtn')?.addEventListener('click', showNewEgg);
-  document.getElementById('startHuntButton')?.addEventListener('click', startHunt);
-  document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
+  document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+  document.getElementById('startHuntButton').addEventListener('click', startHunt);
+  document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
+    button.addEventListener('click', checkWord);
+  });
   document.getElementById('submitAnswer').addEventListener('click', function() {
     const userInput = document.getElementById('userInput').value;
     console.log(userInput); // Process the user input here
@@ -124,30 +131,32 @@ function setupStickers() {
   });
 }
 
-function setupAdditionalImages() {
-  [
-    'https://i.imgur.com/9a87llh.png?1',
-    'https://i.imgur.com/Cx5sW4T.png?1',
-    'https://i.imgur.com/Sppxziz.png',
+function placeKeysRandomly() {
+  const keyImages = [
+    'https://i.imgur.com/tURKwGZ.png',
+    'https://i.imgur.com/q6c11A9.png',
     'https://i.imgur.com/xgWycmI.png',
+    'https://i.imgur.com/xtNwn5Q.png',
+    'https://i.imgur.com/4OYvyjf.png',
     'https://i.imgur.com/xkm6yV7.png',
     'https://i.imgur.com/tEW10f7.png',
     'https://i.imgur.com/HcTyCd7.png',
-    'https://i.imgur.com/tURKwGZ.png',
-    'https://i.imgur.com/P6If7vu.png',
-    'https://i.imgur.com/yDVaMFM.png',
-    'https://i.imgur.com/xtNwn5Q.png',
-    'https://i.imgur.com/4OYvyjf.png',
     'https://i.imgur.com/61J8Ydt.png',
-    'https://i.imgur.com/q6c11A9.png',
+    'https://i.imgur.com/P6If7vu.png',
+    'https://i.imgur.com/9a87llh.png?1',
+    'https://i.imgur.com/Cx5sW4T.png?1',
+    'https://i.imgur.com/Sppxziz.png',
+    'https://i.imgur.com/yDVaMFM.png',
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
-  ].forEach(src => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.className = 'key-image';
-    img.style.width = '100px';
-    placeRandomly(img);
+  ];
+  keyImages.forEach(src => {
+    const keyImg = document.createElement('img');
+    keyImg.src = src;
+    keyImg.className = 'key-img';
+    keyImg.style.position = 'absolute';
+    document.body.appendChild(keyImg);
+    placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust to avoid overlapping
   });
 }
 
@@ -158,8 +167,7 @@ function setupPage() {
   setupColorPalette();
   setupStickers();
   setupEventListeners();
-  setupAdditionalImages();
-  setupGrassAndImagesHoverEffect();
+  placeKeysRandomly(); // Replace setupAdditionalImages with this
 }
 
 // Function to check overlap
@@ -220,25 +228,6 @@ function setupGrassAndKeysHoverEffect() {
     'https://i.imgur.com/Z7XSw47.png',
     'https://i.imgur.com/JrlJYKS.png',
     'https://i.imgur.com/9UKYi7k.png'
-  ];
-
-  const keyImages = [
-    'https://i.imgur.com/tURKwGZ.png',
-    'https://i.imgur.com/q6c11A9.png',
-    'https://i.imgur.com/xgWycmI.png',
-    'https://i.imgur.com/xtNwn5Q.png',
-    'https://i.imgur.com/4OYvyjf.png',
-    'https://i.imgur.com/xkm6yV7.png',
-    'https://i.imgur.com/tEW10f7.png',
-    'https://i.imgur.com/HcTyCd7.png',
-    'https://i.imgur.com/61J8Ydt.png',
-    'https://i.imgur.com/P6If7vu.png',
-    'https://i.imgur.com/9a87llh.png?1',
-    'https://i.imgur.com/Cx5sW4T.png?1',
-    'https://i.imgur.com/Sppxziz.png',
-    'https://i.imgur.com/yDVaMFM.png',
-    'https://i.imgur.com/pbUBsZf.png',
-    'https://i.imgur.com/ymXcQbo.png'
   ];
 
   // Append grass images to the easter-bunny-grass div
