@@ -302,8 +302,7 @@ document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, inde
       document.body.appendChild(keyImg);
       placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust selector as needed
     });
-  });
-}
+});
 
 // Initialize everything once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', setupPage);
