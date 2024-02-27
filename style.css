@@ -99,8 +99,8 @@ body {
   transition: transform 0.2s;
 }
 
-.sticker:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
+.sticker:hover, .color-button:focus {
+  transform: scale(1.1);
 }
 
 .container {
@@ -409,10 +409,20 @@ button:not(#openModal):hover {
 }
 
 @media (max-width: 768px) {
-  .container, .modal-content, .egg-decoration-container {
+  .container, .modal-content, .egg-container {
     width: 90%;
-    padding: 20px;
+    padding: 15px;
   }
+
+  .logo {
+    width: 150px; /* Smaller logo for smaller screens */
+  }
+  
+  .egg {
+    width: auto; /* Adjust egg size for smaller screens */
+    height: 400px; /* Maintain aspect ratio */
+  }
+}
 
   .stickers {
     justify-content: space-around;
