@@ -24,14 +24,20 @@ if (secretImage) {
       origin: { y: 0.6 }
     });
     setTimeout(() => {
-      document.getElementById('eggRevealModal').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('eggRevealModal').style.display = 'none';
-      }, 2000);
     }, 2000);
+
+document.getElementById('eggRevealModal').style.display = 'block'; // Show the modal
   });
 } else {
   console.log('Secret image element not found');
+}
+
+// Close button for the egg reveal modal
+const closeModal = document.querySelector('.egg-reveal-modal .close');
+if (closeModal) {
+  closeModal.addEventListener('click', function() {
+    document.getElementById('eggRevealModal').style.display = 'none'; // Hide the modal when close button is clicked
+  });
 }
 
 const keyImages = [
