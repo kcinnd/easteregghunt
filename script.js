@@ -63,14 +63,13 @@ function setupModal() {
 
 function setupSpecialTrigger() {
   const specialTrigger = document.getElementById('specialTrigger');
-  specialTrigger.addEventListener('mouseenter', () => {
+specialTrigger.addEventListener('mouseenter', () => {
     confetti({
-      particleCount: 200,
-      spread: 100,
+      particleCount: 100,
+      spread: 70,
       origin: { y: 0.6 }
     });
   });
-}
 
 function showNewEgg() {
   const newEgg = document.getElementById('newEgg');
