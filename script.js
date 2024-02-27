@@ -279,19 +279,17 @@ function checkOverlap(element) {
   return false;
 }
 
-function setupStickers() {
-  document.querySelectorAll('.sticker').forEach(sticker => {
-    sticker.addEventListener('click', function() {
-      addStickerToEgg(this.getAttribute('src'));
-    });
+document.querySelectorAll('.sticker').forEach(sticker => {
+  sticker.addEventListener('click', function() {
+    addStickerToEgg(this.getAttribute('src'));
   });
-}
+});
 
 function addStickerToEgg(src) {
   const egg = document.getElementById('egg');
   const stickerImg = document.createElement('img');
   stickerImg.src = src;
-  stickerImg.style.height = '20px'; // Full size for the sticker on the egg
+  stickerImg.className = 'sticker';
   egg.appendChild(stickerImg);
 }
 
