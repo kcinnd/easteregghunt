@@ -1,4 +1,4 @@
-// Utility functions for common actions
+// Utility functions
 function applyColorToEgg(color) {
   const egg = document.getElementById('egg');
   egg ? egg.style.backgroundColor = color : console.error('Egg element not found!');
@@ -94,6 +94,33 @@ function setupStickers() {
   });
 }
 
+function setupAdditionalImages() {
+  [
+    'https://i.imgur.com/9a87llh.png?1',
+    'https://i.imgur.com/Cx5sW4T.png?1',
+    'https://i.imgur.com/Sppxziz.png',
+    'https://i.imgur.com/xgWycmI.png',
+    'https://i.imgur.com/xkm6yV7.png',
+    'https://i.imgur.com/tEW10f7.png',
+    'https://i.imgur.com/HcTyCd7.png',
+    'https://i.imgur.com/tURKwGZ.png',
+    'https://i.imgur.com/P6If7vu.png',
+    'https://i.imgur.com/yDVaMFM.png',
+    'https://i.imgur.com/xtNwn5Q.png',
+    'https://i.imgur.com/4OYvyjf.png',
+    'https://i.imgur.com/61J8Ydt.png',
+    'https://i.imgur.com/q6c11A9.png',
+    'https://i.imgur.com/pbUBsZf.png',
+    'https://i.imgur.com/ymXcQbo.png'
+  ].forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'key-image';
+    img.style.width = '100px';
+    placeRandomly(img);
+  });
+}
+
 // Main setup function
 function setupPage() {
   setupModal();
@@ -126,60 +153,6 @@ function setupGrassAndImagesHoverEffect() {
   document.querySelectorAll('.easter-bunny-grass .grass-img, .additional-img').forEach((element, index) => {
     element.addEventListener('mouseenter', () => showKeyRandomlyOnPage(index % 16)); // Adjust modulo based on the number of keys
   });
-}
-
-function showKeyRandomlyOnPage(keyIndex) {
-  // Functionality to show a key randomly on the page
-}
-
-function setupAdditionalImages() {
-  const keyImages = [
-    'https://i.imgur.com/9a87llh.png?1',
-    'https://i.imgur.com/Cx5sW4T.png?1',
-    'https://i.imgur.com/Sppxziz.png',
-    'https://i.imgur.com/xgWycmI.png',
-    'https://i.imgur.com/xkm6yV7.png',
-    'https://i.imgur.com/tEW10f7.png',
-    'https://i.imgur.com/HcTyCd7.png',
-    'https://i.imgur.com/tURKwGZ.png',
-    'https://i.imgur.com/P6If7vu.png',
-    'https://i.imgur.com/yDVaMFM.png',
-    'https://i.imgur.com/xtNwn5Q.png',
-    'https://i.imgur.com/4OYvyjf.png',
-    'https://i.imgur.com/61J8Ydt.png',
-    'https://i.imgur.com/q6c11A9.png',
-    'https://i.imgur.com/pbUBsZf.png',
-    'https://i.imgur.com/ymXcQbo.png'
-  ];
-
-  keyImages.forEach(src => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.className = 'key-image'; // Assign a class for potential styling
-    img.style.width = '100px'; // Set a fixed width, or adjust as needed
-    document.body.appendChild(img); // Append the image to the body, or another container element
-
-    placeRandomly(img);
-  });
-}
-
-function placeRandomly(element) {
-  let attempts = 0;
-  const maxAttempts = 50; // Limit the number of placement attempts to avoid an infinite loop
-
-  do {
-    const randomX = Math.random() * (window.innerWidth - element.offsetWidth);
-    const randomY = Math.random() * (window.innerHeight - element.offsetHeight);
-
-    element.style.left = `${randomX}px`;
-    element.style.top = `${randomY}px`;
-
-    attempts++;
-  } while (checkOverlap(element) && attempts < maxAttempts);
-}
-
-function checkOverlap(element) {
-  // Your implementation to check if `element` overlaps with any other elements
 }
 
 // Initialize everything once the DOM is fully loaded
