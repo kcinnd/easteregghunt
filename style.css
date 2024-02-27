@@ -164,7 +164,7 @@ body {
 #secretImage {
     position: absolute;
     top: 150px; /* 150 pixels from the top */
-    left: 150px; /* 150 pixels from the left */
+    right: 150px; /* 150 pixels from the left */
     width: 20px; /* Set the width as required */
 }
 
