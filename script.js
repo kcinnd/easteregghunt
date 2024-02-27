@@ -309,3 +309,4 @@ document.addEventListener('DOMContentLoaded', function() {
   setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
   setupEventListeners();
 });
+
