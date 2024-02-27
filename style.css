@@ -306,6 +306,14 @@ button:not(#openModal):hover {
   /* Styles for non-overlapping grass images on other pages */
 }
 
+#submitAnswer {
+  background-color: #008CBA; /* Example button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
 .color-swatches {
   display: flex;
   justify-content: center;
