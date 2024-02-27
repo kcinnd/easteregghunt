@@ -208,5 +208,13 @@ function showKeyRandomly() {
     // Logic to show a key image randomly around the grass image
 }
 
+function showKeyRandomly() {
+  // Assuming keyImg is a globally defined array of key image URLs
+  const keyImgElement = document.createElement('img');
+  keyImgElement.src = keyImg[Math.floor(Math.random() * keyImg.length)]; // Random key image source
+  keyImgElement.className = 'key-image'; // Ensure this class exists in your CSS
+  placeRandomly(keyImgElement, 'no-overlap-class'); // Adjust the second argument as needed
+}
+
 // Initialize everything once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', setupPage);
