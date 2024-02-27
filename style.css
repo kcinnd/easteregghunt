@@ -107,6 +107,10 @@ body {
   overflow-x: auto; /* Allow horizontal scrolling for grass images */
 }
 
+.easter-bunny-grass.overlap-allowed .grass-img {
+  margin-right: -25px; /* or any value that causes the desired overlap */
+}
+
 .grass-img {
   width: 150px;
   margin: 0 5px;
