@@ -165,6 +165,7 @@ function placeKeysRandomly() {
     keyImg.src = src;
     keyImg.className = 'key-img';
     keyImg.style.position = 'absolute';
+    keyImg.style.width = 'auto';
     keyImg.style.height = '150px';
     document.body.appendChild(keyImg);
     placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust to avoid overlapping
