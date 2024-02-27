@@ -37,8 +37,9 @@ body {
 }
 
 .modal-content {
-  background-color: #F29595;
+  background-color: #2f4f4f;
   margin: 15% auto;
+  color: #ffffff;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -99,9 +100,10 @@ body {
 }
 
 .egg-reveal-modal {
-  background-color: #FFF0F5; /* Light pink background for Easter theme */
-  border: 2px dashed #FFC0CB; /* Dashed border with a light pink color */
+  background-color: #ffc0cb; /* Light pink background for Easter theme */
+  border: 2px dashed #ff69b4; /* Dashed border with a light pink color */
   padding: 20px;
+  color: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1050;
   display: none;
@@ -130,7 +132,7 @@ body {
 }
 
 .egg-reveal-modal h2 {
-  color: #FF69B4; /* Bright pink for headings */
+  color: #000080;
   margin-bottom: 15px;
 }
 
@@ -151,6 +153,11 @@ body {
 
 .egg-reveal-modal button:hover {
   background-color: #FF69B4; /* Darker pink on hover */
+}
+
+.egg-reveal-modal input[type="text"] {
+  border: 1px solid #FFC0CB; 
+  background-color: #FFFFFF;
 }
 
 #secretImage {
