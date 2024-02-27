@@ -1,22 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('openModal');
     var modal = document.getElementById('urgentMessageModal');
-    var span = document.getElementsByClassName("close")[0];
+    var spans = document.getElementsByClassName("close"); // This gets all elements with class "close"
 
-    btn.onclick = function() {
-      modal.style.display = "block";
-    };
+    if (btn && modal) {
+        btn.onclick = function() {
+          modal.style.display = "block";
+        };
+    }
 
-    span.onclick = function() {
-      modal.style.display = "none";
-    };
+    Array.from(spans).forEach(span => {
+        span.onclick = function() {
+          modal.style.display = "none";
+        };
+    });
 
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
     };
-});
 
 const keyImages = [
     'https://i.imgur.com/tURKwGZ.png',
@@ -293,4 +296,5 @@ document.addEventListener('DOMContentLoaded', function() {
   setupPage();
   setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
   setupEventListeners();
+    
 });
