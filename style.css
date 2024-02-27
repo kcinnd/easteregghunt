@@ -199,6 +199,10 @@ button:not(#openModal):hover {
   color: black;
 }
 
+.key-image {
+  display: none;
+}
+
 .tooltip {
   position: absolute;
   top: 10px;
