@@ -23,15 +23,18 @@ window.onclick = function(event) {
   }
 }
 
-var secretImage = document.querySelector('.secret-image');
-
-secretImage.addEventListener('mouseenter', function() {
-  // Trigger confetti
-  confetti({
-    particleCount: 200,
-    spread: 100,
-    origin: { y: 0.6 }
+if (secretImage) {
+  secretImage.addEventListener('mouseenter', function() {
+    // Trigger confetti
+    confetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
   });
+} else {
+  console.log('Secret image element not found');
+}
 
   // Display modal or popup
   modal.style.display = "block";
