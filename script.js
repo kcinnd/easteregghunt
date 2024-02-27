@@ -230,7 +230,8 @@ function placeKeyRandomly(keyImg, avoidElementsClass) {
 }
 
 // Function to set up grass and keys with hover functionality
-function setupGrassAndKeysHoverEffect() {
+function setupGrassAndKeysHoverEffect() 
+{
   const grassImages = [
     'https://i.imgur.com/SGrsdhI.png',
     'https://i.imgur.com/YsEkPnH.png',
@@ -244,34 +245,27 @@ function setupGrassAndKeysHoverEffect() {
     'https://i.imgur.com/9UKYi7k.png'
   ];
 
-  // Append grass images to the easter-bunny-grass div
-  const grassContainer = document.querySelector('.easter-bunny-grass');
+ const grassContainer = document.querySelector('.easter-bunny-grass');
   grassImages.forEach((src, index) => {
     const grassImg = document.createElement('img');
     grassImg.src = src;
     grassImg.className = 'grass-img';
     grassImg.id = `grass${index + 1}`;
     grassContainer.appendChild(grassImg);
-  });
 
-  // Append key images to the body and initially hide them
-  keyImages.forEach((src, index) => {
+    // Append corresponding key images and initially hide them
     const keyImg = document.createElement('img');
-    keyImg.src = src;
+    keyImg.src = keyImages[index % keyImages.length]; // Loop through keyImages if fewer than grassImages
     keyImg.className = 'key-img';
     keyImg.id = `key${index + 1}`;
     keyImg.style.position = 'absolute';
     keyImg.style.display = 'none'; // Initially hidden
     document.body.appendChild(keyImg);
-    placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Avoid overlapping with grass, other keys, logo, and container
-  });
 
-  // Add hover effect to grass images to show corresponding key image
-  grassImages.forEach((_, index) => {
-    const grassImg = document.getElementById(`grass${index + 1}`);
+    // Setup hover effect to show corresponding key image
     grassImg.addEventListener('mouseenter', () => {
-      const keyImg = document.getElementById(`key${index + 1}`);
       keyImg.style.display = 'block'; // Show the key on hover
+      placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Position key without overlapping
     });
   });
 }
@@ -293,21 +287,9 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, index) => {
-    grass.addEventListener('mouseenter', () => {
-      const keyImg = document.createElement('img');
-      keyImg.src = keyImageURLs[index % keyImageURLs.length]; // Cycle through key images
-      keyImg.className = 'key-img'; // Ensure this class is styled appropriately
-      keyImg.style.position = 'absolute';
-      document.body.appendChild(keyImg);
-      placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust selector as needed
-    });
-});
-
 
 document.addEventListener('DOMContentLoaded', function() {
   setupPage();
   setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
   setupEventListeners();
 });
-
