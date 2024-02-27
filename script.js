@@ -187,10 +187,22 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-function setupGrassAndImagesHoverEffect() {
-  document.querySelectorAll('.easter-bunny-grass .grass-img, .additional-img').forEach((element, index) => {
-    element.addEventListener('mouseenter', () => showKeyRandomlyOnPage(index % 16)); // Adjust modulo based on the number of keys
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.body.classList.contains('easter-bunny-page')) {
+        document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
+            grass.addEventListener('mouseenter', showKeyRandomly);
+        });
+    }
+
+    // Secret image hover functionality
+    const secretImage = document.getElementById('secretImage');
+    secretImage.addEventListener('mouseenter', function() {
+        // Trigger confetti and popup here
+    });
+});
+
+function showKeyRandomly() {
+    // Logic to show a key image randomly around the grass image
 }
 
 // Initialize everything once the DOM is fully loaded
