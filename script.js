@@ -89,6 +89,12 @@ function setupModal() {
   window.onclick = event => event.target === modal ? modal.style.display = "none" : null;
 }
 
+document.getElementById('submitAnswer').addEventListener('click', function() {
+  const userInput = document.getElementById('userInput').value;
+  // Process the user input here, e.g., check if the answer is correct
+  console.log(userInput); // For demonstration purposes
+});
+
 function setupSpecialTrigger() {
   const specialTrigger = document.getElementById('specialTrigger');
   if (specialTrigger) {
