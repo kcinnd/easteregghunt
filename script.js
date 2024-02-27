@@ -93,7 +93,6 @@ function setupEventListeners() {
   if (startHuntButton) {
     startHuntButton.addEventListener('click', startHunt);
   }
-  document.getElementById('startHuntButton').addEventListener('click', startHunt);
   document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
     button.addEventListener('click', checkWord);
   });
