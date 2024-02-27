@@ -246,10 +246,10 @@ function checkOverlap(element1, element2) {
 }
 
 function setupEventListeners() {
-    document.getElementById('revealEggBtn')?.addEventListener('click', showNewEgg);
-    document.getElementById('startHuntButton')?.addEventListener('click', startHunt);
+    document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+    document.getElementById('startHuntButton').addEventListener('click', startHunt);
     document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
-    document.getElementById('submitAnswer')?.addEventListener('click', () => {
+    document.getElementById('submitAnswer').addEventListener('click', () => {
         const userInput = document.getElementById('userInput')?.value;
         console.log(userInput); // Process the user input here
     });
