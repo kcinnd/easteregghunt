@@ -20,25 +20,25 @@ body {
   background-size: contain; /* Ensure the logo fits within the div */
 }
 
-.modal {
-  display: none;
+.modal, .egg-reveal-modal {
+  display: none; /* Hidden by default */
   position: fixed;
-  z-index: 10000; /* Ensure modals appear above everything else */
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); /* Darken background */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modal-content, .egg-reveal-modal {
   background-color: #fefefe;
-  margin: 15% auto; /* Center the modal */
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be responsive */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 70%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -48,10 +48,8 @@ body {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -67,40 +65,26 @@ body {
   height: 300px;
   background-color: white;
   border-radius: 50%/35%;
-  position: relative; /* Allow stickers to be absolutely positioned within */
+  margin: 20px 0; /* Allow stickers to be absolutely positioned within */
 }
 
-.color-palette {
+.color-palette, .sticker-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Ensure wrapping for smaller screens */
   margin-top: 20px;
 }
 
-.color-button {
-  width: 40px;
-  height: 40px;
+.color-button, .sticker {
+  width: 40px; /* Uniform size for color buttons and stickers */
+  height: 40px; /* Added height for color buttons to match stickers */
+  margin: 5px; /* Consistent margin */
+  cursor: pointer;
   border-radius: 50%;
-  margin: 0 10px;
-  cursor: pointer;
-  border: 2px solid white;
-}
-
-.sticker-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.sticker {
-  width: 50px;
-  margin: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
 
 .sticker:hover, .color-button:focus {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Interactive feedback */
 }
 
 .container {
@@ -113,33 +97,19 @@ body {
   z-index: 5;
 }
 
-.grass-img {
-  margin: 0 5px;
-  width: 150px;
-  height: auto;
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-.easter-bunny-grass {
+.easter-bunny-grass, .image-border {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  vertical-align: bottom;
-  white-space: nowrap;
-
+  overflow-x: auto; /* Allow horizontal scrolling for grass images */
 }
 
-/* Easter Bunny Page specific styles */
-.easter-bunny-grass .grass-img {
+.grass-img {
   width: 150px;
-  height: auto;
+  margin: 0 5px;
   display: inline-block;
-  margin-right: -25px;
-  vertical-align: bottom;
-  white-space: nowrap;
 }
 
 #confettiCanvas {
@@ -259,7 +229,6 @@ button:not(#openModal):hover {
   background-color: #CC4F39;
 }
 
-
 .puzzle-button {
   background-color: #E4AFBB;
   color: white;
@@ -301,47 +270,9 @@ button:not(#openModal):hover {
   z-index: 10;
 }
 
-.egg-reveal-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #FFF3E0;
-  border: 4px dashed #FFC107;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1050;
-  display: none;
-  width: 300px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.egg-reveal-modal h2 {
-  color: #FF5722;
-  margin-bottom: 15px;
-}
-
-.egg-reveal-modal p {
-  color: #4E342E;
-  margin-bottom: 20px;
-}
-
-.egg-reveal-modal button {
-  background-color: #8BC34A;
-  color: #FFFFFF;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 .egg-reveal-modal button:hover {
   background-color: #7CB342;
 }
-
-
 
 /* Ensure the .image-border styles do not cause overlap on other pages */
 .image-border:not(.easter-bunny-grass) .grass-img {
@@ -409,22 +340,16 @@ button:not(#openModal):hover {
 }
 
 @media (max-width: 768px) {
-  .container, .modal-content, .egg-container {
-    width: 90%;
-    padding: 15px;
+  .modal-content, .egg-reveal-modal, .egg-container {
+    width: 90%; /* More screen-friendly on smaller devices */
+  }
+
+  #egg {
+    width: 150px; /* Smaller egg for smaller screens */
+    height: 225px; /* Maintain aspect ratio */
   }
 
   .logo {
     width: 150px; /* Smaller logo for smaller screens */
   }
-  
-  .egg {
-    width: auto; /* Adjust egg size for smaller screens */
-    height: 400px; /* Maintain aspect ratio */
-  }
-}
-
-  .stickers {
-    justify-content: space-around;
-  }
-  
+} 
