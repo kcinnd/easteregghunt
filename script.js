@@ -1,22 +1,21 @@
-var modal = document.getElementById('urgentMessageModal');
+// Modal display
 var btn = document.getElementById('openModal');
-var span = document.querySelector(".close"); // Changed to querySelector for consistency
+var modal = document.getElementById('urgentMessageModal');
+var span = document.getElementsByClassName("close")[0];
 
-if (btn) {
-  btn.onclick = function() {
-    modal.style.display = "block";
-  };
+btn.onclick = function() {
+  modal.style.display = "block";
 }
-if (span) {
-  span.onclick = function() {
-    modal.style.display = "none";
-  };
+
+span.onclick = function() {
+  modal.style.display = "none";
 }
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-};
+}
 
 const secretImage = document.getElementById('secretImage'); // Use 'getElementById' if it's an ID
 
