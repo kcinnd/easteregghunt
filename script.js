@@ -301,6 +301,7 @@ document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, inde
     });
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
   setupPage();
   setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
