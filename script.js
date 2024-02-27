@@ -5,6 +5,23 @@ document.querySelectorAll('.color-swatch').forEach(swatch => {
   });
 });
 
+var modal = document.getElementById('urgentMessageModal');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Also consider closing the modal if the user clicks anywhere outside of it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 document.querySelector('.close').addEventListener('click', function() {
   
 document.getElementById('urgentMessageModal').style.display = 'none';
@@ -13,6 +30,8 @@ document.getElementById('urgentMessageModal').style.display = 'none';
 document.getElementById('openModal').addEventListener('click', function() {
 document.getElementById('urgentMessageModal').style.display = 'block';
 });
+
+
 
 const colors = ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'];
 const colorPalette = document.getElementById('colorPalette');
