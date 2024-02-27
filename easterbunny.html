@@ -42,13 +42,13 @@
     <div id="colorPalette" class="color-palette"></div> 
     <div id="stickerContainer" class="sticker-container"></div> 
 
-<div class="container">
-    <button id="openModal">Read Urgent Message</button>
-    <a href="external-link.html" class="puzzle-button">Puzzle Link</a>
-    <div>
-        <input type="text" id="answerSpace" placeholder="Enter answer here">
-        <button id="submitAnswer">Submit</button>
-    </div>
+<div id="container">
+  <button id="openModal">Read Urgent Message</button>
+  <!-- Puzzle button -->
+  <a href="external_link_to_puzzle" class="puzzle-button">Puzzle</a>
+  <!-- Answer and submit -->
+  <input type="text" id="userInput" placeholder="Enter answer here">
+  <button onclick="checkWord()">Submit</button>
 </div>
     
     <button id="undoBtn">Undo</button>
