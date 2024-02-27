@@ -47,9 +47,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Fun, playful font */
   margin: auto;
-  animation: showmodal 0.3s;
 }
 
 .egg-reveal-modal .close {
