@@ -89,6 +89,10 @@ function addStickerToEgg(src) {
 // Event listeners setup
 function setupEventListeners() {
   document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+  const startHuntButton = document.getElementById('startHuntButton');
+  if (startHuntButton) {
+    startHuntButton.addEventListener('click', startHunt);
+  }
   document.getElementById('startHuntButton').addEventListener('click', startHunt);
   document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
     button.addEventListener('click', checkWord);
