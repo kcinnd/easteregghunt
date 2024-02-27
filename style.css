@@ -358,7 +358,7 @@ button:not(#openModal):hover {
 }
 
 /* Specific style for the "Read Urgent Message" button */
-#openModal {
+.openModal {
   background-color: #FF6347;
   color: black;
   font-weight: bold;
