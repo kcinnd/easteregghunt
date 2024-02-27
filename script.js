@@ -202,12 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Secret image hover functionality
-    const secretImage = document.getElementById('secretImage');
-    secretImage.addEventListener('mouseenter', function() {
-        // Trigger confetti and popup here
-    });
-});
+const secretImage = document.getElementById('secretImageId');
 
 function showKeyRandomly() {
     // Logic to show a key image randomly around the grass image
