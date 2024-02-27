@@ -75,232 +75,179 @@ const keyImages = [
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
 ];
+document.addEventListener('DOMContentLoaded', function() {
+    setupModal();
+    setupSecretImageAndConfetti();
+    setupEggCustomization();
+    setupGrassAndKeysHoverEffect();
+    setupEventListeners();
+});
 
-function applyColorToEgg(color) {
-  const egg = document.getElementById('egg');
-  if (egg) egg.style.backgroundColor = color;
-  else console.error('Egg element not found!');
-}
-
-function addStickerToEgg(src) {
-  const egg = document.getElementById('egg');
-  if (egg) {
-    const stickerImg = document.createElement('img');
-    stickerImg.src = src;
-    stickerImg.className = 'sticker';
-    egg.appendChild(stickerImg);
-  } else {
-    console.error('Egg element not found!');
-  }
-}
-
-// Event listeners setup
-function setupEventListeners() {
-  document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
-  const startHuntButton = document.getElementById('startHuntButton');
-  if (startHuntButton) {
-    startHuntButton.addEventListener('click', startHunt);
-  }
-  document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
-    button.addEventListener('click', checkWord);
-  });
-  document.getElementById('submitAnswer').addEventListener('click', function() {
-    const userInput = document.getElementById('userInput').value;
-    console.log(userInput); // Process the user input here
-  });
-}
-
-// Feature initialization functions
 function setupModal() {
-  const modal = document.getElementById('urgentMessageModal');
-  document.getElementById('openModal').onclick = () => modal.style.display = "block";
-  document.getElementsByClassName("close")[0].onclick = () => modal.style.display = "none";
-  window.onclick = event => event.target === modal ? modal.style.display = "none" : null;
+    const btn = document.getElementById('openModal');
+    const modal = document.getElementById('urgentMessageModal');
+    const spans = document.getElementsByClassName("close");
+
+    if (btn && modal) {
+        btn.onclick = () => modal.style.display = "block";
+        Array.from(spans).forEach(span => {
+            span.onclick = () => modal.style.display = "none";
+        });
+        window.onclick = event => {
+            if (event.target === modal) modal.style.display = "none";
+        };
+    }
 }
 
-function setupSpecialTrigger() {
-  const specialTrigger = document.getElementById('specialTrigger');
-  if (specialTrigger) {
-    specialTrigger.addEventListener('mouseenter', () => confetti({
-      particleCount: 200,
-      spread: 100,
-      origin: { y: 0.6 }
-    }));
-  } else {
-    console.log('specialTrigger element not found');
-  }
-}
-function setupColorPalette() {
-  const colorPalette = document.getElementById('colorPalette');
-  ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'].forEach(color => {
-    const colorSwatch = document.createElement('button');
-    colorSwatch.style.backgroundColor = color;
-    colorSwatch.className = 'color-button';
-    colorSwatch.onclick = () => applyColorToEgg(color);
-    colorPalette.appendChild(colorSwatch);
-  });
+function setupSecretImageAndConfetti() {
+    const secretImage = document.getElementById('secretImage');
+    const eggRevealModal = document.getElementById('eggRevealModal');
+
+    if (secretImage && eggRevealModal) {
+        secretImage.addEventListener('mouseenter', () => {
+            confetti({ particleCount: 500, spread: 200, origin: { y: 0.6 } });
+            setTimeout(() => eggRevealModal.style.display = 'block', 2000);
+        });
+
+        const closeModal = eggRevealModal.querySelector('.close');
+        if (closeModal) {
+            closeModal.addEventListener('click', () => eggRevealModal.style.display = 'none');
+        }
+    }
 }
 
-function setupStickers() {
-  const stickerContainer = document.getElementById('stickerContainer');
-  [
-    'https://i.imgur.com/9a87llh.png?1',
-    'https://i.imgur.com/Cx5sW4T.png?1',
-    'https://i.imgur.com/Sppxziz.png',
-    'https://i.imgur.com/xgWycmI.png',
-    'https://i.imgur.com/xkm6yV7.png',
-    'https://i.imgur.com/tEW10f7.png',
-    'https://i.imgur.com/HcTyCd7.png',
-    'https://i.imgur.com/tURKwGZ.png',
-    'https://i.imgur.com/P6If7vu.png',
-    'https://i.imgur.com/yDVaMFM.png',
-    'https://i.imgur.com/xtNwn5Q.png',
-    'https://i.imgur.com/4OYvyjf.png',
-    'https://i.imgur.com/61J8Ydt.png',
-    'https://i.imgur.com/q6c11A9.png',
-    'https://i.imgur.com/pbUBsZf.png',
-    'https://i.imgur.com/ymXcQbo.png'
-  ].forEach(src => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.className = 'sticker';
-    img.onclick = () => addStickerToEgg(src);
-    stickerContainer.appendChild(img);
-  });
+function setupEggCustomization() {
+    const egg = document.getElementById('egg');
+    const colorPalette = document.getElementById('colorPalette');
+    const stickerContainer = document.getElementById('stickerContainer');
+
+    if (egg && colorPalette && stickerContainer) {
+        ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'].forEach(color => {
+            const colorSwatch = document.createElement('button');
+            colorSwatch.style.backgroundColor = color;
+            colorSwatch.className = 'color-button';
+            colorSwatch.onclick = () => egg.style.backgroundColor = color;
+            colorPalette.appendChild(colorSwatch);
+        });
+
+        const stickerSources = 
+            ['https://i.imgur.com/9a87llh.png?1',
+            'https://i.imgur.com/Cx5sW4T.png?1',
+            'https://i.imgur.com/Sppxziz.png',
+            'https://i.imgur.com/xgWycmI.png',
+            'https://i.imgur.com/xkm6yV7.png',
+            'https://i.imgur.com/tEW10f7.png',
+            'https://i.imgur.com/HcTyCd7.png',
+            'https://i.imgur.com/tURKwGZ.png',
+            'https://i.imgur.com/P6If7vu.png',
+            'https://i.imgur.com/yDVaMFM.png',
+            'https://i.imgur.com/xtNwn5Q.png',
+            'https://i.imgur.com/4OYvyjf.png',
+            'https://i.imgur.com/61J8Ydt.png',
+            'https://i.imgur.com/q6c11A9.png',
+            'https://i.imgur.com/pbUBsZf.png',
+            'https://i.imgur.com/ymXcQbo.png'
+             ];
+         stickerSources.forEach(src => {
+            const stickerImg = document.createElement('img');
+            stickerImg.src = src;
+            stickerImg.className = 'sticker';
+            stickerImg.onclick = () => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'sticker';
+                egg.appendChild(img);
+            };
+            stickerContainer.appendChild(stickerImg);
+        });
+    }
 }
 
-function placeKeysRandomly() {
-  keyImages.forEach(src => {
-    const keyImg = document.createElement('img');
-    keyImg.src = src;
-    keyImg.className = 'key-img';
-    keyImg.style.position = 'absolute';
-    keyImg.style.width = 'auto';
-    keyImg.style.height = '100px';
-    document.body.appendChild(keyImg);
-    placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust to avoid overlapping
-  });
-}
+function setupGrassAndKeysHoverEffect() {
+    const grassContainer = document.querySelector('.easter-bunny-grass');
+    if (!grassContainer) return;
 
-// Main setup function
-function setupPage() {
-  setupModal();
-  setupSpecialTrigger();
-  setupColorPalette();
-  setupStickers();
-  setupEventListeners();
-  placeKeysRandomly(); // Replace setupAdditionalImages with this
-}
+    const grassImages = [
+        'https://i.imgur.com/SGrsdhI.png',
+        'https://i.imgur.com/YsEkPnH.png',
+        'https://i.imgur.com/Ec8VQrS.png',
+        'https://i.imgur.com/3NuudR3.png',
+        'https://i.imgur.com/K0bd7nK.png',
+        'https://i.imgur.com/kru4203.png',
+        'https://i.imgur.com/P0ZhspR.png',
+        'https://i.imgur.com/Z7XSw47.png',
+        'https://i.imgur.com/JrlJYKS.png',
+        'https://i.imgur.com/9UKYi7k.png'
+    ];
+    grassImages.forEach((src, index) => {
+        const grassImg = document.createElement('img');
+        grassImg.src = src;
+        grassImg.className = 'grass-img';
+        grassImg.id = `grass${index + 1}`;
+        grassContainer.appendChild(grassImg);
 
-// Function to check overlap
-function checkOverlap(element1, element2) {
-  const rect1 = element1.getBoundingClientRect();
-  const rect2 = element2.getBoundingClientRect();
+        const keyImg = document.createElement('img');
+        keyImg.src = keyImages[index % keyImages.length];
+        keyImg.className = 'key-img';
+        keyImg.id = `key${index + 1}`;
+        keyImg.style.position = 'absolute';
+        keyImg.style.display = 'none';
+        document.body.appendChild(keyImg);
 
-  return !(
-    rect1.right < rect2.left ||
-    rect1.left > rect2.right ||
-    rect1.bottom < rect2.top ||
-    rect1.top > rect2.bottom
-  );
-}
-
-// Function to place keys randomly but avoid overlapping with specified elements
-function placeKeyRandomly(keyImg, avoidElementsClass) {
-  let placed = false;
-  const maxAttempts = 2000; // Increased number of attempts
-  let attempts = 0;
-
-  while (!placed && attempts < maxAttempts) {
-    const x = Math.random() * (window.innerWidth - keyImg.offsetWidth);
-    const y = Math.random() * (window.innerHeight - keyImg.offsetHeight);
-
-    keyImg.style.left = `${x}px`;
-    keyImg.style.top = `${y}px`;
-
-    let overlapping = false;
-    document.querySelectorAll(avoidElementsClass).forEach(element => {
-      if (checkOverlap(keyImg, element)) {
-        overlapping = true;
-      }
+        grassImg.addEventListener('mouseenter', () => {
+            keyImg.style.display = 'block';
+            placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container');
+        });
     });
+}
 
-    if (!overlapping) {
-      placed = true;
-    } else {
-      console.log(`Overlap detected at attempt ${attempts + 1}`); // Debugging log
+function placeKeyRandomly(keyImg, avoidElementsSelector) {
+    const maxAttempts = 5000;
+    let attempts = 0, placed = false;
+
+    while (!placed && attempts < maxAttempts) {
+        keyImg.style.left = `${Math.random() * (window.innerWidth - keyImg.clientWidth)}px`;
+        keyImg.style.top = `${Math.random() * (window.innerHeight - keyImg.clientHeight)}px`;
+
+        const overlapping = Array.from(document.querySelectorAll(avoidElementsSelector)).some(element => checkOverlap(keyImg, element));
+        if (!overlapping) placed = true;
+        attempts++;
     }
 
-    attempts++;
-  }
-
-  if (!placed) {
-    console.error("Couldn't place key without overlapping after max attempts");
-  }
+    if (!placed) console.error("Couldn't place key without overlapping after max attempts.");
 }
 
-// Function to set up grass and keys with hover functionality
-function setupGrassAndKeysHoverEffect() 
-{
-  const grassImages = [
-    'https://i.imgur.com/SGrsdhI.png',
-    'https://i.imgur.com/YsEkPnH.png',
-    'https://i.imgur.com/Ec8VQrS.png',
-    'https://i.imgur.com/3NuudR3.png',
-    'https://i.imgur.com/K0bd7nK.png',
-    'https://i.imgur.com/kru4203.png',
-    'https://i.imgur.com/P0ZhspR.png',
-    'https://i.imgur.com/Z7XSw47.png',
-    'https://i.imgur.com/JrlJYKS.png',
-    'https://i.imgur.com/9UKYi7k.png'
-  ];
+function checkOverlap(element1, element2) {
+    const rect1 = element1.getBoundingClientRect();
+    const rect2 = element2.getBoundingClientRect();
+    return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+}
 
- const grassContainer = document.querySelector('.easter-bunny-grass');
-  grassImages.forEach((src, index) => {
-    const grassImg = document.createElement('img');
-    grassImg.src = src;
-    grassImg.className = 'grass-img';
-    grassImg.id = `grass${index + 1}`;
-    grassContainer.appendChild(grassImg);
-
-    // Append corresponding key images and initially hide them
-    const keyImg = document.createElement('img');
-    keyImg.src = keyImages[index % keyImages.length]; // Loop through keyImages if fewer than grassImages
-    keyImg.className = 'key-img';
-    keyImg.id = `key${index + 1}`;
-    keyImg.style.position = 'absolute';
-    keyImg.style.display = 'none'; // Initially hidden
-    document.body.appendChild(keyImg);
-
-    // Setup hover effect to show corresponding key image
-    grassImg.addEventListener('mouseenter', () => {
-      keyImg.style.display = 'block'; // Show the key on hover
-      placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Position key without overlapping
+function setupEventListeners() {
+    document.getElementById('revealEggBtn')?.addEventListener('click', showNewEgg);
+    document.getElementById('startHuntButton')?.addEventListener('click', startHunt);
+    document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
+    document.getElementById('submitAnswer')?.addEventListener('click', () => {
+        const userInput = document.getElementById('userInput')?.value;
+        console.log(userInput); // Process the user input here
     });
-  });
 }
 
 // Additional or game-specific functions
 function showNewEgg() {
-  document.getElementById('newEgg').style.display = 'block';
-  document.querySelector('.egg-container').style.display = 'flex';
-  document.getElementById('eggRevealModal').style.display = 'none';
+    document.getElementById('newEgg')?.style.display = 'block';
+    document.querySelector('.egg-container')?.style.display = 'flex';
+    document.getElementById('eggRevealModal')?.style.display = 'none';
 }
 
 function startHunt() {
-  window.location.href = 'page1.html';
+    window.location.href = 'page1.html';
 }
 
 function checkWord() {
-  const userInput = document.getElementById('userInput').value;
-  const feedback = document.getElementById('feedback');
-  feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
+    const userInput = document.getElementById('userInput')?.value;
+    const feedback = document.getElementById('feedback');
+    if (feedback) {
+        feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
+    }
 }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  setupPage();
-  setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
-  setupEventListeners();
-    
-});
