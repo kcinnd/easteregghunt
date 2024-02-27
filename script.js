@@ -90,9 +90,17 @@ function setupModal() {
 }
 
 function setupSpecialTrigger() {
-  document.getElementById('specialTrigger').addEventListener('mouseenter', () => confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } }));
+  const specialTrigger = document.getElementById('specialTrigger');
+  if (specialTrigger) {
+    specialTrigger.addEventListener('mouseenter', () => confetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.6 }
+    }));
+  } else {
+    console.log('specialTrigger element not found');
+  }
 }
-
 function setupColorPalette() {
   const colorPalette = document.getElementById('colorPalette');
   ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'].forEach(color => {
