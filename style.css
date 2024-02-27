@@ -148,6 +148,13 @@ h1 {
   color: #8968A1;
 }
 
+.secret-image {
+  width: 20px;
+  position: absolute;
+  z-index: 2; /* Ensure it's above some elements but below others like modals */
+  /* Add more styles to position it where you want on the page */
+}
+
 .intro,
 .secret {
   margin-bottom: 30px;
