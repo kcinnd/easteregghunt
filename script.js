@@ -14,16 +14,18 @@ window.onclick = function(event) {
   }
 }
 
-const secretImage = document.getElementById('secretImage');
+const secretImage = document.getElementById('secretImage'); // Use 'getElementById' if it's an ID
+
+// Or, if it's a class:
+// const secretImage = document.querySelector('.secretImage'); // Use 'querySelector' for a class
+
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
-    // Trigger confetti and show the Easter egg
     confetti({
       particleCount: 200,
       spread: 100,
       origin: { y: 0.6 }
     });
-    // Logic to show the Easter egg and any popup if required
   });
 } else {
   console.error('Secret image element not found');
