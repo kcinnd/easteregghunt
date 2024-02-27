@@ -138,6 +138,7 @@ body {
 
 .egg-reveal-modal p {
   margin-bottom: 20px;
+  background-color: transparent;
 }
 
 .egg-reveal-modal button {
