@@ -64,7 +64,7 @@ body {
 }
 
 .modal-close-btn:hover {
-  background-color: #f44336; /* Slightly lighter red on hover */
+  background-color: #910000; /* Slightly darker red on hover */
 }
 
 .close {
