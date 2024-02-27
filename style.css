@@ -1,10 +1,8 @@
 body {
   font-family: 'Arial', sans-serif;
   background-color: #9FE0D2;
-  color: #333;
   margin: 0;
   padding: 0;
-  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +18,89 @@ body {
   z-index: 20;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000; /* Ensure modals appear above everything else */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Darken background */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Center the modal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be responsive */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.egg-container {
+  display: none; /* Initially hidden, shown after modal interaction */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#egg {
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border-radius: 50%/35%;
+  position: relative; /* Allow stickers to be absolutely positioned within */
+}
+
+.color-palette {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.color-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.sticker-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sticker {
+  width: 50px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sticker:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
 .container {
   text-align: center;
   padding: 50px;
@@ -31,11 +112,42 @@ body {
 }
 
 .grass-img {
-  margin: 5px;
+  margin: 0 5px;
   width: 150px;
   height: auto;
   display: inline-block;
   vertical-align: bottom;
+}
+
+.easter-bunny-grass {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: bottom;
+  white-space: nowrap;
+
+}
+
+/* Easter Bunny Page specific styles */
+.easter-bunny-grass .grass-img {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+  margin-right: -25px;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999; /* Ensure confetti is above most content */
 }
 
 .image-border {
@@ -145,47 +257,6 @@ button:not(#openModal):hover {
   background-color: #CC4F39;
 }
 
-/* Updated Style for the urgent message modal */
-.modal-content {
-  position: relative;
-  background-color: rgba(253, 136, 103, 0.95);
-  color: #4F4F4F;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  z-index: 8888;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 8000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
-}
 
 .puzzle-button {
   background-color: #E4AFBB;
@@ -228,40 +299,6 @@ button:not(#openModal):hover {
   z-index: 10;
 }
 
-/* Confetti canvas */
-#confettiCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 99998;
-}
-
-.egg-container img {
-  display: block;
-  justify-content: center;
-  margin: 20px auto;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99999;
-  background: rgba(65, 131, 190, 0.8);
-  padding: 20px;
-  border-radius: 15px;
-  width: calc(400px + 100px);
-  height: calc(400px + 100px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#newEgg {
-  width: 400px;
-  display: none;
-}
-
 .egg-reveal-modal {
   position: fixed;
   top: 50%;
@@ -302,26 +339,7 @@ button:not(#openModal):hover {
   background-color: #7CB342;
 }
 
-.easter-bunny-grass {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  vertical-align: bottom;
-  white-space: nowrap;
 
-}
-
-/* Easter Bunny Page specific styles */
-.easter-bunny-grass .grass-img {
-  width: 150px;
-  height: auto;
-  display: inline-block;
-  margin-right: -25px;
-  vertical-align: bottom;
-  white-space: nowrap;
-}
 
 /* Ensure the .image-border styles do not cause overlap on other pages */
 .image-border:not(.easter-bunny-grass) .grass-img {
