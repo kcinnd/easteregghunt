@@ -25,6 +25,7 @@ window.onclick = function(event) {
 
 const secretImage = document.getElementById('secretImage');
 if (secretImage) {
+  
   secretImage.addEventListener('mouseenter', function() {
     confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
   });
