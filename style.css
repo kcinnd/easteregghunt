@@ -294,8 +294,10 @@ button:not(#openModal):hover {
   color: black;
 }
 
-.key-image {
-  display: none;
+.key-img {
+  display: none; /* Ensures keys are hidden initially */
+  height: 150px; /* Sets the height to 150px */
+  width: auto; /* Maintains aspect ratio */
 }
 
 .tooltip {
