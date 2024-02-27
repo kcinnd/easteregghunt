@@ -49,36 +49,15 @@ function addStickerToEgg(src) {
   }
 }
 
-function placeRandomly(element, classNameToAvoid) {
-  for (let attempts = 0; attempts < 100; attempts++) {
-    element.style.left = `${Math.random() * (window.innerWidth - element.offsetWidth)}px`;
-    element.style.top = `${Math.random() * (window.innerHeight - element.offsetHeight)}px`;
-
-    if (!checkOverlap(element, classNameToAvoid)) {
-      document.body.appendChild(element);
-      return;
-    }
-  }
-  console.error('Could not place element without overlap after 100 attempts');
-}
-
-function checkOverlap(element, classNameToAvoid) {
-  const rect = element.getBoundingClientRect();
-  const elementsToCheck = document.querySelectorAll(`.${classNameToAvoid}`);
-  for (let el of elementsToCheck) {
-    const elRect = el.getBoundingClientRect();
-    if (!(rect.right < elRect.left || rect.left > elRect.right || rect.bottom < elRect.top || rect.top > elRect.bottom)) {
-      return true; // Overlap found
-    }
-  }
-  return false; // No overlap
-}
-
 // Event listeners setup
 function setupEventListeners() {
   document.getElementById('revealEggBtn')?.addEventListener('click', showNewEgg);
   document.getElementById('startHuntButton')?.addEventListener('click', startHunt);
   document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
+  document.getElementById('submitAnswer').addEventListener('click', function() {
+    const userInput = document.getElementById('userInput').value;
+    console.log(userInput); // Process the user input here
+  });
 }
 
 // Feature initialization functions
@@ -183,6 +162,119 @@ function setupPage() {
   setupAdditionalImages();
   setupGrassAndImagesHoverEffect();
 }
+
+// Function to check overlap
+function checkOverlap(element1, element2) {
+  const rect1 = element1.getBoundingClientRect();
+  const rect2 = element2.getBoundingClientRect();
+
+  return !(
+    rect1.right < rect2.left ||
+    rect1.left > rect2.right ||
+    rect1.bottom < rect2.top ||
+    rect1.top > rect2.bottom
+  );
+}
+
+// Function to place keys randomly but avoid overlapping with specified elements
+function placeKeyRandomly(keyImg, avoidElementsClass) {
+  let placed = false;
+  const maxAttempts = 50;
+  let attempts = 0;
+
+  while (!placed && attempts < maxAttempts) {
+    const x = Math.random() * (window.innerWidth - keyImg.offsetWidth);
+    const y = Math.random() * (window.innerHeight - keyImg.offsetHeight);
+
+    keyImg.style.left = `${x}px`;
+    keyImg.style.top = `${y}px`;
+
+    let overlapping = false;
+    document.querySelectorAll(avoidElementsClass).forEach(element => {
+      if (checkOverlap(keyImg, element)) {
+        overlapping = true;
+      }
+    });
+
+    if (!overlapping) {
+      placed = true;
+    }
+
+    attempts++;
+  }
+
+  if (!placed) {
+    console.error("Couldn't place key without overlapping after max attempts");
+  }
+}
+
+// Function to set up grass and keys with hover functionality
+function setupGrassAndKeysHoverEffect() {
+  const grassImages = [
+    'https://i.imgur.com/SGrsdhI.png',
+    'https://i.imgur.com/YsEkPnH.png',
+    'https://i.imgur.com/Ec8VQrS.png',
+    'https://i.imgur.com/3NuudR3.png',
+    'https://i.imgur.com/K0bd7nK.png',
+    'https://i.imgur.com/kru4203.png',
+    'https://i.imgur.com/P0ZhspR.png',
+    'https://i.imgur.com/Z7XSw47.png',
+    'https://i.imgur.com/JrlJYKS.png',
+    'https://i.imgur.com/9UKYi7k.png'
+  ];
+
+  const keyImages = [
+    'https://i.imgur.com/tURKwGZ.png',
+    'https://i.imgur.com/q6c11A9.png',
+    'https://i.imgur.com/xgWycmI.png',
+    'https://i.imgur.com/xtNwn5Q.png',
+    'https://i.imgur.com/4OYvyjf.png',
+    'https://i.imgur.com/xkm6yV7.png',
+    'https://i.imgur.com/tEW10f7.png',
+    'https://i.imgur.com/HcTyCd7.png',
+    'https://i.imgur.com/61J8Ydt.png',
+    'https://i.imgur.com/P6If7vu.png',
+    'https://i.imgur.com/9a87llh.png?1',
+    'https://i.imgur.com/Cx5sW4T.png?1',
+    'https://i.imgur.com/Sppxziz.png',
+    'https://i.imgur.com/yDVaMFM.png',
+    'https://i.imgur.com/pbUBsZf.png',
+    'https://i.imgur.com/ymXcQbo.png'
+  ];
+
+  // Append grass images to the easter-bunny-grass div
+  const grassContainer = document.querySelector('.easter-bunny-grass');
+  grassImages.forEach((src, index) => {
+    const grassImg = document.createElement('img');
+    grassImg.src = src;
+    grassImg.className = 'grass-img';
+    grassImg.id = `grass${index + 1}`;
+    grassContainer.appendChild(grassImg);
+  });
+
+  // Append key images to the body and initially hide them
+  keyImages.forEach((src, index) => {
+    const keyImg = document.createElement('img');
+    keyImg.src = src;
+    keyImg.className = 'key-img';
+    keyImg.id = `key${index + 1}`;
+    keyImg.style.position = 'absolute';
+    keyImg.style.display = 'none'; // Initially hidden
+    document.body.appendChild(keyImg);
+    placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Avoid overlapping with grass, other keys, logo, and container
+  });
+
+  // Add hover effect to grass images to show corresponding key image
+  grassImages.forEach((_, index) => {
+    const grassImg = document.getElementById(`grass${index + 1}`);
+    grassImg.addEventListener('mouseenter', () => {
+      const keyImg = document.getElementById(`key${index + 1}`);
+      keyImg.style.display = 'block'; // Show the key on hover
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupGrassAndKeysHoverEffect);
 
 // Additional or game-specific functions
 function showNewEgg() {
