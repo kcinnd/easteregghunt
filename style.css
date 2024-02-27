@@ -103,6 +103,7 @@ body {
   left: 0;
   width: 100%;
   text-align: center;
+  white-space: nowrap;
   overflow-x: auto; /* Allow horizontal scrolling for grass images */
 }
 
