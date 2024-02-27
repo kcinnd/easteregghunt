@@ -39,7 +39,8 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1050;
   display: none;
-  width: 300px; /* Adjust width as needed */
+  width: 400px; /* Adjust width as needed */
+  length 300
   text-align: center;
   border-radius: 15px; /* Rounded corners for a softer look */
   position: fixed;
@@ -48,6 +49,12 @@ body {
   transform: translate(-50%, -50%);
   font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Fun, playful font */
   margin: auto;
+  animation: showmodal 0.3s;
+}
+
+@keyframes showModal {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 
 .egg-reveal-modal h2 {
