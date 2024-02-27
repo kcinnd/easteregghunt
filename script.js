@@ -14,32 +14,6 @@ window.onclick = function(event) {
   }
 };
 
-// Secret image interaction
-const secretImage = document.getElementById('secretImage');
-if (secretImage) {
-  secretImage.addEventListener('mouseenter', function() {
-    confetti({
-      particleCount: 300,
-      spread: 100,
-      origin: { y: 0.6 }
-    });
-    setTimeout(() => {
-    }, 2000);
-
-document.getElementById('eggRevealModal').style.display = 'block'; // Show the modal
-  });
-} else {
-  console.log('Secret image element not found');
-}
-
-// Close button for the egg reveal modal
-const closeModal = document.querySelector('.egg-reveal-modal .close');
-if (closeModal) {
-  closeModal.addEventListener('click', function() {
-    document.getElementById('eggRevealModal').style.display = 'none'; // Hide the modal when close button is clicked
-  });
-}
-
 const keyImages = [
     'https://i.imgur.com/tURKwGZ.png',
     'https://i.imgur.com/q6c11A9.png',
@@ -58,6 +32,30 @@ const keyImages = [
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
 ];
+
+// Secret image interaction
+const secretImage = document.getElementById('secretImage');
+const eggRevealModal = document.getElementById('eggRevealModal');
+const closeModalBtn = document.querySelector('.egg-reveal-modal .close');
+
+if (secretImage) {
+  secretImage.addEventListener('mouseenter', function() {
+    confetti({ particleCount: 500, spread: 150, origin: { y: 0.6 } });
+    setTimeout(() => {
+      eggRevealModal.style.display = 'block';
+    }, 2000);
+  });
+} else {
+  console.log('Secret image element not found');
+}
+
+// Close button for the egg reveal modal
+const closeModal = document.querySelector('.egg-reveal-modal .close');
+if (closeModal) {
+  closeModal.addEventListener('click', function() {
+    document.getElementById('eggRevealModal').style.display = 'none'; // Hide the modal when close button is clicked
+  });
+}
 
 function applyColorToEgg(color) {
   const egg = document.getElementById('egg');
