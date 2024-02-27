@@ -196,7 +196,7 @@ function checkOverlap(element1, element2) {
 // Function to place keys randomly but avoid overlapping with specified elements
 function placeKeyRandomly(keyImg, avoidElementsClass) {
   let placed = false;
-  const maxAttempts = 50;
+  const maxAttempts = 1000;
   let attempts = 0;
 
   while (!placed && attempts < maxAttempts) {
@@ -272,8 +272,6 @@ function setupGrassAndKeysHoverEffect() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', setupGrassAndKeysHoverEffect);
-
 // Additional or game-specific functions
 function showNewEgg() {
   document.getElementById('newEgg').style.display = 'block';
@@ -306,4 +304,5 @@ document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, inde
 document.addEventListener('DOMContentLoaded', function() {
   setupPage();
   setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
+  setupEventListeners();
 });
