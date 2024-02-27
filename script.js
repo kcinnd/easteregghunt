@@ -202,20 +202,41 @@ function setupGrassAndKeysHoverEffect() {
     });
 }
 
-function placeKeyRandomly(keyImg, avoidElementsSelector) {
-    const maxAttempts = 5000;
-    let attempts = 0, placed = false;
+function placeKeyRandomly(keyImg, avoidElementsClass) {
+    let placed = false;
+    const maxAttempts = 5000; // Increased number of attempts for more chances to find a spot
+    let attempts = 0;
 
     while (!placed && attempts < maxAttempts) {
-        keyImg.style.left = `${Math.random() * (window.innerWidth - keyImg.clientWidth)}px`;
-        keyImg.style.top = `${Math.random() * (window.innerHeight - keyImg.clientHeight)}px`;
+        // Random position considering 50px padding from the edges
+        const x = Math.random() * (window.innerWidth - keyImg.offsetWidth - 100) + 50;
+        const y = Math.random() * (window.innerHeight - keyImg.offsetHeight - 100) + 50;
 
-        const overlapping = Array.from(document.querySelectorAll(avoidElementsSelector)).some(element => checkOverlap(keyImg, element));
-        if (!overlapping) placed = true;
+        keyImg.style.left = `${x}px`;
+        keyImg.style.top = `${y}px`;
+
+        let overlapping = false;
+        document.querySelectorAll(avoidElementsClass + ', .key-img').forEach(element => {
+            if (element !== keyImg && checkOverlap(keyImg, element)) {
+                overlapping = true;
+            }
+        });
+
+        // Check if the key is within 50px of the edges
+        if (x < 50 || y < 50 || (window.innerWidth - x) < 150 || (window.innerHeight - y) < 150) {
+            overlapping = true;
+        }
+
+        if (!overlapping) {
+            placed = true;
+        }
+
         attempts++;
     }
 
-    if (!placed) console.error("Couldn't place key without overlapping after max attempts.");
+    if (!placed) {
+        console.error("Couldn't place key without overlapping after max attempts");
+    }
 }
 
 function checkOverlap(element1, element2) {
