@@ -217,12 +217,21 @@ function setupAdditionalImages() {
 
 // Function to place elements randomly without overlapping important elements
 function placeRandomly(element) {
+  let maxAttempts = 100;
+  let attempts = 0;
   let overlap;
   do {
-    element.style.left = `${Math.random() * (window.innerWidth - element.offsetWidth)}px`;
-    element.style.top = `${Math.random() * (window.innerHeight - element.offsetHeight)}px`;
+    const randomX = Math.random() * (window.innerWidth - element.offsetWidth);
+    const randomY = Math.random() * (window.innerHeight - element.offsetHeight);
+    element.style.left = `${randomX}px`;
+    element.style.top = `${randomY}px`;
     overlap = checkOverlap(element);
-  } while (overlap);
+    attempts++;
+  } while (overlap && attempts < maxAttempts);
+
+  if (!overlap) {
+    document.body.appendChild(element);
+  }
 }
 
 function checkOverlap(element) {
