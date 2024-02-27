@@ -198,12 +198,12 @@ function checkOverlap(element1, element2) {
 // Function to place keys randomly but avoid overlapping with specified elements
 function placeKeyRandomly(keyImg, avoidElementsClass) {
   let placed = false;
-  const maxAttempts = 500;
+  const maxAttempts = 1000; // Increased number of attempts
   let attempts = 0;
 
   while (!placed && attempts < maxAttempts) {
-    const x = Math.random() * (window.innerWidth - keyImg.offsetWidth - 20); // 20px padding
-    const y = Math.random() * (window.innerHeight - keyImg.offsetHeight - 20); // 20px padding
+    const x = Math.random() * (window.innerWidth - keyImg.offsetWidth);
+    const y = Math.random() * (window.innerHeight - keyImg.offsetHeight);
 
     keyImg.style.left = `${x}px`;
     keyImg.style.top = `${y}px`;
@@ -217,6 +217,8 @@ function placeKeyRandomly(keyImg, avoidElementsClass) {
 
     if (!overlapping) {
       placed = true;
+    } else {
+      console.log(`Overlap detected at attempt ${attempts + 1}`); // Debugging log
     }
 
     attempts++;
