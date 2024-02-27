@@ -293,27 +293,17 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-document.querySelectorAll('.grass-img').forEach(grass => {
-  grass.addEventListener('mouseenter', function() {
-    const keyId = grass.getAttribute('data-key');
-    const keyImg = document.getElementById(keyId);
-    if (keyImg) {
-      keyImg.style.display = 'block'; // Show the key
-      // Position the key near the grass image, adjust as needed
+document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, index) => {
+    grass.addEventListener('mouseenter', () => {
+      const keyImg = document.createElement('img');
+      keyImg.src = keyImageURLs[index % keyImageURLs.length]; // Cycle through key images
+      keyImg.className = 'key-img'; // Ensure this class is styled appropriately
       keyImg.style.position = 'absolute';
-      keyImg.style.left = grass.offsetLeft + 'px';
-      keyImg.style.top = (grass.offsetTop - keyImg.offsetHeight) + 'px';
-    }
+      document.body.appendChild(keyImg);
+      placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust selector as needed
+    });
   });
-
-  grass.addEventListener('mouseleave', function() {
-    const keyId = grass.getAttribute('data-key');
-    const keyImg = document.getElementById(keyId);
-    if (keyImg) {
-      keyImg.style.display = 'none'; // Hide the key
-    }
-  });
-});
+}
 
 // Initialize everything once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', setupPage);
