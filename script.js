@@ -273,9 +273,8 @@ function checkWord() {
             // If the answer is correct
             feedback.textContent = 'Correct! You found the secret word.';
             // You can add any action here, like revealing more content or redirecting to another page
-        } else {
+    } else {
             // If the answer is incorrect
             feedback.textContent = 'Hmm, that doesn’t seem right. Try again!';
-        }
-    });
-});
+    }
+}
