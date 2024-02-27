@@ -168,7 +168,7 @@ function placeKeysRandomly() {
     keyImg.className = 'key-img';
     keyImg.style.position = 'absolute';
     keyImg.style.width = 'auto';
-    keyImg.style.height = '150px';
+    keyImg.style.height = '100px';
     document.body.appendChild(keyImg);
     placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Adjust to avoid overlapping
   });
@@ -200,7 +200,7 @@ function checkOverlap(element1, element2) {
 // Function to place keys randomly but avoid overlapping with specified elements
 function placeKeyRandomly(keyImg, avoidElementsClass) {
   let placed = false;
-  const maxAttempts = 1000; // Increased number of attempts
+  const maxAttempts = 2000; // Increased number of attempts
   let attempts = 0;
 
   while (!placed && attempts < maxAttempts) {
