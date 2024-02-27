@@ -23,26 +23,19 @@ window.onclick = function(event) {
   }
 }
 
+const secretImage = document.getElementById('secretImage');
 if (secretImage) {
   secretImage.addEventListener('mouseenter', function() {
-    // Trigger confetti
-    confetti({
-      particleCount: 200,
-      spread: 100,
-      origin: { y: 0.6 }
-    });
+    confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
   });
 } else {
-  console.log('Secret image element not found');
+  console.error('Secret image element not found');
 }
-
-  // Display modal or popup
-  modal.style.display = "block";
-});
 
 function applyColorToEgg(color) {
   const egg = document.getElementById('egg');
-  egg ? egg.style.backgroundColor = color : console.error('Egg element not found!');
+  if (egg) egg.style.backgroundColor = color;
+  else console.error('Egg element not found!');
 }
 
 function addStickerToEgg(src) {
@@ -57,24 +50,29 @@ function addStickerToEgg(src) {
   }
 }
 
-function placeRandomly(element) {
+function placeRandomly(element, classNameToAvoid) {
   for (let attempts = 0; attempts < 100; attempts++) {
     element.style.left = `${Math.random() * (window.innerWidth - element.offsetWidth)}px`;
     element.style.top = `${Math.random() * (window.innerHeight - element.offsetHeight)}px`;
 
-    if (!checkOverlap(element)) {
+    if (!checkOverlap(element, classNameToAvoid)) {
       document.body.appendChild(element);
-      break;
+      return;
     }
   }
+  console.error('Could not place element without overlap after 100 attempts');
 }
 
-function checkOverlap(element) {
+function checkOverlap(element, classNameToAvoid) {
   const rect = element.getBoundingClientRect();
-  return [...document.querySelectorAll('.no-overlap')].some(el => {
+  const elementsToCheck = document.querySelectorAll(`.${classNameToAvoid}`);
+  for (let el of elementsToCheck) {
     const elRect = el.getBoundingClientRect();
-    return !(rect.right < elRect.left || rect.left > elRect.right || rect.bottom < elRect.top || rect.top > elRect.bottom);
-  });
+    if (!(rect.right < elRect.left || rect.left > elRect.right || rect.bottom < elRect.top || rect.top > elRect.bottom)) {
+      return true; // Overlap found
+    }
+  }
+  return false; // No overlap
 }
 
 // Event listeners setup
@@ -198,12 +196,13 @@ function checkWord() {
   feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.body.classList.contains('easter-bunny-page')) {
-        document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
-            grass.addEventListener('mouseenter', showKeyRandomly);
-        });
-    }
+if (document.body.classList.contains('easter-bunny-page')) {
+  document.querySelectorAll('.easter-bunny-grass .grass-img').forEach(grass => {
+    grass.addEventListener('mouseenter', function() {
+      placeRandomly(document.createElement('img'), 'no-overlap'); // Adjust as needed for key images
+    });
+  });
+}
 
 const secretImage = document.getElementById('secretImageId');
 
