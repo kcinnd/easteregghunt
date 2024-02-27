@@ -40,7 +40,7 @@ body {
   z-index: 1050;
   display: none;
   width: 400px; /* Adjust width as needed */
-  length 300
+  height: 300px;
   text-align: center;
   border-radius: 15px; /* Rounded corners for a softer look */
   position: fixed;
@@ -50,6 +50,14 @@ body {
   font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Fun, playful font */
   margin: auto;
   animation: showmodal 0.3s;
+}
+
+.egg-reveal-modal .close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 25px;
 }
 
 @keyframes showModal {
