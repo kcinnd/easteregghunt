@@ -269,7 +269,13 @@ function startHunt() {
 function checkWord() {
     const userInput = document.getElementById('userInput').value;
     const feedback = document.getElementById('feedback');
-    if (feedback) {
-        feedback.textContent = userInput.toLowerCase() === 'easterbunny' 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
-    }
-}
+    if (userInput === 'easterbunny') {
+            // If the answer is correct
+            feedback.textContent = 'Correct! You found the secret word.';
+            // You can add any action here, like revealing more content or redirecting to another page
+        } else {
+            // If the answer is incorrect
+            feedback.textContent = 'Hmm, that doesn’t seem right. Try again!';
+        }
+    });
+});
