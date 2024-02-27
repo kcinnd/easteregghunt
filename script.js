@@ -5,6 +5,10 @@ document.querySelectorAll('.color-swatch').forEach(swatch => {
   });
 });
 
+document.querySelector('.close').addEventListener('click', () => {
+document.getElementById('urgentMessageModal').style.display = 'none';
+});
+
 document.getElementById('openModal').addEventListener('click', function() {
 document.getElementById('urgentMessageModal').style.display = 'block';
 });
