@@ -14,6 +14,11 @@ window.onclick = function(event) {
   }
 };
 
+document.getElementById('urgentModalCloseBtn').addEventListener('click', function() {
+  
+document.getElementById('urgentMessageModal').style.display = 'none';
+});
+
 const keyImages = [
     'https://i.imgur.com/tURKwGZ.png',
     'https://i.imgur.com/q6c11A9.png',
