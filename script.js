@@ -5,7 +5,7 @@ document.querySelectorAll('.color-swatch').forEach(swatch => {
   });
 });
 
-document.querySelector('.close').addEventListener('click', () => {
+document.querySelector('.close').addEventListener('click', function() {
 document.getElementById('urgentMessageModal').style.display = 'none';
 });
 
