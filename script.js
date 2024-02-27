@@ -23,6 +23,20 @@ window.onclick = function(event) {
   }
 }
 
+var secretImage = document.querySelector('.secret-image');
+
+secretImage.addEventListener('mouseenter', function() {
+  // Trigger confetti
+  confetti({
+    particleCount: 200,
+    spread: 100,
+    origin: { y: 0.6 }
+  });
+
+  // Display modal or popup
+  modal.style.display = "block";
+});
+
 function applyColorToEgg(color) {
   const egg = document.getElementById('egg');
   egg ? egg.style.backgroundColor = color : console.error('Egg element not found!');
