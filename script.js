@@ -25,7 +25,6 @@ if (secretImage) {
     });
     setTimeout(() => {
       document.getElementById('eggRevealModal').style.display = 'block';
-      // Hide the modal after 2 seconds
       setTimeout(() => {
         document.getElementById('eggRevealModal').style.display = 'none';
       }, 2000);
@@ -34,6 +33,25 @@ if (secretImage) {
 } else {
   console.log('Secret image element not found');
 }
+
+const keyImages = [
+    'https://i.imgur.com/tURKwGZ.png',
+    'https://i.imgur.com/q6c11A9.png',
+    'https://i.imgur.com/xgWycmI.png',
+    'https://i.imgur.com/xtNwn5Q.png',
+    'https://i.imgur.com/4OYvyjf.png',
+    'https://i.imgur.com/xkm6yV7.png',
+    'https://i.imgur.com/tEW10f7.png',
+    'https://i.imgur.com/HcTyCd7.png',
+    'https://i.imgur.com/61J8Ydt.png',
+    'https://i.imgur.com/P6If7vu.png',
+    'https://i.imgur.com/9a87llh.png?1',
+    'https://i.imgur.com/Cx5sW4T.png?1',
+    'https://i.imgur.com/Sppxziz.png',
+    'https://i.imgur.com/yDVaMFM.png',
+    'https://i.imgur.com/pbUBsZf.png',
+    'https://i.imgur.com/ymXcQbo.png'
+];
 
 function applyColorToEgg(color) {
   const egg = document.getElementById('egg');
@@ -73,12 +91,6 @@ function setupModal() {
   document.getElementsByClassName("close")[0].onclick = () => modal.style.display = "none";
   window.onclick = event => event.target === modal ? modal.style.display = "none" : null;
 }
-
-document.getElementById('submitAnswer').addEventListener('click', function() {
-  const userInput = document.getElementById('userInput').value;
-  // Process the user input here, e.g., check if the answer is correct
-  console.log(userInput); // For demonstration purposes
-});
 
 function setupSpecialTrigger() {
   const specialTrigger = document.getElementById('specialTrigger');
@@ -132,24 +144,6 @@ function setupStickers() {
 }
 
 function placeKeysRandomly() {
-  const keyImages = [
-    'https://i.imgur.com/tURKwGZ.png',
-    'https://i.imgur.com/q6c11A9.png',
-    'https://i.imgur.com/xgWycmI.png',
-    'https://i.imgur.com/xtNwn5Q.png',
-    'https://i.imgur.com/4OYvyjf.png',
-    'https://i.imgur.com/xkm6yV7.png',
-    'https://i.imgur.com/tEW10f7.png',
-    'https://i.imgur.com/HcTyCd7.png',
-    'https://i.imgur.com/61J8Ydt.png',
-    'https://i.imgur.com/P6If7vu.png',
-    'https://i.imgur.com/9a87llh.png?1',
-    'https://i.imgur.com/Cx5sW4T.png?1',
-    'https://i.imgur.com/Sppxziz.png',
-    'https://i.imgur.com/yDVaMFM.png',
-    'https://i.imgur.com/pbUBsZf.png',
-    'https://i.imgur.com/ymXcQbo.png'
-  ];
   keyImages.forEach(src => {
     const keyImg = document.createElement('img');
     keyImg.src = src;
@@ -292,5 +286,7 @@ document.querySelectorAll('.easter-bunny-grass .grass-img').forEach((grass, inde
     });
 });
 
-// Initialize everything once the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', setupPage);
+document.addEventListener('DOMContentLoaded', function() {
+  setupPage();
+  setupGrassAndKeysHoverEffect(); // Call this function here to ensure it's executed after the DOM is fully loaded
+});
