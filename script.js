@@ -257,9 +257,9 @@ function setupEventListeners() {
 
 // Additional or game-specific functions
 function showNewEgg() {
-    document.getElementById('newEgg')?.style.display = 'block';
-    document.querySelector('.egg-container')?.style.display = 'flex';
-    document.getElementById('eggRevealModal')?.style.display = 'none';
+    document.getElementById('newEgg').style.display = 'block';
+    document.querySelector('.egg-container').style.display = 'flex';
+    document.getElementById('eggRevealModal').style.display = 'none';
 }
 
 function startHunt() {
@@ -267,9 +267,9 @@ function startHunt() {
 }
 
 function checkWord() {
-    const userInput = document.getElementById('userInput')?.value;
+    const userInput = document.getElementById('userInput').value;
     const feedback = document.getElementById('feedback');
     if (feedback) {
-        feedback.textContent = userInput.toLowerCase() === 'easterbunny' ? 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
+        feedback.textContent = userInput.toLowerCase() === 'easterbunny' 'Correct! You unraveled the clue.' : 'Hmm, that does not seem right. Try pondering a bit more.';
     }
 }
