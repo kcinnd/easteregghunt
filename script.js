@@ -1,18 +1,22 @@
 var modal = document.getElementById('urgentMessageModal');
 var btn = document.getElementById('openModal');
-var span = document.getElementsByClassName("close")[0]; // Assuming you have a close button with class "close"
+var span = document.querySelector(".close"); // Changed to querySelector for consistency
 
-btn.onclick = function() {
-  modal.style.display = "block";
+if (btn) {
+  btn.onclick = function() {
+    modal.style.display = "block";
+  };
 }
-span.onclick = function() {
-  modal.style.display = "none";
+if (span) {
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
 }
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
 const secretImage = document.getElementById('secretImage'); // Use 'getElementById' if it's an ID
 
