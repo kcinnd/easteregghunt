@@ -236,11 +236,11 @@ function checkWord() {
     const feedback = document.getElementById('feedback');
     if (userInput === 'easterbunny') {
             // If the answer is correct
-            feedback.textContent = 'Correct! You found the secret word.';
+            feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
             // You can add any action here, like revealing more content or redirecting to another page
     } else {
             // If the answer is incorrect
-            feedback.textContent = 'Hmm, that doesn’t seem right. Try again!';
+            feedback.textContent = 'Hmm, that isn't right. Try again!';
     }
 }
 
