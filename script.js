@@ -238,18 +238,42 @@ function checkOverlap(element1, element2) {
 }
 
 function setupEventListeners() {
-    document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
+    const revealEggBtn = document.getElementById('revealEggBtn');
     const startHuntButton = document.getElementById('startHuntButton');
+    const submitAnswerButton = document.getElementById('submitAnswer');
+
+    // Set up the reveal egg button event listener, if the button exists
+    if (revealEggBtn) {
+        revealEggBtn.addEventListener('click', showNewEgg);
+    } else {
+        console.error('revealEggBtn not found');
+    }
+
+    // Set up the start hunt button event listener, if the button exists
     if (startHuntButton) {
         startHuntButton.addEventListener('click', startHunt);
+    } else {
+        console.error('startHuntButton not found');
     }
-    document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
-    document.getElementById('submitAnswer').addEventListener('click', () => {
-        const userInput = document.getElementById('userInput').value;
-        console.log(userInput); // Process the user input here
+
+    // Set up the submit answer button event listener, if the button exists
+    if (submitAnswerButton) {
+        submitAnswerButton.addEventListener('click', () => {
+            const userInput = document.getElementById('userInput').value;
+            console.log(userInput); // Process the user input here
+        });
+    } else {
+        console.error('submitAnswerButton not found');
+    }
+
+    // Set up event listeners for all buttons that are supposed to check a word
+    document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
+        // Remove the inline onclick attribute to avoid potential conflicts
+        button.removeAttribute('onclick');
+        // Add the event listener for the checkWord function
+        button.addEventListener('click', checkWord);
     });
 }
-
 // Additional or game-specific functions
 function showNewEgg() {
     document.getElementById('newEgg').style.display = 'block';
