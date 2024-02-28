@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Typewriter elements not found');
         }
     });
-});
+}
 
 function setupTypewriter(element, text, callback) {
     element.innerHTML = ""; // Clear existing content
