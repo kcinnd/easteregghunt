@@ -434,14 +434,14 @@ button:not(#openModal):hover {
   background-color: #CC4F39;
 }
 
-.puzzle-button {
+#puzzle-button {
   background-color: #E4AFBB;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px;
   margin: 0 auto;
   border-radius: 5px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   font-family: Helvetica;
   transition: background-color 0.3s;
@@ -449,7 +449,7 @@ button:not(#openModal):hover {
   width: auto;
 }
 
-.puzzle-button:hover {
+#puzzle-button:hover {
   background-color: #D9809E;
 }
 
