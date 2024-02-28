@@ -231,6 +231,13 @@ function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
     const startHuntBtn = document.getElementById('startHuntButton'); // Renamed variable
     const submitAnswerButton = document.getElementById('submitAnswer');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    if (submitBtn) {
+        submitBtn.addEventListener('click', checkWord);
+    } else {
+        console.log('Submit button not found.');
+    }
 
     if (revealEggBtn) {
         revealEggBtn.addEventListener('click', showNewEgg);
