@@ -20,6 +20,7 @@ button {
 body {
   background-color: #9FE0D2;
   margin: 0;
+  font-family: 'EasterJoy', Arial, sans-serif;
   padding: 0;
   display: flex;
   justify-content: center;
