@@ -53,48 +53,46 @@ document.addEventListener('DOMContentLoaded', function() {
         // Any other functions that require eggElement
     }
     
-    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
-    if (submitAnswerEasterBunny) {
-        submitAnswerEasterBunny.addEventListener('click', function() {
-            checkWord('specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
-        });
-    }
-    
-    // For the Mystery Trail page
-    const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
-    if (submitAnswerMysteryTrail) {
-        submitAnswerMysteryTrail.addEventListener('click', function() {
-            checkWord('easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
-        });
-    }
-    // Setup for the button to reveal the modal
-    const revealBtn = document.getElementById('revealEggBtn');
-    const eggModal = document.getElementById('eggModal');
-    const closeButton = document.getElementsByClassName('close-button')[0];
+    document.addEventListener('DOMContentLoaded', function() {
+    setupEggModal();
+    setupSecretImageAndConfetti();
+    setupGrassAndKeysHoverEffect();
+    setupEventListeners();
+    setupColorSwatches();
 
-    // Ensure the reveal button and the modal exist
-    if (revealBtn && eggModal) {
-        revealBtn.addEventListener('click', function() {
-            // This will hide the modal when the button is clicked
-            eggModal.style.display = 'block';
-        });
-    } else {
-        console.log('Reveal button or modal not found.');
+    const canvas = document.getElementById('eggCanvas');
+    const ctx = canvas.getContext('2d');
+    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, '#FAF0E6');
+
+    // Function to draw an egg on the canvas
+    function drawEgg(ctx, x, y, width, height, color) {
+        ctx.beginPath();
+        ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
     }
 
-    // Setup for the close button inside the modal
-    if (closeButton) {
-        closeButton.addEventListener('click', function() {
-            eggModal.style.display = 'none';
-        });
+    // Function to change the egg color
+    function changeEggColor(color) {
+        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, color);
     }
 
-    // Close the modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == eggModal) {
-            eggModal.style.display = 'none';
-        }
+    // Setup event listeners for color swatches
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            changeEggColor(color);
+        });
     });
+
+    // Submit answer for Easter Bunny and Mystery Trail
+    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
+    const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
+    setupAnswerSubmissions(submitAnswerEasterBunny, 'specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
+    setupAnswerSubmissions(submitAnswerMysteryTrail, 'easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
+
+    // Setup for the modal reveal and close buttons
+    setupModalButtons();
 });
 
 function setupEggCustomization() {
