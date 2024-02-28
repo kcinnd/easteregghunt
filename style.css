@@ -488,6 +488,7 @@ button:not(#openModal):hover {
 #submitAnswer {
   background-color: #008CBA; /* Example button color */
   color: white;
+  margin: 50px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
