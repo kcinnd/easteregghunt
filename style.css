@@ -490,40 +490,36 @@ button:not(#openModal):hover {
   border-radius: 5px;
 }
 
+.color-swatches {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .color-swatch {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
     margin: 0 10px;
+    cursor: pointer;
+    border: 2px solid #fff; /* Highlight swatches */
 }
 
 .sticker {
     width: 50px;
-    cursor: pointer;
     margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.sticker-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px;
+.sticker:hover {
+    transform: scale(1.2);
 }
 
-#eggCanvas {
-  display: block;
-  margin: 20px auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.egg {
-  width: 200px;
-  height: 300px;
-  background-color: #fff;
-  position: relative; /* Allows absolute positioning of stickers inside */
+#decorative-egg {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
