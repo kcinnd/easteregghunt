@@ -317,6 +317,8 @@ function setupTypewriter(element, text, callback) {
     };
 
     return {
-            type: type
+        type: type
     };
-}
+});
+
+})();
