@@ -265,7 +265,7 @@ function checkWord() {
             // You can add any action here, like revealing more content or redirecting to another page
     } else {
             // If the answer is incorrect
-            feedback.textContent = 'Hmm, that isn't right. Try again!';
+            feedback.textContent = 'Hmm, that is not right. Try again!';
     }
 }
 
