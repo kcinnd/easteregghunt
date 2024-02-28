@@ -256,36 +256,30 @@ function checkWord() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function setupTypewriterEffect() {
     var openModalBtn = document.getElementById('openModal');
     if (openModalBtn) {
         openModalBtn.addEventListener('click', function() {
-            // Your existing code for when the button is clicked
-        var headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨"; // Header text
-        var bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
+            var headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
+            var bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
 
-        var headerElement = document.getElementById('typewriterHeader');
-        var bodyElement = document.getElementById('typewriterBody');
+            var headerElement = document.getElementById('typewriterHeader');
+            var bodyElement = document.getElementById('typewriterBody');
 
-        if (headerElement && bodyElement) {
-            var typewriterHeader = setupTypewriter(headerElement, headerText, function() {
-                // Once header is typed out, start typing the body
-                var typewriterBody = setupTypewriter(bodyElement, bodyText);
-                typewriterBody.type();
-            });
-
-            typewriterHeader.type(); // Start typing the header
-            document.getElementById('urgentMessageModal').style.display = 'block'; // Show the modal
-        } else {
-            console.error('Typewriter elements not found');
-        }
-    });
+            if (headerElement && bodyElement) {
+                typewriter(headerElement, headerText, function() {
+                    typewriter(bodyElement, bodyText);
+                });
+            } else {
+                console.error('Typewriter elements not found');
+            }
+        });
+    }
 }
 
-function setupTypewriter(element, text, callback) {
-    element.innerHTML = ""; // Clear existing content
+function typewriter(element, text, callback) {
     var cursorPosition = 0;
-    var typeSpeed = 75; // Adjust typing speed
+    var typeSpeed = 75; // Adjust typing speed as needed
 
     var type = function() {
         if (cursorPosition < text.length) {
@@ -297,7 +291,5 @@ function setupTypewriter(element, text, callback) {
         }
     };
 
-    return {
-        type: type
-    };
+    type(); // Start the typing effect
 }
