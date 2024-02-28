@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Your existing setup functions
-    setupeggModal();
+    setupEggModal();
     setupModal();
     setupSecretImageAndConfetti();
     setupEggCustomization();
