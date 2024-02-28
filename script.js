@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Your existing setup functions
+    setupeggModal();
     setupModal();
     setupSecretImageAndConfetti();
     setupEggCustomization();
@@ -7,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupColorSwatches();
     setupStickers();
+    drawEgg('#FAF0E6');
+
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            drawEgg(color);
+        });
+    });
 
     const eggElement = document.getElementById('decorativeegg'); // Get the egg element
     if (eggElement) {
@@ -126,11 +135,20 @@ function setupEggModal() {
     };
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupModal();
-    setupEggModal(); // Make sure this function is called
-    // Other setup functions...
-});
+function drawEgg(color) {
+    const canvas = document.getElementById('eggCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the egg shape
+    ctx.beginPath();
+    ctx.ellipse(canvas.width / 2, canvas.height / 2, 80, 120, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.closePath();
+}
 
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
