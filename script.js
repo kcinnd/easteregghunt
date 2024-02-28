@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupColorSwatches();
     setupStickers();
 
-    const eggElement = document.getElementById('decorativeEgg'); // Get the egg element
+    const eggElement = document.getElementById('decorativeegg'); // Get the egg element
     if (eggElement) {
         // Only call these functions if eggElement exists on the page
         setupEggCustomization(eggElement);
