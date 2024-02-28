@@ -40,18 +40,16 @@ function setupSecretImageAndConfetti() {
                 origin: { y: 0.6 }
             });
             setTimeout(() => {
-                if (eggRevealModal) eggRevealModal.style.display = 'block';
+                eggRevealModal.style.display = 'block';
             }, 2000);
         });
     }
 
-    if (eggRevealModal) {
-        const closeModal = eggRevealModal.querySelector('.close');
-        if (closeModal) {
-            closeModal.addEventListener('click', function() {
-                eggRevealModal.style.display = 'none';
-            });
-        }
+    const closeModal = eggRevealModal ? eggRevealModal.querySelector('.close') : null;
+    if (closeModal) {
+        closeModal.addEventListener('click', function() {
+            eggRevealModal.style.display = 'none';
+        });
     }
 }
 
@@ -73,23 +71,6 @@ const keyImages = [
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
 ];
-
-function setupSecretImageAndConfetti() {
-    const secretImage = document.getElementById('secretImage');
-    const eggRevealModal = document.getElementById('eggRevealModal');
-
-    if (secretImage && eggRevealModal) {
-        secretImage.addEventListener('mouseenter', () => {
-            confetti({ particleCount: 500, spread: 200, origin: { y: 0.6 } });
-            setTimeout(() => eggRevealModal.style.display = 'block', 2000);
-        });
-
-        const closeModal = eggRevealModal.querySelector('.close');
-        if (closeModal) {
-            closeModal.addEventListener('click', () => eggRevealModal.style.display = 'none');
-        }
-    }
-}
 
 function setupEggCustomization() {
     const egg = document.getElementById('egg');
@@ -319,6 +300,4 @@ function setupTypewriter(element, text, callback) {
     return {
         type: type
     };
-};
-
-})();
+}
