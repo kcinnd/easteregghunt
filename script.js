@@ -6,40 +6,34 @@ document.addEventListener('DOMContentLoaded', function() {
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
 
-    // Additional setup for revealEggBtn
-    const revealEggBtn = document.getElementById('revealEggBtn');
-    const eggRevealModal = document.getElementById('eggRevealModal');
+    // Setup for the button to reveal the modal
+    const revealBtn = document.getElementById('revealEggBtn');
+    const eggModal = document.getElementById('eggModal');
+    const closeButton = document.getElementsByClassName('close-button')[0];
 
-    if (revealEggBtn && eggRevealModal) {
-        revealEggBtn.addEventListener('click', function() {
-            eggRevealModal.style.display = 'none';
+    // Ensure the reveal button and the modal exist
+    if (revealBtn && eggModal) {
+        revealBtn.addEventListener('click', function() {
+            // This will hide the modal when the button is clicked
+            eggModal.style.display = 'block';
         });
     } else {
-        console.log('Reveal button or egg reveal modal not found.');
+        console.log('Reveal button or modal not found.');
     }
 
-    var eggModal = document.getElementById("eggModal");
-    var revealBtn = document.getElementById("revealEggBtn");
-    var closeButton = document.getElementsByClassName("close-button")[0];
-    
-    if (revealBtn) {
-        revealBtn.onclick = function() {
-            eggModal.style.display = "block";
-        };
-    }
-
+    // Setup for the close button inside the modal
     if (closeButton) {
-        closeButton.onclick = function() {
-            eggModal.style.display = "none";
-        };
+        closeButton.addEventListener('click', function() {
+            eggModal.style.display = 'none';
+        });
     }
 
-    window.onclick = function(event) {
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', function(event) {
         if (event.target == eggModal) {
-            eggModal.style.display = "none";
+            eggModal.style.display = 'none';
         }
-    };
-
+    });
 });
 
 function setupModal() {
