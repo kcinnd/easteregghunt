@@ -6,6 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
 
+    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
+    if (submitAnswerEasterBunny) {
+        submitAnswerEasterBunny.addEventListener('click', function() {
+            checkWord('specialeasteregg', 'easterBunnyFeedback'); // 'easterBunnyFeedback' is the ID of the feedback element on the Easter Bunny page
+        });
+    }
+
+    // Setup for the Mystery Trail page
+    const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
+    if (submitAnswerMysteryTrail) {
+        submitAnswerMysteryTrail.addEventListener('click', function() {
+            checkWord('easterbunny', 'mysteryTrailFeedback'); // 'mysteryTrailFeedback' is the ID of the feedback element on the Mystery Trail page
+        });
+    }
+
     // Setup for the button to reveal the modal
     const revealBtn = document.getElementById('revealEggBtn');
     const eggModal = document.getElementById('eggModal');
@@ -286,28 +301,16 @@ function startHunt() {
     window.location.href = 'page1.html';
 }
 
-function checkWord(correctAnswer) {
-    const userInput = document.getElementById('userInput').value.trim().toLowerCase(); // Get and normalize user input
-    const feedback = document.getElementById('feedback');
+function checkWord(correctAnswer, feedbackElementId) {
+    const userInput = document.getElementById('userInput').value.trim().toLowerCase();
+    const feedback = document.getElementById(feedbackElementId);
 
-    // Check if the user input matches the correct answer passed as a parameter
     if (userInput === correctAnswer) {
-        // If the answer is correct
         feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
-        // You can add any action here, like revealing more content or redirecting to another page
     } else {
-        // If the answer is incorrect
         feedback.textContent = 'Hmm, that is not right. Try again!';
     }
 }
-
-document.getElementById('submitAnswer').addEventListener('click', function() {
-    checkWord('specialeasteregg');
-});
-
-document.getElementById('submitAnswer').addEventListener('click', function() {
-    checkWord('easterbunny');
-});
 
 function setupTypewriter(element, text, callback) {
     let cursorPosition = 0;
