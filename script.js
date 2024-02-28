@@ -363,14 +363,14 @@ function startHunt() {
     window.location.href = 'page1.html';
 }
 
-function checkWord(correctAnswer, feedbackElementId) {
-    const userInput = document.getElementById('userInput').value.trim().toLowerCase();
+function checkWord(correctAnswer, inputElementId, feedbackElementId) {
+    const userInput = document.getElementById(inputElementId).value.trim().toLowerCase();
     const feedback = document.getElementById(feedbackElementId);
 
-    if (userInput === correctAnswer) {
+    if (userInput === correctAnswer.toLowerCase()) {
         feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
     } else {
-        feedback.textContent = 'Hmm, that is not right. Try again!';
+        feedback.textContent = 'That is not right; please try again.';
     }
 }
 
