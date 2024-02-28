@@ -230,12 +230,12 @@ body {
 .egg-container img {
     max-width: 600px; /* Adjust based on your preference */
     display: block;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 #decorativeegg {
-    width: 200px; /* Adjust based on the size you want */
-    height: 300px; /* Adjust based on the size you want */
+    width: 400px; /* Adjust based on the size you want */
+    height: auto; /* Adjust based on the size you want */
     display: block;
     margin: 0 auto;
     background-image: url('https://i.imgur.com/zImvXKw.png');
@@ -264,7 +264,7 @@ body {
   padding: 50px;
   max-width: 600px; 
   border-radius: 10px;
-  margin: 50px auto;
+  margin: 0 auto;
   background-color: rgba(250, 243, 221, 0.6);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   z-index: 5;
