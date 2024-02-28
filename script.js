@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEggCustomization() {
-    const eggElement = document.getElementById('decorative-egg'); // Ensure this ID matches your HTML
+    const eggElement = document.getElementById('decorativeEgg'); // Ensure this ID matches your HTML
     const colorSwatches = document.querySelectorAll('.color-swatch'); // Ensure this class matches your HTML
     const stickers = document.querySelectorAll('.sticker'); // Ensure this class matches your HTML
 
