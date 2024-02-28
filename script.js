@@ -319,6 +319,6 @@ function setupTypewriter(element, text, callback) {
     return {
         type: type
     };
-});
+};
 
 })();
