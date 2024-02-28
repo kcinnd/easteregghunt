@@ -446,7 +446,7 @@ button:not(#openModal):hover {
   transition: background-color 0.3s; /* Smooth transition for hover effect */
   width: auto; /* Auto width based on content */
   text-align: center; /* Center the text inside the button */
-  margin: 50px auto; /* Margin to center the button horizontally and add space around it */
+  margin-bottom: 100px; /* Margin to center the button horizontally and add space around it */
 }
 
 .puzzle-button:hover {
