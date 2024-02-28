@@ -228,8 +228,8 @@ body {
 }
 
 .decorativeegg {
-    width: 400px; /* Adjust based on the size you want */
-    height: auto; /* Adjust based on the size you want */
+    width: 300px; /* Adjust based on the size you want */
+    height: 400px; /* Adjust based on the size you want */
     display: block;
     margin: 0 auto;
 }
