@@ -437,6 +437,7 @@ button:not(#openModal):hover {
 .puzzle-button {
   background-color: #E4AFBB; /* Easter pink */
   color: white;
+  border: 2px solid #D9809E;
   padding: 10px 15px; /* Adjust padding as needed */
   border-radius: 5px; /* Rounded corners */
   text-decoration: none; /* Removes underline from link */
