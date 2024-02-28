@@ -314,7 +314,7 @@ function setupTypewriter(element, text, callback) {
 }
 
 // Usage
-document.getElementById('openModal').addEventListener('click', function() {
+document.getElementById('urgentMessageModal').addEventListener('click', function() {
     var headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨"; // Header text
     var bodyText = "Attention all Easter Egg Hunters, This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
     var typewriterHeader = setupTypewriter(document.getElementById('typewriterHeader'), headerText, function() {
