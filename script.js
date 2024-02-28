@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupColorSwatches();
     setupStickers();
 
-    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
+   const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
     if (submitAnswerEasterBunny) {
         submitAnswerEasterBunny.addEventListener('click', function() {
-            checkWord('specialeasteregg', 'easterBunnyFeedback'); // 'easterBunnyFeedback' is the ID of the feedback element on the Easter Bunny page
+            checkWord('specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback'); // Assuming 'easterBunnyFeedback' is the ID of the feedback element
         });
     }
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
     if (submitAnswerMysteryTrail) {
         submitAnswerMysteryTrail.addEventListener('click', function() {
-            checkWord('easterbunny', 'mysteryTrailFeedback'); // 'mysteryTrailFeedback' is the ID of the feedback element on the Mystery Trail page
+            checkWord('easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback'); // Assuming 'mysteryTrailFeedback' is the ID of the feedback element
         });
     }
 
