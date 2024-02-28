@@ -76,14 +76,6 @@ const keyImages = [
     'https://i.imgur.com/ymXcQbo.png'
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupModal();
-    setupSecretImageAndConfetti();
-    setupEggCustomization();
-    setupGrassAndKeysHoverEffect();
-    setupEventListeners();
-});
-
 function setupModal() {
     const btn = document.getElementById('openModal');
     const modal = document.getElementById('urgentMessageModal');
@@ -247,10 +239,13 @@ function checkOverlap(element1, element2) {
 
 function setupEventListeners() {
     document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
-    document.getElementById('startHuntButton').addEventListener('click', startHunt);
+    const startHuntButton = document.getElementById('startHuntButton');
+    if (startHuntButton) {
+        startHuntButton.addEventListener('click', startHunt);
+    }
     document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => button.addEventListener('click', checkWord));
     document.getElementById('submitAnswer').addEventListener('click', () => {
-        const userInput = document.getElementById('userInput')?.value;
+        const userInput = document.getElementById('userInput').value;
         console.log(userInput); // Process the user input here
     });
 }
