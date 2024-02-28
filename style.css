@@ -443,6 +443,7 @@ button:not(#openModal):hover {
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
+  font-family: Helvetica;
   transition: background-color 0.3s;
   max-width: 100px;
   width: auto;
