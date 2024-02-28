@@ -227,7 +227,7 @@ body {
     width: 20px; /* Set the width as required */
 }
 
-#decorativeegg {
+.decorativeegg {
     width: 400px; /* Adjust based on the size you want */
     height: auto; /* Adjust based on the size you want */
     display: block;
