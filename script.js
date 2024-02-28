@@ -242,38 +242,33 @@ function setupEventListeners() {
     const startHuntButton = document.getElementById('startHuntButton');
     const submitAnswerButton = document.getElementById('submitAnswer');
 
-    // Set up the reveal egg button event listener, if the button exists
+    // Only set up the revealEggBtn event listener if the button exists
     if (revealEggBtn) {
         revealEggBtn.addEventListener('click', showNewEgg);
     } else {
-        console.error('revealEggBtn not found');
+        console.log('revealEggBtn not found on this page.');
     }
 
-    // Set up the start hunt button event listener, if the button exists
+    // Only set up the startHuntButton event listener if the button exists
     if (startHuntButton) {
         startHuntButton.addEventListener('click', startHunt);
     } else {
-        console.error('startHuntButton not found');
+        console.log('startHuntButton not found on this page.');
     }
 
-    // Set up the submit answer button event listener, if the button exists
+    // Check for other buttons like submitAnswerButton in the same way
     if (submitAnswerButton) {
         submitAnswerButton.addEventListener('click', () => {
             const userInput = document.getElementById('userInput').value;
             console.log(userInput); // Process the user input here
         });
     } else {
-        console.error('submitAnswerButton not found');
+        console.log('submitAnswerButton not found on this page.');
     }
 
-    // Set up event listeners for all buttons that are supposed to check a word
-    document.querySelectorAll('button[onclick="checkWord()"]').forEach(button => {
-        // Remove the inline onclick attribute to avoid potential conflicts
-        button.removeAttribute('onclick');
-        // Add the event listener for the checkWord function
-        button.addEventListener('click', checkWord);
-    });
+    // Continue with any other buttons or elements that need event listeners
 }
+
 // Additional or game-specific functions
 function showNewEgg() {
     document.getElementById('newEgg').style.display = 'block';
