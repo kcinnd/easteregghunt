@@ -10,6 +10,34 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStickers();
     drawEgg('#FAF0E6');
 
+    const canvas = document.getElementById('eggCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Function to draw an egg on the canvas
+    function drawEgg(ctx, x, y, width, height, color) {
+        ctx.beginPath();
+        ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
+    // Initial drawing of the egg
+    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, '#F9CEEE'); // Example initial color
+
+    // Function to change the egg color
+    function changeEggColor(color) {
+        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, color);
+    }
+
+    // Setup event listeners for color swatches
+    const colorSwatches = document.querySelectorAll('.color-swatch');
+    colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            changeEggColor(color);
+        });
+    });
+
     document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function() {
             const color = this.getAttribute('data-color');
@@ -133,21 +161,6 @@ function setupEggModal() {
             eggModal.style.display = "none";
         }
     };
-}
-
-function drawEgg(color) {
-    const canvas = document.getElementById('eggCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw the egg shape
-    ctx.beginPath();
-    ctx.ellipse(canvas.width / 2, canvas.height / 2, 80, 120, 0, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.closePath();
 }
 
 function setupSecretImageAndConfetti() {
