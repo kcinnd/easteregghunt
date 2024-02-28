@@ -54,6 +54,13 @@ body {
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
+.text-background {
+  background-color: black;
+  color: 00FF00; /* Makes the text color white for better readability */
+  padding: 15px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional, for rounded corners */
+}
+
 .modal-header, .modal-body {
     padding: 20px;
 }
