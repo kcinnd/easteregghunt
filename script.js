@@ -11,9 +11,11 @@ function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var spans = document.getElementsByClassName("close");
 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    };
+    if (btn) {
+        btn.onclick = function() {
+            modal.style.display = "block";
+        };
+    }
 
     Array.from(spans).forEach(span => {
         span.onclick = function() {
