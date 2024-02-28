@@ -434,23 +434,24 @@ button:not(#openModal):hover {
   background-color: #CC4F39;
 }
 
-#puzzle-button {
-  background-color: #E4AFBB;
+.puzzle-button {
+  background-color: #E4AFBB; /* Easter pink */
   color: white;
-  padding: 15px 30px;
-  margin: 0 auto;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 24px;
+  padding: 15px 30px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Removes underline from link */
+  font-size: 24px; /* Larger font size */
   font-weight: bold;
-  font-family: EasterJoy;
-  transition: background-color 0.3s;
-  max-width: 100px;
-  width: auto;
+  font-family: 'EasterJoy', sans-serif; /* Use EasterJoy font, with a fallback */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  display: block; /* Block display to center the button */
+  width: auto; /* Auto width based on content */
+  text-align: center; /* Center the text inside the button */
+  margin: 20px auto; /* Margin to center the button horizontally and add space around it */
 }
 
-#puzzle-button:hover {
-  background-color: #D9809E;
+.puzzle-button:hover {
+  background-color: #D9809E; /* Darker pink on hover */
 }
 
 .bottom-img {
@@ -532,11 +533,6 @@ button:not(#openModal):hover {
 
 .sticker-img:hover {
   transform: scale(1.1); /* Slight zoom on hover */
-}
-
-.puzzle-button {
-  display: block; /* Makes the link take up the full width like a block element */
-  margin: 20px auto; /* Adds vertical margin and centers horizontally */
 }
 
 #eggCanvas {
