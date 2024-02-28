@@ -8,21 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     setupColorSwatches();
     setupStickers();
 
-   const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
+    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
     if (submitAnswerEasterBunny) {
         submitAnswerEasterBunny.addEventListener('click', function() {
-            checkWord('specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback'); // Assuming 'easterBunnyFeedback' is the ID of the feedback element
+            checkWord('specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
         });
     }
-
-    // Setup for the Mystery Trail page
+    
+    // For the Mystery Trail page
     const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
     if (submitAnswerMysteryTrail) {
         submitAnswerMysteryTrail.addEventListener('click', function() {
-            checkWord('easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback'); // Assuming 'mysteryTrailFeedback' is the ID of the feedback element
+            checkWord('easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
         });
     }
-
     // Setup for the button to reveal the modal
     const revealBtn = document.getElementById('revealEggBtn');
     const eggModal = document.getElementById('eggModal');
@@ -365,12 +364,14 @@ function startHunt() {
 
 function checkWord(correctAnswer, inputElementId, feedbackElementId) {
     const userInput = document.getElementById(inputElementId).value.trim().toLowerCase();
-    const feedback = document.getElementById(feedbackElementId);
+    const feedbackElement = document.getElementById(feedbackElementId);
 
     if (userInput === correctAnswer.toLowerCase()) {
-        feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
+        feedbackElement.textContent = 'Correct! You found the secret word.';
+        // Additional actions for correct answer, like redirecting to another page
     } else {
-        feedback.textContent = 'That is not right; please try again.';
+        feedbackElement.textContent = 'That is not right; please try again.';
+        // Additional actions for incorrect answer
     }
 }
 
