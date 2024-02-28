@@ -444,7 +444,6 @@ button:not(#openModal):hover {
   font-weight: bold;
   font-family: 'EasterJoy', sans-serif; /* Use EasterJoy font, with a fallback */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
-  display: block; /* Block display to center the button */
   width: auto; /* Auto width based on content */
   text-align: center; /* Center the text inside the button */
   margin: 20px auto; /* Margin to center the button horizontally and add space around it */
