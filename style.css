@@ -300,6 +300,11 @@ body {
 
 }
 
+#eggCanvas {
+  display: block;
+  margin: 0 auto; /* Center the canvas */
+}
+
 #confettiCanvas {
   position: fixed;
   top: 0;
