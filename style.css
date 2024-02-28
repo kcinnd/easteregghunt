@@ -234,7 +234,7 @@ body {
   height: 100vh; /* Full viewport height */
 }
 
-.decorativeegg {
+#decorativeegg {
     width: 300px; /* Adjust based on the size you want */
     height: 400px; /* Adjust based on the size you want */
     display: block;
