@@ -1,9 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Your existing setup functions
     setupModal();
     setupSecretImageAndConfetti();
     setupEggCustomization();
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
+
+    // Additional setup for revealEggBtn
+    const revealEggBtn = document.getElementById('revealEggBtn');
+    const eggRevealModal = document.getElementById('eggRevealModal');
+
+    if (revealEggBtn && eggRevealModal) {
+        revealEggBtn.addEventListener('click', function() {
+            eggRevealModal.style.display = 'none';
+        });
+    } else {
+        console.log('Reveal button or egg reveal modal not found.');
+    }
+
+    // Any other code that should run after the document is fully loaded
 });
 
 function setupModal() {
