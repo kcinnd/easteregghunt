@@ -293,15 +293,36 @@ function checkWord() {
     }
 }
 
+function setupTypewriter(element, text, callback) {
+    element.innerHTML = ""; // Clear existing content
+    var cursorPosition = 0;
+    var typeSpeed = 100; // Adjust typing speed
+
+    var type = function() {
+        if (cursorPosition < text.length) {
+            element.innerHTML += text.charAt(cursorPosition);
+            cursorPosition++;
+            setTimeout(type, typeSpeed);
+        } else if (typeof callback === "function") {
+            callback(); // Call the callback function once typing is complete
+        }
+    };
+
+    return {
+        type: type
+    };
+}
+
+// Usage
 document.getElementById('openModal').addEventListener('click', function() {
-    var typewriterElement = document.getElementById('typewriter');
-    typewriterElement.innerHTML = `
-        <span class="var-highlight">var</span> urgentMessage = {
-            title: <span class="string-highlight">'🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨'</span>,
-            body: <span class="string-highlight">'Attention all Easter Egg Hunters, This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰'</span>
-        };
-    `;
-    var typewriter = setupTypewriter(typewriterElement);
-    typewriter.type();
-    document.getElementById('urgentMessageModal').style.display = 'block';
+    var headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨"; // Header text
+    var bodyText = "Attention all Easter Egg Hunters, This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
+    var typewriterHeader = setupTypewriter(document.getElementById('typewriterHeader'), headerText, function() {
+        // Once header is typed out, start typing the body
+        var typewriterBody = setupTypewriter(document.getElementById('typewriterBody'), bodyText);
+        typewriterBody.type();
+    });
+
+    typewriterHeader.type(); // Start typing the header
+    document.getElementById('urgentMessageModal').style.display = 'block'; // Show the modal
 });
