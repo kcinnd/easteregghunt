@@ -517,10 +517,3 @@ button:not(#openModal):hover {
     width: 150px; /* Smaller logo for smaller screens */
   }
 } 
-
-@font-face {
-    font-family: 'Easter Joy';
-    src: url('fonts/EasterJoy.woff') format('woff'); /* Adjust the file extension if you have TTF or another format */
-    font-weight: normal;
-    font-style: normal;
-}
