@@ -286,18 +286,28 @@ function startHunt() {
     window.location.href = 'page1.html';
 }
 
-function checkWord() {
-    const userInput = document.getElementById('userInput').value;
+function checkWord(correctAnswer) {
+    const userInput = document.getElementById('userInput').value.trim().toLowerCase(); // Get and normalize user input
     const feedback = document.getElementById('feedback');
-    if (userInput === 'easterbunny') {
-            // If the answer is correct
-            feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
-            // You can add any action here, like revealing more content or redirecting to another page
+
+    // Check if the user input matches the correct answer passed as a parameter
+    if (userInput === correctAnswer) {
+        // If the answer is correct
+        feedback.textContent = 'Nice job! You found the secret word. Use it to advance your journey.';
+        // You can add any action here, like revealing more content or redirecting to another page
     } else {
-            // If the answer is incorrect
-            feedback.textContent = 'Hmm, that is not right. Try again!';
+        // If the answer is incorrect
+        feedback.textContent = 'Hmm, that is not right. Try again!';
     }
 }
+
+document.getElementById('submitAnswer').addEventListener('click', function() {
+    checkWord('specialeasteregg');
+});
+
+document.getElementById('submitAnswer').addEventListener('click', function() {
+    checkWord('easterbunny');
+});
 
 function setupTypewriter(element, text, callback) {
     let cursorPosition = 0;
