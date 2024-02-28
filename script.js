@@ -101,6 +101,31 @@ function setupModal() {
     };
 }
 
+function setupEggModal() {
+    var eggModal = document.getElementById("eggModal");
+    var closeButton = document.querySelector("#eggModal .close"); // Adjust selector as necessary
+
+    // Ensure the modal and the close button exist
+    if (eggModal && closeButton) {
+        closeButton.onclick = function() {
+            eggModal.style.display = "none";
+        };
+    }
+
+    // Optional: Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === eggModal) {
+            eggModal.style.display = "none";
+        }
+    };
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupModal();
+    setupEggModal(); // Make sure this function is called
+    // Other setup functions...
+});
+
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
     const eggRevealModal = document.getElementById('eggRevealModal');
