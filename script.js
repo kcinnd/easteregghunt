@@ -193,14 +193,20 @@ function setupGrassAndKeysHoverEffect() {
 }
 
 function setupColorSwatches() {
-    const egg = document.getElementById('decorative-egg');
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
+    const eggElement = document.getElementById('decorativeEgg'); // Get the egg element
+    const colorSwatches = document.querySelectorAll('.color-swatch'); // Get all color swatches
+
+    // Add a click event listener to each color swatch
+    colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            egg.style.backgroundColor = color;
+            const color = this.getAttribute('data-color'); // Get the color from the swatch's data-color attribute
+            eggElement.style.backgroundColor = color; // Set the egg's background color to the selected color
         });
     });
 }
+
+// Call setupColorSwatches function when the page has loaded
+document.addEventListener('DOMContentLoaded', setupColorSwatches);
 
 function setupStickers() {
     const eggContainer = document.querySelector('.egg-container');
