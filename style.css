@@ -13,6 +13,43 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+.var-highlight {
+  color: #00FF00;
+}
+
+.string-highlight {
+  color: #00FF00;
+}
+
+#typewriter {
+  font-size: 2em;
+  margin: 0;
+  font-family: "TravelingTypewriter";
+  color: #00FF00;
+}
+#typewriter:after {
+  content: "|";
+  -webkit-animation: blink 500ms linear infinite alternate;
+          animation: blink 500ms linear infinite alternate;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 button {
     font-family: 'EasterMeadow', Arial, sans-serif; /* Fallback font */
 }
