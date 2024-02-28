@@ -11,15 +11,13 @@ function setupModal() {
     var modal = document.getElementById('urgentMessageModal');
     var spans = document.getElementsByClassName("close");
 
-    if (btn) {
-        btn.onclick = function() {
-            if (modal) modal.style.display = "block";
-        };
-    }
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
 
     Array.from(spans).forEach(span => {
         span.onclick = function() {
-            if (modal) modal.style.display = "none";
+            modal.style.display = "none";
         };
     });
 
@@ -75,22 +73,6 @@ const keyImages = [
     'https://i.imgur.com/pbUBsZf.png',
     'https://i.imgur.com/ymXcQbo.png'
 ];
-
-function setupModal() {
-    const btn = document.getElementById('openModal');
-    const modal = document.getElementById('urgentMessageModal');
-    const spans = document.getElementsByClassName("close");
-
-    if (btn && modal) {
-        btn.onclick = () => modal.style.display = "block";
-        Array.from(spans).forEach(span => {
-            span.onclick = () => modal.style.display = "none";
-        });
-        window.onclick = event => {
-            if (event.target === modal) modal.style.display = "none";
-        };
-    }
-}
 
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
