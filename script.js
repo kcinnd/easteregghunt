@@ -251,7 +251,7 @@ function setupEventListeners() {
 
     // Only set up the startHuntButton event listener if the button exists
     if (startHuntButton) {
-        startHuntButton.addEventListener('click', startHunt);
+        startHuntButton.addEventListener('click', startHuntButton);
     } else {
         console.log('startHuntButton not found on this page.');
     }
