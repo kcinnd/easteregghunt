@@ -49,6 +49,13 @@ body {
   display: flex; /* Use flexbox to center the modal content */
   align-items: center; /* Align items vertically */
   justify-content: center; /* Center items horizontally */
+  background-color: slategray; /* Slate grey background */
+  color: #00FF00; /* White text color */
+  font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
+}
+
+.modal-header, .modal-body {
+    padding: 20px;
 }
 
 .modal-header {
