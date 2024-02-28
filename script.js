@@ -63,8 +63,9 @@ function setupModal() {
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
     const eggRevealModal = document.getElementById('eggRevealModal');
+    const revealEggBtn = document.getElementById('revealEggBtn');
 
-    if (secretImage) {
+    if (secretImage && eggRevealModal) {
         secretImage.addEventListener('mouseenter', function() {
             confetti({
                 particleCount: 500,
@@ -75,13 +76,21 @@ function setupSecretImageAndConfetti() {
                 eggRevealModal.style.display = 'block';
             }, 2000);
         });
-    }
 
-    const closeModal = eggRevealModal ? eggRevealModal.querySelector('.close') : null;
-    if (closeModal) {
-        closeModal.addEventListener('click', function() {
-            eggRevealModal.style.display = 'none';
-        });
+        const closeModal = eggRevealModal.querySelector('.close');
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                eggRevealModal.style.display = 'none';
+            });
+        }
+
+        if (revealEggBtn) {
+            revealEggBtn.addEventListener('click', function() {
+                eggRevealModal.style.display = 'none';
+            });
+        }
+    } else {
+        console.log('One of the elements (secretImage, eggRevealModal, revealEggBtn) is not found.');
     }
 }
 
