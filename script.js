@@ -232,6 +232,15 @@ function setupEventListeners() {
     const startHuntBtn = document.getElementById('startHuntButton'); // Renamed variable
     const submitAnswerButton = document.getElementById('submitAnswer');
     const submitBtn = document.getElementById('submitBtn');
+
+    var revealBtn = document.getElementById('revealBtnId'); // Replace 'revealBtnId' with the actual ID of your button
+    if (revealBtn) {
+        revealBtn.onclick = function() {
+            // Your code here
+        };
+    } else {
+        console.log('Reveal button not found.');
+    }
     
     if (submitBtn) {
         submitBtn.addEventListener('click', checkWord);
