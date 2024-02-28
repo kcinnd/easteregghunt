@@ -255,7 +255,6 @@ function showNewEgg() {
     document.getElementById('newEgg').style.display = 'block';
     document.querySelector('.egg-container').style.display = 'flex';
     document.getElementById('eggRevealModal').style.display = 'none';
-    document.getElementById('revealEggBtn').addEventListener('click', showNewEgg);
 }
 
 function startHunt() {
