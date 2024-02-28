@@ -169,10 +169,8 @@ function setupGrassAndKeysHoverEffect() {
 }
 
 function setupColorSwatches() {
-    const egg = document.getElementById('decoratableEgg');
-    const swatches = document.querySelectorAll('.color-swatch');
-    
-    swatches.forEach(swatch => {
+    const egg = document.getElementById('decorative-egg');
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function() {
             const color = this.getAttribute('data-color');
             egg.style.backgroundColor = color;
@@ -182,9 +180,7 @@ function setupColorSwatches() {
 
 function setupStickers() {
     const eggContainer = document.querySelector('.egg-container');
-    const stickers = document.querySelectorAll('.sticker');
-
-    stickers.forEach(sticker => {
+    document.querySelectorAll('.sticker').forEach(sticker => {
         sticker.addEventListener('click', function() {
             const stickerCopy = this.cloneNode();
             stickerCopy.style.position = 'absolute';
