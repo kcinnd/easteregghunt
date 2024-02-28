@@ -367,7 +367,7 @@ function checkWord(correctAnswer, inputElementId, feedbackElementId) {
     const feedbackElement = document.getElementById(feedbackElementId);
 
     if (userInput === correctAnswer.toLowerCase()) {
-        feedbackElement.textContent = 'Correct! You found the secret word.';
+        feedbackElement.textContent = 'Nice job! You found the secret word.';
         // Additional actions for correct answer, like redirecting to another page
     } else {
         feedbackElement.textContent = 'That is not right; please try again.';
