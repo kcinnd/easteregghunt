@@ -53,6 +53,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function setupEggCustomization() {
+    const eggElement = document.getElementById('decorative-egg'); // Ensure this ID matches your HTML
+    const colorSwatches = document.querySelectorAll('.color-swatch'); // Ensure this class matches your HTML
+    const stickers = document.querySelectorAll('.sticker'); // Ensure this class matches your HTML
+
+    // Setup color swatches
+    colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color'); // Ensure your swatches have a 'data-color' attribute
+            eggElement.style.backgroundColor = color;
+        });
+    });
+
+    // Setup stickers
+    stickers.forEach(sticker => {
+        sticker.addEventListener('click', function() {
+            const stickerImage = this.cloneNode(true);
+            stickerImage.style.position = 'absolute';
+            eggElement.appendChild(stickerImage);
+            // Add more logic here if you want to allow moving the stickers around
+        });
+    });
+}
+
 function setupModal() {
     var btn = document.getElementById('openModal');
     var modal = document.getElementById('urgentMessageModal');
