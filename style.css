@@ -437,12 +437,12 @@ button:not(#openModal):hover {
 .puzzle-button {
   background-color: #E4AFBB; /* Easter pink */
   color: white;
-  padding: 15px 20px; /* Adjust padding as needed */
+  padding: 10px 20px; /* Adjust padding as needed */
   border-radius: 5px; /* Rounded corners */
   text-decoration: none; /* Removes underline from link */
   font-size: 24px; /* Larger font size */
   font-weight: bold;
-  font-family: 'EasterJoy', sans-serif; /* Use EasterJoy font, with a fallback */
+  font-family: 'EasterJoy', Arial, sans-serif; /* Use EasterJoy font, with a fallback */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
   width: auto; /* Auto width based on content */
   text-align: center; /* Center the text inside the button */
