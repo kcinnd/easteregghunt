@@ -281,7 +281,7 @@ function showNewEgg() {
     document.getElementById('eggRevealModal').style.display = 'none';
 }
 
-function startHunt() {
+function startHuntButton() {
     window.location.href = 'page1.html';
 }
 
