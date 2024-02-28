@@ -236,6 +236,8 @@ body {
 #decorative-egg {
     width: 200px; /* Adjust based on the size you want */
     height: 300px; /* Adjust based on the size you want */
+    display: block;
+    margin: 0 auto;
     background-image: url('https://i.imgur.com/zImvXKw.png');
     background-size: cover; /* This will make sure the image covers the div completely */
     background-position: center; /* This will center the background image */
