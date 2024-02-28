@@ -423,7 +423,7 @@ button:not(#openModal):hover {
   font-weight: bold;
   font-size: 18px;
   font-family: Helvetica;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
