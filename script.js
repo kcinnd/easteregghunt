@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEggCustomization();
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
+    setupColorSwatches();
+    setupStickers();
 
     const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
     if (submitAnswerEasterBunny) {
@@ -128,53 +130,6 @@ const keyImages = [
     'https://i.imgur.com/ymXcQbo.png'
 ];
 
-function setupEggCustomization() {
-    const egg = document.getElementById('egg');
-    const colorPalette = document.getElementById('colorPalette');
-    const stickerContainer = document.getElementById('stickerContainer');
-
-    if (egg && colorPalette && stickerContainer) {
-        ['#CDF4F8', '#D1CCEC', '#FED3D9', '#FDF0D7', '#C4EBD5'].forEach(color => {
-            const colorSwatch = document.createElement('button');
-            colorSwatch.style.backgroundColor = color;
-            colorSwatch.className = 'color-button';
-            colorSwatch.onclick = () => egg.style.backgroundColor = color;
-            colorPalette.appendChild(colorSwatch);
-        });
-
-        const stickerSources = 
-            ['https://i.imgur.com/9a87llh.png?1',
-            'https://i.imgur.com/Cx5sW4T.png?1',
-            'https://i.imgur.com/Sppxziz.png',
-            'https://i.imgur.com/xgWycmI.png',
-            'https://i.imgur.com/xkm6yV7.png',
-            'https://i.imgur.com/tEW10f7.png',
-            'https://i.imgur.com/HcTyCd7.png',
-            'https://i.imgur.com/tURKwGZ.png',
-            'https://i.imgur.com/P6If7vu.png',
-            'https://i.imgur.com/yDVaMFM.png',
-            'https://i.imgur.com/xtNwn5Q.png',
-            'https://i.imgur.com/4OYvyjf.png',
-            'https://i.imgur.com/61J8Ydt.png',
-            'https://i.imgur.com/q6c11A9.png',
-            'https://i.imgur.com/pbUBsZf.png',
-            'https://i.imgur.com/ymXcQbo.png'
-             ];
-         stickerSources.forEach(src => {
-            const stickerImg = document.createElement('img');
-            stickerImg.src = src;
-            stickerImg.className = 'sticker';
-            stickerImg.onclick = () => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.className = 'sticker';
-                egg.appendChild(img);
-            };
-            stickerContainer.appendChild(stickerImg);
-        });
-    }
-}
-
 function setupGrassAndKeysHoverEffect() {
     const grassContainer = document.querySelector('.easter-bunny-grass');
     if (!grassContainer) return;
@@ -209,6 +164,62 @@ function setupGrassAndKeysHoverEffect() {
         grassImg.addEventListener('mouseenter', () => {
             keyImg.style.display = 'block'; // Show the key on hover
             placeKeyRandomly(keyImg, '.grass-img, .key-img, .logo, #container'); // Avoid overlapping
+        });
+    });
+}
+
+function setupColorSwatches() {
+    const egg = document.getElementById('decoratableEgg');
+    const swatches = document.querySelectorAll('.color-swatch');
+    
+    swatches.forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            egg.style.backgroundColor = color;
+        });
+    });
+}
+
+function setupStickers() {
+    const eggContainer = document.querySelector('.egg-container');
+    const stickers = document.querySelectorAll('.sticker');
+
+    stickers.forEach(sticker => {
+        sticker.addEventListener('click', function() {
+            const stickerCopy = this.cloneNode();
+            stickerCopy.style.position = 'absolute';
+            stickerCopy.style.width = '50px'; // Adjust size as needed
+            stickerCopy.style.left = '50%'; // Adjust position as needed
+            stickerCopy.style.top = '50%'; // Adjust position as needed
+            stickerCopy.style.transform = 'translate(-50%, -50%)'; // Center the sticker
+            
+            eggContainer.appendChild(stickerCopy);
+            
+            // Allow moving the sticker
+            stickerCopy.addEventListener('mousedown', function(e) {
+                let shiftX = e.clientX - stickerCopy.getBoundingClientRect().left;
+                let shiftY = e.clientY - stickerCopy.getBoundingClientRect().top;
+
+                function moveAt(pageX, pageY) {
+                    stickerCopy.style.left = pageX - shiftX + 'px';
+                    stickerCopy.style.top = pageY - shiftY + 'px';
+                }
+
+                function onMouseMove(event) {
+                    moveAt(event.pageX, event.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                stickerCopy.onmouseup = function() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    stickerCopy.onmouseup = null;
+                };
+            });
+
+            stickerCopy.ondragstart = function() {
+                return false;
+            };
         });
     });
 }
