@@ -227,12 +227,6 @@ body {
     width: 20px; /* Set the width as required */
 }
 
-.egg-container img {
-    max-width: 600px; /* Adjust based on your preference */
-    display: block;
-    margin: 0 auto;
-}
-
 #decorativeegg {
     width: 400px; /* Adjust based on the size you want */
     height: auto; /* Adjust based on the size you want */
