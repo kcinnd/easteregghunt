@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setupColorSwatches();
     setupStickers();
 
+    const eggElement = document.getElementById('decorativeEgg'); // Get the egg element
+    if (eggElement) {
+        // Only call these functions if eggElement exists on the page
+        setupEggCustomization(eggElement);
+        setupColorSwatches(eggElement);
+        // Any other functions that require eggElement
+    }
+    
     const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
     if (submitAnswerEasterBunny) {
         submitAnswerEasterBunny.addEventListener('click', function() {
@@ -53,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEggCustomization() {
-    const eggElement = document.getElementById('decorativeEgg'); // Ensure this ID matches your HTML
     const colorSwatches = document.querySelectorAll('.color-swatch'); // Ensure this class matches your HTML
     const stickers = document.querySelectorAll('.sticker'); // Ensure this class matches your HTML
 
@@ -217,7 +224,6 @@ function setupGrassAndKeysHoverEffect() {
 }
 
 function setupColorSwatches() {
-    const eggElement = document.getElementById('decorativeEgg'); // Get the egg element
     const colorSwatches = document.querySelectorAll('.color-swatch'); // Get all color swatches
 
     // Add a click event listener to each color swatch
