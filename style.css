@@ -45,8 +45,8 @@ body {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 50%; /* Full width */
+  height: 50%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -54,7 +54,9 @@ body {
   align-items: center; /* Align items vertically */
   justify-content: center; /* Center items horizontally */
   background-color: slategray; /* Slate grey background */
-  color: #00FF00; /* White text color */
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  color: #00FF00; 
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
@@ -62,7 +64,6 @@ body {
   background-color: black;
   color: 00FF00; /* Makes the text color white for better readability */
   padding: 15px; /* Adjust padding as needed */
-  border-radius: 5px; /* Optional, for rounded corners */
 }
 
 .modal-header, .modal-body {
