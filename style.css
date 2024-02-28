@@ -227,11 +227,10 @@ body {
     width: 20px; /* Set the width as required */
 }
 
-.egg-container {
-  display: none; /* Initially hidden, shown after modal interaction */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.egg-container img {
+    max-width: 600px; /* Adjust based on your preference */
+    display: block;
+    margin: 20px auto;
 }
 
 #egg {
@@ -242,23 +241,19 @@ body {
   margin: 20px 0; /* Allow stickers to be absolutely positioned within */
 }
 
-.color-palette, .sticker-container {
+.color-palette {
   display: flex;
   justify-content: center;
   flex-wrap: wrap; /* Ensure wrapping for smaller screens */
   margin-top: 20px;
 }
 
-.color-button, .sticker {
+.color-button {
   width: 40px; /* Uniform size for color buttons and stickers */
   height: 40px; /* Added height for color buttons to match stickers */
   margin: 5px; /* Consistent margin */
   cursor: pointer;
   border-radius: 50%;
-}
-
-.sticker:hover, .color-button:focus {
-  transform: scale(1.1); /* Interactive feedback */
 }
 
 .container {
@@ -501,13 +496,20 @@ button:not(#openModal):hover {
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
-    margin: 5px;
+    margin: 0 10px;
 }
 
 .sticker {
     width: 50px;
     cursor: pointer;
-    margin: 5px;
+    margin: 10px;
+}
+
+.sticker-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
 }
 
 #eggCanvas {
