@@ -204,34 +204,20 @@ function checkOverlap(element1, element2) {
 
 function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
-    const startHuntButton = document.getElementById('startHuntButton');
+    const startHuntBtn = document.getElementById('startHuntButton'); // Renamed variable
     const submitAnswerButton = document.getElementById('submitAnswer');
 
-    // Only set up the revealEggBtn event listener if the button exists
     if (revealEggBtn) {
         revealEggBtn.addEventListener('click', showNewEgg);
     } else {
         console.log('revealEggBtn not found on this page.');
     }
 
-    // Only set up the startHuntButton event listener if the button exists
-    if (startHuntButton) {
-        startHuntButton.addEventListener('click', startHuntButton);
+    if (startHuntBtn) {
+        startHuntBtn.addEventListener('click', startHunt); // Changed to 'startHunt'
     } else {
         console.log('startHuntButton not found on this page.');
     }
-
-    // Check for other buttons like submitAnswerButton in the same way
-    if (submitAnswerButton) {
-        submitAnswerButton.addEventListener('click', () => {
-            const userInput = document.getElementById('userInput').value;
-            console.log(userInput); // Process the user input here
-        });
-    } else {
-        console.log('submitAnswerButton not found on this page.');
-    }
-
-    // Continue with any other buttons or elements that need event listeners
 }
 
 // Additional or game-specific functions
@@ -241,7 +227,7 @@ function showNewEgg() {
     document.getElementById('eggRevealModal').style.display = 'none';
 }
 
-function startHuntButton() {
+function startHunt() {
     window.location.href = 'page1.html';
 }
 
