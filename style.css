@@ -233,14 +233,6 @@ body {
     margin: 20px auto;
 }
 
-#egg {
-  width: 200px;
-  height: 300px;
-  background-color: white;
-  border-radius: 50%/35%;
-  margin: 20px 0; /* Allow stickers to be absolutely positioned within */
-}
-
 #decorative-egg {
     width: 200px; /* Adjust based on the size you want */
     height: 300px; /* Adjust based on the size you want */
