@@ -490,46 +490,50 @@ button:not(#openModal):hover {
   border-radius: 5px;
 }
 
+.egg {
+    width: 200px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 50% / 60%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
 .color-swatches {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .color-swatch {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin: 0 10px;
+    margin-right: 10px;
     cursor: pointer;
-    border: 2px solid #fff; /* Highlight swatches */
+}
+
+.stickers {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .sticker {
     width: 50px;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
-.sticker:hover {
-    transform: scale(1.2);
-}
-
-#decorative-egg {
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 20px;
-}
+/* Add specific colors to swatches */
+.color-swatch:nth-child(1) { background-color: #F9CEEE; }
+.color-swatch:nth-child(2) { background-color: #E0CDFF; }
+.color-swatch:nth-child(3) { background-color: #C0F0FB; }
+.color-swatch:nth-child(4) { background-color: #DDF9A8; }
 
 @media (max-width: 768px) {
   .modal-content, .egg-reveal-modal, .egg-container {
     width: 90%; /* More screen-friendly on smaller devices */
-  }
-
-  #egg {
-    width: 150px; /* Smaller egg for smaller screens */
-    height: 225px; /* Maintain aspect ratio */
   }
 
   .logo {
