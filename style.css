@@ -241,6 +241,15 @@ body {
   margin: 20px 0; /* Allow stickers to be absolutely positioned within */
 }
 
+#decorative-egg {
+    width: 200px; /* Adjust based on the size you want */
+    height: 300px; /* Adjust based on the size you want */
+    background-image: url('https://i.imgur.com/zImvXKw.png');
+    background-size: cover; /* This will make sure the image covers the div completely */
+    background-position: center; /* This will center the background image */
+    border-radius: 50% / 60%; /* Adjust if needed to fit the egg shape */
+}
+
 .color-palette {
   display: flex;
   justify-content: center;
