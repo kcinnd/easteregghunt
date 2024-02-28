@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupTypewriter(element, text, callback) {
     element.innerHTML = ""; // Clear existing content
     var cursorPosition = 0;
-    var typeSpeed = 100; // Adjust typing speed
+    var typeSpeed = 200; // Adjust typing speed
 
     var type = function() {
         if (cursorPosition < text.length) {
