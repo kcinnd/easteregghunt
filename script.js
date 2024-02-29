@@ -4,28 +4,43 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSecretImageAndConfetti();
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
-    setupColorSwatches();
     setupTypewriterMessages();
 
     // Check for the egg canvas and set up page-specific features
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        setupEggPageSpecifics(canvas);
-        setupStickers(canvas, ctx);
-        setupDrawingFeature(canvas, ctx); // Initialize the drawing feature here
+        
+        // Draw the initial egg on the canvas
+        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Adjusted size
+
+        // Setup functions specific to the Easter egg page
+        setupEggColorChange(canvas, ctx); // Function to change the egg's color
+        setupStickers(canvas, ctx); // Function to handle sticker placement
+        setupDrawingFeature(canvas, ctx); // Function to enable drawing on the egg
     }
-});
 
 function setupDrawingFeature(canvas, ctx) {
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
 
-    canvas.addEventListener('mousedown', (e) => startDrawing(e, ctx, lastX, lastY, isDrawing));
-    canvas.addEventListener('mousemove', (e) => draw(e, ctx, lastX, lastY, isDrawing));
-    canvas.addEventListener('mouseup', () => stopDrawing(isDrawing));
-    canvas.addEventListener('mouseleave', () => stopDrawing(isDrawing));
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 }
 
 function startDrawing(e, ctx, lastX, lastY, isDrawing) {
@@ -57,7 +72,7 @@ function setupEggPageSpecifics(canvas) {
     drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Tripled size
 
     // Setup for color swatches and stickers only if on the Easter egg page
-    setupColorSwatches(canvas, ctx);
+    setupEggColorChange(canvas, ctx); // Setup for changing egg color
     setupStickers(canvas, ctx); // Make sure to define this function if it involves canvas
 }
 
@@ -181,6 +196,8 @@ const canvasArea = canvas.width * canvas.height;
 const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 1% of the canvas
 const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
 
+
+
 function updateCoverage() {
     const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
     const coveragePercentage = (estimatedCoverage / canvasArea) * 100;
@@ -192,16 +209,12 @@ function updateCoverage() {
     }
 }
 
-// Call updateCoverage() each time a sticker is placed or drawing is done
-// For stickers:
 function placeSticker() {
     // Sticker placement logic...
     stickerCount += 1;
     updateCoverage();
 }
 
-// For drawings, you'll need to calculate the length of each stroke
-// This is a simplified example; actual implementation will vary
 function drawStroke(startX, startY, endX, endY) {
     // Drawing logic...
     const strokeLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
@@ -326,7 +339,7 @@ function setupGrassAndKeysHoverEffect() {
     });
 }
 
-function setupColorSwatches(canvas, ctx) {
+function setupEggColorChange(canvas, ctx) {
     const colorSwatches = document.querySelectorAll('.color-swatch');
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function() {
