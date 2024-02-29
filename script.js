@@ -354,17 +354,13 @@ function setupGrassAndKeysHoverEffect() {
 }
 
 function setupEggColorChange(canvas, ctx) {
-    // Select all color swatches and add click event listeners
     document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function() {
-            // Retrieve the color from the clicked swatch
             const color = this.getAttribute('data-color');
-            
-            // Redraw the egg with the new color
-            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color);
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 150, 225, color); // Adjust the size as necessary
         });
     });
-} 
+}
     
 function setupAnswerSubmissions(buttonId, correctAnswer, inputId, feedbackId) {
     const button = document.getElementById(buttonId);
