@@ -134,26 +134,47 @@ function drawStar(ctx, x, y, color, spikes = 5, outerRadius = 10, innerRadius = 
     ctx.fill();
 }
 
-function drawHeart(ctx, x, y, color) {
+function drawHeart(ctx, x, y, width, height, color) {
+    ctx.save(); // Save the current state
     ctx.beginPath();
-    const topCurveHeight = 10;
+    const topCurveHeight = height * 0.3;
     ctx.moveTo(x, y + topCurveHeight);
     // Top left curve
     ctx.bezierCurveTo(
-        x - 20, y + topCurveHeight - 20,
-        x - 20, y + topCurveHeight + 45 - 20,
-        x, y + topCurveHeight + 45
+        x, y, 
+        x - width / 2, y, 
+        x - width / 2, y + topCurveHeight
     );
+
+    // Bottom left curve
+    ctx.bezierCurveTo(
+        x - width / 2, y + (height + topCurveHeight) / 2, 
+        x, y + (height + topCurveHeight) / 2, 
+        x, y + height
+    );
+
+    // Bottom right curve
+    ctx.bezierCurveTo(
+        x, y + (height + topCurveHeight) / 2, 
+        x + width / 2, y + (height + topCurveHeight) / 2, 
+        x + width / 2, y + topCurveHeight
+    );
+
     // Top right curve
     ctx.bezierCurveTo(
-        x + 20, y + topCurveHeight + 45 - 20,
-        x + 20, y + topCurveHeight - 20,
+        x + width / 2, y, 
+        x, y, 
         x, y + topCurveHeight
     );
+
     ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
+    ctx.restore(); // Restore the original state
 }
+
+// When placing the heart, adjust the size appropriately
+// Example: drawHeart(ctx, eggX, eggY, 30, 30, 'red');
 
 let stickerCount = 0;
 let drawingLength = 0;
