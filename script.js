@@ -9,6 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
+        
+        // Function to draw the initial egg
+        function drawEgg(ctx, x, y, width, height, color) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        // Draw the initial egg
         drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
         setupEggColorChange(canvas, ctx);
         setupStickers(canvas, ctx);
