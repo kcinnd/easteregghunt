@@ -7,38 +7,37 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStickers();
     setupColorSwatches();
     setupTypewriterMessages();
-    
-    // Define canvas and context for drawing the egg
-    const canvas = document.getElementById('eggCanvas');
-    if (!canvas) {
-        console.error('Canvas element not found!');
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-        console.error('Unable to get canvas context!');
-        return;
-    }
 
     // Function to draw an egg on the canvas
-    function drawEgg(x, y, width, height, color) {
-        ctx.beginPath(); // Start a new path
-        ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-    }
+    const canvas = document.getElementById('eggCanvas');
+    if (canvas) {
+        // If canvas exists, this must be the Easter egg page
+        const ctx = canvas.getContext('2d');
 
-    // Initial drawing of the egg
-    drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, '#F9CEEE');
+        // Define the drawEgg function
+        function drawEgg(x, y, width, height, color) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
 
-    // Setup event listeners for color swatches
-   document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, color);
+        // Draw the initial egg
+        drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, '#FAF0E6');
+
+        // Setup color swatches to change the egg color
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, color);
+            });
         });
-    });
+
+        // Setup for stickers and other canvas-related functionalities
+        setupStickers();
+        setupColorSwatches();
+    }
+  
 });
 
 function setupModal() {
