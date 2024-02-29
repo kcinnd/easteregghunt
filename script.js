@@ -61,35 +61,6 @@ function setupStickers(canvas, ctx) {
     }
 }
 
-function setupDrawingToggle(canvas, ctx) {
-    const toggleDrawBtn = document.getElementById('toggleDraw');
-
-    toggleDrawBtn.addEventListener('click', () => {
-        isDrawingEnabled = !isDrawingEnabled;
-        canvas.style.cursor = isDrawingEnabled ? 'crosshair' : 'default';
-    });
-
-    canvas.addEventListener('mousedown', (e) => {
-        if (isDrawingEnabled) {
-            isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-        }
-    });
-
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
-
-    function draw(e) {
-        if (!isDrawing || !isDrawingEnabled) return;
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-}
-
 function setupDrawingFeature(canvas, ctx) {
     let lastX = 0;
     let lastY = 0;
