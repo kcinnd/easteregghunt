@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawEgg() {
         ctx.fillStyle = currentColor;
         ctx.beginPath();
-        ctx.ellipse(canvas.width / 2, canvas.height / 2, 300, 450, 0, 0, 2 * Math.PI);
+        ctx.ellipse(canvas.width / 2, canvas.height / 2, 200, 300, 0, 0, 2 * Math.PI);
         ctx.fill();
     }
 
