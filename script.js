@@ -33,9 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupStickers(canvas, ctx) {
-    let currentSticker = { shape: 'circle', color: '#000000', size: 20 };
-
-    // Sticker Shape Selection
     document.querySelectorAll('.sticker-preview').forEach(preview => {
         preview.addEventListener('click', function() {
             currentSticker.shape = this.dataset.shape;
@@ -131,13 +128,6 @@ function checkCoverage() {
     if (coveragePercentage >= 80) {
         alert("Congratulations! You've decorated over 80% of the egg!");
     }
-}
-
-function drawEgg(ctx, x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
 }
 
 function drawShape(ctx, shape, x, y, color) {
