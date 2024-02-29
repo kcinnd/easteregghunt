@@ -13,6 +13,25 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+.sticker-preview {
+  width: 50px; /* Set the width of the sticker preview */
+  height: 50px; /* Set the height of the sticker preview */
+  margin: 10px; /* Add some space around each sticker preview */
+  border: 2px solid #ccc; /* Give a subtle border to each sticker */
+  cursor: pointer; /* Change the cursor to indicate these are clickable */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sticker-preview:hover {
+  transform: scale(1.1); /* Slightly enlarge sticker previews on hover */
+  border-color: #666; /* Change border color on hover for visual feedback */
+}
+
+/* You might want to add specific styles for active or selected stickers */
+.sticker-preview.active {
+  border-color: #000; /* Highlight active/selected sticker */
+}
+
 .var-highlight {
   color: #00FF00;
 }
