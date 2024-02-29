@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupStickers();
     setupColorSwatches();
-    setupEggCustomization();
     setupTypewriterMessages();
     
     // Define canvas and context for drawing the egg
@@ -34,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, '#F9CEEE');
 
     // Setup event listeners for color swatches
-    const colorSwatches = document.querySelectorAll('.color-swatch');
-    colorSwatches.forEach(swatch => {
+   document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function() {
             const color = this.getAttribute('data-color');
             drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, color);
