@@ -157,8 +157,7 @@ function setupGrassAndKeysHoverEffect() {
         grassImg.className = 'grass-img';
         grassImg.id = `grass${index + 1}`;
         grassContainer.appendChild(grassImg);
-        });
-    };
+    });
 }
 
 function setupColorSwatches() {
