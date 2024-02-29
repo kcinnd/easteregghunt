@@ -6,26 +6,85 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupTypewriterMessages();
 
-    // Check for the egg canvas and set up page-specific features
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
-        setupEggColorChange(canvas, ctx); // Function to change the egg's color
-        setupStickers(canvas, ctx); // Function to handle sticker placement
-        setupDrawingFeature(canvas, ctx); // Function to enable drawing on the egg
-        const canvasArea = canvas.width * canvas.height;
-        function updateCoverage() {
-            const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
-            const coveragePercentage = (estimatedCoverage / canvasArea) * 100;
-
-            if (coveragePercentage >= 80) {
-                // Display congratulations popup
-                alert("Congratulations! You've decorated the special Easter EGG!");
-            }
-        }
+        setupEggColorChange(canvas, ctx);
+        setupStickers(canvas, ctx);
+        setupDrawingFeature(canvas, ctx);
+        setupDrawingToggle(canvas, ctx);
     }
 });
+
+function setupCanvasAndControls(canvas, ctx) {
+    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
+    setupEggColorChange(canvas, ctx);
+    setupStickers(canvas, ctx);
+    setupDrawingFeature(canvas, ctx);
+    setupDrawingToggle(canvas, ctx); // Added toggle for drawing mode
+}
+
+function setupEggColorChange(canvas, ctx) {
+    // Setup for changing the egg's color using color swatches
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color);
+        });
+    });
+}
+
+function setupStickers(canvas, ctx) {
+    // Setup for handling sticker placement including shape and color selection
+    let currentSticker = { shape: 'circle', color: '#000000', size: 20 };
+
+    document.querySelectorAll('.sticker-preview, .color-swatch-sticker').forEach(item => {
+        item.addEventListener('click', function() {
+            if (this.classList.contains('sticker-preview')) {
+                currentSticker.shape = this.dataset.shape;
+            } else if (this.classList.contains('color-swatch-sticker')) {
+                currentSticker.color = this.dataset.color;
+            }
+        });
+    });
+
+    canvas.addEventListener('click', function(e) {
+        const { x, y } = getCanvasClickCoordinates(e, canvas);
+        drawShape(ctx, currentSticker.shape, x, y, currentSticker.color, currentSticker.size);
+        // Update sticker count and coverage check here
+    });
+}
+
+function setupDrawingToggle(canvas, ctx) {
+    const toggleDrawBtn = document.getElementById('toggleDraw');
+    let isDrawingEnabled = false;
+
+    toggleDrawBtn.addEventListener('click', () => {
+        isDrawingEnabled = !isDrawingEnabled;
+        canvas.style.cursor = isDrawingEnabled ? 'crosshair' : 'default';
+    });
+
+    canvas.addEventListener('mousedown', (e) => {
+        if (isDrawingEnabled) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+    });
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+
+    function draw(e) {
+        if (!isDrawing || !isDrawingEnabled) return;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+}
 
 function setupDrawingFeature(canvas, ctx) {
     let isDrawing = false;
@@ -56,6 +115,35 @@ function setupDrawingFeature(canvas, ctx) {
     canvas.addEventListener('mouseout', stopDrawing);
 }
 
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+canvas.addEventListener('mousedown', (e) => {
+    if (isDrawingEnabled) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+    if (isDrawing && isDrawingEnabled) {
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = currentSticker.color; // Assume currentSticker.color is set by your color picker
+        ctx.lineWidth = 5; // Set line width or use currentSticker.size if applicable
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+
+        // Optional: increment the drawingLength here for coverage calculation
+        // drawingLength += Math.sqrt((e.offsetX - lastX) ** 2 + (e.offsetY - lastY) ** 2);
+    }
+});
+
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
+
 function setupStickers(canvas, ctx) {
     // Sticker shape selection
     document.querySelectorAll('.sticker-preview').forEach(preview => {
@@ -80,6 +168,14 @@ function setupStickers(canvas, ctx) {
         const y = e.clientY - rect.top;
         drawShape(ctx, currentSticker.shape, x, y, currentSticker.color);
     });
+}
+
+function checkCoverage() {
+    let decoratedArea = stickerCount * averageStickerArea + drawingLength * averageDrawingWidth;
+    let coveragePercentage = (decoratedArea / (canvas.width * canvas.height)) * 100;
+    if (coveragePercentage >= 80) {
+        alert("Congratulations! You've decorated over 80% of the egg!");
+    }
 }
 
 function drawEgg(ctx, x, y, width, height, color) {
@@ -165,9 +261,6 @@ function drawHeart(ctx, x, y, width, height, color) {
     ctx.restore(); // Restore the original state
 }
 
-// When placing the heart, adjust the size appropriately
-// Example: drawHeart(ctx, eggX, eggY, 30, 30, 'red');
-
 let stickerCount = 0;
 let drawingLength = 0;
 const canvasArea = canvas.width * canvas.height;
@@ -175,11 +268,9 @@ const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 
 const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
 
 function placeSticker(x, y, shape, color) {
-    // Logic to place a sticker on the canvas at (x, y) with the given shape and color
-    drawShape(ctx, shape, x, y, color); // Assume drawShape is a function that draws the sticker
-
-    stickerCount++; // Increment the sticker count
-    updateCoverage(); // Recalculate and update the coverage
+    drawShape(ctx, shape, x, y, color);
+    stickerCount++;
+    checkCoverage(); // Assuming this function calculates and checks the coverage
 }
 
 function draw(e) {
