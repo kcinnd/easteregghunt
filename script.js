@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setupStickers(canvas, ctx);
         setupDrawingFeature(canvas, ctx);
     }
+    let currentSticker = { shape: 'circle', color: '#000000', size: 20 }; // Default sticker settings
+    let isDrawingEnabled = false; // Tracks whether drawing mode is enabled
+    let stickerCount = 0; // Counts the number of stickers placed
+    let drawingLength = 0; // Measures the length of lines drawn
+    const averageStickerArea = 20 * 20; // Assuming each sticker is 20x20 pixels
+    const averageDrawingWidth = 5; // Assuming the line width for drawing is 5 pixels
 });
 
 function setupStickers(canvas, ctx) {
@@ -42,7 +48,6 @@ canvas.addEventListener('click', function(e) {
 
 function setupDrawingToggle(canvas, ctx) {
     const toggleDrawBtn = document.getElementById('toggleDraw');
-    let isDrawingEnabled = false;
 
     toggleDrawBtn.addEventListener('click', () => {
         isDrawingEnabled = !isDrawingEnabled;
@@ -71,7 +76,6 @@ function setupDrawingToggle(canvas, ctx) {
 }
 
 function setupDrawingFeature(canvas, ctx) {
-    let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
 
@@ -197,8 +201,6 @@ function drawHeart(ctx, x, y, width, height, color) {
     ctx.restore(); // Restore the original state
 }
 
-let stickerCount = 0;
-let drawingLength = 0;
 const canvasArea = canvas.width * canvas.height;
 const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 1% of the canvas
 const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
