@@ -1,28 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Your existing setup functions
     setupEggModal();
     setupModal();
     setupSecretImageAndConfetti();
-    setupEggCustomization();
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
-    setupColorSwatches();
     setupStickers();
-    drawEgg('#FAF0E6');
-
-    const headerElement = document.getElementById('typewriterHeader');
-        const bodyElement = document.getElementById('typewriterBody');
+    setupColorSwatches();
+    setupEggCustomization();
+    setupTypewriterMessages();
     
-        if (headerElement) {
-            const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
-            setupTypewriter(headerElement, headerText, function() {
-                if (bodyElement) {
-                    const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
-                    setupTypewriter(bodyElement, bodyText);
-                }
-            });
-        }
-
+    // Define canvas and context for drawing the egg
     const canvas = document.getElementById('eggCanvas');
     if (!canvas) {
         console.error('Canvas element not found!');
@@ -51,24 +38,104 @@ document.addEventListener('DOMContentLoaded', function() {
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function() {
             const color = this.getAttribute('data-color');
-            changeEggColor(color);
+            drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, color);
         });
     });
+});
 
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            drawEgg(color);
-        });
-    });
+function setupModal() {
+    var btn = document.getElementById('openModal');
+    var modal = document.getElementById('urgentMessageModal');
+    var spans = document.getElementsByClassName("close");
 
-    const eggElement = document.getElementById('decorativeegg'); // Get the egg element
-    if (eggElement) {
-        // Only call these functions if eggElement exists on the page
-        setupEggCustomization(eggElement);
-        setupColorSwatches(eggElement);
-        // Any other functions that require eggElement
+    if (btn) {
+        btn.onclick = function() {
+            modal.style.display = "block";
+        };
     }
+
+    Array.from(spans).forEach(span => {
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+    });
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+function setupEggModal() {
+    var eggModal = document.getElementById("eggModal");
+    var closeButton = document.querySelector("#eggModal .close"); // Adjust selector as necessary
+
+    // Ensure the modal and the close button exist
+    if (eggModal && closeButton) {
+        closeButton.onclick = function() {
+            eggModal.style.display = "none";
+        };
+    }
+
+    // Optional: Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === eggModal) {
+            eggModal.style.display = "none";
+        }
+    };
+}
+
+function setupSecretImageAndConfetti() {
+    const secretImage = document.getElementById('secretImage');
+    const eggRevealModal = document.getElementById('eggRevealModal');
+    const revealEggBtn = document.getElementById('revealEggBtn');
+
+    if (secretImage && eggRevealModal) {
+        secretImage.addEventListener('mouseenter', function() {
+            confetti({
+                particleCount: 500,
+                spread: 200,
+                origin: { y: 0.6 }
+            });
+            setTimeout(() => {
+                eggRevealModal.style.display = 'block';
+            }, 2000);
+        });
+
+        const closeModal = eggRevealModal.querySelector('.close');
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                eggRevealModal.style.display = 'none';
+            });
+        }
+
+        if (revealEggBtn) {
+            revealEggBtn.addEventListener('click', function() {
+                eggRevealModal.style.display = 'none';
+            });
+        }
+    } else {
+        console.log('One of the elements (secretImage, eggRevealModal, revealEggBtn) is not found.');
+    }
+}
+
+function setupTypewriterMessages() {
+    const headerElement = document.getElementById('typewriterHeader');
+    const bodyElement = document.getElementById('typewriterBody');
+
+    if (headerElement) {
+        const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
+        setupTypewriter(headerElement, headerText, function() {
+            if (bodyElement) {
+                const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
+                setupTypewriter(bodyElement, bodyText);
+            }
+        });
+    }
+}
+
+
     
     // Submit answer for Easter Bunny and Mystery Trail
     const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
@@ -79,105 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup for the modal reveal and close buttons
     setupModalButtons();
 
-    function setupEggCustomization() {
-        const colorSwatches = document.querySelectorAll('.color-swatch'); // Ensure this class matches your HTML
-        const stickers = document.querySelectorAll('.sticker'); // Ensure this class matches your HTML
-    
-        // Setup color swatches
-        colorSwatches.forEach(swatch => {
-            swatch.addEventListener('click', function() {
-                const color = this.getAttribute('data-color'); // Ensure your swatches have a 'data-color' attribute
-                eggElement.style.backgroundColor = color;
-            });
-        });
-    
-        // Setup stickers
-        stickers.forEach(sticker => {
-            sticker.addEventListener('click', function() {
-                const stickerImage = this.cloneNode(true);
-                stickerImage.style.position = 'absolute';
-                eggElement.appendChild(stickerImage);
-                // Add more logic here if you want to allow moving the stickers around
-            });
-        });
-    }
-
-    function setupModal() {
-        var btn = document.getElementById('openModal');
-        var modal = document.getElementById('urgentMessageModal');
-        var spans = document.getElementsByClassName("close");
-    
-        if (btn) {
-            btn.onclick = function() {
-                modal.style.display = "block";
-            };
-        }
-    
-        Array.from(spans).forEach(span => {
-            span.onclick = function() {
-                modal.style.display = "none";
-            };
-        });
-    
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
-    }
-
-    function setupEggModal() {
-        var eggModal = document.getElementById("eggModal");
-        var closeButton = document.querySelector("#eggModal .close"); // Adjust selector as necessary
-    
-        // Ensure the modal and the close button exist
-        if (eggModal && closeButton) {
-            closeButton.onclick = function() {
-                eggModal.style.display = "none";
-            };
-        }
-    
-        // Optional: Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target === eggModal) {
-                eggModal.style.display = "none";
-            }
-        };
-    }
-    
-    function setupSecretImageAndConfetti() {
-        const secretImage = document.getElementById('secretImage');
-        const eggRevealModal = document.getElementById('eggRevealModal');
-        const revealEggBtn = document.getElementById('revealEggBtn');
-    
-        if (secretImage && eggRevealModal) {
-            secretImage.addEventListener('mouseenter', function() {
-                confetti({
-                    particleCount: 500,
-                    spread: 200,
-                    origin: { y: 0.6 }
-                });
-                setTimeout(() => {
-                    eggRevealModal.style.display = 'block';
-                }, 2000);
-            });
-    
-            const closeModal = eggRevealModal.querySelector('.close');
-            if (closeModal) {
-                closeModal.addEventListener('click', function() {
-                    eggRevealModal.style.display = 'none';
-                });
-            }
-    
-            if (revealEggBtn) {
-                revealEggBtn.addEventListener('click', function() {
-                    eggRevealModal.style.display = 'none';
-                });
-            }
-        } else {
-            console.log('One of the elements (secretImage, eggRevealModal, revealEggBtn) is not found.');
-        }
-    }
+  
     
     const keyImages = [
         'https://i.imgur.com/tURKwGZ.png',
