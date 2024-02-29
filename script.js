@@ -61,21 +61,6 @@ function stopDrawing(isDrawing) {
     isDrawing = false;
 }
 
-function setupEggPageSpecifics(canvas) {
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-        console.error('Unable to get canvas context!');
-        return;
-    }
-
-    // Increase the size of the egg by adjusting these values
-    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Tripled size
-
-    // Setup for color swatches and stickers only if on the Easter egg page
-    setupEggColorChange(canvas, ctx); // Setup for changing egg color
-    setupStickers(canvas, ctx); // Make sure to define this function if it involves canvas
-}
-
 let currentSticker = { shape: 'circle', color: '#000000' }; // Default shape and color
 
 function setupStickers(canvas, ctx) {
