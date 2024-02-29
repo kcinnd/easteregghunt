@@ -216,19 +216,23 @@ function setupStickers() {
 }
     
     
-    // Submit answer for Easter Bunny and Mystery Trail
-    const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
-    const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
-    setupAnswerSubmissions(submitAnswerEasterBunny, 'specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
-    setupAnswerSubmissions(submitAnswerMysteryTrail, 'easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
-
-    // Setup for the modal reveal and close buttons
-    setupModalButtons();
-
-
-     
-    
-    
+function setupAnswerSubmissions(button, correctAnswer, inputId, feedbackId) {
+    if (button) {
+        button.addEventListener('click', function() {
+            const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
+            const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
+            setupAnswerSubmissions(submitAnswerEasterBunny, 'specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
+            setupAnswerSubmissions(submitAnswerMysteryTrail, 'easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
+            const userInput = document.getElementById(inputId).value.trim().toLowerCase();
+            const feedbackElement = document.getElementById(feedbackId);
+            if (userInput === correctAnswer.toLowerCase()) {
+                feedbackElement.textContent = 'Nice job! You found the secret word.';
+            } else {
+                feedbackElement.textContent = 'That is not right; please try again.';
+            }
+        });
+    }
+}    
     
 function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
