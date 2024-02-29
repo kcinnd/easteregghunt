@@ -4,37 +4,38 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSecretImageAndConfetti();
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
-    setupStickers();
     setupColorSwatches();
     setupTypewriterMessages();
 
     // Function to draw an egg on the canvas
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
-        // If canvas exists, this must be the Easter egg page
-        const ctx = canvas.getContext('2d');
-
-        // Define the drawEgg function
-        function drawEgg(x, y, width, height, color) {
-            ctx.beginPath();
-            ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-            ctx.fillStyle = color;
-            ctx.fill();
-        }
-
-        // Draw the initial egg
-        drawEgg(canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
-
-        // Setup color swatches to change the egg color
-        document.querySelectorAll('.color-swatch').forEach(swatch => {
-            swatch.addEventListener('click', function() {
-                const color = this.getAttribute('data-color');
-                drawEgg(canvas.width / 2, canvas.height / 2, 300, 450, color);
-            });
-        });
+        // This block will only execute on the Easter egg page
+        setupEggPageSpecifics(canvas);
     }
-  
 });
+
+function setupEggPageSpecifics(canvas) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Unable to get canvas context!');
+        return;
+    }
+
+    // Increase the size of the egg by adjusting these values
+    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Tripled size
+
+    // Setup for color swatches and stickers only if on the Easter egg page
+    setupColorSwatches(canvas, ctx);
+    setupStickers(canvas, ctx); // Make sure to define this function if it involves canvas
+}
+
+function drawEgg(ctx, x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+}
 
 function setupModal() {
     var btn = document.getElementById('openModal');
@@ -153,56 +154,12 @@ function setupGrassAndKeysHoverEffect() {
     });
 }
 
-function setupColorSwatches() {
-    const colorSwatches = document.querySelectorAll('.color-swatch'); // Get all color swatches
-
-    // Add a click event listener to each color swatch
+function setupColorSwatches(canvas, ctx) {
+    const colorSwatches = document.querySelectorAll('.color-swatch');
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color'); // Get the color from the swatch's data-color attribute
-            eggElement.style.backgroundColor = color; // Set the egg's background color to the selected color
-        });
-    });
-}
-
-function setupStickers() {
-    const eggContainer = document.querySelector('.egg-container');
-    document.querySelectorAll('.sticker').forEach(sticker => {
-        sticker.addEventListener('click', function() {
-            const stickerCopy = this.cloneNode();
-            stickerCopy.style.position = 'absolute';
-            stickerCopy.style.width = '50px'; // Adjust size as needed
-            stickerCopy.style.left = '50%'; // Adjust position as needed
-            stickerCopy.style.top = '50%'; // Adjust position as needed
-            stickerCopy.style.transform = 'translate(-50%, -50%)'; // Center the sticker
-            
-            eggContainer.appendChild(stickerCopy);
-            
-            // Allow moving the sticker
-            stickerCopy.addEventListener('mousedown', function(e) {
-                let shiftX = e.clientX - stickerCopy.getBoundingClientRect().left;
-                let shiftY = e.clientY - stickerCopy.getBoundingClientRect().top;
-
-                function moveAt(pageX, pageY) {
-                    stickerCopy.style.left = pageX - shiftX + 'px';
-                    stickerCopy.style.top = pageY - shiftY + 'px';
-                }
-
-                function onMouseMove(event) {
-                    moveAt(event.pageX, event.pageY);
-                }
-
-                document.addEventListener('mousemove', onMouseMove);
-
-                stickerCopy.onmouseup = function() {
-                    document.removeEventListener('mousemove', onMouseMove);
-                    stickerCopy.onmouseup = null;
-                };
-            });
-
-            stickerCopy.ondragstart = function() {
-                return false;
-            };
+            const color = this.getAttribute('data-color');
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color); // Use updated size
         });
     });
 }
