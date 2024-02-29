@@ -33,25 +33,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupStickers(canvas, ctx) {
-    document.querySelectorAll('.sticker-preview, .color-swatch-sticker').forEach(item => {
-        item.addEventListener('click', function() {
-            if (this.classList.contains('sticker-preview')) {
-                currentSticker.shape = this.dataset.shape;
-                isDrawingEnabled = false; // Disable drawing when a sticker is selected
-            } else if (this.classList.contains('color-swatch-sticker')) {
-                currentSticker.color = this.dataset.color;
-            }
+    let currentSticker = { shape: 'circle', color: '#000000', size: 20 };
+
+    // Sticker Shape Selection
+    document.querySelectorAll('.sticker-preview').forEach(preview => {
+        preview.addEventListener('click', function() {
+            currentSticker.shape = this.dataset.shape;
+            // Optional: Change cursor or UI to indicate the selected sticker
         });
     });
-    
 
+    // Sticker Color Selection
+    document.querySelectorAll('.color-swatch-sticker').forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            currentSticker.color = this.dataset.color;
+        });
+    });
 
-canvas.addEventListener('click', function(e) {
-        if (!isDrawingEnabled) {
+    // Sticker Placement
+    canvas.addEventListener('click', function(e) {
+        if (!isDrawingEnabled) { // Make sure drawing mode is not active
             const { x, y } = getCanvasClickCoordinates(e, canvas);
             drawShape(ctx, currentSticker.shape, x, y, currentSticker.color, currentSticker.size);
-            stickerCount++;
-            checkCoverage();
+            stickerCount++; // Increment the sticker count for coverage calculation
+            checkCoverage(); // Check if the coverage threshold is met
         }
     });
 }
