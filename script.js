@@ -50,13 +50,15 @@ function setupStickers(canvas, ctx) {
 
     // Sticker Placement
     canvas.addEventListener('click', function(e) {
-        if (!isDrawingEnabled) { // Make sure drawing mode is not active
-            const { x, y } = getCanvasClickCoordinates(e, canvas);
-            drawShape(ctx, currentSticker.shape, x, y, currentSticker.color, currentSticker.size);
-            stickerCount++; // Increment the sticker count for coverage calculation
-            checkCoverage(); // Check if the coverage threshold is met
-        }
-    });
+        if (!isDrawingEnabled) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            // Use the currentSticker settings to draw the sticker
+            drawShape(ctx, currentSticker.shape, x, y, currentSticker.color);
+            }
+        });
+    }
 }
 
 function setupDrawingToggle(canvas, ctx) {
