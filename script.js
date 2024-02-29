@@ -25,43 +25,29 @@ function setupDrawingFeature(canvas, ctx) {
     let lastX = 0;
     let lastY = 0;
 
-    canvas.addEventListener('mousedown', (e) => {
+    function startDrawing(e) {
         isDrawing = true;
         [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
+    }
 
-    canvas.addEventListener('mousemove', (e) => {
+    function draw(e) {
         if (!isDrawing) return;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
         [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
+    }
 
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
+    function stopDrawing() {
+        isDrawing = false;
+    }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
 }
-
-function startDrawing(e, ctx, lastX, lastY, isDrawing) {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-}
-
-function draw(e, ctx, lastX, lastY, isDrawing) {
-    if (!isDrawing) return;
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-}
-
-function stopDrawing(isDrawing) {
-    isDrawing = false;
-}
-
-let currentSticker = { shape: 'circle', color: '#000000' }; // Default shape and color
 
 function setupStickers(canvas, ctx) {
     // Sticker shape selection
