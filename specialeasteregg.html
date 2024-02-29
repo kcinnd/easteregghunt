@@ -17,17 +17,21 @@
         </div>
 
         <canvas id="eggCanvas" width="600" height="600"></canvas>
-        <div id="sticker-controls">
-            <button class="sticker-shape" data-shape="circle">Circle</button>
-            <button class="sticker-shape" data-shape="star">Star</button>
-            <button class="sticker-shape" data-shape="heart">Heart</button>
+        <div id="stickerBank">
+            <svg class="sticker-preview" data-shape="circle" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" /></svg>
+            <svg class="sticker-preview" data-shape="star" viewBox="0 0 100 100">
+                <polygon points="50,15 61,40 88,40 67,58 76,85 50,70 24,85 33,58 12,40 39,40" fill="black" />
+            </svg>           
+            <svg class="sticker-preview" data-shape="heart" viewBox="0 0 100 100">
+                <path d="M50 30C50 30 70 0 90 20C110 40 100 70 50 90C0 70 -10 40 10 20C30 0 50 30 50 30" fill="black"/>
+            </svg>        
         </div>
         
-        <div id="color-controls">
-            <div class="color-swatch" data-color="#68FFB9" style="background-color: #68FFB9;"></div>
-            <div class="color-swatch" data-color="#75ECFB" style="background-color: #75ECFB;"></div>
-            <div class="color-swatch" data-color="#9386E6" style="background-color: #9386E6;"></div>
-            <div class="color-swatch" data-color="#F298F4" style="background-color: #F298F4;"></div>
+        <div id="stickerColorBank">
+            <div class="color-swatch-sticker" data-color="#68FFB9"></div>
+            <div class="color-swatch-sticker" data-color="#75ECFB"></div>
+            <div class="color-swatch-sticker" data-color="#9386E6"></div>
+            <div class="color-swatch-sticker" data-color="#F298F4"></div>
         </div>
         
     </div>
