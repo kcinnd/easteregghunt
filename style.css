@@ -276,6 +276,7 @@ body {
 
 #confettiCanvas {
   position: fixed;
+  display: none; /* Ensures keys are hidden initially */
   top: 0;
   left: 0;
   width: 100%;
