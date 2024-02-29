@@ -13,46 +13,30 @@ document.addEventListener('DOMContentLoaded', function() {
         setupEggColorChange(canvas, ctx);
         setupStickers(canvas, ctx);
         setupDrawingFeature(canvas, ctx);
-        setupDrawingToggle(canvas, ctx);
     }
 });
 
-function setupCanvasAndControls(canvas, ctx) {
-    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
-    setupEggColorChange(canvas, ctx);
-    setupStickers(canvas, ctx);
-    setupDrawingFeature(canvas, ctx);
-    setupDrawingToggle(canvas, ctx); // Added toggle for drawing mode
-}
-
-function setupEggColorChange(canvas, ctx) {
-    // Setup for changing the egg's color using color swatches
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color);
-        });
-    });
-}
-
 function setupStickers(canvas, ctx) {
-    // Setup for handling sticker placement including shape and color selection
-    let currentSticker = { shape: 'circle', color: '#000000', size: 20 };
-
     document.querySelectorAll('.sticker-preview, .color-swatch-sticker').forEach(item => {
         item.addEventListener('click', function() {
             if (this.classList.contains('sticker-preview')) {
                 currentSticker.shape = this.dataset.shape;
+                isDrawingEnabled = false; // Disable drawing when a sticker is selected
             } else if (this.classList.contains('color-swatch-sticker')) {
                 currentSticker.color = this.dataset.color;
             }
         });
     });
+    
 
-    canvas.addEventListener('click', function(e) {
-        const { x, y } = getCanvasClickCoordinates(e, canvas);
-        drawShape(ctx, currentSticker.shape, x, y, currentSticker.color, currentSticker.size);
-        // Update sticker count and coverage check here
+
+canvas.addEventListener('click', function(e) {
+        if (!isDrawingEnabled) {
+            const { x, y } = getCanvasClickCoordinates(e, canvas);
+            drawShape(ctx, currentSticker.shape, x, y, currentSticker.color, currentSticker.size);
+            stickerCount++;
+            checkCoverage();
+        }
     });
 }
 
@@ -91,83 +75,35 @@ function setupDrawingFeature(canvas, ctx) {
     let lastX = 0;
     let lastY = 0;
 
-    function startDrawing(e) {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
+    canvas.addEventListener('mousedown', (e) => {
+        if (isDrawingEnabled) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+    });
 
-    function draw(e) {
-        if (!isDrawing) return;
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
+    canvas.addEventListener('mousemove', (e) => {
+        if (isDrawing && isDrawingEnabled) {
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+            drawingLength += Math.sqrt((e.offsetX - lastX) ** 2 + (e.offsetY - lastY) ** 2);
+            checkCoverage();
+        }
+    });
 
-    function stopDrawing() {
-        isDrawing = false;
-    }
-
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseout', stopDrawing);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 }
 
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
-
-canvas.addEventListener('mousedown', (e) => {
-    if (isDrawingEnabled) {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-});
-
-canvas.addEventListener('mousemove', (e) => {
-    if (isDrawing && isDrawingEnabled) {
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.strokeStyle = currentSticker.color; // Assume currentSticker.color is set by your color picker
-        ctx.lineWidth = 5; // Set line width or use currentSticker.size if applicable
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-
-        // Optional: increment the drawingLength here for coverage calculation
-        // drawingLength += Math.sqrt((e.offsetX - lastX) ** 2 + (e.offsetY - lastY) ** 2);
-    }
-});
-
-canvas.addEventListener('mouseup', () => isDrawing = false);
-canvas.addEventListener('mouseout', () => isDrawing = false);
-
-function setupStickers(canvas, ctx) {
-    // Sticker shape selection
-    document.querySelectorAll('.sticker-preview').forEach(preview => {
-        preview.addEventListener('click', function() {
-            currentSticker.shape = this.dataset.shape;
-            // Update cursor to indicate selected sticker shape
-            canvas.style.cursor = `url('path/to/${currentSticker.shape}-cursor.png'), auto`; // You'll need cursor images for each shape
-        });
-    });
-
-    // Sticker color selection
-    document.querySelectorAll('.color-swatch-sticker').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            currentSticker.color = this.dataset.color;
-        });
-    });
-
-    // Placing the sticker on the canvas
-    canvas.addEventListener('click', function(e) {
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        drawShape(ctx, currentSticker.shape, x, y, currentSticker.color);
-    });
+function getCanvasClickCoordinates(e, canvas) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
 }
 
 function checkCoverage() {
