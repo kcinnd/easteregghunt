@@ -31,9 +31,94 @@ function setupEggPageSpecifics(canvas) {
     setupStickers(canvas, ctx); // Make sure to define this function if it involves canvas
 }
 
+let currentShape = 'circle'; // Default shape
+let currentColor = '#68FFB9'; // Default color
+
+function setupStickers(canvas, ctx) {
+    // Event listener for canvas clicks to place the sticker
+    canvas.addEventListener('click', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        drawShape(ctx, currentShape, x, y, currentColor);
+    });
+
+    // Setup shape selectors
+    document.querySelectorAll('.shape-selector').forEach(selector => {
+        selector.addEventListener('click', function() {
+            currentShape = this.dataset.shape;
+        });
+    });
+
+    // Setup color selectors
+    document.querySelectorAll('.color-selector').forEach(selector => {
+        selector.addEventListener('click', function() {
+            currentColor = this.dataset.color;
+        });
+    });
+}
+
 function drawEgg(ctx, x, y, width, height, color) {
     ctx.beginPath();
     ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+function drawShape(ctx, shape, x, y, color) {
+    switch (shape) {
+        case 'circle':
+            drawCircle(ctx, x, y, color);
+            break;
+        case 'star':
+            drawStar(ctx, x, y, color);
+            break;
+        case 'heart':
+            drawHeart(ctx, x, y, color);
+            break;
+        // Add more cases for other shapes
+    }
+}
+
+function drawCircle(ctx, x, y, color) {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, 2 * Math.PI); // 10 is the radius of the circle
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+function drawStar(ctx, x, y, color, spikes = 5, outerRadius = 10, innerRadius = 5) {
+    ctx.beginPath();
+    ctx.moveTo(x, y - outerRadius);
+
+    for (let i = 0; i < spikes; i++) {
+        ctx.lineTo(x + outerRadius * Math.cos((i * 2 * Math.PI) / spikes - Math.PI / 2), 
+                   y + outerRadius * Math.sin((i * 2 * Math.PI) / spikes - Math.PI / 2));
+        ctx.lineTo(x + innerRadius * Math.cos(((i + 0.5) * 2 * Math.PI) / spikes - Math.PI / 2), 
+                   y + innerRadius * Math.sin(((i + 0.5) * 2 * Math.PI) / spikes - Math.PI / 2));
+    }
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+function drawHeart(ctx, x, y, color) {
+    ctx.beginPath();
+    const topCurveHeight = 10;
+    ctx.moveTo(x, y + topCurveHeight);
+    // Top left curve
+    ctx.bezierCurveTo(
+        x - 20, y + topCurveHeight - 20,
+        x - 20, y + topCurveHeight + 45 - 20,
+        x, y + topCurveHeight + 45
+    );
+    // Top right curve
+    ctx.bezierCurveTo(
+        x + 20, y + topCurveHeight + 45 - 20,
+        x + 20, y + topCurveHeight - 20,
+        x, y + topCurveHeight
+    );
+    ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
 }
