@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup for the modal reveal and close buttons
     setupModalButtons();
-});
 
 function setupEggCustomization() {
     const colorSwatches = document.querySelectorAll('.color-swatch'); // Ensure this class matches your HTML
