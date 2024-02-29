@@ -14,6 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
         setupEggColorChange(canvas, ctx); // Function to change the egg's color
         setupStickers(canvas, ctx); // Function to handle sticker placement
         setupDrawingFeature(canvas, ctx); // Function to enable drawing on the egg
+        const canvasArea = canvas.width * canvas.height;
+        function updateCoverage() {
+            const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
+            const coveragePercentage = (estimatedCoverage / canvasArea) * 100;
+
+            if (coveragePercentage >= 80) {
+                // Display congratulations popup
+                alert("Congratulations! You've decorated the special Easter EGG!");
+            }
+        }
     }
 });
 
@@ -190,16 +200,6 @@ function draw(e) {
     [lastX, lastY] = [e.offsetX, e.offsetY]; // Update lastX and lastY for the next line segment
 
     updateCoverage(); // Recalculate and update the coverage
-}
-
-function updateCoverage() {
-    const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
-    const coveragePercentage = (estimatedCoverage / canvasArea) * 100;
-
-    if (coveragePercentage >= 80) {
-        // Display congratulations popup
-        alert("Congratulations! You've decorated the special Easter EGG! The Easter Bunny is grateful and wants you to know the word 'secrethiddenkeys'.");
-    }
 }
 
 function setupModal() {
