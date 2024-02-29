@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
         const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
         const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
+        let stickerMode = false;
+        let selectedSticker = null;
 
     // Draw the initial egg
         function drawEgg() {
@@ -25,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
         function changeEggColor(color) {
             currentColor = `#${color}`;
             drawEgg();
+        }
+
+        function selectSticker(stickerType) {
+            stickerMode = true;
+            selectedSticker = stickerType;
         }
     
         function placeSticker(shape, x, y) {
@@ -121,11 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
             swatch.addEventListener('click', () => changeEggColor(color));
             document.getElementById('colorSwatches').appendChild(swatch);
         });
-        
-        function changeEggColor(color) {
-            currentColor = `#${color}`;
-            drawEgg(); // Redraw the egg with the new color
-        }
     
         // Setup sticker buttons (simplified example)
         ['circle', 'heart', 'star'].forEach(shape => {
@@ -134,7 +136,21 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', () => placeSticker(shape));
             document.getElementById('stickerSwatches').appendChild(button);
         });
-    
+
+        canvas.addEventListener('click', function(e) {
+            if (stickerMode) {
+                // Calculate the correct x and y based on the canvas position and click position
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+        // Place the selected sticker
+        placeSticker(selectedSticker, x, y);
+
+        // Optionally, turn off sticker mode after placing a sticker
+        // stickerMode = false;
+            }
+        });
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', endDrawing);
