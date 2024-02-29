@@ -6,144 +6,145 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupTypewriterMessages();
 
-    const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
-    const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
-    const canvas = document.getElementById('eggCanvas');
-    const ctx = canvas.getContext('2d');
-    let isDrawing = false, lastX = 0, lastY = 0, stickerMode = false, currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false, lastX = 0, lastY = 0, stickerMode = false;
+        let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
+        const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
+        const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
 
     // Draw the initial egg
-    function drawEgg() {
-        ctx.fillStyle = currentColor;
-        ctx.beginPath();
-        ctx.ellipse(canvas.width / 2, canvas.height / 2, 200, 300, 0, 0, 2 * Math.PI);
-        ctx.fill();
-    }
-
-    // Change egg base color
-    function changeEggColor(color) {
-        currentColor = `#${color}`;
-        drawEgg();
-    }
-
-    function placeSticker(shape, x, y) {
-        ctx.fillStyle = currentDrawColor;
-    
-        if (shape === 'circle') {
+        function drawEgg() {
+            ctx.fillStyle = currentColor;
             ctx.beginPath();
-            ctx.arc(x, y, 20, 0, Math.PI * 2);
+            ctx.ellipse(canvas.width / 2, canvas.height / 2, 200, 300, 0, 0, 2 * Math.PI);
             ctx.fill();
-        } else if (shape === 'heart') {
-            drawHeart(x, y);
-        } else if (shape === 'star') {
-            drawStar(x, y, 5, 20, 10);
         }
     
-        // Increment decorated area (simplified for demonstration)
-        decoratedArea += 5; // Assume each sticker covers 5% for simplicity
-        checkDecorationCoverage();
-    }
-    
-    function drawHeart(x, y) {
-        ctx.beginPath();
-        const width = 20;
-        const height = 20;
-        ctx.moveTo(x, y + height / 4);
-        ctx.quadraticCurveTo(x, y, x + width / 4, y);
-        ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width / 2, y + height / 4);
-        ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width * 3/4, y);
-        ctx.quadraticCurveTo(x + width, y, x + width, y + height / 4);
-        ctx.quadraticCurveTo(x + width, y + height, x + width / 2, y + height * 3/4);
-        ctx.quadraticCurveTo(x, y + height, x, y + height / 4);
-        ctx.fill();
-    }
-    
-    function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
-        var rot = Math.PI / 2 * 3;
-        var x = cx;
-        var y = cy;
-        var step = Math.PI / spikes;
-    
-        ctx.beginPath();
-        ctx.moveTo(cx, cy - outerRadius)
-        for (i = 0; i < spikes; i++) {
-            x = cx + Math.cos(rot) * outerRadius;
-            y = cy + Math.sin(rot) * outerRadius;
-            ctx.lineTo(x, y)
-            rot += step
-    
-            x = cx + Math.cos(rot) * innerRadius;
-            y = cy + Math.sin(rot) * innerRadius;
-            ctx.lineTo(x, y)
-            rot += step
+        // Change egg base color
+        function changeEggColor(color) {
+            currentColor = `#${color}`;
+            drawEgg();
         }
-        ctx.lineTo(cx, cy - outerRadius);
-        ctx.closePath();
-        ctx.fill();
-    }   
-        // Enable drawing on the egg
-    function startDrawing(e) {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-
-    function draw(e) {
-        if (!isDrawing) return;
-        ctx.strokeStyle = currentDrawColor;
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-        // Increment decorated area per draw action (simplified for demonstration)
-        decoratedArea += 0.1; // Assume each draw action covers 0.1%
-        checkDecorationCoverage();
-    }
-
-    function endDrawing() {
-        isDrawing = false;
-    }
-
-    // Check if 75% of the egg is decorated
-    function checkDecorationCoverage() {
-        if (decoratedArea >= 75) {
-            alert('Congratulations on decorating your egg! The Easter Bunny is grateful and wants you to know eastershiddenkeys.');
-            decoratedArea = 0; // Reset for next decoration session
+    
+        function placeSticker(shape, x, y) {
+            ctx.fillStyle = currentDrawColor;
+        
+            if (shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (shape === 'heart') {
+                drawHeart(x, y);
+            } else if (shape === 'star') {
+                drawStar(x, y, 5, 20, 10);
+            }
+        
+            // Increment decorated area (simplified for demonstration)
+            decoratedArea += 5; // Assume each sticker covers 5% for simplicity
+            checkDecorationCoverage();
         }
-    }
-
-    // Setup color swatches
-    eggColors.forEach(color => {
-        const swatch = document.createElement('div');
-        swatch.className = 'swatch';
-        swatch.style.backgroundColor = `#${color}`;
-        swatch.addEventListener('click', () => changeEggColor(color));
-        document.getElementById('colorSwatches').appendChild(swatch);
-    });
-
-    // Setup draw color swatches
-    drawColors.forEach(color => {
-        const swatch = document.createElement('div');
-        swatch.className = 'drawColor';
-        swatch.style.backgroundColor = `#${color}`;
-        swatch.addEventListener('click', () => { currentDrawColor = `#${color}`; stickerMode = true; });
-        document.getElementById('drawColors').appendChild(swatch);
-    });
-
-    // Setup sticker buttons (simplified example)
-    ['circle', 'heart', 'star'].forEach(shape => {
-        const button = document.createElement('button');
-        button.innerText = shape;
-        button.addEventListener('click', () => placeSticker(shape));
-        document.getElementById('stickerSwatches').appendChild(button);
-    });
-
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', endDrawing);
-    canvas.addEventListener('mouseout', endDrawing);
-
-    drawEgg(); // Initial egg drawing
+        
+        function drawHeart(x, y) {
+            ctx.beginPath();
+            const width = 20;
+            const height = 20;
+            ctx.moveTo(x, y + height / 4);
+            ctx.quadraticCurveTo(x, y, x + width / 4, y);
+            ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width / 2, y + height / 4);
+            ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width * 3/4, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + height / 4);
+            ctx.quadraticCurveTo(x + width, y + height, x + width / 2, y + height * 3/4);
+            ctx.quadraticCurveTo(x, y + height, x, y + height / 4);
+            ctx.fill();
+        }
+        
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+            var rot = Math.PI / 2 * 3;
+            var x = cx;
+            var y = cy;
+            var step = Math.PI / spikes;
+        
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius)
+            for (i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                ctx.lineTo(x, y)
+                rot += step
+        
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                ctx.lineTo(x, y)
+                rot += step
+            }
+            ctx.lineTo(cx, cy - outerRadius);
+            ctx.closePath();
+            ctx.fill();
+        }   
+            // Enable drawing on the egg
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+    
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.strokeStyle = currentDrawColor;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+            // Increment decorated area per draw action (simplified for demonstration)
+            decoratedArea += 0.1; // Assume each draw action covers 0.1%
+            checkDecorationCoverage();
+        }
+    
+        function endDrawing() {
+            isDrawing = false;
+        }
+    
+        // Check if 75% of the egg is decorated
+        function checkDecorationCoverage() {
+            if (decoratedArea >= 75) {
+                alert('Congratulations on decorating your egg! The Easter Bunny is grateful and wants you to know eastershiddenkeys.');
+                decoratedArea = 0; // Reset for next decoration session
+            }
+        }
+    
+        // Setup color swatches
+        eggColors.forEach(color => {
+            const swatch = document.createElement('div');
+            swatch.className = 'swatch';
+            swatch.style.backgroundColor = `#${color}`;
+            swatch.addEventListener('click', () => changeEggColor(color));
+            document.getElementById('colorSwatches').appendChild(swatch);
+        });
+    
+        // Setup draw color swatches
+        drawColors.forEach(color => {
+            const swatch = document.createElement('div');
+            swatch.className = 'drawColor';
+            swatch.style.backgroundColor = `#${color}`;
+            swatch.addEventListener('click', () => { currentDrawColor = `#${color}`; stickerMode = true; });
+            document.getElementById('drawColors').appendChild(swatch);
+        });
+    
+        // Setup sticker buttons (simplified example)
+        ['circle', 'heart', 'star'].forEach(shape => {
+            const button = document.createElement('button');
+            button.innerText = shape;
+            button.addEventListener('click', () => placeSticker(shape));
+            document.getElementById('stickerSwatches').appendChild(button);
+        });
+    
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', endDrawing);
+        canvas.addEventListener('mouseout', endDrawing);
+    
+        drawEgg(); // Initial egg drawing
 });
 
 function setupModal() {
