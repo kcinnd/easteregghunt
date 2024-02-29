@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupColorSwatches();
     setupTypewriterMessages();
-    setupAnswerSubmissions();
 
     // Check for the egg canvas and set up page-specific features
     const canvas = document.getElementById('eggCanvas');
@@ -338,13 +337,10 @@ function setupColorSwatches(canvas, ctx) {
 }
     
     
-function setupAnswerSubmissions(button, correctAnswer, inputId, feedbackId) {
+function setupAnswerSubmissions(buttonId, correctAnswer, inputId, feedbackId) {
+    const button = document.getElementById(buttonId);
     if (button) {
         button.addEventListener('click', function() {
-            const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
-            const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
-            setupAnswerSubmissions(submitAnswerEasterBunny, 'specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
-            setupAnswerSubmissions(submitAnswerMysteryTrail, 'easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
             const userInput = document.getElementById(inputId).value.trim().toLowerCase();
             const feedbackElement = document.getElementById(feedbackId);
             if (userInput === correctAnswer.toLowerCase()) {
@@ -354,7 +350,11 @@ function setupAnswerSubmissions(button, correctAnswer, inputId, feedbackId) {
             }
         });
     }
-}    
+}
+
+// Usage
+setupAnswerSubmissions('submitAnswerEasterBunny', 'specialeasteregg', 'easterBunnyInput', 'easterBunnyFeedback');
+setupAnswerSubmissions('submitAnswerMysteryTrail', 'easterbunny', 'mysteryTrailInput', 'mysteryTrailFeedback');
     
 function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
