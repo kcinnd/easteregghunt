@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Draw the initial egg
-        drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, '#FAF0E6');
+        drawEgg(canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
 
         // Setup color swatches to change the egg color
         document.querySelectorAll('.color-swatch').forEach(swatch => {
             swatch.addEventListener('click', function() {
                 const color = this.getAttribute('data-color');
-                drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, color);
+                drawEgg(canvas.width / 2, canvas.height / 2, 300, 450, color);
             });
         });
 
