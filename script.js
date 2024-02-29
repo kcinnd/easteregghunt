@@ -53,38 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Any other functions that require eggElement
     }
     
-    document.addEventListener('DOMContentLoaded', function() {
-    setupEggModal();
-    setupSecretImageAndConfetti();
-    setupGrassAndKeysHoverEffect();
-    setupEventListeners();
-    setupColorSwatches();
-
-    const canvas = document.getElementById('eggCanvas');
-    const ctx = canvas.getContext('2d');
-    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, '#FAF0E6');
-
-    // Function to draw an egg on the canvas
-    function drawEgg(ctx, x, y, width, height, color) {
-        ctx.beginPath();
-        ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-    }
-
-    // Function to change the egg color
-    function changeEggColor(color) {
-        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, color);
-    }
-
-    // Setup event listeners for color swatches
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            changeEggColor(color);
-        });
-    });
-
     // Submit answer for Easter Bunny and Mystery Trail
     const submitAnswerEasterBunny = document.getElementById('submitAnswerEasterBunny');
     const submitAnswerMysteryTrail = document.getElementById('submitAnswerMysteryTrail');
