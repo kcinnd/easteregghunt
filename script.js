@@ -10,11 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        
-        // Draw the initial egg on the canvas
-        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Adjusted size
-
-        // Setup functions specific to the Easter egg page
+        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
         setupEggColorChange(canvas, ctx); // Function to change the egg's color
         setupStickers(canvas, ctx); // Function to handle sticker placement
         setupDrawingFeature(canvas, ctx); // Function to enable drawing on the egg
