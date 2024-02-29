@@ -229,19 +229,6 @@ function startHunt() {
     window.location.href = 'page1.html';
 }
 
-function checkWord(correctAnswer, inputElementId, feedbackElementId) {
-    const userInput = document.getElementById(inputElementId).value.trim().toLowerCase();
-    const feedbackElement = document.getElementById(feedbackElementId);
-
-    if (userInput === correctAnswer.toLowerCase()) {
-        feedbackElement.textContent = 'Nice job! You found the secret word.';
-        // Additional actions for correct answer, like redirecting to another page
-    } else {
-        feedbackElement.textContent = 'That is not right; please try again.';
-        // Additional actions for incorrect answer
-    }
-}
-
 function setupTypewriter(element, text, callback) {
     let cursorPosition = 0;
     let typeSpeed = 75; // Adjust typing speed as needed
