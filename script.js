@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (canvas) {
         // This block will only execute on the Easter egg page
         setupEggPageSpecifics(canvas);
+        setupStickers(canvas, ctx);
     }
 });
 
@@ -31,30 +32,31 @@ function setupEggPageSpecifics(canvas) {
     setupStickers(canvas, ctx); // Make sure to define this function if it involves canvas
 }
 
-let currentShape = 'circle'; // Default shape
-let currentColor = '#68FFB9'; // Default color
+let currentSticker = { shape: 'circle', color: '#000000' }; // Default shape and color
 
 function setupStickers(canvas, ctx) {
-    // Event listener for canvas clicks to place the sticker
+    // Sticker shape selection
+    document.querySelectorAll('.sticker-preview').forEach(preview => {
+        preview.addEventListener('click', function() {
+            currentSticker.shape = this.dataset.shape;
+            // Update cursor to indicate selected sticker shape
+            canvas.style.cursor = `url('path/to/${currentSticker.shape}-cursor.png'), auto`; // You'll need cursor images for each shape
+        });
+    });
+
+    // Sticker color selection
+    document.querySelectorAll('.color-swatch-sticker').forEach(swatch => {
+        swatch.addEventListener('click', function() {
+            currentSticker.color = this.dataset.color;
+        });
+    });
+
+    // Placing the sticker on the canvas
     canvas.addEventListener('click', function(e) {
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        drawShape(ctx, currentShape, x, y, currentColor);
-    });
-
-    // Setup shape selectors
-    document.querySelectorAll('.shape-selector').forEach(selector => {
-        selector.addEventListener('click', function() {
-            currentShape = this.dataset.shape;
-        });
-    });
-
-    // Setup color selectors
-    document.querySelectorAll('.color-selector').forEach(selector => {
-        selector.addEventListener('click', function() {
-            currentColor = this.dataset.color;
-        });
+        drawShape(ctx, currentSticker.shape, x, y, currentSticker.color);
     });
 }
 
