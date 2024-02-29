@@ -13,25 +13,6 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
-.sticker-preview {
-  width: 50px; /* Set the width of the sticker preview */
-  height: 50px; /* Set the height of the sticker preview */
-  margin: 10px; /* Add some space around each sticker preview */
-  border: 2px solid #ccc; /* Give a subtle border to each sticker */
-  cursor: pointer; /* Change the cursor to indicate these are clickable */
-  transition: transform 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.sticker-preview:hover {
-  transform: scale(1.1); /* Slightly enlarge sticker previews on hover */
-  border-color: #666; /* Change border color on hover for visual feedback */
-}
-
-/* You might want to add specific styles for active or selected stickers */
-.sticker-preview.active {
-  border-color: #000; /* Highlight active/selected sticker */
-}
-
 .var-highlight {
   color: #00FF00;
 }
@@ -246,35 +227,6 @@ body {
     width: 20px; /* Set the width as required */
 }
 
-.egg-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-}
-
-#decorativeegg {
-    width: 400px; /* Adjust based on the size you want */
-    height: 400px; /* Adjust based on the size you want */
-    display: block;
-    margin: 0 auto;
-}
-
-.color-palette {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Ensure wrapping for smaller screens */
-  margin-top: 20px;
-}
-
-.color-button {
-  width: 40px; /* Uniform size for color buttons and stickers */
-  height: 40px; /* Added height for color buttons to match stickers */
-  margin: 5px; /* Consistent margin */
-  cursor: pointer;
-  border-radius: 50%;
-}
-
 .container {
   text-align: center;
   padding: 50px;
@@ -294,14 +246,6 @@ body {
 #container p {
     margin-bottom: 20px; /* Space between the description and the puzzle button */
     line-height: 1.6; /* Makes the text easier to read */
-}
-
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
 }
 
 .easter-bunny-grass, .image-border {
@@ -328,11 +272,6 @@ body {
   display: inline-block;
   position: absolute;
 
-}
-
-#eggCanvas {
-  display: block;
-  margin: 0 auto; /* Center the canvas */
 }
 
 #confettiCanvas {
@@ -586,3 +525,48 @@ button:not(#openModal):hover {
     width: 150px; /* Smaller logo for smaller screens */
   }
 } 
+
+#colorSwatches, #stickerSwatches, #drawColors {
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.swatch, .drawColor {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.swatch:hover, .drawColor:hover {
+    transform: scale(1.1);
+    border-color: #aaa;
+}
+
+.sticker {
+    margin: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.sticker:hover {
+    background-color: #ddd;
+}
+
+canvas {
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
