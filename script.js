@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 drawEgg(canvas.width / 2, canvas.height / 2, 300, 450, color);
             });
         });
-
-        // Setup for stickers and other canvas-related functionalities
-        setupStickers();
-        setupColorSwatches();
     }
   
 });
