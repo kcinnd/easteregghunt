@@ -167,7 +167,33 @@ const canvasArea = canvas.width * canvas.height;
 const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 1% of the canvas
 const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
 
+function placeSticker(x, y, shape, color) {
+    // Logic to place a sticker on the canvas at (x, y) with the given shape and color
+    drawShape(ctx, shape, x, y, color); // Assume drawShape is a function that draws the sticker
 
+    stickerCount++; // Increment the sticker count
+    updateCoverage(); // Recalculate and update the coverage
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+
+    // Calculate the length of the line drawn
+    const dx = e.offsetX - lastX;
+    const dy = e.offsetY - lastY;
+    const length = Math.sqrt(dx * dx + dy * dy);
+
+    drawingLength += length; // Add the length of the line to the total drawing length
+
+    [lastX, lastY] = [e.offsetX, e.offsetY]; // Update lastX and lastY for the next line segment
+
+    updateCoverage(); // Recalculate and update the coverage
+}
 
 function updateCoverage() {
     const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
@@ -175,22 +201,8 @@ function updateCoverage() {
 
     if (coveragePercentage >= 80) {
         // Display congratulations popup
-        alert("Congratulations! You've decorated the special Easter EGG! The Easter Bunny is grateful and wants you to know the word secrethiddenkeys.");
-        // Reset or disable further actions if necessary
+        alert("Congratulations! You've decorated the special Easter EGG! The Easter Bunny is grateful and wants you to know the word 'secrethiddenkeys'.");
     }
-}
-
-function placeSticker() {
-    // Sticker placement logic...
-    stickerCount += 1;
-    updateCoverage();
-}
-
-function drawStroke(startX, startY, endX, endY) {
-    // Drawing logic...
-    const strokeLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-    drawingLength += strokeLength;
-    updateCoverage();
 }
 
 function setupModal() {
