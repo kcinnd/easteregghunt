@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupColorSwatches();
     setupTypewriterMessages();
+    setupAnswerSubmissions();
 
     // Function to draw an egg on the canvas
     const canvas = document.getElementById('eggCanvas');
