@@ -121,15 +121,11 @@ document.addEventListener('DOMContentLoaded', function() {
             swatch.addEventListener('click', () => changeEggColor(color));
             document.getElementById('colorSwatches').appendChild(swatch);
         });
-    
-        // Setup draw color swatches
-        drawColors.forEach(color => {
-            const swatch = document.createElement('div');
-            swatch.className = 'drawColor';
-            swatch.style.backgroundColor = `#${color}`;
-            swatch.addEventListener('click', () => { currentDrawColor = `#${color}`; stickerMode = true; });
-            document.getElementById('drawColors').appendChild(swatch);
-        });
+        
+        function changeEggColor(color) {
+            currentColor = `#${color}`;
+            drawEgg(); // Redraw the egg with the new color
+        }
     
         // Setup sticker buttons (simplified example)
         ['circle', 'heart', 'star'].forEach(shape => {
