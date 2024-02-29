@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupStickers(canvas, ctx); // Function to handle sticker placement
         setupDrawingFeature(canvas, ctx); // Function to enable drawing on the egg
     }
+});
 
 function setupDrawingFeature(canvas, ctx) {
     let isDrawing = false;
