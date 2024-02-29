@@ -359,15 +359,17 @@ function setupGrassAndKeysHoverEffect() {
 }
 
 function setupEggColorChange(canvas, ctx) {
-    const colorSwatches = document.querySelectorAll('.color-swatch');
-    colorSwatches.forEach(swatch => {
+    // Select all color swatches and add click event listeners
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function() {
+            // Retrieve the color from the clicked swatch
             const color = this.getAttribute('data-color');
-            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color); // Use updated size
+            
+            // Redraw the egg with the new color
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, color);
         });
     });
-}
-    
+} 
     
 function setupAnswerSubmissions(buttonId, correctAnswer, inputId, feedbackId) {
     const button = document.getElementById(buttonId);
