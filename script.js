@@ -10,24 +10,41 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStickers();
     drawEgg('#FAF0E6');
 
+    const headerElement = document.getElementById('typewriterHeader');
+        const bodyElement = document.getElementById('typewriterBody');
+    
+        if (headerElement) {
+            const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
+            setupTypewriter(headerElement, headerText, function() {
+                if (bodyElement) {
+                    const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
+                    setupTypewriter(bodyElement, bodyText);
+                }
+            });
+        }
+
     const canvas = document.getElementById('eggCanvas');
+    if (!canvas) {
+        console.error('Canvas element not found!');
+        return;
+    }
+
     const ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Unable to get canvas context!');
+        return;
+    }
 
     // Function to draw an egg on the canvas
-    function drawEgg(ctx, x, y, width, height, color) {
-        ctx.beginPath();
+    function drawEgg(x, y, width, height, color) {
+        ctx.beginPath(); // Start a new path
         ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill();
     }
 
     // Initial drawing of the egg
-    drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, '#F9CEEE'); // Example initial color
-
-    // Function to change the egg color
-    function changeEggColor(color) {
-        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 100, 150, color);
-    }
+    drawEgg(canvas.width / 2, canvas.height / 2, 100, 150, '#F9CEEE');
 
     // Setup event listeners for color swatches
     const colorSwatches = document.querySelectorAll('.color-swatch');
@@ -393,19 +410,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
         type(); // Start typing
     }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const headerElement = document.getElementById('typewriterHeader');
-        const bodyElement = document.getElementById('typewriterBody');
-    
-        if (headerElement) {
-            const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
-            setupTypewriter(headerElement, headerText, function() {
-                if (bodyElement) {
-                    const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
-                    setupTypewriter(bodyElement, bodyText);
-                }
-            });
-        }
-    });
 });
