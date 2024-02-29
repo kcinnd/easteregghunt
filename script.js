@@ -155,6 +155,40 @@ function drawHeart(ctx, x, y, color) {
     ctx.fill();
 }
 
+let stickerCount = 0;
+let drawingLength = 0;
+const canvasArea = canvas.width * canvas.height;
+const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 1% of the canvas
+const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
+
+function updateCoverage() {
+    const estimatedCoverage = (stickerCount * averageStickerCoverage) + (drawingLength * averageDrawingCoverage);
+    const coveragePercentage = (estimatedCoverage / canvasArea) * 100;
+
+    if (coveragePercentage >= 80) {
+        // Display congratulations popup
+        alert("Congratulations! You've decorated the special Easter EGG! The Easter Bunny is grateful and wants you to know the word secrethiddenkeys.");
+        // Reset or disable further actions if necessary
+    }
+}
+
+// Call updateCoverage() each time a sticker is placed or drawing is done
+// For stickers:
+function placeSticker() {
+    // Sticker placement logic...
+    stickerCount += 1;
+    updateCoverage();
+}
+
+// For drawings, you'll need to calculate the length of each stroke
+// This is a simplified example; actual implementation will vary
+function drawStroke(startX, startY, endX, endY) {
+    // Drawing logic...
+    const strokeLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+    drawingLength += strokeLength;
+    updateCoverage();
+}
+
 function setupModal() {
     var btn = document.getElementById('openModal');
     var modal = document.getElementById('urgentMessageModal');
