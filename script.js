@@ -8,14 +8,44 @@ document.addEventListener('DOMContentLoaded', function() {
     setupTypewriterMessages();
     setupAnswerSubmissions();
 
-    // Function to draw an egg on the canvas
+    // Check for the egg canvas and set up page-specific features
     const canvas = document.getElementById('eggCanvas');
     if (canvas) {
-        // This block will only execute on the Easter egg page
+        const ctx = canvas.getContext('2d');
         setupEggPageSpecifics(canvas);
         setupStickers(canvas, ctx);
+        setupDrawingFeature(canvas, ctx); // Initialize the drawing feature here
     }
 });
+
+function setupDrawingFeature(canvas, ctx) {
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    canvas.addEventListener('mousedown', (e) => startDrawing(e, ctx, lastX, lastY, isDrawing));
+    canvas.addEventListener('mousemove', (e) => draw(e, ctx, lastX, lastY, isDrawing));
+    canvas.addEventListener('mouseup', () => stopDrawing(isDrawing));
+    canvas.addEventListener('mouseleave', () => stopDrawing(isDrawing));
+}
+
+function startDrawing(e, ctx, lastX, lastY, isDrawing) {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+}
+
+function draw(e, ctx, lastX, lastY, isDrawing) {
+    if (!isDrawing) return;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+}
+
+function stopDrawing(isDrawing) {
+    isDrawing = false;
+}
 
 function setupEggPageSpecifics(canvas) {
     const ctx = canvas.getContext('2d');
