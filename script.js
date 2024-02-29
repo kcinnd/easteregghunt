@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function setupStickers(canvas, ctx) {
     document.querySelectorAll('.sticker-preview').forEach(preview => {
-        preview.addEventListener('click', function() {
-            currentSticker.shape = this.dataset.shape;
-            // Optional: Change cursor or UI to indicate the selected sticker
+    preview.addEventListener('click', function() {
+        currentSticker.shape = this.dataset.shape;
+        canvas.style.cursor = 'pointer'; // Change to a relevant cursor type or URL
+        isDrawingEnabled = false; // Ensure drawing is disabled when a sticker is selected
         });
     });
 
