@@ -6,210 +6,145 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupTypewriterMessages();
 
+    const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
+    const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
     const canvas = document.getElementById('eggCanvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        
-        // Function to draw the initial egg
-        function drawEgg(ctx, x, y, width, height, color) {
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false, lastX = 0, lastY = 0, stickerMode = false, currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
+
+    // Draw the initial egg
+    function drawEgg() {
+        ctx.fillStyle = currentColor;
+        ctx.beginPath();
+        ctx.ellipse(canvas.width / 2, canvas.height / 2, 300, 450, 0, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    // Change egg base color
+    function changeEggColor(color) {
+        currentColor = `#${color}`;
+        drawEgg();
+    }
+
+    function placeSticker(shape, x, y) {
+        ctx.fillStyle = currentDrawColor;
+    
+        if (shape === 'circle') {
             ctx.beginPath();
-            ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-            ctx.fillStyle = color;
+            ctx.arc(x, y, 20, 0, Math.PI * 2);
             ctx.fill();
+        } else if (shape === 'heart') {
+            drawHeart(x, y);
+        } else if (shape === 'star') {
+            drawStar(x, y, 5, 20, 10);
         }
-
-        // Draw the initial egg
-        drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6');
-        setupEggColorChange(canvas, ctx);
-        setupStickers(canvas, ctx);
-        setupDrawingFeature(canvas, ctx);
+    
+        // Increment decorated area (simplified for demonstration)
+        decoratedArea += 5; // Assume each sticker covers 5% for simplicity
+        checkDecorationCoverage();
     }
-    let currentSticker = { shape: 'circle', color: '#000000', size: 20 }; // Default sticker settings
-    let isDrawingEnabled = false; // Tracks whether drawing mode is enabled
-    let stickerCount = 0; // Counts the number of stickers placed
-    let drawingLength = 0; // Measures the length of lines drawn
-    const averageStickerArea = 20 * 20; // Assuming each sticker is 20x20 pixels
-    const averageDrawingWidth = 5; // Assuming the line width for drawing is 5 pixels
+    
+    function drawHeart(x, y) {
+        ctx.beginPath();
+        const width = 20;
+        const height = 20;
+        ctx.moveTo(x, y + height / 4);
+        ctx.quadraticCurveTo(x, y, x + width / 4, y);
+        ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width / 2, y + height / 4);
+        ctx.quadraticCurveTo(x + width / 2, y - height / 2, x + width * 3/4, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + height / 4);
+        ctx.quadraticCurveTo(x + width, y + height, x + width / 2, y + height * 3/4);
+        ctx.quadraticCurveTo(x, y + height, x, y + height / 4);
+        ctx.fill();
+    }
+    
+    function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+        var rot = Math.PI / 2 * 3;
+        var x = cx;
+        var y = cy;
+        var step = Math.PI / spikes;
+    
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - outerRadius)
+        for (i = 0; i < spikes; i++) {
+            x = cx + Math.cos(rot) * outerRadius;
+            y = cy + Math.sin(rot) * outerRadius;
+            ctx.lineTo(x, y)
+            rot += step
+    
+            x = cx + Math.cos(rot) * innerRadius;
+            y = cy + Math.sin(rot) * innerRadius;
+            ctx.lineTo(x, y)
+            rot += step
+        }
+        ctx.lineTo(cx, cy - outerRadius);
+        ctx.closePath();
+        ctx.fill();
+    }   
+        // Enable drawing on the egg
+    function startDrawing(e) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function draw(e) {
+        if (!isDrawing) return;
+        ctx.strokeStyle = currentDrawColor;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        // Increment decorated area per draw action (simplified for demonstration)
+        decoratedArea += 0.1; // Assume each draw action covers 0.1%
+        checkDecorationCoverage();
+    }
+
+    function endDrawing() {
+        isDrawing = false;
+    }
+
+    // Check if 75% of the egg is decorated
+    function checkDecorationCoverage() {
+        if (decoratedArea >= 75) {
+            alert('Congratulations on decorating your egg! The Easter Bunny is grateful and wants you to know eastershiddenkeys.');
+            decoratedArea = 0; // Reset for next decoration session
+        }
+    }
+
+    // Setup color swatches
+    eggColors.forEach(color => {
+        const swatch = document.createElement('div');
+        swatch.className = 'swatch';
+        swatch.style.backgroundColor = `#${color}`;
+        swatch.addEventListener('click', () => changeEggColor(color));
+        document.getElementById('colorSwatches').appendChild(swatch);
+    });
+
+    // Setup draw color swatches
+    drawColors.forEach(color => {
+        const swatch = document.createElement('div');
+        swatch.className = 'drawColor';
+        swatch.style.backgroundColor = `#${color}`;
+        swatch.addEventListener('click', () => { currentDrawColor = `#${color}`; stickerMode = true; });
+        document.getElementById('drawColors').appendChild(swatch);
+    });
+
+    // Setup sticker buttons (simplified example)
+    ['circle', 'heart', 'star'].forEach(shape => {
+        const button = document.createElement('button');
+        button.innerText = shape;
+        button.addEventListener('click', () => placeSticker(shape));
+        document.getElementById('stickerSwatches').appendChild(button);
+    });
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', endDrawing);
+    canvas.addEventListener('mouseout', endDrawing);
+
+    drawEgg(); // Initial egg drawing
 });
-
-function setupStickers(canvas, ctx) {
-    document.querySelectorAll('.sticker-preview').forEach(preview => {
-    preview.addEventListener('click', function() {
-        currentSticker.shape = this.dataset.shape;
-        canvas.style.cursor = 'pointer'; // Change to a relevant cursor type or URL
-        isDrawingEnabled = false; // Ensure drawing is disabled when a sticker is selected
-        });
-    });
-
-    // Sticker Color Selection
-    document.querySelectorAll('.color-swatch-sticker').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            currentSticker.color = this.dataset.color;
-        });
-    });
-
-    // Sticker Placement
-    canvas.addEventListener('click', function(e) {
-        if (!isDrawingEnabled) {
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            // Use the currentSticker settings to draw the sticker
-            drawShape(ctx, currentSticker.shape, x, y, currentSticker.color);
-            }
-        });
-    }
-}
-
-function setupDrawingFeature(canvas, ctx) {
-    let isDrawing = false;
-    let lastX = 0;
-    let lastY = 0;
-
-    canvas.addEventListener('mousedown', (e) => {
-        if (isDrawingEnabled) {
-            isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-        }
-    });
-
-    canvas.addEventListener('mousemove', (e) => {
-        if (isDrawing && isDrawingEnabled) {
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.stroke();
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-            drawingLength += Math.sqrt((e.offsetX - lastX) ** 2 + (e.offsetY - lastY) ** 2);
-            checkCoverage();
-        }
-    });
-
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
-}
-
-function getCanvasClickCoordinates(e, canvas) {
-    const rect = canvas.getBoundingClientRect();
-    return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-    };
-}
-
-function checkCoverage() {
-    let decoratedArea = stickerCount * averageStickerArea + drawingLength * averageDrawingWidth;
-    let coveragePercentage = (decoratedArea / (canvas.width * canvas.height)) * 100;
-    if (coveragePercentage >= 80) {
-        alert("Congratulations! You've decorated over 80% of the egg!");
-    }
-}
-
-function drawShape(ctx, shape, x, y, color) {
-    switch (shape) {
-        case 'circle':
-            drawCircle(ctx, x, y, color);
-            break;
-        case 'star':
-            drawStar(ctx, x, y, color);
-            break;
-        case 'heart':
-            drawHeart(ctx, x, y, color);
-            break;
-        // Add more cases for other shapes
-    }
-}
-
-function drawCircle(ctx, x, y, color) {
-    ctx.beginPath();
-    ctx.arc(x, y, 10, 0, 2 * Math.PI); // 10 is the radius of the circle
-    ctx.fillStyle = color;
-    ctx.fill();
-}
-
-function drawStar(ctx, x, y, color, spikes = 5, outerRadius = 10, innerRadius = 5) {
-    ctx.beginPath();
-    ctx.moveTo(x, y - outerRadius);
-
-    for (let i = 0; i < spikes; i++) {
-        ctx.lineTo(x + outerRadius * Math.cos((i * 2 * Math.PI) / spikes - Math.PI / 2), 
-                   y + outerRadius * Math.sin((i * 2 * Math.PI) / spikes - Math.PI / 2));
-        ctx.lineTo(x + innerRadius * Math.cos(((i + 0.5) * 2 * Math.PI) / spikes - Math.PI / 2), 
-                   y + innerRadius * Math.sin(((i + 0.5) * 2 * Math.PI) / spikes - Math.PI / 2));
-    }
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-}
-
-function drawHeart(ctx, x, y, width, height, color) {
-    ctx.save(); // Save the current state
-    ctx.beginPath();
-    const topCurveHeight = height * 0.3;
-    ctx.moveTo(x, y + topCurveHeight);
-    // Top left curve
-    ctx.bezierCurveTo(
-        x, y, 
-        x - width / 2, y, 
-        x - width / 2, y + topCurveHeight
-    );
-
-    // Bottom left curve
-    ctx.bezierCurveTo(
-        x - width / 2, y + (height + topCurveHeight) / 2, 
-        x, y + (height + topCurveHeight) / 2, 
-        x, y + height
-    );
-
-    // Bottom right curve
-    ctx.bezierCurveTo(
-        x, y + (height + topCurveHeight) / 2, 
-        x + width / 2, y + (height + topCurveHeight) / 2, 
-        x + width / 2, y + topCurveHeight
-    );
-
-    // Top right curve
-    ctx.bezierCurveTo(
-        x + width / 2, y, 
-        x, y, 
-        x, y + topCurveHeight
-    );
-
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.restore(); // Restore the original state
-}
-
-const canvasArea = canvas.width * canvas.height;
-const averageStickerCoverage = canvasArea * 0.01; // Assume each sticker covers 1% of the canvas
-const averageDrawingCoverage = canvasArea * 0.0005; // Assume each unit length of drawing covers 0.05% of the canvas
-
-function placeSticker(x, y, shape, color) {
-    drawShape(ctx, shape, x, y, color);
-    stickerCount++;
-    checkCoverage(); // Assuming this function calculates and checks the coverage
-}
-
-function draw(e) {
-    if (!isDrawing) return;
-
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-
-    // Calculate the length of the line drawn
-    const dx = e.offsetX - lastX;
-    const dy = e.offsetY - lastY;
-    const length = Math.sqrt(dx * dx + dy * dy);
-
-    drawingLength += length; // Add the length of the line to the total drawing length
-
-    [lastX, lastY] = [e.offsetX, e.offsetY]; // Update lastX and lastY for the next line segment
-
-    updateCoverage(); // Recalculate and update the coverage
-}
 
 function setupModal() {
     var btn = document.getElementById('openModal');
@@ -325,15 +260,6 @@ function setupGrassAndKeysHoverEffect() {
         grassImg.className = 'grass-img';
         grassImg.id = `grass${index + 1}`;
         grassContainer.appendChild(grassImg);
-    });
-}
-
-function setupEggColorChange(canvas, ctx) {
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 150, 225, color); // Adjust the size as necessary
-        });
     });
 }
     
