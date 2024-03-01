@@ -6,101 +6,81 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCloseableImageModal();
     setupPermanentImageModal();
     setupSubmitHandlers();
-    const popupImageModal = document.getElementById('popupImageModal');
-    const permanentImage = document.getElementById('permanentImage');
-    const passcodeModal = document.getElementById('passcodeModal');
-    const passcodeInput = document.getElementById('passcodeInput');
-    const submitPasscode = document.getElementById('submitPasscode');
-
-    // Close the popupImageModal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == popupImageModal) {
-            popupImageModal.style.display = 'none';
-        }
-    });
-
-    // Show the passcodeModal when clicking the permanentImage
-    permanentImage.addEventListener('click', function() {
-        passcodeModal.style.display = 'block';
-    });
-
-    // Close the passcodeModal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == passcodeModal) {
-            passcodeModal.style.display = 'none';
-        }
-    });
-
-    // Handle passcode submission
-    submitPasscode.addEventListener('click', function() {
-        if (passcodeInput.value === '30636') {
-            // Redirect or show success message
-            alert('Correct passcode!');
-            // For redirection, use: window.location.href = 'nextPage.html';
-        } else {
-            alert('Incorrect passcode. Please try again.');
-            passcodeInput.value = ''; // Clear input
-        }
-    });
 });
+
+function setupModal() {
+    const modalBtns = document.querySelectorAll('[data-modal-target]');
+    const closeBtns = document.querySelectorAll('.modal .close');
+
+    modalBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modal = document.querySelector(btn.dataset.modalTarget);
+            modal.style.display = 'block';
+        });
+    });
+
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.modal').style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', event => {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    });
+}
 
 function setupCloseableImageModal() {
     const closeableImageModal = document.getElementById('closeableImageModal');
-    if (closeableImageModal) {
-        const closeSpan = closeableImageModal.querySelector('.close');
-        closeSpan.addEventListener('click', function() {
-            closeableImageModal.style.display = 'none';
-        });
-    }
+    closeableImageModal.style.display = 'block'; // Show the modal when the page loads
 }
 
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
-    const submitPasscode = document.getElementById('submitPasscode');
-    const passcodeInput = document.getElementById('passcodeInput');
 
-    permanentImage.addEventListener('click', function() {
+    permanentImage.addEventListener('click', () => {
         passcodeModal.style.display = 'block';
-    });
-
-    submitPasscode.addEventListener('click', function() {
-        if (passcodeInput.value === '30636') {
-            window.location.href = 'nextPage.html'; // Redirect to the next page
-        } else {
-            alert('Incorrect passcode. Please try again.');
-            passcodeInput.value = ''; // Clear the input field
-        }
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === passcodeModal) {
-            passcodeModal.style.display = 'none';
-        }
     });
 }
 
 function setupSubmitHandlers() {
-    document.getElementById('submitEasterBunny').addEventListener('click', function() {
-        var userInput = document.getElementById('easterBunnyInput').value.trim().toLowerCase();
-        if (userInput === 'eggspert') {
-            window.location.href = 'eggspert.html'; // Redirect to Eggspert page
-        } else {
-            document.getElementById('easterBunnyFeedback').textContent = 'That is not right; please try again.';
-        }
-    });
+    const submitButtons = document.querySelectorAll('[data-submit-action]');
+    submitButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const action = btn.dataset.submitAction;
+            const input = document.querySelector(btn.dataset.input);
+            const feedback = document.querySelector(btn.dataset.feedback);
 
-    document.getElementById('submitMysteryTrail').addEventListener('click', function() {
-        var userInput = document.getElementById('mysteryTrailInput').value.trim().toLowerCase();
-        if (userInput === 'easterbunny') {
-            window.location.href = 'easterbunny.html'; // Redirect to the Easter Bunny page
-        } else {
-            document.getElementById('mysteryTrailFeedback').textContent = 'That is not right; please try again.';
-        }
+            switch (action) {
+                case 'checkEasterBunny':
+                    if (input.value.trim().toLowerCase() === 'eggspert') {
+                        window.location.href = 'eggspert.html';
+                    } else {
+                        feedback.textContent = 'That is not right; please try again.';
+                    }
+                    break;
+                case 'checkMysteryTrail':
+                    if (input.value.trim().toLowerCase() === 'easterbunny') {
+                        window.location.href = 'easterbunny.html';
+                    } else {
+                        feedback.textContent = 'That is not right; please try again.';
+                    }
+                    break;
+                case 'checkEggspert':
+                    if (input.value.trim() === '30636') {
+                        alert('Correct passcode!');
+                        // window.location.href = 'nextPage.html'; // Uncomment to redirect
+                    } else {
+                        feedback.textContent = 'Incorrect passcode. Please try again.';
+                        input.value = ''; // Clear input
+                    }
+                    break;
+            }
+        });
     });
-
-    setupEggImagesModal();
-    setupUrgentMessageModal();
 }
 
 function setupEggImagesModal() {
@@ -125,45 +105,32 @@ function setupEggImagesModal() {
 function setupUrgentMessageModal() {
     const openModalBtn = document.getElementById('openModal');
     if (openModalBtn) {
-        openModalBtn.addEventListener('click', function() {
-            const headerElement = document.getElementById('typewriterHeader');
-            const bodyElement = document.getElementById('typewriterBody');
-            const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
-            const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰";
-
-            if (headerElement && bodyElement) {
-                headerElement.innerHTML = '';
-                bodyElement.innerHTML = '';
-                setupTypewriter(headerElement, headerText, function() {
-                    setupTypewriter(bodyElement, bodyText);
-                });
-            }
+        openModalBtn.addEventListener('click', () => {
+            const urgentMessageModal = document.getElementById('urgentMessageModal');
+            urgentMessageModal.style.display = 'block';
+            setupTypewriter('typewriterHeader', "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨");
+            setupTypewriter('typewriterBody', "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰");
         });
     }
 }
 
-function setupModal() {
-    var btn = document.getElementById('openModal');
-    var modal = document.getElementById('urgentMessageModal');
-    var spans = document.getElementsByClassName("close");
+function setupTypewriter(elementId, text) {
+    const element = document.getElementById(elementId);
+    let cursorPosition = 0;
+    let typeSpeed = 70;
 
-    if (btn) {
-        btn.onclick = function() {
-            modal.style.display = "block";
-        };
+    function type() {
+        if (cursorPosition < text.length) {
+            element.innerHTML += text.charAt(cursorPosition);
+            cursorPosition++;
+            setTimeout(type, typeSpeed);
+        }
     }
 
-    Array.from(spans).forEach(span => {
-        span.onclick = function() {
-            modal.style.display = "none";
-        };
-    });
-
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
+    if (element) {
+        element.innerHTML = ''; // Clear existing text
+        type();
+    }
 }
 
 function setupEggModal() {
@@ -215,23 +182,6 @@ function setupSecretImageAndConfetti() {
     } else {
         console.log('One of the elements (secretImage, eggRevealModal, revealEggBtn) is not found.');
     }
-}
-
-function setupTypewriter(element, text, callback = null) {
-    let cursorPosition = 0;
-    let typeSpeed = 75; // Adjust typing speed as needed
-
-    function type() {
-        if (cursorPosition < text.length) {
-            element.innerHTML += text.charAt(cursorPosition);
-            cursorPosition++;
-            setTimeout(type, typeSpeed);
-        } else if (typeof callback === 'function') {
-            callback(); // Call the callback function once typing is complete
-        }
-    }
-
-    type(); // Start typing
 }
 
 function setupEventListeners() {
