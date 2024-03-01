@@ -13,8 +13,10 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+
+
 /* Style for the circular input */
-#eggspertInput {
+#passcodeInput {
     width: 60px; /* Adjust size as needed */
     height: 60px;
     border-radius: 50%; /* Creates the circle shape */
@@ -26,7 +28,7 @@
 }
 
 /* Style for the glowing submit button */
-#submitEggspert {
+#submitPasscode {
     background-color: #007bff; /* Bright blue background */
     color: #fff; /* White text */
     border: none;
@@ -37,7 +39,7 @@
     transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
 }
 
-#submitEggspert:hover {
+#submitPasscode:hover {
     background-color: #0056b3; /* Darker blue on hover */
     box-shadow: 0 0 20px #00f; /* Intensify glow effect on hover */
 }
