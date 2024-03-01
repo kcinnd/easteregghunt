@@ -26,7 +26,7 @@ function setupModal() {
     });
 
     window.addEventListener('click', event => {
-        if (event.target.classList.contains('modal')) {
+        if (event.target.classList.contains('pmodal')) {
             event.target.style.display = 'none';
         }
     });
@@ -43,10 +43,18 @@ function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
 
-    permanentImage.addEventListener('click', () => {
-        passcodeModal.style.display = 'block';
+    // Show the passcodeModal when clicking the permanentImage
+    if (permanentImage && passcodeModal) {
+        permanentImage.addEventListener('click', function() {
+            passcodeModal.style.display = 'block';
+        });
+    }
+    window.addEventListener('click', function(event) {
+        if (event.target == passcodeModal) {
+            passcodeModal.style.display = 'none';
+        }
     });
-}
+});
 
 function setupSubmitHandlers() {
     const submitButtons = document.querySelectorAll('[data-submit-action]');
