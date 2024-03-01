@@ -55,6 +55,20 @@ document.addEventListener('DOMContentLoaded', function() {
             drawEgg(ctx, canvas.width / 2, canvas.height / 2, 200, 300); // Adjust size as needed
         }
 
+        function draw(e) {
+            if (!isDrawing || mode !== 'drawing') return;
+            
+            ctx.strokeStyle = currentDrawColor;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+            // Increment decorated area per draw action (simplified for demonstration)
+            decoratedArea += 0.1; // Assume each draw action covers 0.1%
+            checkDecorationCoverage();
+        }
+
         function setupDrawing(canvas, ctx) {
             canvas.addEventListener('mousedown', (e) => {
                 isDrawing = true;
@@ -92,10 +106,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        canvas.addEventListener('click', function(e) {
+            if (mode !== 'sticker') return;
+        
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+        
+            placeSticker(selectedSticker, x, y);
+        });
+
         function selectSticker(shape) {
-            // Set the selected sticker shape for use in placing stickers on the canvas
             selectedSticker.shape = shape;
-            // Indicate that sticker mode is active
             stickerMode = true;
         }
     
