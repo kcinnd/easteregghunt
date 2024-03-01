@@ -155,8 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.addEventListener('mouseout', endDrawing);
     
         drawEgg(); // Initial egg drawing
-}
 
+    }
+}
+                          
 function setupModal() {
     var btn = document.getElementById('openModal');
     var modal = document.getElementById('urgentMessageModal');
