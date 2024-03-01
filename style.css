@@ -167,7 +167,8 @@ body {
     box-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 
                 0 0 40px rgba(0, 191, 255, 0.6), 
                 0 0 60px rgba(0, 191, 255, 0.6), 
-                0 0 80px rgba(0, 191, 255, 0.6); /* Glowing effect */
+                0 0 80px rgba(0, 191, 255, 0.6),
+                0 0 100px rgba(0, 191, 255, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,13 +206,13 @@ body {
 #passcodeInput {
     width: 150px;
     height: 40px;
-    border-radius: 25px;
+    border-radius: 15px;
     text-align: center;
     align-items: center;
     outline: none;
     font-size: 30px;
-    padding-top: 8px;
-    margin: 10px 0;
+    padding-top: 5px;
+    margin-bottom: 20px;
     background-color: transparent;
     text-shadow: 0 0 5px #00BFFF, 
                  0 0 10px #00BFFF, 
