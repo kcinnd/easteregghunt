@@ -195,11 +195,10 @@ body {
 }
 
 #passcodeInput {
-    width: 200px;
-    height: 50px;
+    width: 125px;
+    height: 40px;
     border-radius: 25px;
     text-align: center;
-    border: 5px solid #00BFFF;
     outline: none;
     font-size: 30px;
     padding-top: 10px;
@@ -228,6 +227,8 @@ body {
 }
 
 .circular #submitPasscode:hover {
+    color: #2C2C2C;
+    background-color: #99e5ff;
     box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 
                 0 0 20px rgba(0, 191, 255, 0.7), 
                 0 0 30px rgba(0, 191, 255, 0.7), 
