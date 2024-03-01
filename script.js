@@ -114,8 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     setupTypewriter(bodyElement, bodyText);
                 });
             }
-        });
-    }
+    });
 });
 
 function setupModal() {
