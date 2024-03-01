@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', () => placeSticker(shape));
             document.getElementById('stickerSwatches').appendChild(button);
         });
-    }
+    })
 });
                           
 function setupModal() {
