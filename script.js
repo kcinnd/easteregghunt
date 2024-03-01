@@ -242,20 +242,24 @@ function startHunt() {
 function setupGrassHoverEffect() {
     const grassImages = document.querySelectorAll('.grass-img');
 
-    grassImages.forEach(grass => {
+    grassImages.forEach((grass, index) => {
         grass.addEventListener('mouseover', function() {
-            const keySrc = grass.getAttribute('data-key');
-            const keyImg = document.createElement('img');
-            keyImg.src = keySrc;
-            keyImg.classList.add('key-img');
-            keyImg.style.left = `${Math.random() * (window.innerWidth - 75)}px`; // Random horizontal position
-            keyImg.style.top = `${Math.random() * (window.innerHeight - 75)}px`; // Random vertical position
-            document.body.appendChild(keyImg);
-            setTimeout(() => keyImg.style.display = 'block', 1); // Brief delay to ensure the element is added to the DOM before displaying
+            // Ensure a key is only added once per grass image
+            if (!grass.hasAttribute('data-key-found')) {
+                const keyImg = document.createElement('img');
+                keyImg.src = 'https://i.imgur.com/9a87llh.png'; // Your key image URL
+                keyImg.classList.add('key-img');
+                keyImg.style.position = 'absolute';
+                keyImg.style.height = '75px'; // Set the key image height
+                // Random position that does not overlap the grass images or other keys
+                keyImg.style.left = `${Math.random() * (window.innerWidth - 75)}px`;
+                keyImg.style.top = `${Math.random() * (window.innerHeight - 75)}px`;
 
-            grass.addEventListener('mouseout', function() {
-                keyImg.remove(); // Remove the key image when not hovering
-            });
+                document.body.appendChild(keyImg);
+
+                // Mark the grass as having its key found
+                grass.setAttribute('data-key-found', 'true');
+            }
         });
     });
 }
