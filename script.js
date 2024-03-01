@@ -41,12 +41,12 @@ function setupCloseableImageModal() {
 }
 
 function setupPermanentImageModal() {
-    const permanentImage = document.getElementById('permanentImage');
+    const permanentImageModal = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
 
     // Show the passcodeModal when clicking the permanentImage
-    if (permanentImage && passcodeModal) {
-        permanentImage.addEventListener('click', function() {
+    if (permanentImageModal && passcodeModal) {
+        permanentImageModal.addEventListener('click', function() {
             passcodeModal.style.display = 'block';
         });
     }
