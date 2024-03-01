@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
         let stickerMode = false;
         let selectedSticker = null;
+        let mode = null; // Possible values: 'drawing', 'sticker', null
 
-    // Draw the initial egg
         function drawEgg() {
             ctx.fillStyle = currentColor;
             ctx.beginPath();
@@ -67,6 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Increment decorated area per draw action (simplified for demonstration)
             decoratedArea += 0.1; // Assume each draw action covers 0.1%
             checkDecorationCoverage();
+        }
+
+        function enableDrawingMode() {
+            mode = 'drawing';
+            canvas.style.cursor = 'crosshair'; // Optional: change cursor style
+            // Additional UI updates or logic to indicate drawing mode is active
+        }
+        
+        function enableStickerMode() {
+            mode = 'sticker';
+            canvas.style.cursor = 'pointer'; // Optional: change cursor style
+            // Additional UI updates or logic to indicate sticker mode is active
         }
 
         function setupDrawing(canvas, ctx) {
