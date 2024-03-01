@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        let isDrawing = false, lastX = 0, lastY = 0, stickerMode = false;
+        let isDrawing = false, lastX = 0, lastY = 0;
         let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
         const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
         const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
@@ -147,8 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Place the selected sticker
         placeSticker(selectedSticker, x, y);
 
-        // Optionally, turn off sticker mode after placing a sticker
-        // stickerMode = false;
             }
         });
         canvas.addEventListener('mousedown', startDrawing);
