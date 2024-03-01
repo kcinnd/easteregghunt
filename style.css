@@ -17,6 +17,7 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
+    position: fixed; 
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     display: flex;
@@ -27,12 +28,40 @@
 }
 
 .pmodal-content {
+    padding: 20px;
+    max-width: 600px;
+    position: relative;
+    width: auto;
+    text-align: center;
     margin: auto; /* 15% from the top and centered */
     width: 20%; /* Could be more or less, depending on screen size */
     justify-content: center;
     display: flex;
     align-items: center;
     overflow: auto;
+}
+
+.pmodal-content img {
+    max-width: 100%; /* Make image responsive */
+    max-height: 80vh; /* Limit image height to 80% of the viewport height */
+    margin: auto; /* Center the image */
+}
+
+/* Style for the close button */
+.pmodal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+}
+
+.pmodal .close:hover,
+.pmodal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* Style for the circular input */
