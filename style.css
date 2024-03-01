@@ -191,14 +191,27 @@ body {
 
 .modal-content {
   position: relative;
-  background-color: #fefefe;
-  margin: 10% auto;
+  background-color: #FF889C;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
   max-width: 800px; /* Adjust based on your preference */
   height: auto; /* Auto height to adjust based on content */
-  min-height: 400px;
+  min-height: 80vh;
+  overflow-y: auto; /* Enable scrolling within the modal */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center;
+}
+
+.modal-content img {
+    width: 100%; /* Make images responsive */
+    max-width: 500px; /* Limit the size of images */
+    height: auto;
+    margin: 10px 0; /* Add some space around the images */
+    display: block; /* This line is crucial for margin: auto to work */
 }
 
 .images-container {
