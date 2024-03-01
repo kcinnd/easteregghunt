@@ -34,7 +34,7 @@
     width: auto;
     text-align: center;
     margin: auto; /* 15% from the top and centered */
-    width: 20%; /* Could be more or less, depending on screen size */
+    width: 80%; /* Could be more or less, depending on screen size */
     justify-content: center;
     display: flex;
     align-items: center;
