@@ -27,6 +27,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    document.getElementById('submitEasterBunny').addEventListener('click', function() {
+        var userInput = document.getElementById('easterBunnyInput').value.trim().toLowerCase();
+        if (userInput === 'eggspert') {
+            window.location.href = 'eggspert.html'; // Redirect to Eggspert page
+        } else {
+            document.getElementById('easterBunnyFeedback').textContent = 'That is not right; please try again.';
+        }
+    });
+
+    document.getElementById('submitEggspert').addEventListener('click', function() {
+        var userInput = document.getElementById('eggspertInput').value.trim();
+        if (userInput === '30636') {
+            // Redirect to the next page or show a success message
+            alert('Congratulations! You have completed the Eggspert challenge!');
+            // Example: window.location.href = 'nextpage.html';
+        } else {
+            document.getElementById('eggspertFeedback').textContent = 'That is not right; please try again.';
+        }
+    });
+
+    document.getElementById('submitMysteryTrail').addEventListener('click', function() {
+        var userInput = document.getElementById('mysteryTrailInput').value.trim().toLowerCase();
+        if (userInput === 'easterbunny') {
+            window.location.href = 'easterbunny.html'; // Redirect to the Easter Bunny page
+        } else {
+            document.getElementById('mysteryTrailFeedback').textContent = 'That is not right; please try again.';
+        }
+    });
+
     var revealEggBtn = document.getElementById('revealEggBtn');
     var eggImagesModal = document.getElementById('eggImagesModal');
     var closeEggImagesModal = eggImagesModal.querySelector('.close');
