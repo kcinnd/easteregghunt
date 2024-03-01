@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEggModal();
     setupModal();
     setupSecretImageAndConfetti();
-    setupGrassAndKeysHoverEffect();
     setupEventListeners();
     setupTypewriterMessages();
 });
@@ -97,32 +96,6 @@ if (headerElement) {
         }
     });
 }
-}
-
-function setupGrassAndKeysHoverEffect() {
-const grassContainer = document.querySelector('.easter-bunny-grass');
-if (!grassContainer) return;
-
-const grassImages = [
-    'https://i.imgur.com/SGrsdhI.png',
-    'https://i.imgur.com/YsEkPnH.png',
-    'https://i.imgur.com/Ec8VQrS.png',
-    'https://i.imgur.com/3NuudR3.png',
-    'https://i.imgur.com/K0bd7nK.png',
-    'https://i.imgur.com/kru4203.png',
-    'https://i.imgur.com/P0ZhspR.png',
-    'https://i.imgur.com/Z7XSw47.png',
-    'https://i.imgur.com/JrlJYKS.png',
-    'https://i.imgur.com/9UKYi7k.png'
-];
-grassImages.forEach((src, index) => {
-    const grassImg = document.createElement('img');
-    grassImg.src = src;
-    grassImg.className = 'grass-img';
-    grassImg.id = `grass${index + 1}`;
-    grassContainer.appendChild(grassImg);
-});
-}
 
 function setupAnswerSubmissions(buttonId, correctAnswer, inputId, feedbackId) {
 const button = document.getElementById(buttonId);
@@ -136,7 +109,6 @@ if (button) {
             feedbackElement.textContent = 'That is not right; please try again.';
         }
     });
-}
 }
 
 // Usage
