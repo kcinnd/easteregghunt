@@ -14,7 +14,7 @@
 }
 
 .pmodal {
-    z-index: 1000; /* Sit on top */
+    z-index: 100; /* Sit on top */
     left: 0;
     top: 0;
     position: fixed; 
@@ -25,6 +25,18 @@
     align-items: center;
     overflow: auto; /* Enable scroll if needed */
     background-color: transparent; /* Transparent background */
+}
+
+.circularmodal {
+    display: none; /* Initially hidden */
+    position: fixed; 
+    z-index: 1000; /* High z-index to ensure it's on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 #popupImageModal {
