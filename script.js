@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDrawing(canvas, ctx);
     setupModeToggle(canvas, ctx);
 
-    const canvas = document.getElementById('eggCanvas');
-
     if (canvas) {
         const canvas = document.getElementById('eggCanvas');
             if (canvas) {
@@ -194,8 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.closePath();
             ctx.fill();
         } 
-
-        let mode = 'drawing'; // Default mode
 
         function setupModeToggle(canvas, ctx) {
             const toggleButton = document.getElementById('toggleMode');
