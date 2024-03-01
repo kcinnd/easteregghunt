@@ -7,6 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
+    var closeBtn = document.querySelector('.modal .close');
+    var additionalImage = document.getElementById('additionalImage');
+
+    // Close the popup when the close button is clicked
+    closeBtn.onclick = function() {
+        popupImageModal.style.display = "none";
+    }
+
+    // Show the popup when the additional image is clicked
+    additionalImage.onclick = function() {
+        popupImageModal.style.display = "flex";
+    }
+
+    // Close the popup when clicking anywhere outside of the modal content
+    window.onclick = function(event) {
+        if (event.target == popupImageModal) {
+            popupImageModal.style.display = "none";
+        }
+    }
 });
 
 function setupModal() {
