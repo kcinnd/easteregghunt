@@ -21,13 +21,13 @@
 <img src="https://i.imgur.com/tTiuDt6.png" alt="Logo" class="logo">
 <img id="secretImage" src="https://i.imgur.com/ER9W85m.png" style="position: absolute; width: 20px; top: 150px; right: 150px;">
 
-<div id="urgentMessageModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="typewriterHeader"></h2> <!-- Typewriter header -->
-        <p id="typewriterBody"></p> <!-- Typewriter body -->
-    </div>
-</div>
+<div id="urgentMessageModal" class="modal" style="display: none;">
+    <span class="close">&times;</span>
+    <div class="text-background">
+        <h2 id="typewriterHeader" class="modal-header"></h2> 
+        <div id="typewriterBody" class="modal-body"></div>
+    </div> 
+</div> 
 
 <div id="eggRevealModal" class="egg-reveal-modal">
     <div class="modal-content">
