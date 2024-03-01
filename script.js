@@ -52,17 +52,17 @@ function setupCloseableImageModal() {
     
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
-    const passcodeModal = document.getElementById('passcodeModal');
-    
-    if (permanentImage && passcodeModal) {
+    const circular = document.querySelector('#passcodeModal .circular'); // Get the circular div inside passcodeModal
+
+    if (permanentImage && circular) {
         permanentImage.addEventListener('click', () => {
-            passcodeModal.style.display = 'block';
+            circular.style.display = 'flex'; // Show the circular div
         });
 
-        // Close the passcode modal when clicking outside of it
+        // Close the circular div when clicking outside of it
         window.addEventListener('click', (event) => {
-            if (event.target === passcodeModal) {
-                passcodeModal.style.display = 'none';
+            if (!circular.contains(event.target) && event.target !== permanentImage) {
+                circular.style.display = 'none'; // Hide the circular div
             }
         });
     }
