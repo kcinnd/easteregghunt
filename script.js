@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupStickers(canvas, ctx);
                 setupDrawingFeature(canvas, ctx);
             }
-        });
+        };
         let isDrawing = false, lastX = 0, lastY = 0;
         let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
         const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
