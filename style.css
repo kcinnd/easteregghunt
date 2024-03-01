@@ -27,6 +27,22 @@
     background-color: transparent; /* Transparent background */
 }
 
+#popupImageModal {
+    display: block; /* Show by default */
+}
+
+#popupImageModal .pmodal-content img {
+    max-width: 90%;
+    max-height: 80vh;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Nice thick shadow */
+}
+
+/* Specific styling for the passcode modal */
+#passcodeModal {
+    display: none; /* Hidden by default */
+}
+
 .pmodal-content {
     padding: 20px;
     max-width: 600px;
