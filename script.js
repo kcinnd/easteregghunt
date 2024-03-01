@@ -86,7 +86,7 @@ function setupSubmitHandlers() {
                     correctPasscode = 'eggspert';
                     break;
                 case 'eggspert':
-                    correctPasscode = '30636';
+                    correctPasscode = '297577';
                     break;
                 default:
                     correctPasscode = ''; // No passcode for undefined pages
