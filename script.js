@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupTypewriterMessages();
     setupStickerSwatches();
+    setupDrawing(canvas, ctx);
+    setupModeToggle(canvas, ctx);
 
     const canvas = document.getElementById('eggCanvas');
 
@@ -151,9 +153,25 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.lineTo(cx, cy - outerRadius);
             ctx.closePath();
             ctx.fill();
-        }   
+        } 
+
+        let mode = 'drawing'; // Default mode
+
+        function setupModeToggle(canvas, ctx) {
+            const toggleButton = document.getElementById('toggleMode');
+            toggleButton.addEventListener('click', () => {
+                if (mode === 'drawing') {
+                    mode = 'sticker';
+                    toggleButton.textContent = 'Switch to Drawing Mode';
+                    canvas.style.cursor = 'default'; // Change cursor to default when in sticker mode
+                } else {
+                    mode = 'drawing';
+                    toggleButton.textContent = 'Switch to Sticker Mode';
+                    canvas.style.cursor = 'crosshair'; // Change cursor to crosshair when in drawing mode
+                }
+            });
+        }
     
-        // Check if 75% of the egg is decorated
         function checkDecorationCoverage() {
             if (decoratedArea >= 80) {
                 alert('Congratulations on decorating your egg! The Easter Bunny is grateful and wants you to know eastershiddenkeys.');
@@ -190,13 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             }
         });
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', endDrawing);
-        canvas.addEventListener('mouseout', endDrawing);
-    
-        drawEgg(); // Initial egg drawing
-
     }
 });
                           
