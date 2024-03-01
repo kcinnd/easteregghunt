@@ -469,6 +469,8 @@ body {
 .key-img {
     display: none; /* Hidden by default, shown on hover */
     position: absolute;
+    transition: all 0.5s ease; /* Smooth transition for appearing */
+    z-index: 10;
     height: 75px; /* As specified */
 }
 
