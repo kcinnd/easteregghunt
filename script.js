@@ -3,6 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEggModal();
     setupSecretImageAndConfetti();
     setupEventListeners();
+    const closeableImageModal = document.getElementById('closeableImageModal');
+    const closeSpan = closeableImageModal.querySelector('.close');
+    const permanentImage = document.getElementById('permanentImage');
+    const passcodeModal = document.getElementById('passcodeModal');
+    const passcodeInput = document.getElementById('passcodeInput');
+    const submitPasscode = document.getElementById('submitPasscode');
+
+    closeSpan.onclick = function() {
+        closeableImageModal.style.display = "none";
+    }
+
+    permanentImage.onclick = function() {
+        passcodeModal.style.display = "block";
+    }
+
+    submitPasscode.onclick = function() {
+        if(passcodeInput.value === "30636") {
+            window.location.href = "nextPage.html"; // Redirect to the next page
+        } else {
+            alert("Incorrect passcode. Please try again.");
+            passcodeInput.value = ""; // Clear the input field
+        }
+    }
 
     var revealEggBtn = document.getElementById('revealEggBtn');
     var eggImagesModal = document.getElementById('eggImagesModal');
