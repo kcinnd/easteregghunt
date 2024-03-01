@@ -27,16 +27,18 @@
     background-color: transparent; /* Transparent background */
 }
 
-.circularmodal {
-    display: none; /* Initially hidden */
-    position: fixed; 
-    z-index: 1000; /* High z-index to ensure it's on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+#circularmodal {
+    display: none; /* Hidden by default, shown when triggered */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top of other content */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+    width: auto; /* Adjust based on content */
+    padding: 20px; /* Space inside the modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow for depth */
+    border-radius: 20px; /* Optional: round corners for the modal */
+    text-align: center; /* Align the content inside the modal */
 }
 
 #popupImageModal {
@@ -177,21 +179,15 @@ body {
 }
 
 .circular {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-color: lightblue;
-    border: 2px solid #00BFFF;
-    box-shadow: 0 0 15px rgba(0, 120, 255, 0.7); /* Glowing effect */
-    display: none;
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: fixed;
-    z-index: 100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    align-items: center;
+    width: 250px; /* Size of the circular area */
+    height: 250px;
+    border-radius: 50%; /* Make it circular */
+    background-color: lightblue; /* Background color of the circular area */
+    box-shadow: 0 0 20px rgba(0, 120, 255, 0.7); /* Glowing effect */
 }
 
 .full-width-image {
