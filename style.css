@@ -14,7 +14,6 @@
 }
 
 .pmodal {
-    position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -31,7 +30,9 @@
     margin: auto; /* 15% from the top and centered */
     width: 20%; /* Could be more or less, depending on screen size */
     justify-content: center;
+    display: flex;
     align-items: center;
+    overflow: auto;
 }
 
 /* Style for the circular input */
