@@ -34,7 +34,9 @@ function setupModal() {
 
 function setupCloseableImageModal() {
     const closeableImageModal = document.getElementById('closeableImageModal');
-    closeableImageModal.style.display = 'block'; // Show the modal when the page loads
+    if (closeableImageModal) {
+        closeableImageModal.style.display = 'block'; // Show the modal when the page loads
+    }
 }
 
 function setupPermanentImageModal() {
