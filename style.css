@@ -450,7 +450,7 @@ body {
 }
 
 .image-border {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -464,6 +464,12 @@ body {
   margin: 0 5px;
   width: 150px;
   height: auto;
+}
+
+.key-img {
+    display: none; /* Hidden by default, shown on hover */
+    position: absolute;
+    height: 75px; /* As specified */
 }
 
 h1 {
