@@ -248,7 +248,7 @@ body {
     line-height: 1.6; /* Makes the text easier to read */
 }
 
-.easter-bunny-grass, .image-border {
+.image-border {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -256,14 +256,6 @@ body {
   text-align: center;
   white-space: nowrap;
   overflow-x: auto; /* Allow horizontal scrolling for grass images */
-}
-
-.easter-bunny-grass.overlap-allowed .grass-img {
-  margin-right: -25px; /* or any value that causes the desired overlap */
-}
-
-.easter-bunny-grass .grass-img:hover {
-    /* Styles or functionality that should happen on hover */
 }
 
 .grass-img {
