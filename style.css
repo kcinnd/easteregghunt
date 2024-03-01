@@ -49,11 +49,6 @@
     margin: auto;
 }
 
-/* Specific styling for the passcode modal */
-#passcodeModal {
-    display: none; /* Hidden by default */
-}
-
 .pmodal-content {
     padding: 20px;
     max-width: 600px;
