@@ -53,57 +53,55 @@ function setupCloseableImageModal() {
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
-    
+    const circular = document.querySelector('.circular'); // Reference to the circular content inside passcodeModal
+
     if (permanentImage && passcodeModal) {
         permanentImage.addEventListener('click', function() {
-            passcodeModal.style.display = 'flex'; // Make the passcode modal visible
+            passcodeModal.style.display = 'flex'; // Show the passcode modal
         });
 
         window.addEventListener('click', function(event) {
-            if (event.target == passcodeModal) {
-                passcodeModal.style.display = 'none'; // Hide the passcode modal when clicking outside
+            // Check if the click is outside the circular content
+            if (event.target === passcodeModal && !circular.contains(event.target)) {
+                passcodeModal.style.display = 'none'; // Hide the passcode modal
             }
         });
-    } else {
-        console.error('Permanent image or passcode modal element not found.');
     }
 }
 
 function setupSubmitHandlers() {
-    const submitButtons = document.querySelectorAll('[data-submit-action]');
-    submitButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const action = btn.dataset.submitAction;
-            const input = document.querySelector(btn.dataset.input);
-            const feedback = document.querySelector(btn.dataset.feedback);
+    const submitPasscodeButton = document.getElementById('submitPasscode');
+    const pageType = document.body.getAttribute('data-page-type'); // Add a custom data attribute to your body tag to identify the page
 
-            switch (action) {
-                case 'checkEasterBunny':
-                    if (input.value.trim().toLowerCase() === 'eggspert') {
-                        window.location.href = 'eggspert.html';
-                    } else {
-                        feedback.textContent = 'That is not right; please try again.';
-                    }
+    if (submitPasscodeButton) {
+        submitPasscodeButton.addEventListener('click', function() {
+            const passcodeInputValue = document.getElementById('passcodeInput').value.trim();
+            let correctPasscode;
+
+            // Determine the correct passcode based on the page type
+            switch (pageType) {
+                case 'mysterytrail':
+                    correctPasscode = 'easterbunny';
                     break;
-                case 'checkMysteryTrail':
-                    if (input.value.trim().toLowerCase() === 'easterbunny') {
-                        window.location.href = 'easterbunny.html';
-                    } else {
-                        feedback.textContent = 'That is not right; please try again.';
-                    }
+                case 'easterbunny':
+                    correctPasscode = 'eggspert';
                     break;
-                case 'checkEggspert':
-                    if (input.value.trim() === '30636') {
-                        alert('Correct passcode!');
-                        // window.location.href = 'nextPage.html'; // Uncomment to redirect
-                    } else {
-                        feedback.textContent = 'Incorrect passcode. Please try again.';
-                        input.value = ''; // Clear input
-                    }
+                case 'eggspert':
+                    correctPasscode = '30636';
                     break;
+                default:
+                    correctPasscode = ''; // No passcode for undefined pages
+            }
+
+            if (passcodeInputValue.toLowerCase() === correctPasscode) {
+                alert("Congratulations! That is right! Now use it to advance the page.");
+                // Redirect to the next page or perform another action based on the passcode validation
+            } else {
+                alert("That is not right. Please try again!");
+                document.getElementById('passcodeInput').value = ''; // Clear the input field
             }
         });
-    });
+    }
 }
 
 function setupEggImagesModal() {
