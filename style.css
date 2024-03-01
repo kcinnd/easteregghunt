@@ -100,11 +100,18 @@ body {
     height: 300px;
     border-radius: 50%;
     background-color: lightblue;
+    border: 2px solid #00BFFF;
     box-shadow: 0 0 15px rgba(0, 120, 255, 0.7); /* Glowing effect */
     display: flex;
     flex-direction: column;
+    background-color: transparent;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
 #passcodeInput {
@@ -133,9 +140,11 @@ body {
 }
 
 .permanent-image {
+    width: 50%; /* Adjust according to your preference */
+    height: auto; /* Keep the aspect ratio */
     display: block;
-    margin: 20px auto; /* Center the image */
-    cursor: pointer; /* Indicate the image is clickable */
+    margin: 0 auto; /* Center the image if needed */
+    cursor: pointer;
 }
 
 .logo {
