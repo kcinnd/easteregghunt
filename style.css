@@ -30,6 +30,8 @@
 .pmodal-content {
     margin: auto; /* 15% from the top and centered */
     width: 100%; /* Could be more or less, depending on screen size */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Style for the circular input */
@@ -100,14 +102,6 @@
 
 button {
     font-family: 'EasterMeadow', Arial, sans-serif; /* Fallback font */
-}
-
-.pmodal-content img {
-    width: 100%; /* Make images responsive */
-    max-width: 500px; /* Limit the size of images */
-    height: auto;
-    margin: 10px 0; /* Add some space around the images */
-    display: block; /* This line is crucial for margin: auto to work */
 }
 
 body {
