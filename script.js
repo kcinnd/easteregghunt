@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupDrawingFeature(canvas, ctx);
             }
         };
-        let isDrawing = false, lastX = 0, lastY = 0;
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let drawingColor = '#000000';
         let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
         const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
         const drawColors = ['68FFB9', 'F298F4', '9386E6', '75ECFB'];
@@ -48,6 +51,33 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.fillStyle = color;
             // Assuming drawEgg is a function that draws the egg
             drawEgg(ctx, canvas.width / 2, canvas.height / 2, 200, 300); // Adjust size as needed
+        }
+
+        function setupDrawing(canvas, ctx) {
+            canvas.addEventListener('mousedown', (e) => {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            });
+        
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isDrawing) return;
+                ctx.strokeStyle = drawingColor;
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            });
+        
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('mouseout', () => isDrawing = false);
+        
+            // Setup drawing color swatches
+            document.querySelectorAll('.drawColor').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    drawingColor = this.getAttribute('data-color');
+                });
+            });
         }
 
         function setupStickerSwatches() {
@@ -122,32 +152,10 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.closePath();
             ctx.fill();
         }   
-            // Enable drawing on the egg
-        function startDrawing(e) {
-            isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-        }
-    
-        function draw(e) {
-            if (!isDrawing) return;
-            ctx.strokeStyle = currentDrawColor;
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.stroke();
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-            // Increment decorated area per draw action (simplified for demonstration)
-            decoratedArea += 0.1; // Assume each draw action covers 0.1%
-            checkDecorationCoverage();
-        }
-    
-        function endDrawing() {
-            isDrawing = false;
-        }
     
         // Check if 75% of the egg is decorated
         function checkDecorationCoverage() {
-            if (decoratedArea >= 75) {
+            if (decoratedArea >= 80) {
                 alert('Congratulations on decorating your egg! The Easter Bunny is grateful and wants you to know eastershiddenkeys.');
                 decoratedArea = 0; // Reset for next decoration session
             }
