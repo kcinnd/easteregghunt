@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupGrassAndKeysHoverEffect();
     setupEventListeners();
     setupTypewriterMessages();
+    setupStickerSwatches();
 
     const canvas = document.getElementById('eggCanvas');
 
@@ -49,9 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
             drawEgg(ctx, canvas.width / 2, canvas.height / 2, 200, 300); // Adjust size as needed
         }
 
-        function selectSticker(stickerType) {
+        function setupStickerSwatches() {
+            document.querySelectorAll('.sticker-swatch').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    const shape = this.getAttribute('data-shape');
+                    selectSticker(shape);
+                    document.body.style.cursor = 'crosshair'; // Or use a custom cursor
+                });
+            });
+        }
+
+        function selectSticker(shape) {
+            // Set the selected sticker shape for use in placing stickers on the canvas
+            selectedSticker.shape = shape;
+            // Indicate that sticker mode is active
             stickerMode = true;
-            selectedSticker = stickerType;
         }
     
         function placeSticker(shape, x, y) {
