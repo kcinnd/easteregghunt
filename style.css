@@ -91,8 +91,8 @@
 
 .additional-image {
     position: absolute;
-    right: 60%;
-    top:50%; 
+    right: 75%;
+    top: 40%; 
     cursor: pointer;
     width: 200px;
     transform: translateY(-50%);
