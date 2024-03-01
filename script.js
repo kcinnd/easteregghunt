@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('stickerSwatches').appendChild(button);
         });
     })
-});
+);
                           
 function setupModal() {
     var btn = document.getElementById('openModal');
