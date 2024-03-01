@@ -13,6 +13,35 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+/* Style for the circular input */
+#eggspertInput {
+    width: 60px; /* Adjust size as needed */
+    height: 60px;
+    border-radius: 50%; /* Creates the circle shape */
+    text-align: center;
+    border: 2px solid #00f; /* Blue border */
+    outline: none;
+    font-size: 20px; /* Adjust size as needed */
+    padding-top: 10px; /* Adjust padding to center text vertically */
+}
+
+/* Style for the glowing submit button */
+#submitEggspert {
+    background-color: #007bff; /* Bright blue background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer;
+    box-shadow: 0 0 15px #00f; /* Glowing effect */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+#submitEggspert:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 0 20px #00f; /* Intensify glow effect on hover */
+}
+
 .var-highlight {
   color: #00FF00;
 }
