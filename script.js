@@ -4,6 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSecretImageAndConfetti();
     setupEventListeners();
 
+    var revealEggBtn = document.getElementById('revealEggBtn');
+    var eggImagesModal = document.getElementById('eggImagesModal');
+    var closeEggImagesModal = eggImagesModal.querySelector('.close');
+
+    revealEggBtn.onclick = function() {
+      eggImagesModal.style.display = 'block';
+    };
+
+    closeEggImagesModal.onclick = function() {
+      eggImagesModal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+      if (event.target == eggImagesModal) {
+        eggImagesModal.style.display = 'none';
+      }
+    };
+    
     const openModalBtn = document.getElementById('openModal');
     if (openModalBtn) {
         openModalBtn.addEventListener('click', function() {
