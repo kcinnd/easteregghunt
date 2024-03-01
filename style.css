@@ -179,6 +179,14 @@ body {
     animation: glow 2s infinite alternate;
 }
 
+.circular:hover {
+    background-color: #99e5ff;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 
+                0 0 20px rgba(0, 191, 255, 0.7), 
+                0 0 30px rgba(0, 191, 255, 0.7), 
+                0 0 40px rgba(0, 191, 255, 0.7); /* Intensified glow on hover */
+}
+
 @keyframes glow {
     from {
         box-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 
@@ -195,13 +203,14 @@ body {
 }
 
 #passcodeInput {
-    width: 125px;
+    width: 150px;
     height: 40px;
     border-radius: 25px;
     text-align: center;
+    align-items: center;
     outline: none;
     font-size: 30px;
-    padding-top: 10px;
+    padding-top: 8px;
     margin: 10px 0;
     background-color: transparent;
     text-shadow: 0 0 5px #00BFFF, 
