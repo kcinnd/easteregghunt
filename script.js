@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCloseableImageModal();
     setupPermanentImageModal();
     setupSubmitHandlers();
+    setupGrassHoverEffect();
 });
 
 function setupModal() {
@@ -236,4 +237,25 @@ function showNewEgg() {
 
 function startHunt() {
     window.location.href = 'page1.html';
+}
+
+function setupGrassHoverEffect() {
+    const grassImages = document.querySelectorAll('.grass-img');
+
+    grassImages.forEach(grass => {
+        grass.addEventListener('mouseover', function() {
+            const keySrc = grass.getAttribute('data-key');
+            const keyImg = document.createElement('img');
+            keyImg.src = keySrc;
+            keyImg.classList.add('key-img');
+            keyImg.style.left = `${Math.random() * (window.innerWidth - 75)}px`; // Random horizontal position
+            keyImg.style.top = `${Math.random() * (window.innerHeight - 75)}px`; // Random vertical position
+            document.body.appendChild(keyImg);
+            setTimeout(() => keyImg.style.display = 'block', 1); // Brief delay to ensure the element is added to the DOM before displaying
+
+            grass.addEventListener('mouseout', function() {
+                keyImg.remove(); // Remove the key image when not hovering
+            });
+        });
+    });
 }
