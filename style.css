@@ -91,9 +91,11 @@
 
 .additional-image {
     position: absolute;
-    left: calc(50% + 100px); /* Adjust based on the permanent image's width */
+    right: 60%;
+    top:50%; 
     cursor: pointer;
-    width: 100px;
+    width: 200px;
+    transform: translateY(-50%);
 }
 
 /* Style for the close button */
