@@ -7,25 +7,42 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
-    var closeBtn = document.querySelector('.modal .close');
-    var additionalImage = document.getElementById('additionalImage');
+    const popupImageModal = document.getElementById('popupImageModal');
+    const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
 
-    // Close the popup when the close button is clicked
-    closeBtn.onclick = function() {
-        popupImageModal.style.display = "none";
+    if (popupImageCloseBtn) {
+        popupImageCloseBtn.addEventListener('click', function() {
+            popupImageModal.style.display = 'none';
+        });
     }
 
-    // Show the popup when the additional image is clicked
-    additionalImage.onclick = function() {
-        popupImageModal.style.display = "flex";
+    // Setup for displaying the popup image modal again when clicking the additional image
+    const additionalImage = document.getElementById('additionalImage'); // Make sure to replace 'additionalImage' with the actual ID of your additional image
+    if (additionalImage) {
+        additionalImage.addEventListener('click', function() {
+            popupImageModal.style.display = 'block';
+        });
     }
 
-    // Close the popup when clicking anywhere outside of the modal content
-    window.onclick = function(event) {
-        if (event.target == popupImageModal) {
-            popupImageModal.style.display = "none";
+    // Setup for the circular modal when clicking on the permanent image
+    const permanentImage = document.getElementById('permanentImage');
+    const circularModal = document.getElementById('circularmodal');
+
+    if (permanentImage && circularModal) {
+        permanentImage.addEventListener('click', function() {
+            circularModal.style.display = 'flex'; // Show the circular modal
+        });
+    }
+
+    // Close the circular modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target == circularModal) {
+            circularModal.style.display = 'none';
         }
-    }
+    });
+
+    // Setup submit handlers and other functionalities
+    setupSubmitHandlers();
 });
 
 function setupModal() {
