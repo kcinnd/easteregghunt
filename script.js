@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('eggCanvas');
 
     if (canvas) {
-        const ctx = canvas.getContext('2d');
+        const canvas = document.getElementById('eggCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                drawEgg(ctx, canvas.width / 2, canvas.height / 2, 300, 450, '#FAF0E6'); // Draw the initial egg
+                setupEggColorSwatches(); // Set up color swatches for the egg
+                setupStickers(canvas, ctx);
+                setupDrawingFeature(canvas, ctx);
+            }
+        });
         let isDrawing = false, lastX = 0, lastY = 0;
         let currentColor = '#FAF0E6', currentDrawColor = '#000', decoratedArea = 0;
         const eggColors = ['f9ceee', 'e0cdff', 'c0f0fb', 'ddf9a8'];
