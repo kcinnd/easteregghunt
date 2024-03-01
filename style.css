@@ -111,35 +111,6 @@
     cursor: pointer;
 }
 
-/* Style for the circular input */
-#passcodeInput {
-    width: 60px; /* Adjust size as needed */
-    height: 60px;
-    border-radius: 50%; /* Creates the circle shape */
-    text-align: center;
-    border: 2px solid #00f; /* Blue border */
-    outline: none;
-    font-size: 20px; /* Adjust size as needed */
-    padding-top: 10px; /* Adjust padding to center text vertically */
-}
-
-/* Style for the glowing submit button */
-#submitPasscode {
-    background-color: #007bff; /* Bright blue background */
-    color: #fff; /* White text */
-    border: none;
-    padding: 10px 20px; /* Adjust padding as needed */
-    border-radius: 5px; /* Slightly rounded corners */
-    cursor: pointer;
-    box-shadow: 0 0 15px #00f; /* Glowing effect */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-}
-
-#submitPasscode:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    box-shadow: 0 0 20px #00f; /* Intensify glow effect on hover */
-}
-
 .var-highlight {
   color: #00FF00;
 }
@@ -194,15 +165,57 @@ body {
 }
 
 .circular {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(135,206,250,1) 0%, rgba(30,144,255,1) 100%);
+    border: 2px solid #00BFFF;
+    box-shadow: 0 0 20px 10px rgba(30,144,255,0.75), /* Inner blue glow */
+                0 0 40px 20px rgba(30,144,255,0.5), /* Middle blue glow */
+                0 0 60px 30px rgba(30,144,255,0.25); /* Outer blue glow */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 250px; /* Size of the circular area */
-    height: 250px;
-    border-radius: 50%; /* Make it circular */
-    background-color: lightblue; /* Background color of the circular area */
-    box-shadow: 0 0 20px rgba(0, 120, 255, 0.7); /* Glowing effect */
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#passcodeInput {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    border: 3px solid #00BFFF;
+    outline: none;
+    font-size: 20px;
+    padding-top: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #00BFFF;
+    box-shadow: 0 0 10px rgba(30,144,255,0.75); /* Blue glow */
+}
+
+#submitPasscode {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(30,144,255,0.75); /* Blue glow */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#submitPasscode:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 25px rgba(30,144,255,1); /* Intensified blue glow */
 }
 
 .full-width-image {
