@@ -25,7 +25,7 @@ function setupModal() {
             btn.closest('.modal').style.display = 'none';
         });
     });
-
+    
     window.addEventListener('click', event => {
         if (event.target.classList.contains('pmodal')) {
             event.target.style.display = 'none';
