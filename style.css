@@ -174,30 +174,6 @@ body {
     display: none;
 }
 
-#passcodeInput {
-    border: 2px solid #0078FF;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-#submitPasscode {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #0084ff; /* Bright blue */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 132, 255, 0.5); /* Glowing effect */
-}
-
-#submitPasscode:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
 .full-width-image {
     width: 100%;
     height: auto;
