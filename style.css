@@ -178,7 +178,6 @@ body {
     box-shadow: 0 0 15px rgba(0, 120, 255, 0.7); /* Glowing effect */
     display: none;
     flex-direction: column;
-    background-color: transparent;
     align-items: center;
     justify-content: center;
     position: fixed;
