@@ -165,17 +165,18 @@ body {
 }
 
 #passcodeInput {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
     text-align: center;
     border: 3px solid #00BFFF;
     outline: none;
     font-size: 20px;
     padding-top: 10px;
+    margin: 10px 0;
     background-color: rgba(255, 255, 255, 0.5);
     color: #00BFFF;
-    box-shadow: 0 0 10px rgba(30,144,255,0.75); /* Blue glow */
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Blue glow */
 }
 
 .circular #submitPasscode {
@@ -186,7 +187,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0 0 15px rgba(30,144,255,0.75); /* Blue glow */
