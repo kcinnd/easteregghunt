@@ -249,21 +249,20 @@ body {
 }
 
 .image-border {
-  position: absolute;
+  display: flex; /* Use flexbox to align images in a row */
+  justify-content: center; /* Center the images horizontally */
+  align-items: center; /* Align the images vertically */
+  flex-wrap: nowrap; /* Prevent wrapping */
   bottom: 0;
   left: 0;
   width: 100%;
-  text-align: center;
-  white-space: nowrap;
-  overflow-x: auto; /* Allow horizontal scrolling for grass images */
+  position: absolute; /* Adjust this as needed to position at the bottom of the page or container */
 }
 
 .grass-img {
-  width: 150px;
-  margin: 0 5px;
-  display: inline-block;
-  position: absolute;
-
+  width: 150px; /* Adjust width as needed */
+  margin: 0 5px; /* Add some space between images */
+  display: inline-block; /* No need for 'position: absolute' */
 }
 
 #confettiCanvas {
