@@ -36,38 +36,36 @@ function setupModal() {
 function setupCloseableImageModal() {
     const popupImageModal = document.getElementById('popupImageModal');
     if (popupImageModal) {
-        popupImageModal.style.display = 'block';
-    }
-
-    // Close the popup image modal when clicking on the close button or outside the modal
-    const closePopupImageModal = document.querySelector('#popupImageModal .close');
-    if (closePopupImageModal) {
-        closePopupImageModal.addEventListener('click', function() {
+        const closeBtn = popupImageModal.querySelector('.close');
+        closeBtn.addEventListener('click', () => {
             popupImageModal.style.display = 'none';
         });
+        
+        // Optional: Close when clicking outside the modal
+        window.addEventListener('click', (event) => {
+            if (event.target === popupImageModal) {
+                popupImageModal.style.display = 'none';
+            }
+        });
     }
-    window.addEventListener('click', function(event) {
-        if (event.target == popupImageModal) {
-            popupImageModal.style.display = 'none';
-        }
-    });
 }
     
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
+    
     if (permanentImage && passcodeModal) {
-        permanentImage.addEventListener('click', function() {
+        permanentImage.addEventListener('click', () => {
             passcodeModal.style.display = 'block';
         });
-    }
 
-    // Close the passcode modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == passcodeModal) {
-            passcodeModal.style.display = 'none';
-        }
-    });
+        // Close the passcode modal when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === passcodeModal) {
+                passcodeModal.style.display = 'none';
+            }
+        });
+    }
 }
 
 function setupSubmitHandlers() {
