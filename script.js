@@ -1,9 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    setupEggModal();
     setupModal();
+    setupEggModal();
     setupSecretImageAndConfetti();
     setupEventListeners();
-    setupTypewriterMessages();
+
+    const openModalBtn = document.getElementById('openModal');
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', function() {
+            const headerElement = document.getElementById('typewriterHeader');
+            const bodyElement = document.getElementById('typewriterBody');
+            const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
+            const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
+
+            // Clear existing text before starting typewriter effect
+            if (headerElement && bodyElement) {
+                headerElement.innerHTML = '';
+                bodyElement.innerHTML = '';
+                setupTypewriter(headerElement, headerText, function() {
+                    setupTypewriter(bodyElement, bodyText);
+                });
+            }
+        });
+    }
 });
 
 function setupModal() {
@@ -81,19 +99,21 @@ function setupSecretImageAndConfetti() {
     }
 }
 
-function setupTypewriterMessages() {
-    const headerElement = document.getElementById('typewriterHeader');
-    const bodyElement = document.getElementById('typewriterBody');
+function setupTypewriter(element, text, callback = null) {
+    let cursorPosition = 0;
+    let typeSpeed = 75; // Adjust typing speed as needed
 
-    if (headerElement) {
-        const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
-        setupTypewriter(headerElement, headerText, function() {
-            if (bodyElement) {
-                const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The key to a precious treasure Easter Egg has gone missing! 🚨🗝️ Without this key, we risk losing access to the most magical Easter treasure! We need your help to find the key! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving this key. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in our hands! With urgency and hope, The Easter Bunny 🐰";
-                setupTypewriter(bodyElement, bodyText);
-            }
-        });
+    function type() {
+        if (cursorPosition < text.length) {
+            element.innerHTML += text.charAt(cursorPosition);
+            cursorPosition++;
+            setTimeout(type, typeSpeed);
+        } else if (typeof callback === 'function') {
+            callback(); // Call the callback function once typing is complete
+        }
     }
+
+    type(); // Start typing
 }
 
 function setupEventListeners() {
@@ -138,21 +158,4 @@ function showNewEgg() {
 
 function startHunt() {
     window.location.href = 'page1.html';
-}
-
-function setupTypewriter(element, text, callback) {
-    let cursorPosition = 0;
-    let typeSpeed = 75;
-
-    function type() {
-        if (cursorPosition < text.length) {
-            element.innerHTML += text.charAt(cursorPosition);
-            cursorPosition++;
-            setTimeout(type, typeSpeed);
-        } else if (typeof callback === 'function') {
-            callback();
-        }
-    }
-
-    type();
 }
