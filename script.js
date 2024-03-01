@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupEggColorSwatches(); // Set up color swatches for the egg
                 setupStickers(canvas, ctx);
                 setupDrawingFeature(canvas, ctx);
+                const drawButton = document.getElementById('drawButton'); // Button to enable drawing mode
+                const stickerButton = document.getElementById('stickerButton');
             }
         };
         let isDrawing = false;
@@ -79,6 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
             mode = 'sticker';
             canvas.style.cursor = 'pointer'; // Optional: change cursor style
             // Additional UI updates or logic to indicate sticker mode is active
+        }
+
+        if (drawButton) {
+            drawButton.addEventListener('click', enableDrawingMode);
         }
 
         function setupDrawing(canvas, ctx) {
