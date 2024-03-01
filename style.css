@@ -48,6 +48,13 @@
     margin: auto; /* Center the image */
 }
 
+.popup-image {
+    max-width: 100%; /* Ensure it doesn't overflow the modal */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* To enable margin auto to work for centering */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
 /* Style for the close button */
 .pmodal .close {
     position: absolute;
