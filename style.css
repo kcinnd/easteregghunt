@@ -429,7 +429,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  position: absolute; /* Adjust this as needed to position at the bottom of the page or container */
+  position: fixed; /* Adjust this as needed to position at the bottom of the page or container */
 }
 
 .grass-img {
@@ -447,23 +447,6 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 9999; /* Ensure confetti is above most content */
-}
-
-.image-border {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  white-space: nowrap;
-  overflow-x: auto;
-}
-
-.image-border .grass-img {
-  display: inline-block;
-  margin: 0 5px;
-  width: 150px;
-  height: auto;
 }
 
 .key-img {
@@ -625,11 +608,6 @@ button:not(#openModal):hover {
 
 .egg-reveal-modal button:hover {
   background-color: #7CB342;
-}
-
-/* Ensure the .image-border styles do not cause overlap on other pages */
-.image-border:not(.easter-bunny-grass) .grass-img {
-  /* Styles for non-overlapping grass images on other pages */
 }
 
 #submitAnswer {
