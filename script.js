@@ -53,7 +53,6 @@ function setupCloseableImageModal() {
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const circularmodal = document.getElementById('circularmodal');
-    const circular = document.querySelector('.circular'); // Reference to the circular content inside passcodeModal
 
     if (permanentImage && circularmodal) {
         permanentImage.addEventListener('click', function() {
