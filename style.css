@@ -20,13 +20,16 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto; /* Enable scroll if needed */
     background-color: transparent; /* Transparent background */
 }
 
 .pmodal-content {
-    margin: 15% auto; /* 15% from the top and centered */
-    width: 80%; /* Could be more or less, depending on screen size */
+    margin: auto; /* 15% from the top and centered */
+    width: 100%; /* Could be more or less, depending on screen size */
 }
 
 /* Style for the circular input */
