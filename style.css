@@ -146,6 +146,27 @@ body {
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Adjust based on your preference */
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.egg-image {
+  max-width: 45%; /* Adjust based on your preference */
+  height: auto;
+}
+
 .egg-reveal-modal {
   display: none; /* Hidden by default */
   position: fixed;
