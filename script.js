@@ -34,22 +34,35 @@ function setupModal() {
 }
 
 function setupCloseableImageModal() {
-    const closeableImageModal = document.getElementById('closeableImageModal');
-    if (closeableImageModal) {
-        closeableImageModal.style.display = 'block'; // Show the modal when the page loads
+    const popupImageModal = document.getElementById('popupImageModal');
+    if (popupImageModal) {
+        popupImageModal.style.display = 'block';
     }
+
+    // Close the popup image modal when clicking on the close button or outside the modal
+    const closePopupImageModal = document.querySelector('#popupImageModal .close');
+    if (closePopupImageModal) {
+        closePopupImageModal.addEventListener('click', function() {
+            popupImageModal.style.display = 'none';
+        });
+    }
+    window.addEventListener('click', function(event) {
+        if (event.target == popupImageModal) {
+            popupImageModal.style.display = 'none';
+        }
+    });
 }
-
+    
 function setupPermanentImageModal() {
-    const permanentImageModal = document.getElementById('permanentImage');
+    const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
-
-    // Show the passcodeModal when clicking the permanentImage
-    if (permanentImageModal && passcodeModal) {
-        permanentImageModal.addEventListener('click', function() {
+    if (permanentImage && passcodeModal) {
+        permanentImage.addEventListener('click', function() {
             passcodeModal.style.display = 'block';
         });
     }
+
+    // Close the passcode modal when clicking outside of it
     window.addEventListener('click', function(event) {
         if (event.target == passcodeModal) {
             passcodeModal.style.display = 'none';
