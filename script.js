@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             placeSticker(selectedSticker, x, y);
         });
-
+    
         function selectSticker(shape) {
             selectedSticker.shape = shape;
             stickerMode = true;
@@ -216,19 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
             button.innerText = shape;
             button.addEventListener('click', () => placeSticker(shape));
             document.getElementById('stickerSwatches').appendChild(button);
-        });
-
-        canvas.addEventListener('click', function(e) {
-            if (stickerMode) {
-                // Calculate the correct x and y based on the canvas position and click position
-                const rect = canvas.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-        // Place the selected sticker
-        placeSticker(selectedSticker, x, y);
-
-            }
         });
     }
 });
