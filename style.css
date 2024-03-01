@@ -13,6 +13,21 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+.cmodal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+    display: flex; /* Used to center the content inside the modal */
+}
+
 .pmodal {
     z-index: 100; /* Sit on top */
     left: 0;
