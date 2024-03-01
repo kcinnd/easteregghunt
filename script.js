@@ -26,11 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         // Change egg base color
+        function setupEggColorSwatches() {
+            document.querySelectorAll('.color-swatch').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    const color = this.getAttribute('data-color');
+                    changeEggColor(color);
+                });
+            });
+        }
+        
         function changeEggColor(color) {
-            const canvas = document.getElementById('eggCanvas');
-            const ctx = canvas.getContext('2d');
-            // Redraw the egg with the new color
-            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 150, 225, `#${color}`);
+            ctx.fillStyle = color;
+            // Assuming drawEgg is a function that draws the egg
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 200, 300); // Adjust size as needed
         }
 
         function selectSticker(stickerType) {
