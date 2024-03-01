@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Change egg base color
         function changeEggColor(color) {
-            currentColor = `#${color}`;
-            drawEgg();
+            const canvas = document.getElementById('eggCanvas');
+            const ctx = canvas.getContext('2d');
+            // Redraw the egg with the new color
+            drawEgg(ctx, canvas.width / 2, canvas.height / 2, 150, 225, `#${color}`);
         }
 
         function selectSticker(stickerType) {
