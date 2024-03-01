@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         drawEgg(); // Initial egg drawing
 
     }
-}
+});
                           
 function setupModal() {
     var btn = document.getElementById('openModal');
