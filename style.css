@@ -161,34 +161,21 @@ body {
 }
 
 .circular {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-color: #2C2C2C; /* Dark background for contrast */
-    border: 2px solid #00BFFF;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 
-                0 0 40px rgba(192, 237, 252, 0.6), 
-                0 0 60px rgba(0, 191, 255, 0.6), 
-                0 0 80px rgba(0, 191, 255, 0.6),
-                0 0 100px rgba(0, 191, 255, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: fixed;
-    z-index: 100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: glow 2s infinite alternate;
-}
-
-.circular:hover {
-    background-color: #99e5ff;
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 
-                0 0 20px rgba(0, 191, 255, 0.7), 
-                0 0 30px rgba(0, 191, 255, 0.7), 
-                0 0 40px rgba(0, 191, 255, 0.7); /* Intensified glow on hover */
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 50px #fff,
+    inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff,
+    inset 20px 0 300px #f0f,
+    inset -20px 0 300px #0ff,
+    0 0 50px #fff,
+    -10px 0 80px #f0f,
+    10px 0 80px #0ff;
 }
 
 @keyframes glow {
