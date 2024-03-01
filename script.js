@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.passcodeModale').style.display = 'block'; // Show the circle
     });
 
+    document.getElementById('closeableImageModal');
+        if (closeableImageModal) {
+            const closeSpan = closeableImageModal.querySelector('.close');
+    
+            // Add event listener to the close button
+            closeSpan.addEventListener('click', function() {
+                closeableImageModal.style.display = 'none';
+            });
+        } else {
+            console.error('closeableImageModal not found');
+        }
+    });
+
     window.addEventListener('click', function(event) {
         const circle = document.querySelector('.passcodeModal');
         if (event.target !== circle && !circle.contains(event.target)) {
