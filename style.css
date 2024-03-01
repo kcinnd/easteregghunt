@@ -35,7 +35,7 @@
 }
 
 .pmodal {
-    z-index: 100; /* Sit on top */
+    z-index: 10000; /* Sit on top */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
