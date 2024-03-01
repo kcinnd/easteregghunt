@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const passcodeInput = document.getElementById('passcodeInput');
     const submitPasscode = document.getElementById('submitPasscode');
 
+    document.getElementById('permanentImage').addEventListener('click', function() {
+    document.querySelector('.glowing-circle').style.display = 'block'; // Show the circle
+    });
+
+    window.addEventListener('click', function(event) {
+        const circle = document.querySelector('.glowing-circle');
+        if (event.target !== circle && !circle.contains(event.target)) {
+            circle.style.display = 'none'; // Hide the circle if clicking outside
+        }
+    });
+
     closeSpan.onclick = function() {
         closeableImageModal.style.display = "none";
     }
