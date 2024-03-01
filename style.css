@@ -48,20 +48,6 @@
     background-color: transparent; /* Transparent background */
 }
 
-#circularmodal {
-    display: none; /* Hidden by default, shown when triggered */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top of other content */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Center the modal */
-    width: auto; /* Adjust based on content */
-    padding: 20px; /* Space inside the modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow for depth */
-    border-radius: 20px; /* Optional: round corners for the modal */
-    text-align: center; /* Align the content inside the modal */
-}
-
 #popupImageModal {
     display: block; /* Show by default */
 }
@@ -173,23 +159,9 @@ body {
 }
 
 .circular {
-    min-width: 300px;
-    min-height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(135,206,250,1) 0%, rgba(30,144,255,1) 100%);
-    border: 2px solid #00BFFF;
-    box-shadow: 0 0 20px 10px rgba(30,144,255,0.75), /* Inner blue glow */
-                0 0 40px 20px rgba(30,144,255,0.5), /* Middle blue glow */
-                0 0 60px 30px rgba(30,144,255,0.25); /* Outer blue glow */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #passcodeInput {
