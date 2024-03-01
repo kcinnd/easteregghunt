@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const bodyElement = document.getElementById('typewriterBody');
             const headerText = "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨";
             const bodyText = "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰";
-
+    
             // Clear existing text before starting typewriter effect
             if (headerElement && bodyElement) {
                 headerElement.innerHTML = '';
@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     setupTypewriter(bodyElement, bodyText);
                 });
             }
-    });
+        });
+    }
 });
 
 function setupModal() {
