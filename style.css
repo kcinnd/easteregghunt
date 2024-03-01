@@ -154,7 +154,7 @@ body {
     background-color: lightblue;
     border: 2px solid #00BFFF;
     box-shadow: 0 0 15px rgba(0, 120, 255, 0.7); /* Glowing effect */
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: transparent;
     align-items: center;
