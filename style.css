@@ -88,6 +88,13 @@
     margin: 0 auto; /* Center the image horizontally */
 }
 
+.additional-image {
+    position: absolute;
+    left: calc(50% + 100px); /* Adjust based on the permanent image's width */
+    cursor: pointer;
+    width: 100px;
+}
+
 /* Style for the close button */
 .pmodal .close {
     position: absolute;
