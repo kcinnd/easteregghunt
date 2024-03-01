@@ -227,7 +227,7 @@ body {
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
-.modal-content {
+.modal-contents {
   position: relative;
   background-color: #FF889C;
   margin: auto;
