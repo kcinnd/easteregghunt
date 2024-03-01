@@ -89,6 +89,15 @@
     margin: 0 auto; /* Center the image horizontally */
 }
 
+.small-image {
+    position: absolute;
+    right: 75%;
+    top: 60%; 
+    cursor: pointer;
+    width: 200px;
+    transform: translateY(-50%);
+}
+
 .additional-image {
     position: absolute;
     right: 75%;
