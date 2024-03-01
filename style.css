@@ -14,28 +14,34 @@
 }
 
 .cmodal {
-    display: none;
-    position: fixed; /* Stay in place */
-    z-index: 100; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: transparent;
-    justify-content: center;
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #00BFFF; /* Light blue */
     align-items: center;
-    display: flex; /* Used to center the content inside the modal */
+    justify-content: center;
+    box-shadow: 0 0 20px 10px #00BFFF; /* Glowing effect */
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 .pmodal {
     z-index: 100; /* Sit on top */
     left: 0;
     top: 0;
+    display: flex;
     position: fixed; 
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    display: flex;
     justify-content: center;
     align-items: center;
     overflow: auto; /* Enable scroll if needed */
@@ -70,7 +76,7 @@
     padding: 20px;
     max-width: 600px;
     position: relative;
-    width: auto;
+    width: 100%;
     align-items: center;
     text-align: center;
     margin: auto; /* 15% from the top and centered */
@@ -79,6 +85,8 @@
     display: flex;
     align-items: center;
     overflow: auto;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
 }
 
 .pmodal-content img {
