@@ -54,7 +54,7 @@ function setupPermanentImageModal() {
             passcodeModal.style.display = 'none';
         }
     });
-});
+}
 
 function setupSubmitHandlers() {
     const submitButtons = document.querySelectorAll('[data-submit-action]');
