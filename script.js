@@ -6,6 +6,42 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCloseableImageModal();
     setupPermanentImageModal();
     setupSubmitHandlers();
+    const popupImageModal = document.getElementById('popupImageModal');
+    const permanentImage = document.getElementById('permanentImage');
+    const passcodeModal = document.getElementById('passcodeModal');
+    const passcodeInput = document.getElementById('passcodeInput');
+    const submitPasscode = document.getElementById('submitPasscode');
+
+    // Close the popupImageModal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target == popupImageModal) {
+            popupImageModal.style.display = 'none';
+        }
+    });
+
+    // Show the passcodeModal when clicking the permanentImage
+    permanentImage.addEventListener('click', function() {
+        passcodeModal.style.display = 'block';
+    });
+
+    // Close the passcodeModal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target == passcodeModal) {
+            passcodeModal.style.display = 'none';
+        }
+    });
+
+    // Handle passcode submission
+    submitPasscode.addEventListener('click', function() {
+        if (passcodeInput.value === '30636') {
+            // Redirect or show success message
+            alert('Correct passcode!');
+            // For redirection, use: window.location.href = 'nextPage.html';
+        } else {
+            alert('Incorrect passcode. Please try again.');
+            passcodeInput.value = ''; // Clear input
+        }
+    });
 });
 
 function setupCloseableImageModal() {
