@@ -53,21 +53,20 @@ function setupCloseableImageModal() {
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
     const passcodeModal = document.getElementById('passcodeModal');
-    const circular = document.querySelector('.circular'); // Direct reference to the circular div
-
-    // Show the circular div when the permanent image is clicked
-    if (permanentImage && circular) {
-        permanentImage.addEventListener('click', () => {
-            circular.style.display = 'flex'; // Make the circular div visible
+    
+    if (permanentImage && passcodeModal) {
+        permanentImage.addEventListener('click', function() {
+            passcodeModal.style.display = 'flex'; // Make the passcode modal visible
         });
-    }
 
-    // Close the circular div when clicking outside of it
-    window.addEventListener('click', (event) => {
-        if (event.target === passcodeModal) {
-            circular.style.display = 'none'; // Hide the circular div
-        }
-    });
+        window.addEventListener('click', function(event) {
+            if (event.target == passcodeModal) {
+                passcodeModal.style.display = 'none'; // Hide the passcode modal when clicking outside
+            }
+        });
+    } else {
+        console.error('Permanent image or passcode modal element not found.');
+    }
 }
 
 function setupSubmitHandlers() {
