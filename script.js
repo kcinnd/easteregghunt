@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupTypewriterMessages();
 
+    const canvas = document.getElementById('eggCanvas');
+
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let isDrawing = false, lastX = 0, lastY = 0;
