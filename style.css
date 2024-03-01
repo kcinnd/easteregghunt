@@ -168,7 +168,7 @@ body {
   height: 300px;
   border-radius: 50%;
   background-color: #000;
-  display: flex;
+  display: none;
   flex-direction: column; /* Stack input and button vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center;
