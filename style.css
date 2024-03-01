@@ -29,7 +29,7 @@
 
 .pmodal-content {
     margin: auto; /* 15% from the top and centered */
-    width: 100%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
     justify-content: center;
     align-items: center;
 }
