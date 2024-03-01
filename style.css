@@ -83,6 +83,28 @@ button {
     font-family: 'EasterMeadow', Arial, sans-serif; /* Fallback font */
 }
 
+.pmodal-content {
+    background-color: #FF889C;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust based on your preference */
+    max-height: 80vh; /* Prevent the modal from being too tall */
+    overflow-y: auto; /* Enable scrolling within the modal */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+.pmodal-content img {
+    width: 100%; /* Make images responsive */
+    max-width: 500px; /* Limit the size of images */
+    height: auto;
+    margin: 10px 0; /* Add some space around the images */
+    display: block; /* This line is crucial for margin: auto to work */
+}
+
 body {
   background-color: #9FE0D2;
   margin: 0;
