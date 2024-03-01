@@ -52,18 +52,18 @@ function setupCloseableImageModal() {
     
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
-    const passcodeModal = document.getElementById('passcodeModal');
+    const circularmodal = document.getElementById('circularmodal');
     const circular = document.querySelector('.circular'); // Reference to the circular content inside passcodeModal
 
-    if (permanentImage && passcodeModal) {
+    if (permanentImage && circularmodal) {
         permanentImage.addEventListener('click', function() {
-            passcodeModal.style.display = 'flex'; // Show the passcode modal
+            circularmodal.style.display = 'flex'; // Show the passcode modal
         });
 
         window.addEventListener('click', function(event) {
             // Check if the click is outside the circular content
-            if (event.target === passcodeModal && !circular.contains(event.target)) {
-                passcodeModal.style.display = 'none'; // Hide the passcode modal
+            if (event.target === circularmodal && !circular.contains(event.target)) {
+                circularmodal.style.display = 'none'; // Hide the passcode modal
             }
         });
     }
