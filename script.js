@@ -8,12 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSubmitHandlers();
     setupGrassHoverEffect();
 
-    const closeModalButton = document.querySelector('.cmodal .close');
+    document.getElementById('permanentImage').addEventListener('click', openCircularModal);
 
-    closeModalButton.addEventListener('click', function() {
-        circularModalBackground.style.display = 'none';
-        circularModal.style.display = 'none';
-    });
+    const closeModalButton = document.querySelector('.cmodal .close');
+    closeModalButton.addEventListener('click', closeCircularModal);
 
     document.getElementById('permanentImage').addEventListener('click', opencircularModal);
     
@@ -144,20 +142,19 @@ function setupCloseableImageModal() {
     
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
-    const circularModal = document.getElementById('circularModal');
+    const circularModalBackground = document.getElementById('circularModalBackground');
 
-    if (permanentImage && circularModal) {
-        permanentImage.addEventListener('click', function() {
-            circularModal.style.display = 'flex'; // Show the passcode modal
-        });
-
-        window.addEventListener('click', function(event) {
-            // Check if the click is outside the circular content
-            if (event.target === circularModal && !circular.contains(event.target)) {
-                circularModal.style.display = 'none'; // Hide the passcode modal
-            }
-        });
+    // Listen for clicks on the permanent image to open the modal
+    if (permanentImage) {
+        permanentImage.addEventListener('click', openCircularModal);
     }
+
+    // Listen for clicks outside the circular modal to close it
+    window.addEventListener('click', function(event) {
+        if (event.target === circularModalBackground) {
+            closeCircularModal(); // Use the close function to ensure consistent behavior
+        }
+    });
 }
 
 function setupSubmitHandlers() {
