@@ -126,35 +126,31 @@ function setupSubmitHandlers() {
     const submitPasscodeButton = document.getElementById('submitPasscode');
     const pageType = document.body.getAttribute('data-page-type'); // Add a custom data attribute to your body tag to identify the page
 
-    if (submitPasscodeButton) {
-        submitPasscodeButton.addEventListener('click', function() {
-            const passcodeInputValue = document.getElementById('passcodeInput').value.trim();
-            let correctPasscode;
+    submitPasscodeButton.addEventListener('click', function() {
+        const passcodeInputValue = document.getElementById('passcodeInput').value.trim();
+        let correctPasscode;
 
-            // Determine the correct passcode based on the page type
-            switch (pageType) {
-                case 'mysterytrail':
-                    correctPasscode = 'easterbunny';
-                    break;
-                case 'easterbunny':
-                    correctPasscode = 'eggspert';
-                    break;
-                case 'eggspert':
-                    correctPasscode = '297577';
-                    break;
-                default:
-                    correctPasscode = ''; // No passcode for undefined pages
-            }
+        switch (pageType) {
+            case 'mysterytrail':
+                correctPasscode = 'easterbunny';
+                break;
+            case 'easterbunny':
+                correctPasscode = 'eggspert';
+                break;
+            case 'eggspert':
+                correctPasscode = '297577';
+                break;
+            default:
+                correctPasscode = ''; // Handle undefined pages or set a default passcode
+        }
 
-            if (passcodeInputValue.toLowerCase() === correctPasscode) {
-                alert("Congratulations! That is right! Now use it to advance the page.");
-                // Redirect to the next page or perform another action based on the passcode validation
-            } else {
-                alert("That is not right. Please try again!");
-                document.getElementById('passcodeInput').value = ''; // Clear the input field
-            }
-        });
-    }
+        if (passcodeInputValue.toLowerCase() === correctPasscode) {
+            alert("Congratulations! That is right! Now use it to advance the page.");
+        } else {
+            alert("That is not right. Please try again!");
+            document.getElementById('passcodeInput').value = '';
+        }
+    });
 }
 
 function setupEggImagesModal() {
