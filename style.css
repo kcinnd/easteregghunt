@@ -217,7 +217,7 @@ body {
     }
 }
 
-#passcodeInput {
+.circular-modal #passcodeInput {
     width: 150px;
     height: 40px;
     border-radius: 15px;
