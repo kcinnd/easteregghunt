@@ -28,14 +28,16 @@
 .nmodal-content {
   position: relative;
   margin: auto;
-  padding: 0;
+  padding: 20px;
   width: 80%; /* Adjust as needed */
   max-width: 700px; /* Adjust as needed */
+  animation: animatetop 0.4s;
 }
 
-.nmodal-content img {
+.nmodal-content img, .pmodal-content img {
   width: 100%; /* Make the image responsive */
   height: auto;
+  margin: auto; /* Center the image */
 }
 
 .cmodal-background {
@@ -58,8 +60,8 @@
 }
 
 .cmodal {
-    width: 50%;
-    height: 50%;
+    width: 300px;
+    height: 300px;
     display:none;
     border-radius: 50%; /* Keeps the circular shape */
     align-items: center;
@@ -109,22 +111,12 @@
     align-items: center;
     text-align: center;
     margin: auto; /* 15% from the top and centered */
-    width: 80%; /* Could be more or less, depending on screen size */
     justify-content: center;
-    display: none;
+    display: flex;
     align-items: center;
     overflow: auto;
     animation-name: animatetop;
     animation-duration: 0.4s;
-}
-
-.pmodal-content img {
-    max-width: 100%; /* Make image responsive */
-    max-height: 80vh; /* Limit image height to 80% of the viewport height */
-    margin: auto; /* Center the image */
-    justify-content: center;
-    display: flex;
-    align-items: center;
 }
 
 .popup-image {
