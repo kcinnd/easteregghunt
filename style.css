@@ -46,6 +46,7 @@
     z-index: 1000; /* Ensures it's on top of other content but under the modal itself */
     left: 50%;
     top: 50%;
+    display:flex;
     justify-content: center;
     align-items: center;
     transform: translate(-50%, -50%); /* Corrected line */
@@ -62,6 +63,7 @@
 .cmodal {
   background-color: #000;
   display: flex;
+  justify-content: center;
   flex-direction: column; /* Stack input and button vertically */
   align-items: center; /* Center items horizontally */
   top: calc(50% - 150px);
@@ -201,6 +203,7 @@ body {
 .circularModal {
   background-color: #000;
   display: flex;
+  justify-content: center;
   flex-direction: column; /* Stack input and button vertically */
   align-items: center; /* Center items horizontally */
   top: calc(50% - 150px);
