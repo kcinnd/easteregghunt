@@ -44,7 +44,7 @@
     z-index: 1000; /* Ensures it's on top of other content but under the modal itself */
     left: 50%;
     top: 50%;
-    translate(-50%, -50%) scale(1.05);
+    translate(-50%, -50%);
     width: 600px; /* Same as the circular modal */
     height: 600px; /* Same as the circular modal */
     background-color: #000; /* Black background */
