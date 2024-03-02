@@ -225,7 +225,7 @@ body {
 }
 
 .circular-modal #passcodeInput {
-    width: 150px;
+    width: 100px;
     height: 40px;
     border-radius: 15px;
     text-align: center;
