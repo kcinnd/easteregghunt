@@ -816,6 +816,7 @@ h1 {
   padding: 3px;
   display: inline-block;
   border-radius: 9999em;
+  margin: 25px;
 }
 .input *:not(span) {
   position: relative;
@@ -865,8 +866,8 @@ html, body {
 }
 
 input {
-  font-family: inherit;
-  line-height: inherit;
+  font-family: Ariel;
+  line-height: 36px;
   color: #2e3750;
   min-width: 12em;
 }
