@@ -89,20 +89,6 @@
     background-color: transparent; /* Transparent background */
 }
 
-#popupImageModal {
-    display: block; /* Show by default */
-    justify-content: center;
-    align-items: center;
-}
-
-#popupImageModal .pmodal-content img {
-    max-width: 90%;
-    max-height: 80vh;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-}
-
 .pmodal-content {
     padding: 20px;
     max-width: 600px;
