@@ -59,13 +59,14 @@
 }
 
 .cmodal {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     display:none;
     border-radius: 50%; /* Keeps the circular shape */
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #000;
 }
 
 @keyframes animatetop {
