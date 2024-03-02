@@ -41,7 +41,6 @@
 }
 
 .cmodal-background {
-    display: none; /* Hidden by default */
     position: fixed;
     z-index: 1000; /* Ensures it's on top of other content but under the modal itself */
     left: 50%;
@@ -262,7 +261,7 @@ body {
 .cmodal #submitPasscode {
     background-color: #2C2C2C; /* Dark background for contrast */
     color: #00BFFF; /* Neon-like font color */
-    padding: 10px 20px;
+    padding: 10px 50px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
