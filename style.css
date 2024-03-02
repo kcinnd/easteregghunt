@@ -749,7 +749,7 @@ button:not(#openModal):hover {
   position: relative;
   font-size: 20px;
   text-align: center;
-  background: linear-gradient (21deg, #F298F4, #75ECFB);
+  background: linear-gradient(21deg, #F298F4, #75ECFB);
   padding: 3px;
   display: inline-block;
   border-radius: 9999em;
