@@ -16,7 +16,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Setup for displaying the popup image modal again when clicking the additional image
+    const smallImage = document.getElementById('smallimage');
+      const numberseggModal = document.getElementById('numberseggModal');
+      const closeBtn = numberseggModal.querySelector('.close');
+    
+      // Show the numberseggModal when the smallImage is clicked
+      smallImage.addEventListener('click', function() {
+        numberseggModal.style.display = 'block';
+      });
+    
+      // Hide the numberseggModal when the close button is clicked
+      closeBtn.addEventListener('click', function() {
+        numberseggModal.style.display = 'none';
+      });
+    
+      // Also hide the numberseggModal when clicking outside of the modal content
+      window.addEventListener('click', function(event) {
+        if (event.target == numberseggModal) {
+          numberseggModal.style.display = 'none';
+        }
+      });
+    });
+
     const additionalImage = document.getElementById('additionalImage'); // Make sure to replace 'additionalImage' with the actual ID of your additional image
     if (additionalImage) {
         additionalImage.addEventListener('click', function() {
