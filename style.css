@@ -435,6 +435,8 @@ body {
 .egg-reveal-modal {
   display: none; /* Hidden by default */
   position: fixed;
+  justify-content: space-around;
+  align-items: center;
   z-index: 10000;
   left: 0;
   top: 0;
@@ -457,6 +459,8 @@ body {
   text-align: center;
   border-radius: 15px; /* Rounded corners for a softer look */
   position: fixed;
+  justify-content: space-around;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
