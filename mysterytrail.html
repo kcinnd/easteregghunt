@@ -11,11 +11,16 @@
     <div class="container">
         <h1>Unravel the Trail</h1>
         <img src="https://i.imgur.com/ct70lZj.png" alt="Mystery Image" class="mystery-image">
-        <div class="form__group field">
-          <input type="input" class="form__field" placeholder="Answer" name="Answer" id='Asnwer' required />
-          <label for="Answer" class="form__label">Answer</label>
+        <input class="c-checkbox" type="checkbox" id="checkbox">
+        <div class="c-formContainer">
+          <form class="c-form" action="">
+            <input class="c-form__input" placeholder="Answer" type="Answer" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
+            <label class="c-form__buttonLabel" for="checkbox">
+              <button class="c-form__button" type="button" id="submitPasscode">Enter</button>
+            </label>
+            <label class="c-form__toggle" for="checkbox" data-title="Answer"></label>
+          </form>
         </div>
-        <button id="submitPasscode">Submit</button>
     </div>
 
     <script src="script.js"></script>
