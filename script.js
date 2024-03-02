@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
+    setupUrgentMessageModal();
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
@@ -26,6 +27,42 @@ document.addEventListener('DOMContentLoaded', function() {
         additionalImage.addEventListener('click', () => popupImageModal.style.display = 'block');
     }
 });
+
+function setupUrgentMessageModal() {
+    const openModalBtn = document.getElementById('openModal');
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', () => {
+            const urgentMessageModal = document.getElementById('urgentMessageModal');
+            urgentMessageModal.style.display = 'block';
+
+            // Clear existing typewriter texts to restart the animation
+            document.getElementById('typewriterHeader').innerHTML = '';
+            document.getElementById('typewriterBody').innerHTML = '';
+
+            // Start typewriter effect for header and body
+            setupTypewriter('typewriterHeader', "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨");
+            setupTypewriter('typewriterBody', "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰");
+        });
+    }
+}
+
+function setupTypewriter(elementId, text) {
+    const element = document.getElementById(elementId);
+    let cursorPosition = 0;
+    let typeSpeed = 70; // Adjust typing speed as needed
+
+    function type() {
+        if (cursorPosition < text.length) {
+            element.innerHTML += text.charAt(cursorPosition);
+            cursorPosition++;
+            setTimeout(type, typeSpeed);
+        }
+    }
+
+    if (element) {
+        type(); // Start typing effect
+    }
+}
 
 function openCircularModal() {
     document.getElementById('circularModalBackground').style.visibility = 'visible';
@@ -169,37 +206,6 @@ function setupEggImagesModal() {
                 eggImagesModal.style.display = 'none';
             }
         };
-    }
-}
-
-function setupUrgentMessageModal() {
-    const openModalBtn = document.getElementById('openModal');
-    if (openModalBtn) {
-        openModalBtn.addEventListener('click', () => {
-            const urgentMessageModal = document.getElementById('urgentMessageModal');
-            urgentMessageModal.style.display = 'block';
-            setupTypewriter('typewriterHeader', "🚨🐰 URGENT MESSAGE from the Easter Bunny 🐰🚨");
-            setupTypewriter('typewriterBody', "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰");
-        });
-    }
-}
-
-function setupTypewriter(elementId, text) {
-    const element = document.getElementById(elementId);
-    let cursorPosition = 0;
-    let typeSpeed = 70;
-
-    function type() {
-        if (cursorPosition < text.length) {
-            element.innerHTML += text.charAt(cursorPosition);
-            cursorPosition++;
-            setTimeout(type, typeSpeed);
-        }
-    }
-
-    if (element) {
-        element.innerHTML = ''; // Clear existing text
-        type();
     }
 }
 
