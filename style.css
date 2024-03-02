@@ -810,7 +810,10 @@ h1 {
 
 .input {
   position: relative;
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
   text-align: center;
   background: linear-gradient(21deg, #F298F4, #75ECFB);
   padding: 3px;
