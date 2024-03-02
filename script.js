@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeModalButton.addEventListener('click', function() {
         circularModalBackground.style.display = 'none';
-        circularmodal.style.display = 'none';
+        circularModal.style.display = 'none';
     });
 
     document.getElementById('permanentImage').addEventListener('click', opencircularModal);
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', function(event) {
         if (event.target == circularModalBackground) {
             circularModalBackground.style.display = 'none';
-            circularmodal.style.display = 'none';
+            circularModal.style.display = 'none';
         }
     });
     
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup for the circular modal when clicking on the permanent image
     const permanentImage = document.getElementById('permanentImage');
     const circularModalBackground = document.getElementById('circularModalBackground');
-    const circularModal = document.getElementById('circularmodal');
+    const circularModal = document.getElementById('circularModal');
     
     permanentImage.addEventListener('click', function() {
-        circularModalBackground.style.display = 'block';
-        circularModal.style.display = 'flex';
+        circularModalBackground.style.display = 'block'; // Show the background
+        circularModal.style.display = 'flex'; // Show the circular modal
     });
 
     closeModalButtons.forEach(btn => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function opencircularModal() {
     document.getElementById('circularModalBackground').style.display = 'block'; // This shows the background
-    document.getElementById('circularmodal').style.display = 'flex'; // This makes the circular modal visible
+    document.getElementById('circularModal').style.display = 'flex'; // This makes the circular modal visible
 }
 
 function setupModal() {
@@ -133,17 +133,17 @@ function setupCloseableImageModal() {
     
 function setupPermanentImageModal() {
     const permanentImage = document.getElementById('permanentImage');
-    const circularModal = document.getElementById('circularmodal');
+    const circularModal = document.getElementById('circularModal');
 
-    if (permanentImage && circularmodal) {
+    if (permanentImage && circularModal) {
         permanentImage.addEventListener('click', function() {
-            circularmodal.style.display = 'flex'; // Show the passcode modal
+            circularModal.style.display = 'flex'; // Show the passcode modal
         });
 
         window.addEventListener('click', function(event) {
             // Check if the click is outside the circular content
-            if (event.target === circularmodal && !circular.contains(event.target)) {
-                circularmodal.style.display = 'none'; // Hide the passcode modal
+            if (event.target === circularModal && !circular.contains(event.target)) {
+                circularModal.style.display = 'none'; // Hide the passcode modal
             }
         });
     }
