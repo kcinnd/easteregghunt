@@ -57,6 +57,9 @@
                 0 20px 40px rgba(0, 0, 0, 0.8), /* Drop shadow */
                 0 30px 60px rgba(0, 0, 0, 0.6); /* More drop shadow for depth */
     border-radius: 15px; /* Rounded corners for the square */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
 .cmodal {
