@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', function(event) {
         if (event.target == circularModalBackground) {
             circularModalBackground.style.display = 'none';
-            circularModal.style.display = 'none';
+            circularmodal.style.display = 'none';
         }
     });
     
@@ -67,18 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup for the circular modal when clicking on the permanent image
     const permanentImage = document.getElementById('permanentImage');
     const circularModalBackground = document.getElementById('circularModalBackground');
-    const circularModal = document.getElementById('circularmodal');
+    const circularmodal = document.getElementById('circularmodal');
     
     permanentImage.addEventListener('click', function() {
         circularModalBackground.style.display = 'block';
-        circularModal.style.display = 'flex';
+        circularmodal.style.display = 'flex';
     });
 
     // Setup submit handlers and other functionalities
     setupSubmitHandlers();
 });
 
-function openCircularModal() {
+function opencircularmodal() {
     document.getElementById('circularModalBackground').style.display = 'block'; // This shows the background
     document.getElementById('circularmodal').style.display = 'flex'; // This makes the circular modal visible
 }
