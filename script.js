@@ -47,6 +47,25 @@ document.addEventListener('DOMContentLoaded', function() {
             urgentMessageModal.style.display = 'none';
         });
     }
+
+    const revealEggBtn = document.getElementById('revealEggBtn');
+    const eggImagesModal = document.getElementById('eggImagesModal');
+    const eggCloseBtn = document.querySelector('.egg-close');
+
+    revealEggBtn.addEventListener('click', function() {
+      eggImagesModal.style.display = 'block';
+    });
+
+    eggCloseBtn.addEventListener('click', function() {
+      eggImagesModal.style.display = 'none';
+    });
+
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target == eggImagesModal) {
+        eggImagesModal.style.display = 'none';
+      }
+    });
 });
 
 function setupTypewriter(elementId, text) {
@@ -191,25 +210,6 @@ function setupSubmitHandlers() {
             document.getElementById('passcodeInput').value = '';
         }
     });
-}
-
-function setupEggImagesModal() {
-    var revealEggBtn = document.getElementById('revealEggBtn');
-    var eggImagesModal = document.getElementById('eggImagesModal');
-    if (eggImagesModal) {
-        var closeEggImagesModal = eggImagesModal.querySelector('.close');
-        revealEggBtn.onclick = function() {
-            eggImagesModal.style.display = 'block';
-        };
-        closeEggImagesModal.onclick = function() {
-            eggImagesModal.style.display = 'none';
-        };
-        window.onclick = function(event) {
-            if (event.target == eggImagesModal) {
-                eggImagesModal.style.display = 'none';
-            }
-        };
-    }
 }
 
 function setupSecretImageAndConfetti() {
