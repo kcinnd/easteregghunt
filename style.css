@@ -89,12 +89,16 @@
 
 #popupImageModal {
     display: block; /* Show by default */
+    justify-content: center;
+    align-items: center;
 }
 
 #popupImageModal .pmodal-content img {
     max-width: 90%;
     max-height: 80vh;
     margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .pmodal-content {
@@ -107,7 +111,7 @@
     margin: auto; /* 15% from the top and centered */
     width: 80%; /* Could be more or less, depending on screen size */
     justify-content: center;
-    display: flex;
+    display: none;
     align-items: center;
     overflow: auto;
     animation-name: animatetop;
@@ -212,7 +216,7 @@ body {
   height: 300px;
   border-radius: 50%;
   background-color: #000;
-  display: flex;
+  display: none;
   flex-direction: column; /* Stack input and button vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center;
