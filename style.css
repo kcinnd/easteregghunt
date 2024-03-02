@@ -767,3 +767,9 @@ button:not(#openModal):hover {
   }
 }
 
+.icontainer {
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
