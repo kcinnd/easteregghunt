@@ -297,6 +297,7 @@ body {
 .button-55:hover {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
+  background-color: #DCCE50;
 }
 
 .button-55:focus {
