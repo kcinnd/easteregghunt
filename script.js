@@ -26,12 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (additionalImage) {
         additionalImage.addEventListener('click', () => popupImageModal.style.display = 'block');
     }
-});
 
-function setupUrgentMessageModal() {
-    const openModalBtn = document.getElementById('openModal');
-    if (openModalBtn) {
-        openModalBtn.addEventListener('click', () => {
+    const openUrgentMessageBtn = document.getElementById('openModalButton'); // Ensure this ID matches your button's ID
+    if (openUrgentMessageBtn) {
+        openUrgentMessageBtn.addEventListener('click', () => {
             const urgentMessageModal = document.getElementById('urgentMessageModal');
             urgentMessageModal.style.display = 'block';
 
@@ -44,7 +42,15 @@ function setupUrgentMessageModal() {
             setupTypewriter('typewriterBody', "Attention all Easter Egg Hunters: This is an emergency notice from the Easter Bunny. The two keys to a precious treasure Easter Egg have gone missing! 🚨🗝️ Without these keys, we risk losing access to the most magical Easter treasure! We need your help to find the keys! 🕵️‍♀️🔍 Please search high and low, under every bush and behind every flower. Time is of the essence, as Easter draws near and the magic of the holiday depends on retrieving these keys. If you discover any clues or have any leads, please dispatch a message to me immediately. Together, we can save Easter and ensure a joyous celebration for all! Hop to it, my friends! The fate of Easter rests in your hands! With urgency and hope, The Easter Bunny 🐰");
         });
     }
-}
+
+    // Add closeModal functionality to the urgent message modal
+    const closeUrgentMessageBtn = document.querySelector('#urgentMessageModal .close');
+    if (closeUrgentMessageBtn) {
+        closeUrgentMessageBtn.addEventListener('click', () => {
+            document.getElementById('urgentMessageModal').style.display = 'none';
+        });
+    }
+});
 
 function setupTypewriter(elementId, text) {
     const element = document.getElementById(elementId);
