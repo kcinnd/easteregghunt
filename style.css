@@ -709,7 +709,7 @@ button:not(#openModal):hover {
 
 .input {
   position: relative;
-  font-size: 1.5em;
+  font-size: 24px;
   background: linear-gradient(21deg, #F298F4, #75ECFB);
   padding: 3px;
   display: inline-block;
