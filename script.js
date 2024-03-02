@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         circularmodal.style.display = 'none';
     });
 
-    document.getElementById('permanentImage').addEventListener('click', opencircularmodal);
+    document.getElementById('permanentImage').addEventListener('click', opencircularModal);
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
