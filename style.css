@@ -508,21 +508,6 @@ body {
   background-color: transparent;
 }
 
-.egg-reveal-modal button {
-  background-color: #FFB6C1; /* Soft pink background for buttons */
-  color: #FFFFFF; /* White text */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.egg-reveal-modal button:hover {
-  background-color: #FF69B4; /* Darker pink on hover */
-}
-
 .egg-reveal-modal input[type="text"] {
   border: 1px solid #FFC0CB; 
   background-color: #FFFFFF;
