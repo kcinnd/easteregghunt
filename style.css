@@ -13,6 +13,31 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
+.nmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.nmodal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 80%; /* Adjust as needed */
+  max-width: 700px; /* Adjust as needed */
+}
+
+.nmodal-content img {
+  width: 100%; /* Make the image responsive */
+  height: auto;
+}
+
 .cmodal {
     display: none; /* Hidden by default */
     position: fixed;
