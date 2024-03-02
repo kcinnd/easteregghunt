@@ -611,9 +611,9 @@ h1 {
   border-radius: 8px;
   color: #fff;
   font-feature-settings: "ss01", "cv10", "calt"0, "liga"0;
-  font-size: 16px;
+  font-size: 36px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 50px;
   padding: 10px 20px;
   position: relative;
   transition: transform .2s cubic-bezier(.6, .6, 0, 1), margin-top .2s cubic-bezier(.6, .6, 0, 1);
