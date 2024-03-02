@@ -86,8 +86,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function opencircularModal() {
-    document.getElementById('circularModalBackground').style.display = 'block'; // This shows the background
     document.getElementById('circularModal').style.display = 'flex'; // This makes the circular modal visible
+    const modalBg = document.getElementById('circularModalBackground');
+        modalBg.style.visibility = 'visible';
+        modalBg.style.opacity = '1';
+}
+
+function closeCircularModal() {
+    const modalBg = document.getElementById('circularModalBackground');
+    modalBg.style.visibility = 'hidden';
+    modalBg.style.opacity = '0';
 }
 
 function setupModal() {
