@@ -85,17 +85,20 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSubmitHandlers();
 });
 
-function opencircularModal() {
-    document.getElementById('circularModal').style.display = 'flex'; // This makes the circular modal visible
+function openCircularModal() {
     const modalBg = document.getElementById('circularModalBackground');
-        modalBg.style.visibility = 'visible';
-        modalBg.style.opacity = '1';
+    const circularModal = document.getElementById('circularModal');
+    modalBg.style.visibility = 'visible';
+    modalBg.style.opacity = '1';
+    circularModal.style.display = 'flex'; // Ensures layout is retained
 }
 
 function closeCircularModal() {
     const modalBg = document.getElementById('circularModalBackground');
+    const circularModal = document.getElementById('circularModal');
     modalBg.style.visibility = 'hidden';
     modalBg.style.opacity = '0';
+    circularModal.style.display = 'none'; // Hide the modal content as well
 }
 
 function setupModal() {
