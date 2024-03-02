@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
-    setupUrgentMessageModal();
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
@@ -27,13 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
         additionalImage.addEventListener('click', () => popupImageModal.style.display = 'block');
     }
 
-    const openUrgentMessageBtn = document.getElementById('openModalButton'); // Ensure this ID matches your button's ID
+   const openUrgentMessageBtn = document.getElementById('openModalButton');
     if (openUrgentMessageBtn) {
         openUrgentMessageBtn.addEventListener('click', () => {
             const urgentMessageModal = document.getElementById('urgentMessageModal');
             urgentMessageModal.style.display = 'block';
 
-            // Clear existing typewriter texts to restart the animation
             document.getElementById('typewriterHeader').innerHTML = '';
             document.getElementById('typewriterBody').innerHTML = '';
 
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeUrgentMessageBtn = document.querySelector('#urgentMessageModal .close');
     if (closeUrgentMessageBtn) {
         closeUrgentMessageBtn.addEventListener('click', () => {
-            document.getElementById('urgentMessageModal').style.display = 'none';
+            urgentMessageModal.style.display = 'none';
         });
     }
 });
