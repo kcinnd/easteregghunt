@@ -438,6 +438,7 @@ body {
   justify-content: space-around;
   align-items: center;
   tect-align: center;
+  display: none;
   z-index: 10000;
   padding: 20px;
   left: 0;
