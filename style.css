@@ -745,8 +745,9 @@ button:not(#openModal):hover {
 
 .input {
   position: relative;
-  font-size: 24px;
-  background: linear-gradient(21deg, #F298F4, #75ECFB);
+  font-size: 20px;
+  text-align: center;
+  background: linear-gradient (21deg, #F298F4, #75ECFB);
   padding: 3px;
   display: inline-block;
   border-radius: 9999em;
@@ -754,6 +755,7 @@ button:not(#openModal):hover {
 .input *:not(span) {
   position: relative;
   display: inherit;
+  background: rgba(0, 0, 0, 0);
   border-radius: inherit;
   margin: 0;
   border: none;
