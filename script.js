@@ -50,19 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup for the circular modal when clicking on the permanent image
     const permanentImage = document.getElementById('permanentImage');
-    const circularModal = document.getElementById('circularmodal');
-
+    const circularModalBackground = document.getElementById('circularModalBackground');
     // Show the circular modal when the permanent image is clicked
-    if (permanentImage && circularModal) {
+    if (permanentImage && circularModalBackground) {
         permanentImage.addEventListener('click', function() {
-            circularModal.style.display = 'flex'; // Show the circular modal
+            circularModalBackground.style.display = 'flex'; // Show the circular modal
         });
     }
 
     // Close the circular modal when clicking outside of it
     window.addEventListener('click', function(event) {
-        if (event.target == circularModal) {
-            circularModal.style.display = 'none'; // Hide the circular modal
+        if (event.target == circularModalBackground) {
+            circularModalBackground.style.display = 'none'; // Hide the circular modal
         }
     });
 
