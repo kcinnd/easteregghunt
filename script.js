@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const smallImage = document.getElementById('smallimage');
+    const smallImage = document.getElementById('smallImage');
     const numberseggModal = document.getElementById('numberseggModal');
 
     if (smallImage && numberseggModal) {
