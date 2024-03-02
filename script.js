@@ -7,96 +7,61 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
-
-    document.getElementById('permanentImage').addEventListener('click', openCircularModal);
-
-    const closeModalButton = document.querySelector('.cmodal .close');
-    closeModalButton.addEventListener('click', closeCircularModal);
-
-    document.getElementById('permanentImage').addEventListener('click', opencircularModal);
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
-
-    if (popupImageCloseBtn) {
-        popupImageCloseBtn.addEventListener('click', function() {
-            popupImageModal.style.display = 'none';
-        });
-    }
-
     const smallImage = document.getElementById('smallImage');
     const numberseggModal = document.getElementById('numberseggModal');
+    const additionalImage = document.getElementById('additionalImage');
+
+    if (popupImageCloseBtn) {
+        popupImageCloseBtn.addEventListener('click', () => popupImageModal.style.display = 'none');
+    }
 
     if (smallImage && numberseggModal) {
-        const closeBtn = numberseggModal.querySelector('.close');
-
-        // Show the numberseggModal when the smallImage is clicked
-        smallImage.addEventListener('click', function() {
-            numberseggModal.style.display = 'block';
-        });
-
-        // Hide the numberseggModal when the close button is clicked
-        closeBtn.addEventListener('click', function() {
-            numberseggModal.style.display = 'none';
-        });
-
-        // Also hide the numberseggModal when clicking outside of the modal content
-        window.addEventListener('click', function(event) {
-            if (event.target == numberseggModal) {
-                numberseggModal.style.display = 'none';
-            }
-        });
+        setupNumberseggModal(smallImage, numberseggModal);
     }
 
-    window.addEventListener('click', function(event) {
-        if (event.target == circularModalBackground) {
-            circularModalBackground.style.display = 'none';
-            circularModal.style.display = 'none';
-        }
-    });
-    
-    const additionalImage = document.getElementById('additionalImage'); // Make sure to replace 'additionalImage' with the actual ID of your additional image
     if (additionalImage) {
-        additionalImage.addEventListener('click', function() {
-            popupImageModal.style.display = 'block';
-        });
+        additionalImage.addEventListener('click', () => popupImageModal.style.display = 'block');
     }
-
-    // Setup for the circular modal when clicking on the permanent image
-    const permanentImage = document.getElementById('permanentImage');
-    const circularModalBackground = document.getElementById('circularModalBackground');
-    const circularModal = document.getElementById('circularModal');
-    
-    permanentImage.addEventListener('click', function() {
-        circularModalBackground.style.display = 'block'; // Show the background
-        circularModal.style.display = 'flex'; // Show the circular modal
-    });
-
-    closeModalButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            circularModalBackground.style.display = 'none';
-            circularModal.style.display = 'none';
-        });
-    });
-
-    // Setup submit handlers and other functionalities
-    setupSubmitHandlers();
 });
 
 function openCircularModal() {
-    const modalBg = document.getElementById('circularModalBackground');
-    const circularModal = document.getElementById('circularModal');
-    modalBg.style.visibility = 'visible';
-    modalBg.style.opacity = '1';
-    circularModal.style.display = 'flex'; // Ensures layout is retained
+    document.getElementById('circularModalBackground').style.visibility = 'visible';
+    document.getElementById('circularModalBackground').style.opacity = '1';
+    document.getElementById('circularModal').style.display = 'flex';
 }
 
 function closeCircularModal() {
-    const modalBg = document.getElementById('circularModalBackground');
-    const circularModal = document.getElementById('circularModal');
-    modalBg.style.visibility = 'hidden';
-    modalBg.style.opacity = '0';
-    circularModal.style.display = 'none'; // Hide the modal content as well
+    document.getElementById('circularModalBackground').style.visibility = 'hidden';
+    document.getElementById('circularModalBackground').style.opacity = '0';
+    document.getElementById('circularModal').style.display = 'none';
+}
+
+function setupPermanentImageModal() {
+    const permanentImage = document.getElementById('permanentImage');
+    if (permanentImage) {
+        permanentImage.addEventListener('click', openCircularModal);
+    }
+    
+    window.addEventListener('click', function(event) {
+        const circularModalBackground = document.getElementById('circularModalBackground');
+        if (event.target === circularModalBackground) {
+            closeCircularModal();
+        }
+    });
+}
+
+function setupNumberseggModal(triggerElement, modalElement) {
+    const closeBtn = modalElement.querySelector('.close');
+    triggerElement.addEventListener('click', () => modalElement.style.display = 'block');
+    closeBtn.addEventListener('click', () => modalElement.style.display = 'none');
+    window.addEventListener('click', (event) => {
+        if (event.target === modalElement) {
+            modalElement.style.display = 'none';
+        }
+    });
 }
 
 function setupModal() {
