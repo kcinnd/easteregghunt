@@ -59,6 +59,13 @@
     transition: opacity 0.3s, visibility 0.3s;
 }
 
+.circular {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .circular-modal {
   background-color: #000;
   display: none;
