@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     closeModalButton.addEventListener('click', function() {
         circularModalBackground.style.display = 'none';
-        circularModal.style.display = 'none';
+        circularmodal.style.display = 'none';
     });
 
-    document.getElementById('permanentImage').addEventListener('click', openCircularModal);
+    document.getElementById('permanentImage').addEventListener('click', opencircularmodal);
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
