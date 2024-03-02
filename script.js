@@ -256,7 +256,6 @@ function setupSecretImageAndConfetti() {
 
 function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
-    const startHuntBtn = document.getElementById('startHuntButton');
     const submitAnswerButton = document.getElementById('submitAnswer');
     const submitBtn = document.getElementById('submitBtn');
 
@@ -280,22 +279,12 @@ function setupEventListeners() {
     } else {
         console.log('revealEggBtn not found on this page.');
     }
-
-    if (startHuntBtn) {
-        startHuntBtn.addEventListener('click', startHunt);
-    } else {
-        console.log('startHuntButton not found on this page.');
-    }
 }
 
 function showNewEgg() {
     document.getElementById('newEgg').style.display = 'block';
     document.querySelector('.egg-container').style.display = 'flex';
     document.getElementById('eggRevealModal').style.display = 'none';
-}
-
-function startHunt() {
-    window.location.href = 'page1.html';
 }
 
 function setupGrassHoverEffect() {
