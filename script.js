@@ -52,17 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const permanentImage = document.getElementById('permanentImage');
     const circularModal = document.getElementById('circularmodal');
 
+    // Show the circular modal when the permanent image is clicked
     if (permanentImage && circularModal) {
         permanentImage.addEventListener('click', function() {
             circularModal.style.display = 'flex'; // Show the circular modal
         });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == circularModal) {
-                circularModal.style.display = 'none';
-            }
-        });
     }
+
+    // Close the circular modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target == circularModal) {
+            circularModal.style.display = 'none'; // Hide the circular modal
+        }
+    });
 
     // Setup submit handlers and other functionalities
     setupSubmitHandlers();
