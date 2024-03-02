@@ -432,6 +432,10 @@ body {
   margin: 10px;
 }
 
+.egg-image:hover {
+  transform: scale(2); /* Enlarge on hover */
+}
+
 .egg-modal-content {
   display: none; /* Hidden by default */
   position: relative;
