@@ -436,7 +436,7 @@ body {
 .egg-modal-content {
   display: none; /* Hidden by default */
   position: relative;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   tect-align: center;
   display: none;
@@ -462,7 +462,7 @@ body {
   text-align: center;
   border-radius: 15px; /* Rounded corners for a softer look */
   position: fixed;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   top: 50%;
   left: 50%;
