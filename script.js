@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupModal();
-    setupEggModal();
     setupSecretImageAndConfetti();
     setupEventListeners();
     setupCloseableImageModal();
@@ -211,23 +210,6 @@ function setupEggImagesModal() {
             }
         };
     }
-}
-
-function setupEggModal() {
-    var eggModal = document.getElementById("eggModal");
-    var closeButton = document.querySelector("#eggModal .close");
-
-    if (eggModal && closeButton) {
-        closeButton.onclick = function() {
-            eggModal.style.display = "none";
-        };
-    }
-
-    window.onclick = function(event) {
-        if (event.target === eggModal) {
-            eggModal.style.display = "none";
-        }
-    };
 }
 
 function setupSecretImageAndConfetti() {
