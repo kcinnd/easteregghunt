@@ -755,7 +755,7 @@ button:not(#openModal):hover {
 .input *:not(span) {
   position: relative;
   display: inherit;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border-radius: inherit;
   margin: 0;
   border: none;
