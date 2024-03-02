@@ -46,12 +46,10 @@
     z-index: 1000; /* Ensures it's on top of other content but under the modal itself */
     left: 50%;
     top: 50%;
-    translate(-50%, -50%);
-    width: 600px; /* Same as the circular modal */
-    height: 600px; /* Same as the circular modal */
+    transform: translate(-50%, -50%); /* Corrected line */
+    width: 600px; /* Double the size of the circular modal for a larger background */
+    height: 600px; /* Double the size of the circular modal for a larger background */
     background-color: #000; /* Black background */
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), /* Inner white glow */
                 0 0 30px rgba(255, 255, 255, 0.15), /* More inner glow */
                 0 20px 40px rgba(0, 0, 0, 0.8), /* Drop shadow */
