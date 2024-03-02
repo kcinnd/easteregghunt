@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
         circularModal.style.display = 'none';
     });
 
+    document.getElementById('permanentImage').addEventListener('click', openCircularModal);
+    
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
 
@@ -75,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup submit handlers and other functionalities
     setupSubmitHandlers();
 });
+
+function openCircularModal() {
+    document.getElementById('circularModalBackground').style.display = 'block'; // This shows the background
+    document.getElementById('circularmodal').style.display = 'flex'; // This makes the circular modal visible
+}
 
 function setupModal() {
     const modalBtns = document.querySelectorAll('[data-modal-target]');
