@@ -485,7 +485,7 @@ body {
 }
 
 .small-egg {
-  width: 100px; /* Smaller size for inspection */
+  width: 200px; /* Smaller size for inspection */
   cursor: pointer; /* Indicate it's clickable */
   transition: transform 0.3s ease; /* Smooth transition for enlarging */
 }
