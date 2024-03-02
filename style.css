@@ -249,7 +249,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Blue glow */
 }
 
-.circular #submitPasscode {
+.circularmodal #submitPasscode {
     background-color: #2C2C2C; /* Dark background for contrast */
     color: #00BFFF; /* Neon-like font color */
     padding: 10px 20px;
@@ -263,7 +263,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.circular #submitPasscode:hover {
+.circularmodal #submitPasscode:hover {
     color: #2C2C2C;
     background-color: #99e5ff;
     box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 
