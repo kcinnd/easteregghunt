@@ -51,13 +51,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const revealEggBtn = document.getElementById('revealEggBtn');
     const eggImagesModal = document.getElementById('eggImagesModal');
     const eggCloseBtn = document.querySelector('.egg-close');
+    const closeBtns = document.querySelectorAll('.close');
 
     revealEggBtn.addEventListener('click', function() {
-      eggImagesModal.style.display = 'block';
+      eggImagesModal.style.display = 'flex'; // Use flex if you're centering content with flexbox
     });
 
-    eggCloseBtn.addEventListener('click', function() {
-      eggImagesModal.style.display = 'none';
+  // Function to close modals
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        btn.closest('.modal').style.display = 'none';
+      });
+    });
+
+  // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target.className.includes('modal')) {
+        event.target.style.display = 'none';
+      }
     });
 
     // Close the modal when clicking outside of it
