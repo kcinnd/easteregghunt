@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
+
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
 
@@ -17,26 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const smallImage = document.getElementById('smallimage');
-      const numberseggModal = document.getElementById('numberseggModal');
-      const closeBtn = numberseggModal.querySelector('.close');
-    
-      // Show the numberseggModal when the smallImage is clicked
-      smallImage.addEventListener('click', function() {
-        numberseggModal.style.display = 'block';
-      });
-    
-      // Hide the numberseggModal when the close button is clicked
-      closeBtn.addEventListener('click', function() {
-        numberseggModal.style.display = 'none';
-      });
-    
-      // Also hide the numberseggModal when clicking outside of the modal content
-      window.addEventListener('click', function(event) {
-        if (event.target == numberseggModal) {
-          numberseggModal.style.display = 'none';
-        }
-      });
-    });
+    const numberseggModal = document.getElementById('numberseggModal');
+
+    if (smallImage && numberseggModal) {
+        const closeBtn = numberseggModal.querySelector('.close');
+
+        // Show the numberseggModal when the smallImage is clicked
+        smallImage.addEventListener('click', function() {
+            numberseggModal.style.display = 'block';
+        });
+
+        // Hide the numberseggModal when the close button is clicked
+        closeBtn.addEventListener('click', function() {
+            numberseggModal.style.display = 'none';
+        });
+
+        // Also hide the numberseggModal when clicking outside of the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target == numberseggModal) {
+                numberseggModal.style.display = 'none';
+            }
+        });
+    }
 
     const additionalImage = document.getElementById('additionalImage'); // Make sure to replace 'additionalImage' with the actual ID of your additional image
     if (additionalImage) {
@@ -53,14 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
         permanentImage.addEventListener('click', function() {
             circularModal.style.display = 'flex'; // Show the circular modal
         });
-    }
 
-    // Close the circular modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == circularModal) {
-            circularModal.style.display = 'none';
-        }
-    });
+        window.addEventListener('click', function(event) {
+            if (event.target == circularModal) {
+                circularModal.style.display = 'none';
+            }
+        });
+    }
 
     // Setup submit handlers and other functionalities
     setupSubmitHandlers();
