@@ -707,69 +707,67 @@ button:not(#openModal):hover {
   }
 } 
 
-.input-group {
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
   width: 100%;
-  max-width: 20em;
-  display: flex;
-  flex-direction: column;
-  z-index: 2;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 
-  @supports (mix-blend-mode: darken) {
-    position: relative;
-    mix-blend-mode: lighten;
-
-    &__label {
-      position: absolute;
-      left: 3em;
-      top: -0.28em;
-      background: #000;
-    }
+  &::placeholder {
+    color: transparent;
   }
 
-  &__label {
-    padding: 0 0.5em;
-    margin-bottom: 0.5em;
-    text-transform: uppercase;
-    font-size: 0.875em;
-    letter-spacing: 0.1em;
-    color: #ccd;
-    color: rgba(255, 220, 255, 0.6);
-    cursor: pointer;
-  }
-
-  &__input {
-    color: #fff;
-    font-size: 1.25rem;
-    line-height: 1;
-    border-style: none;
-    outline: none;
-    // height calc line-height + (vertical-padding * 2) + (vertical-border * 2)
-    height: calc(1em + 1.6em + 0.5em);
-    width: 100%;
-    padding: 0.8em 1em;
-    border: 0.25em solid transparent;
-    background-image: linear-gradient(#000, #000),
-      linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-radius: 1.8em;
-    background-size: 200% 100%;
-    transition: background-position 0.8s ease-out;
-    
-    &:hover {
-      background-position: 100% 0;
-    }
-
-    &:focus {
-      outline: 2px dashed #ad2b89;
-      outline-offset: 0.5em;
-    }
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
   }
 }
 
-.icontainer {
-  padding: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
 
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
