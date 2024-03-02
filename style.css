@@ -38,17 +38,25 @@
   height: auto;
 }
 
-.cmodal {
-    display: none; 
+.cmodal-background {
+    display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1000;
+    z-index: 1000; /* Ensures it's on top of other content but under the modal itself */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-color: #000;
+    width: 300px; /* Same as the circular modal */
+    height: 300px; /* Same as the circular modal */
+    background-color: #000; /* Black background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmodal {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Keeps the circular shape */
     display: flex;
     align-items: center;
     justify-content: center;
