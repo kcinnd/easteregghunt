@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSubmitHandlers();
     setupGrassHoverEffect();
 
+    const closeModalButton = document.querySelector('.cmodal .close');
+
+    closeModalButton.addEventListener('click', function() {
+        circularModalBackground.style.display = 'none';
+        circularModal.style.display = 'none';
+    });
+
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
 
@@ -41,6 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    window.addEventListener('click', function(event) {
+        if (event.target == circularModalBackground) {
+            circularModalBackground.style.display = 'none';
+            circularModal.style.display = 'none';
+        }
+    });
+    
     const additionalImage = document.getElementById('additionalImage'); // Make sure to replace 'additionalImage' with the actual ID of your additional image
     if (additionalImage) {
         additionalImage.addEventListener('click', function() {
@@ -51,18 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup for the circular modal when clicking on the permanent image
     const permanentImage = document.getElementById('permanentImage');
     const circularModalBackground = document.getElementById('circularModalBackground');
-    // Show the circular modal when the permanent image is clicked
-    if (permanentImage && circularModalBackground) {
-        permanentImage.addEventListener('click', function() {
-            circularModalBackground.style.display = 'flex'; // Show the circular modal
-        });
-    }
-
-    // Close the circular modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-        if (event.target == circularModalBackground) {
-            circularModalBackground.style.display = 'none'; // Hide the circular modal
-        }
+    const circularModal = document.getElementById('circularmodal');
+    
+    permanentImage.addEventListener('click', function() {
+        circularModalBackground.style.display = 'block';
+        circularModal.style.display = 'flex';
     });
 
     // Setup submit handlers and other functionalities
