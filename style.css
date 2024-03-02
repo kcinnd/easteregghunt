@@ -118,6 +118,9 @@
     max-width: 100%; /* Make image responsive */
     max-height: 80vh; /* Limit image height to 80% of the viewport height */
     margin: auto; /* Center the image */
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .popup-image {
@@ -125,6 +128,9 @@
     height: auto; /* Maintain aspect ratio */
     display: block; /* To enable margin auto to work for centering */
     margin: 0 auto; /* Center the image horizontally */
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .small-image {
