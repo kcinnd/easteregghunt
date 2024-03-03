@@ -438,7 +438,7 @@ body {
   transform: scale(2); /* Enlarge on hover */
 }
 
-.egg-modal-content {
+.er-modal-content {
   display: none; /* Hidden by default */
   position: relative;
   justify-content: center;
@@ -456,7 +456,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4); /* Keep this as is for the modal backdrop */
 }
 
-.egg-modal {
+.er-modal {
   background-color: #ffc0cb; /* Light pink background for Easter theme */
   border: 2px dashed #ff69b4; /* Dashed border with a light pink color */
   padding: 20px;
