@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show the egg images modal
             if (eggImagesModal) {
-                eggImagesModal.style.display = 'flex'; // Use 'flex' if your modal content is designed to be displayed as a flexbox
+                eggImagesModal.style.display = 'block'; // Use 'flex' if your modal content is designed to be displayed as a flexbox
             }
         });
     }
