@@ -879,9 +879,6 @@ h1 {
   cursor: pointer;
   z-index: 10;
 }
-
-.egg-reveal-modal button:hover {
-  background-color: #7CB342;
 }
 
 #submitAnswer {
