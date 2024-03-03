@@ -547,17 +547,17 @@ body {
   to {top: 0; opacity: 1}
 }
 
-.egg-reveal-modal h2 {
+.eggrmodal h2 {
   color: #000080;
   margin-bottom: 15px;
 }
 
-.egg-reveal-modal p {
+.eggrmodal p {
   margin-bottom: 20px;
   background-color: transparent;
 }
 
-.egg-reveal-modal input[type="text"] {
+.eggrmodal input[type="text"] {
   border: 1px solid #FFC0CB; 
   background-color: #FFFFFF;
 }
@@ -936,7 +936,7 @@ h1 {
 
 
 @media (max-width: 768px) {
-  .modal-content, .egg-reveal-modal, .egg-container {
+  .modal-content, .eggrmodal, .egg-container {
     width: 90%; /* More screen-friendly on smaller devices */
   }
 
