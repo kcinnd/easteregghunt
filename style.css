@@ -396,7 +396,7 @@ body {
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
-.eggr-modal-content {
+.ermodal-content {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   background-color: #FF889C;
@@ -444,7 +444,6 @@ body {
   justify-content: center;
   align-items: center;
   tect-align: center;
-  display: none;
   z-index: 10000;
   padding: 20px;
   left: 0;
