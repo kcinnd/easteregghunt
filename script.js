@@ -53,9 +53,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const eggCloseBtn = document.querySelector('.egg-close');
     const closeBtns = document.querySelectorAll('.close');
     
-    revealEggBtn.addEventListener('click', function() {
-      eggImagesModal.style.display = 'flex'; // Use flex if you're centering content with flexbox
-    });
+    if (revealEggBtn) {
+        revealEggBtn.addEventListener('click', function() {
+            // Hide the egg reveal modal
+            if (eggRevealModal) {
+                eggRevealModal.style.display = 'none';
+            }
+
+            // Show the egg images modal
+            if (eggImagesModal) {
+                eggImagesModal.style.display = 'flex'; // Use 'flex' if your modal content is designed to be displayed as a flexbox
+            }
+        });
+    }
 
   // Function to close modals
     closeBtns.forEach(btn => {
