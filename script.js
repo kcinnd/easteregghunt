@@ -229,20 +229,23 @@ function setupSecretImageAndConfetti() {
 
     if (secretImage && eggRevealModal) {
         secretImage.addEventListener('mouseenter', function() {
+            // Trigger confetti effect
             confetti({
                 particleCount: 500,
                 spread: 200,
                 origin: { y: 0.6 }
             });
+            // Set a timeout to display the egg reveal modal after 2 seconds
             setTimeout(() => {
-                eggRevealModal.style.display = 'flex'; // Make sure your CSS for eggRevealModal is set to display:flex; for this to work
+                eggRevealModal.style.display = 'flex'; // Change to 'flex' to make it visible
             }, 2000);
         });
 
+        // Close modal logic
         const closeModal = eggRevealModal.querySelector('.close');
         if (closeModal) {
             closeModal.addEventListener('click', function() {
-                eggRevealModal.style.display = 'none';
+                eggRevealModal.style.display = 'none'; // Hide the modal when close button is clicked
             });
         }
     } else {
