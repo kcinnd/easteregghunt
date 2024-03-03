@@ -52,7 +52,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const eggImagesModal = document.getElementById('eggImagesModal');
     const eggCloseBtn = document.querySelector('.egg-close');
     const closeBtns = document.querySelectorAll('.close');
+    const secretImage = document.getElementById('secretImage');
+    const eggRevealModal = document.getElementById('eggRevealModal');
 
+    if (secretImage) {
+        secretImage.addEventListener('mouseenter', () => {
+            // Trigger confetti
+            confetti({
+                particleCount: 500,
+                spread: 200,
+                origin: { y: 0.6 }
+            });
+
+            // Wait for 2 seconds before showing the eggRevealModal
+            setTimeout(() => {
+                eggRevealModal.style.display = 'block';
+            }, 2000);
+        });
+    }
+    
     revealEggBtn.addEventListener('click', function() {
       eggImagesModal.style.display = 'flex'; // Use flex if you're centering content with flexbox
     });
@@ -225,7 +243,6 @@ function setupSubmitHandlers() {
 
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
-    const eggRevealModal = document.getElementById('eggRevealModal');
     const revealEggBtn = document.getElementById('revealEggBtn');
 
     if (secretImage && eggRevealModal) {
