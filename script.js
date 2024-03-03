@@ -52,24 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const eggImagesModal = document.getElementById('eggImagesModal');
     const eggCloseBtn = document.querySelector('.egg-close');
     const closeBtns = document.querySelectorAll('.close');
-    const secretImage = document.getElementById('secretImage');
-    const eggRevealModal = document.getElementById('eggRevealModal');
-
-    if (secretImage) {
-        secretImage.addEventListener('mouseenter', () => {
-            // Trigger confetti
-            confetti({
-                particleCount: 500,
-                spread: 200,
-                origin: { y: 0.6 }
-            });
-
-            // Wait for 2 seconds before showing the eggRevealModal
-            setTimeout(() => {
-                eggRevealModal.style.display = 'block';
-            }, 2000);
-        });
-    }
     
     revealEggBtn.addEventListener('click', function() {
       eggImagesModal.style.display = 'flex'; // Use flex if you're centering content with flexbox
@@ -243,7 +225,7 @@ function setupSubmitHandlers() {
 
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
-    const revealEggBtn = document.getElementById('revealEggBtn');
+    const eggRevealModal = document.getElementById('eggRevealModal');
 
     if (secretImage && eggRevealModal) {
         secretImage.addEventListener('mouseenter', function() {
@@ -253,7 +235,7 @@ function setupSecretImageAndConfetti() {
                 origin: { y: 0.6 }
             });
             setTimeout(() => {
-                eggRevealModal.style.display = 'block';
+                eggRevealModal.style.display = 'flex'; // Make sure your CSS for eggRevealModal is set to display:flex; for this to work
             }, 2000);
         });
 
@@ -263,14 +245,8 @@ function setupSecretImageAndConfetti() {
                 eggRevealModal.style.display = 'none';
             });
         }
-
-        if (revealEggBtn) {
-            revealEggBtn.addEventListener('click', function() {
-                eggRevealModal.style.display = 'none';
-            });
-        }
     } else {
-        console.log('One of the elements (secretImage, eggRevealModal, revealEggBtn) is not found.');
+        console.log('One of the elements (secretImage, eggRevealModal) is not found.');
     }
 }
 
