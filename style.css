@@ -13,14 +13,14 @@
     src: url('fonts/TravelingTypewriter.ttf') format('truetype');
 }
 
-.egg-modal {
+.eggmodal {
   display: none;
   background-color: #f8d7da; /* Soft pink background */
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
-.egg-modal-content {
+.eggmodal-content {
   display: none;
   padding: 20px;
   text-align: center; /* Center content */
