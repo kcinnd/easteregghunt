@@ -396,7 +396,7 @@ body {
   font-family: 'TravelingTypewriter', sans-serif; /* Use your custom font */
 }
 
-.modal-contents {
+.modal-content {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   background-color: #FF889C;
