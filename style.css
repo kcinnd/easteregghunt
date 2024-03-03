@@ -397,17 +397,19 @@ body {
 }
 
 .modal-contents {
-  position: relative;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
   background-color: #FF889C;
+  left: 50%;
+  top: 50%;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 800px; /* Adjust based on your preference */
+  max-width: 600px; /* Adjust based on your preference */
   height: auto; /* Auto height to adjust based on content */
   min-height: 80vh;
   overflow-y: auto; /* Enable scrolling within the modal */
-  display: flex;
   flex-direction: column;
   align-items: center; /* Center content horizontally */
   justify-content: center;
