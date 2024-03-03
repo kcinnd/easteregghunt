@@ -484,7 +484,7 @@ body {
   position: relative;
   justify-content: center;
   align-items: center;
-  tect-align: center;
+  text-align: center;
   z-index: 1051;
   padding: 20px;
   left: 0;
@@ -494,7 +494,6 @@ body {
   top: 50%;
   left: 50%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); /* Keep this as is for the modal backdrop */
 }
 
 .eggrmodal {
