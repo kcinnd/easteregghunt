@@ -406,7 +406,7 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 600px; /* Adjust based on your preference */
+  max-width: 400px; /* Adjust based on your preference */
   height: auto; /* Auto height to adjust based on content */
   min-height: 80vh;
   overflow-y: auto; /* Enable scrolling within the modal */
