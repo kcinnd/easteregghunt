@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPermanentImageModal();
     setupSubmitHandlers();
     setupGrassHoverEffect();
+    setupshowNewEgg();
     
     const popupImageModal = document.getElementById('popupImageModal');
     const popupImageCloseBtn = document.querySelector('#popupImageModal .close');
@@ -263,6 +264,11 @@ function setupSecretImageAndConfetti() {
     }
 }
 
+function showNewEgg() {
+    document.getElementById('newEgg').style.display = 'block';
+    document.querySelector('.egg-container').style.display = 'flex';
+}
+
 function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
     const submitAnswerButton = document.getElementById('submitAnswer');
@@ -288,11 +294,6 @@ function setupEventListeners() {
     } else {
         console.log('revealEggBtn not found on this page.');
     }
-}
-
-function showNewEgg() {
-    document.getElementById('newEgg').style.display = 'block';
-    document.querySelector('.egg-container').style.display = 'flex';
 }
 
 function setupGrassHoverEffect() {
