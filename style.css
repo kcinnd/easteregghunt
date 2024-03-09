@@ -481,19 +481,15 @@ body {
 
 .eggrmodal-content {
   display: flex; /* Hidden by default */
-  position: relative;
+  z-index: 1051;
+  padding: 20px;
+  width: 100%; /* This will make the content use the full width of the modal */
+  height: auto; /* Adjust height as needed */
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 1051;
-  padding: 20px;
-  left: 0;
-  top: 0;
-  width: 400px;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  overflow: auto;
+}
 }
 
 .eggrmodal {
