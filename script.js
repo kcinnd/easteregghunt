@@ -236,6 +236,7 @@ function setupSubmitHandlers() {
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
     const eggRevealModal = document.getElementById('eggRevealModal');
+    const eggRevealModalContent = eggRevealModal.querySelector('.eggrmodal-content');
 
     if (secretImage && eggRevealModal) {
         secretImage.addEventListener('mouseenter', function() {
@@ -248,6 +249,7 @@ function setupSecretImageAndConfetti() {
             // Set a timeout to display the egg reveal modal after 2 seconds
             setTimeout(() => {
             eggRevealModal.style.display = 'block'; // Change to 'flex' to make it visible
+            eggRevealModalContent.style.display = 'flex';
             }, 2000);
         });
 
