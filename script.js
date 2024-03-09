@@ -247,7 +247,7 @@ function setupSecretImageAndConfetti() {
             });
             // Set a timeout to display the egg reveal modal after 2 seconds
             setTimeout(() => {
-                eggRevealModal.style.display = 'flex'; // Change to 'flex' to make it visible
+                eggRevealModal.style.display = 'block'; // Change to 'flex' to make it visible
             }, 2000);
         });
 
