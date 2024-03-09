@@ -265,7 +265,7 @@ body {
     }
 }
 
-.circular-modal #passcodeInput {
+#passcodeInput {
     width: 60px;
     height: 40px;
     border-radius: 15px;
@@ -281,7 +281,6 @@ body {
                  0 0 20px #00BFFF, 
                  0 0 40px #00BFFF; /* Text glow effect */
     color: #00BFFF;
-    box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Blue glow */
 }
 
 .circular-modal #submitPasscode {
