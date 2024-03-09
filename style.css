@@ -486,6 +486,7 @@ body {
   height: auto; /* Adjust height as needed */
   justify-content: center;
   align-items: center;
+  display: none;
   text-align: center;
 }
 }
