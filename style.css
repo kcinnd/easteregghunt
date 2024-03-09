@@ -480,10 +480,9 @@ body {
 }
 
 .eggrmodal-content {
-  display: flex; /* Hidden by default */
   z-index: 1051;
   padding: 20px;
-  width: 100%; /* This will make the content use the full width of the modal */
+  width: 80%; /* This will make the content use the full width of the modal */
   height: auto; /* Adjust height as needed */
   justify-content: center;
   align-items: center;
