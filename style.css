@@ -489,7 +489,6 @@ body {
   display: none;
   text-align: center;
 }
-}
 
 .eggrmodal {
   background-color: #ffc0cb; /* Light pink background for Easter theme */
@@ -507,7 +506,6 @@ body {
   align-items: center;
   top: 50%;
   left: 50%;
-  display: block;
   transform: translate(-50%, -50%);
   margin: auto;
   overflow: auto;
