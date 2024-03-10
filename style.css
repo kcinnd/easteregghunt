@@ -43,7 +43,7 @@
 }
 
 .egg-image:hover {
-  transform: scale(1.5); /* Enlarge image on hover */
+  transform: scale(5); /* Enlarge image on hover */
 }
 
 .egg-close {
