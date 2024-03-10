@@ -57,12 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const closeBtns = document.querySelectorAll('.close');
-
-  // Function to close modals
     closeBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        btn.closest('.modal').style.display = 'none';
-      });
+        btn.addEventListener('click', function() {
+            btn.closest('.modal').style.display = 'none';
+        });
     });
 
   // Close modal when clicking outside of it
@@ -78,6 +76,29 @@ document.addEventListener('DOMContentLoaded', function() {
         eggImagesModal.style.display = 'none';
       }
     });
+    
+    const permanentImage = document.getElementById('permanentImage');
+    if (permanentImage) {
+        permanentImage.addEventListener('click', openCircularModal);
+    }
+
+    const circularModal = document.getElementById('circularModal');
+    const circularModalBackground = document.getElementById('circularModalBackground');
+
+    if (circularModalBackground) {
+        circularModalBackground.addEventListener('click', function(event) {
+            if (event.target === circularModalBackground) {
+                closeCircularModal();
+            }
+        });
+    }
+
+    if (circularModal) {
+        const closeCircularModalBtn = circularModal.querySelector('.close');
+        if (closeCircularModalBtn) {
+            closeCircularModalBtn.addEventListener('click', closeCircularModal);
+        }
+    }
 });
 
 function setupTypewriter(elementId, text) {
@@ -97,26 +118,6 @@ function setupTypewriter(elementId, text) {
         type(); // Start typing effect
     }
 }
-
-    const permanentImage = document.getElementById('permanentImage');
-    if (permanentImage) {
-        permanentImage.addEventListener('click', openCircularModal);
-    }
-
-    // Close the circular modal when the close button is clicked
-    const closeCircularModalBtn = document.getElementById('circularModal').querySelector('.close');
-    if (closeCircularModalBtn) {
-        closeCircularModalBtn.addEventListener('click', closeCircularModal);
-    }
-
-    // Close the circular modal when clicking outside of it
-    const circularModalBackground = document.getElementById('circularModalBackground');
-    window.addEventListener('click', function(event) {
-        if (event.target === circularModalBackground) {
-            closeCircularModal();
-        }
-    });
-
 
 function openCircularModal() {
     const circularModalBackground = document.getElementById('circularModalBackground');
