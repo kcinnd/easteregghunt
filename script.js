@@ -48,24 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const revealEggBtn = document.getElementById('revealEggBtn');
-    const eggImagesModal = document.getElementById('eggImagesModal');
-    const eggCloseBtn = document.querySelector('.egg-close');
     const closeBtns = document.querySelectorAll('.close');
-    
-    if (revealEggBtn) {
-        revealEggBtn.addEventListener('click', function() {
-            // Hide the egg reveal modal
-            if (eggRevealModal) {
-                eggRevealModal.style.display = 'none';
-            }
-
-            // Show the egg images modal
-            if (eggImagesModal) {
-                eggImagesModal.style.display = 'block'; // Use 'flex' if your modal content is designed to be displayed as a flexbox
-            }
-        });
-    }
 
   // Function to close modals
     closeBtns.forEach(btn => {
@@ -270,16 +253,23 @@ function setupEventListeners() {
     const revealEggBtn = document.getElementById('revealEggBtn');
     const submitAnswerButton = document.getElementById('submitAnswer');
     const submitBtn = document.getElementById('submitBtn');
+    const eggImagesModal = document.getElementById('eggImagesModal');
 
-    var revealBtn = document.getElementById('revealBtnId');
-    if (revealBtn) {
-        revealBtn.onclick = function() {
-            // Your code here
-        };
+    if (revealEggBtn && eggImagesModal) {
+        revealEggBtn.addEventListener('click', function() {
+            // Hide the eggRevealModal first if it's visible
+            const eggRevealModal = document.getElementById('eggRevealModal');
+            if (eggRevealModal) {
+                eggRevealModal.style.display = 'none';
+            }
+
+            // Show the eggImagesModal
+            eggImagesModal.style.display = 'block';
+        });
     } else {
-        console.log('Reveal button not found.');
+        console.error('One of the elements (revealEggBtn, eggImagesModal) is not found.');
     }
-
+    
     if (submitBtn) {
         submitBtn.addEventListener('click', checkWord);
     } else {
