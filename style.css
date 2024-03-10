@@ -14,27 +14,32 @@
 }
 
 .eggmodal {
-  display: none;
+  display: none; /* Start hidden, will be shown via JS */
+  position: fixed; /* Stay in place */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
   background-color: #f8d7da; /* Soft pink background */
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-  width: 100%;
+  width: 60%; /* Adjust based on content size */
+  max-width: 600px; /* Maximum size */
   height: auto;
+  z-index: 1050; /* Ensure it's on top of other content */
 }
 
 .eggmodal-content {
-  display: none;
   padding: 20px;
   text-align: center; /* Center content */
 }
 
 .egg-image {
-  display: none;
   width: 80%; /* Smaller images */
   max-width: 200px; /* Limit size */
   border-radius: 10px; /* Slightly rounded corners for the images */
-  margin: 10px; /* Space around images */
+  margin: 10px auto; /* Space around images and center horizontally */
   transition: transform 0.3s ease; /* Smooth transition for enlarging */
+  display: inline-block; /* Show images */
 }
 
 .egg-image:hover {
