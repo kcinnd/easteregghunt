@@ -14,8 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const additionalImage = document.getElementById('additionalImage');
 
     if (popupImageCloseBtn) {
-        popupImageCloseBtn.addEventListener('click', () => popupImageModal.style.display = 'none');
+        popupImageCloseBtn.addEventListener('click', () => {
+            popupImageModal.style.display = 'none';
+        });
     }
+
+    window.addEventListener('click', function(event) {
+        if (event.target == popupImageModal) {
+            popupImageModal.style.display = 'none';
+        }
+    });
 
     if (smallImage && numberseggModal) {
         setupNumberseggModal(smallImage, numberseggModal);
