@@ -90,30 +90,40 @@ function setupTypewriter(elementId, text) {
     }
 }
 
-function openCircularModal() {
-    document.getElementById('circularModalBackground').style.visibility = 'visible';
-    document.getElementById('circularModalBackground').style.opacity = '1';
-    document.getElementById('circularModal').style.display = 'flex';
-}
-
-function closeCircularModal() {
-    document.getElementById('circularModalBackground').style.visibility = 'hidden';
-    document.getElementById('circularModalBackground').style.opacity = '0';
-    document.getElementById('circularModal').style.display = 'none';
-}
-
-function setupPermanentImageModal() {
-    const permanentImage = document.getElementById('permanentImage');
+const permanentImage = document.getElementById('permanentImage');
     if (permanentImage) {
         permanentImage.addEventListener('click', openCircularModal);
     }
-    
+
+    // Close the circular modal when the close button is clicked
+    const closeCircularModalBtn = document.getElementById('circularModal').querySelector('.close');
+    if (closeCircularModalBtn) {
+        closeCircularModalBtn.addEventListener('click', closeCircularModal);
+    }
+
+    // Close the circular modal when clicking outside of it
+    const circularModalBackground = document.getElementById('circularModalBackground');
     window.addEventListener('click', function(event) {
-        const circularModalBackground = document.getElementById('circularModalBackground');
         if (event.target === circularModalBackground) {
             closeCircularModal();
         }
     });
+
+    // Your existing setup functions continue here...
+});
+
+function openCircularModal() {
+    const circularModalBackground = document.getElementById('circularModalBackground');
+    circularModalBackground.style.visibility = 'visible';
+    circularModalBackground.style.opacity = '1';
+    document.getElementById('circularModal').style.display = 'flex';
+}
+
+function closeCircularModal() {
+    const circularModalBackground = document.getElementById('circularModalBackground');
+    circularModalBackground.style.visibility = 'hidden';
+    circularModalBackground.style.opacity = '0';
+    document.getElementById('circularModal').style.display = 'none';
 }
 
 function setupNumberseggModal(triggerElement, modalElement) {
