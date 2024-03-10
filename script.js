@@ -272,21 +272,21 @@ function setupEventListeners() {
     const submitAnswerButton = document.getElementById('submitAnswer');
     const submitBtn = document.getElementById('submitBtn');
     const eggImagesModal = document.getElementById('eggImagesModal');
+    const eggCloseBtn = document.querySelector('#eggImagesModal .egg-close');
 
     if (eggCloseBtn) {
         eggCloseBtn.addEventListener('click', function() {
             eggImagesModal.style.display = 'none';
         });
-
+    }
+    
+    // Setup for revealing egg images modal
     if (revealEggBtn && eggImagesModal) {
         revealEggBtn.addEventListener('click', function() {
-            // Hide the eggRevealModal first if it's visible
             const eggRevealModal = document.getElementById('eggRevealModal');
             if (eggRevealModal) {
                 eggRevealModal.style.display = 'none';
             }
-
-            // Show the eggImagesModal
             eggImagesModal.style.display = 'block';
         });
     } else {
