@@ -98,7 +98,7 @@ function setupTypewriter(elementId, text) {
     }
 }
 
-const permanentImage = document.getElementById('permanentImage');
+    const permanentImage = document.getElementById('permanentImage');
     if (permanentImage) {
         permanentImage.addEventListener('click', openCircularModal);
     }
@@ -117,8 +117,6 @@ const permanentImage = document.getElementById('permanentImage');
         }
     });
 
-    // Your existing setup functions continue here...
-});
 
 function openCircularModal() {
     const circularModalBackground = document.getElementById('circularModalBackground');
