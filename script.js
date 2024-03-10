@@ -265,6 +265,11 @@ function setupEventListeners() {
     const submitBtn = document.getElementById('submitBtn');
     const eggImagesModal = document.getElementById('eggImagesModal');
 
+    if (eggCloseBtn) {
+        eggCloseBtn.addEventListener('click', function() {
+            eggImagesModal.style.display = 'none';
+        });
+
     if (revealEggBtn && eggImagesModal) {
         revealEggBtn.addEventListener('click', function() {
             // Hide the eggRevealModal first if it's visible
