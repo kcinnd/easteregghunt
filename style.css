@@ -18,6 +18,8 @@
   background-color: #f8d7da; /* Soft pink background */
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  width: 100%;
+  height: auto;
 }
 
 .eggmodal-content {
