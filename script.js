@@ -236,35 +236,44 @@ function setupSubmitHandlers() {
 function setupSecretImageAndConfetti() {
     const secretImage = document.getElementById('secretImage');
     const eggRevealModal = document.getElementById('eggRevealModal');
+    
+    // Check if the egg reveal modal exists in the DOM
+    if (!eggRevealModal) {
+        console.error('The egg reveal modal was not found in the DOM.');
+        return; // Exit the function if eggRevealModal is not found
+    }
+
+    // Find the egg reveal modal content within the egg reveal modal
     const eggRevealModalContent = eggRevealModal.querySelector('.eggrmodal-content');
+    if (!eggRevealModalContent) {
+        console.error('The egg reveal modal content was not found in the DOM.');
+        return; // Exit the function if eggRevealModalContent is not found
+    }
 
-    if (eggRevealModal) {
-        const eggRevealModalContent = eggRevealModal.querySelector('.eggrmodal-content');
-
-        if (secretImage && eggRevealModal) {
-            secretImage.addEventListener('mouseenter', function() {
-                // Trigger confetti effect
-                confetti({
-                    particleCount: 500,
-                    spread: 200,
-                    origin: { y: 0.6 }
-                });
-                // Set a timeout to display the egg reveal modal after 2 seconds
-                setTimeout(() => {
-                eggRevealModal.style.display = 'block'; // Change to 'flex' to make it visible
-                eggRevealModalContent.style.display = 'flex';
-                }, 2000);
-           });
-        }
-
-       const closeModal = eggRevealModal.querySelector('.close');
-        if (closeModal) {
-            closeModal.addEventListener('click', function() {
-                eggRevealModal.style.display = 'none'; // Hide the modal when close button is clicked
+    // If secretImage exists, add an event listener to it
+    if (secretImage) {
+        secretImage.addEventListener('mouseenter', function() {
+            // Trigger confetti effect
+            confetti({
+                particleCount: 500,
+                spread: 200,
+                origin: { y: 0.6 }
             });
-        }
-    } else {
-        console.error('Element with ID "eggRevealModal" was not found.');
+
+            // Display the egg reveal modal after a delay
+            setTimeout(() => {
+                eggRevealModal.style.display = 'block';
+                eggRevealModalContent.style.display = 'flex'; // Ensure this matches your styling needs
+            }, 2000);
+        });
+    }
+
+    // If eggRevealModal has a close button, add a click event listener to it
+    const closeModal = eggRevealModal.querySelector('.close');
+    if (closeModal) {
+        closeModal.addEventListener('click', function() {
+            eggRevealModal.style.display = 'none';
+        });
     }
 }
 
