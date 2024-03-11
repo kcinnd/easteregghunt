@@ -238,30 +238,33 @@ function setupSecretImageAndConfetti() {
     const eggRevealModal = document.getElementById('eggRevealModal');
     const eggRevealModalContent = eggRevealModal.querySelector('.eggrmodal-content');
 
-    if (secretImage && eggRevealModal) {
-        secretImage.addEventListener('mouseenter', function() {
-            // Trigger confetti effect
-            confetti({
-                particleCount: 500,
-                spread: 200,
-                origin: { y: 0.6 }
-            });
-            // Set a timeout to display the egg reveal modal after 2 seconds
-            setTimeout(() => {
-            eggRevealModal.style.display = 'block'; // Change to 'flex' to make it visible
-            eggRevealModalContent.style.display = 'flex';
-            }, 2000);
-        });
+    if (eggRevealModal) {
+        const eggRevealModalContent = eggRevealModal.querySelector('.eggrmodal-content');
 
-        // Close modal logic
-        const closeModal = eggRevealModal.querySelector('.close');
+        if (secretImage && eggRevealModal) {
+            secretImage.addEventListener('mouseenter', function() {
+                // Trigger confetti effect
+                confetti({
+                    particleCount: 500,
+                    spread: 200,
+                    origin: { y: 0.6 }
+                });
+                // Set a timeout to display the egg reveal modal after 2 seconds
+                setTimeout(() => {
+                eggRevealModal.style.display = 'block'; // Change to 'flex' to make it visible
+                eggRevealModalContent.style.display = 'flex';
+                }, 2000);
+           });
+        }
+
+       const closeModal = eggRevealModal.querySelector('.close');
         if (closeModal) {
             closeModal.addEventListener('click', function() {
                 eggRevealModal.style.display = 'none'; // Hide the modal when close button is clicked
             });
         }
     } else {
-        console.log('One of the elements (secretImage, eggRevealModal) is not found.');
+        console.error('Element with ID "eggRevealModal" was not found.');
     }
 }
 
